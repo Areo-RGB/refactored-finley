@@ -1,0 +1,24 @@
+{
+  "name": "dfb-training-app",
+  "version": "1.0.0",
+  "description": "DFB Training App - Football training performance tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": [
+    "football",
+    "training",
+    "dfb",
+    "sports"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

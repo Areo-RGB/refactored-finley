@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Football Training Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .video-container {
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        video {
+            width: 100%;
+            display: block;
+            background-color: #000;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-size: cover;
+            background-position: center;
+            height: 170px;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Football Technical Drills</h1>
+    
+    <div class="video-container">
+        <video controls>
+            <source src="Timeline 1 (2)_apf2_prob4.mp4" type="video/mp4">
+            Your browser doesn't support HTML5 video.
+        </video>
+    </div>
+    
+    <h2>Available Training Videos</h2>
+    
+    <div class="card" style="background-image:url(images/players/finley.webp)">
+        <a href="#" class="btn">Start</a>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+            <h3 style="margin: 0;">Football Drills</h3>
+            <p style="margin: 5px 0 0;">Beginner Level - 10 Exercises</p>
+        </div>
+    </div>
+    
+    <div class="card" style="background-image:url(images/players/bent.png)">
+        <a href="#" class="btn">Start</a>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+            <h3 style="margin: 0;">Technical Training</h3>
+            <p style="margin: 5px 0 0;">Advanced Level - 5 Exercises</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Basic video player functionality
+            const videos = document.querySelectorAll('video');
+            videos.forEach(function(video) {
+                video.addEventListener('play', function() {
+                    // Pause all other videos when one starts playing
+                    videos.forEach(function(otherVideo) {
+                        if (otherVideo !== video && !otherVideo.paused) {
+                            otherVideo.pause();
+                        }
+                    });
+                });
+            });
+
+            // Make the cards clickable
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(function(card, index) {
+                card.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'A') { // Don't trigger if clicking the button
+                        const video = document.querySelector('video');
+                        if (video) {
+                            // Set video source based on card index
+                            const sources = [
+                                'Timeline 1 (2)_apf2_prob4.mp4',
+                                'Timeline 1 (2)_apf2_prob4.mp4'
+                            ];
+                            
+                            if (sources[index]) {
+                                video.querySelector('source').src = sources[index];
+                                video.load();
+                                video.play();
+                                
+                                // Scroll to video
+                                video.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
