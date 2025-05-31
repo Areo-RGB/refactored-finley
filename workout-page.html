@@ -23,7 +23,7 @@
 
    <div class="card card-style position-relative overflow-hidden" id="hero-video-card">
             <video class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;" muted loop playsinline id="hero-video">
-                <source src="groß-14.mp4" type="video/mp4">
+                <source src="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xxs00000000.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="video-overlay position-absolute top-0 start-0 w-100 h-100" style="z-index: 2; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; cursor: pointer;">
@@ -310,10 +310,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentExerciseDuration = 15 * 60; // 15 minutes default
 
     const exercises = {
-        'push-ups': { name: 'Push-Up Challenge', duration: 15 * 60, video: 'images/players/Timeline 1.mov' },
-        'squats': { name: 'Squats', duration: 5 * 60, video: 'images/players/vgl-b-f.MP4' },
-        'planks': { name: 'Planks', duration: 3 * 60, video: 'images/players/bent.m.mp4' },
-        'burpees': { name: 'Burpees', duration: 4 * 60, video: 'images/players/vgl-b-f.MP4' }
+        'push-ups': { name: 'Push-Up Challenge', duration: 15 * 60, video: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4' },
+        'squats': { name: 'Squats', duration: 5 * 60, video: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201x00000000.mp4' },
+        'planks': { name: 'Planks', duration: 3 * 60, video: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xxs00000000.mp4' },
+        'burpees': { name: 'Burpees', duration: 4 * 60, video: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xx00000000.mp4' }
     };
 
     let currentExercise = 'push-ups';

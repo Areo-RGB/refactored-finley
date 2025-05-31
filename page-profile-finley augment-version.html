@@ -85,7 +85,7 @@
 		<div class="card card-style video-card">
 			<div class="video-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 0; background-color: #000;">
 				<video class="responsive-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none;">
-					<source src="groß-15.mp4" type="video/mp4">
+					<source src="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" type="video/mp4">
 					Your browser doesn't support HTML5 video.
 				</video>
 				<canvas class="video-thumbnail" style="display: none;"></canvas>
@@ -94,8 +94,7 @@
 					<span class="video-timer">15</span><span style="font-size: 20px;">s</span>
 				</div>
 				<div class="video-text-overlay" style="position: absolute; bottom: 10px; left: 10px; right: 10px; color: white; padding: 10px; border-radius: 5px; z-index: 3;">
-					<h1 class="mb-n1 color-white">Power Lifting</h1>
-					<p class="mb-0 opacity-60 color-white">Professional Level - Video Training</p>
+					<h1 class="mb-n1 color-white">Übung 1</h1>
 				</div>
 				<div class="video-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; align-items: center; justify-content: center;">
 					<div class="play-button">
@@ -104,8 +103,7 @@
 				</div>
 			</div>
 			<div class="content" style="display: none;">
-				<h1 class="mb-n1">Power Lifting</h1>
-				<p class="mb-0 opacity-60">Professional Level - Video Training</p>
+				<h1 class="mb-n1">Übung 1</h1>
 			</div>
 		</div>
 
@@ -259,15 +257,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Track which video is currently playing
     const videoStates = {
-        FIRST_VIDEO: 'groß-15.mp4',
-        SECOND_VIDEO: 'Timeline 1 (2)_apf2_prob4.mp4',
-        current: 'groß-15.mp4'
+        FIRST_VIDEO: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4',
+        SECOND_VIDEO: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201x00000000.mp4',
+        current: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4'
     };
 
     // Timer related functions using TimerTextComponent
     // Features:
     // - 15-second countdown timer
-    // - Text changes from "Power Lifting Professional Level - Video Training" to "NEXT Up" at 5 seconds
+    // - Text changes from "Übung 1" to "NÄCHSTE ÜBUNG" at 5 seconds
     // - Visual effects: red color and pulsing animation when ≤ 5 seconds
     // - Automatic video switching when timer reaches 0
     function startVideoTimer(card) {

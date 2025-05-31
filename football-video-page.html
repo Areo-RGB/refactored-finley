@@ -74,16 +74,16 @@
 </head>
 <body>
     <h1>Football Technical Drills</h1>
-    
+
     <div class="video-container">
         <video controls>
-            <source src="Timeline 1 (2)_apf2_prob4.mp4" type="video/mp4">
+            <source src="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" type="video/mp4">
             Your browser doesn't support HTML5 video.
         </video>
     </div>
-    
+
     <h2>Available Training Videos</h2>
-    
+
     <div class="card" style="background-image:url(images/players/finley.webp)">
         <a href="#" class="btn">Start</a>
         <div class="card-overlay"></div>
@@ -92,7 +92,7 @@
             <p style="margin: 5px 0 0;">Beginner Level - 10 Exercises</p>
         </div>
     </div>
-    
+
     <div class="card" style="background-image:url(images/players/bent.png)">
         <a href="#" class="btn">Start</a>
         <div class="card-overlay"></div>
@@ -126,15 +126,15 @@
                         if (video) {
                             // Set video source based on card index
                             const sources = [
-                                'Timeline 1 (2)_apf2_prob4.mp4',
-                                'Timeline 1 (2)_apf2_prob4.mp4'
+                                'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4',
+                                'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201x00000000.mp4'
                             ];
-                            
+
                             if (sources[index]) {
                                 video.querySelector('source').src = sources[index];
                                 video.load();
                                 video.play();
-                                
+
                                 // Scroll to video
                                 video.scrollIntoView({ behavior: 'smooth' });
                             }
@@ -145,4 +145,4 @@
         });
     </script>
 </body>
-</html> 
+</html>

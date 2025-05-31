@@ -57,7 +57,7 @@
         animation: pulse 0.8s ease-in-out infinite;
         display: inline-block;
     }
-    
+
     /* Text Overlay Styles */
     .video-text-overlay {
         position: absolute;
@@ -68,18 +68,16 @@
         padding: 15px;
         border-radius: 8px;
         z-index: 3;
-        background-color: rgba(0,0,0,0.5);
-        backdrop-filter: blur(5px);
         transition: opacity 0.3s ease;
     }
-    
+
     .video-text-overlay h1 {
         font-size: 24px;
         margin: 0;
         text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         font-weight: 700;
     }
-    
+
     .video-text-overlay p {
         font-size: 18px;
         margin: 5px 0 0;
@@ -103,12 +101,13 @@
     </div>
 
    <div class="page-content">
+       <div class="page-content header-clear-small">
 
 		<!-- Video Card -->
 		<div class="card card-style video-card">
 			<div class="video-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 400px; background-color: #000;">
 				<video class="responsive-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;">
-					<source src="Timeline 1 (2)_apf2_prob4.mp4" type="video/mp4">
+					<source src="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" type="video/mp4">
 					Your browser doesn't support HTML5 video.
 				</video>
 				<canvas class="video-thumbnail" style="display: none;"></canvas>
@@ -118,8 +117,7 @@
 				</div>
 				<!-- Text Overlay for Video Info -->
 				<div class="video-text-overlay">
-					<h1>Football Technical Drills</h1>
-					<p>Become a Technical Master with These Exercises</p>
+					<h1>Übung 1</h1>
 				</div>
 				<div class="video-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; align-items: center; justify-content: center;">
 					<div class="play-button">
@@ -128,8 +126,7 @@
 				</div>
 			</div>
 			<div class="content" style="display: none;">
-				<h1 class="mb-n1">Power Lifting</h1>
-				<p class="mb-0 opacity-60">Professional Level - Video Training</p>
+				<h1 class="mb-n1">Übung 1</h1>
 			</div>
 		</div>
 
@@ -283,11 +280,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Track which video is currently playing
     const videoStates = {
-        VIDEO_1: 'Timeline 1 (2)_apf2_prob4.mp4',
-        VIDEO_2: 'Timeline 1 (2)_apf2_prob4.mp4',
-        VIDEO_3: 'Compound Clip 3_00000000.mov',
-        VIDEO_4: 'Compound Clip 2_00000000.mov',
-        current: 'Timeline 1 (2)_apf2_prob4.mp4',
+        VIDEO_1: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4',
+        VIDEO_2: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201x00000000.mp4',
+        VIDEO_3: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xxs00000000.mp4',
+        VIDEO_4: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xx00000000.mp4',
+        current: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4',
         currentIndex: 1
     };
 
@@ -306,12 +303,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset to 15 seconds
         timerElement.textContent = '15';
 
-        // Reset text overlay to original content
+        // Reset text overlay to show current exercise number
         if (textOverlay) {
             const titleElement = textOverlay.querySelector('h1');
-            const subtitleElement = textOverlay.querySelector('p');
-            if (titleElement) titleElement.textContent = 'Power Lifting';
-            if (subtitleElement) subtitleElement.textContent = 'Professional Level - Video Training';
+            if (titleElement) titleElement.textContent = 'Übung ' + videoStates.currentIndex;
         }
 
         // Clear any existing timer
@@ -323,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.timerInterval = setInterval(function() {
             let seconds = parseInt(timerElement.textContent);
             seconds--;
-            
+
             // Change text when timer reaches 5 seconds
             if (seconds === 5) {
                 const textOverlay = card.querySelector('.video-text-overlay');
@@ -331,17 +326,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     const nextIndex = (videoStates.currentIndex % 4) + 1;
                     const titleElement = textOverlay.querySelector('h1');
                     const subtitleElement = textOverlay.querySelector('p');
-                    
+
                     if (titleElement) {
-                        titleElement.textContent = 'NEXT UP';
-                    }
-                    
-                    if (subtitleElement) {
-                        subtitleElement.textContent = 'Video ' + nextIndex;
+                        titleElement.textContent = 'NÄCHSTE ÜBUNG';
                     }
                 }
             }
-            
+
             if (seconds <= 0) {
                 // Stop the timer when it reaches 0
                 clearInterval(card.timerInterval);
@@ -415,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
             textChanges: [
                 {
                     triggerTime: 5,
-                    title: 'NEXT Up',
+                    title: 'NÄCHSTE ÜBUNG',
                     subtitle: ''
                 }
             ],
@@ -433,14 +424,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const video = card.querySelector('video');
         const source = video.querySelector('source');
         const textOverlay = card.querySelector('.video-text-overlay');
-        
+
         if (video && source) {
             // Pause current video
             video.pause();
-            
+
             // Update current index
             videoStates.currentIndex = (videoStates.currentIndex % 4) + 1;
-            
+
             // Set the next video based on the current index
             switch(videoStates.currentIndex) {
                 case 1:
@@ -460,39 +451,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     videoStates.current = videoStates.VIDEO_4;
                     break;
             }
-            
+
             // Update text overlay to show what's coming next
             if (textOverlay) {
                 const nextIndex = (videoStates.currentIndex % 4) + 1;
                 const titleElement = textOverlay.querySelector('h1');
                 const subtitleElement = textOverlay.querySelector('p');
-                
+
                 if (titleElement) {
-                    titleElement.textContent = 'Now Playing ' + videoStates.currentIndex;
-                }
-                
-                if (subtitleElement) {
-                    subtitleElement.textContent = 'Next up ' + nextIndex;
+                    titleElement.textContent = 'Übung ' + videoStates.currentIndex;
                 }
             }
-            
+
             // Load and play the new video
             video.load();
             video.play();
-            
+
             // Reset timer for the new video
             startVideoTimer(card);
-            
+
             // Make sure video is visible and overlay is hidden
             if (card.thumbnailImg) {
                 card.thumbnailImg.style.display = 'none';
             }
-            
+
             const overlay = card.querySelector('.video-overlay');
             if (overlay) {
                 overlay.style.opacity = '0';
             }
-            
+
             video.style.display = 'block';
             video.classList.add('playing');
         }
@@ -818,6 +805,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Start the timer if it exists
                     const timerOverlay = card.querySelector('.video-timer-overlay');
                     if (timerOverlay) {
+                        // Make sure we have the correct exercise number displayed
+                        const textOverlay = card.querySelector('.video-text-overlay');
+                        if (textOverlay) {
+                            const titleElement = textOverlay.querySelector('h1');
+                            if (titleElement) {
+                                titleElement.textContent = 'Übung ' + videoStates.currentIndex;
+                            }
+                        }
                         startVideoTimer(card);
                     }
                 } else {
@@ -871,6 +866,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Start the timer when video plays
+                // Make sure we have the correct exercise number displayed
+                const textOverlay = card.querySelector('.video-text-overlay');
+                if (textOverlay) {
+                    const titleElement = textOverlay.querySelector('h1');
+                    if (titleElement) {
+                        titleElement.textContent = 'Übung ' + videoStates.currentIndex;
+                    }
+                }
                 startVideoTimer(card);
             });
 
@@ -907,6 +910,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Start the timer if it exists
                     const timerOverlay = card.querySelector('.video-timer-overlay');
                     if (timerOverlay) {
+                        // Make sure we have the correct exercise number displayed
+                        const textOverlay = card.querySelector('.video-text-overlay');
+                        if (textOverlay) {
+                            const titleElement = textOverlay.querySelector('h1');
+                            if (titleElement) {
+                                titleElement.textContent = 'Übung ' + videoStates.currentIndex;
+                            }
+                        }
                         startVideoTimer(card);
                     }
                 } else {
