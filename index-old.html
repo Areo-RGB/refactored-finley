@@ -1,5 +1,3 @@
---- START OF FILE index.html ---
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -17,59 +15,21 @@
 </head>
 
 <body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
-<!--
-TABLE OF CONTENTS:
-1. Preloader (@id:preloader)
-2. Page Container (@id:page-container)
-    2.1. Footer Bar (@id:footer-bar)
-    2.2. Main Content Area (@id:main-content-area)
-        2.2.1. Player Profile Card (@id:player-profile-card)
-        2.2.2. Training Metrics Grid (@id:training-metrics-grid)
-        2.2.3. Sprint Results Accordion (@id:sprint-results-accordion)
-            2.2.3.1. 10m Sprint Accordion Item (@id:accordion-10m-sprint)
-            2.2.3.2. 20m Sprint Accordion Item (@id:accordion-20m-sprint)
-            2.2.3.3. Gewandtheit Accordion Item (@id:accordion-gewandtheit)
-            2.2.3.4. Ballkontrolle Accordion Item (@id:accordion-ballkontrolle)
-            2.2.3.5. Balljonglieren Accordion Item (@id:accordion-balljonglieren)
-            2.2.3.6. Dribbling Accordion Item (@id:accordion-dribbling)
-    2.3. Modals and Menus (@id:modals-and-menus)
-        2.3.1. Fullscreen Video Modal (@id:fullscreen-video-modal)
-        2.3.2. Settings Menu (@id:menu-settings)
-        2.3.3. Highlights Menu (@id:menu-highlights)
-        2.3.4. Backgrounds Menu (@id:menu-backgrounds)
-        2.3.5. Share Menu (@id:menu-share)
-3. Scripts (@id:scripts)
-4. Inline Styles (@id:inline-styles)
--->
 
-<!-- ===== PRELOADER SECTION ===== -->
-<!-- @id:preloader -->
 <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
-<!-- ===== END PRELOADER SECTION ===== -->
 
-<!-- ===== PAGE CONTAINER ===== -->
-<!-- @id:page-container -->
 <div id="page">
 
-    <!-- ===== FOOTER BAR SECTION ===== -->
-    <!-- @id:footer-bar -->
-    <!-- #region Footer Navigation -->
+
+
     <div id="footer-bar" class="footer-bar-1">
         <a href="index.html" class="active-nav"><i class="fa fa-home"></i><span>Home</span></a>
         <a href="page-dfb.html"><i class="fa fa-running"></i><span>DFB</span></a>
         <a href="page-profile-finley.html"><i class="fa fa-futbol"></i><span>Finley</span></a>
         <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
     </div>
-    <!-- #endregion Footer Navigation -->
-    <!-- ===== END FOOTER BAR SECTION ===== -->
 
-    <!-- ===== MAIN CONTENT SECTION ===== -->
-    <!-- @id:main-content-area -->
-    <!-- #region Main Page Content -->
-    <div class="page-content">
-        <!-- START: Player Profile Card Component -->
-        <!-- @id:player-profile-card -->
-        <div class="card mb-0 preload-img" data-src="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" data-fallback="images/players/finley.webp" data-card-height="600">
+    <div class="page-content">        <div class="card mb-0 preload-img" data-src="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" data-fallback="images/players/finley.webp" data-card-height="600">
             <!-- Logo Display - Upper Right Corner -->
 
 
@@ -82,12 +42,7 @@ TABLE OF CONTENTS:
 
             </div>
             <div class="card-overlay bg-gradient-fade-small"></div>
-        </div>
-        <!-- END: Player Profile Card Component -->
-
-        <!-- START: Training Metrics Grid Component -->
-        <!-- @id:training-metrics-grid -->
-        <div class="card card-style">
+        </div>        <div class="card card-style">
 
             <div class="content mb-0">
                 <!-- Training Metrics -->
@@ -131,14 +86,14 @@ TABLE OF CONTENTS:
                         </a>
                     </div>
                 </div>
+
+
+
             </div>
         </div>
-        <!-- END: Training Metrics Grid Component -->
 
-        <!-- START: Sprint Results Accordion Component -->
-        <!-- @id:sprint-results-accordion -->
-        <!-- #region Sprint Results Accordion -->
-        <div class="card card-style pb-3">
+
+ <div class="card card-style pb-3">
             <div class="content">
                 <h4>Caption Accordion</h4>
                 <p>
@@ -146,8 +101,6 @@ TABLE OF CONTENTS:
                 </p>
             </div>
             <div class="accordion mb-2" id="accordion-3">
-                <!-- START: 10m Sprint Accordion Item -->
-                <!-- @id:accordion-10m-sprint -->
                 <div data-card-height="90" class="card card-style bg-25 mb-0 rounded-s">
                     <div class="card-center">
                         <button class="btn accordion-btn" data-bs-toggle="collapse" data-bs-target="#collapse7">
@@ -276,10 +229,7 @@ TABLE OF CONTENTS:
                         </div>
                     </div>
                 </div>
-                <!-- END: 10m Sprint Accordion Item -->
 
-                <!-- START: 20m Sprint Accordion Item -->
-                <!-- @id:accordion-20m-sprint -->
                 <div data-card-height="90" class="card card-style bg-28 mb-0 mt-2 rounded-s">
                     <div class="card-center">
                         <button class="btn accordion-btn" data-bs-toggle="collapse" data-bs-target="#collapse8">
@@ -416,10 +366,7 @@ TABLE OF CONTENTS:
                         </div>
                     </div>
                 </div>
-                <!-- END: 20m Sprint Accordion Item -->
 
-                <!-- START: Gewandtheit Accordion Item -->
-                <!-- @id:accordion-gewandtheit -->
                 <div data-card-height="90" class="card card-style bg-27 mb-0 mt-2 rounded-s">
                     <div class="card-center">
                         <button class="btn accordion-btn" data-bs-toggle="collapse" data-bs-target="#collapse10">
@@ -556,10 +503,6 @@ TABLE OF CONTENTS:
                         </div>
                     </div>
                 </div>
-                <!-- END: Gewandtheit Accordion Item -->
-
-                <!-- START: Ballkontrolle Accordion Item -->
-                <!-- @id:accordion-ballkontrolle -->
                 <div data-card-height="90" class="card card-style bg-25 mb-0 mt-2 rounded-s">
                     <div class="card-center">
                         <button class="btn accordion-btn" data-bs-toggle="collapse" data-bs-target="#collapse11">
@@ -696,10 +639,6 @@ TABLE OF CONTENTS:
                         </div>
                     </div>
                 </div>
-                <!-- END: Ballkontrolle Accordion Item -->
-
-                <!-- START: Balljonglieren Accordion Item -->
-                <!-- @id:accordion-balljonglieren -->
                 <div data-card-height="90" class="card card-style bg-28 mb-0 mt-2 rounded-s">
                     <div class="card-center">
                         <button class="btn accordion-btn" data-bs-toggle="collapse" data-bs-target="#collapse12">
@@ -780,10 +719,6 @@ TABLE OF CONTENTS:
                         </div>
                     </div>
                 </div>
-                <!-- END: Balljonglieren Accordion Item -->
-
-                <!-- START: Dribbling Accordion Item -->
-                <!-- @id:accordion-dribbling -->
                 <div data-card-height="90" class="card card-style bg-27 mb-0 mt-2 rounded-s">
                     <div class="card-center">
                         <button class="btn accordion-btn" data-bs-toggle="collapse" data-bs-target="#collapse13">
@@ -920,22 +855,13 @@ TABLE OF CONTENTS:
                         </div>
                     </div>
                 </div>
-                <!-- END: Dribbling Accordion Item -->
             </div>
         </div>
-        <!-- #endregion Sprint Results Accordion -->
-        <!-- END: Sprint Results Accordion Component -->
     </div>
+
     <!-- End of Page Content-->
-    <!-- #endregion Main Page Content -->
-    <!-- ===== END MAIN CONTENT SECTION ===== -->
 
-    <!-- ===== MODALS AND MENUS SECTION ===== -->
-    <!-- @id:modals-and-menus -->
-    <!-- #region Modals and Menus -->
-
-    <!-- START: Fullscreen Video Modal Component -->
-    <!-- @id:fullscreen-video-modal -->
+    <!-- Fullscreen Video Modal -->
     <div id="fullscreen-video-modal" class="fullscreen-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999;">
         <div class="fullscreen-video-container" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
             <!-- Close Button -->
@@ -958,12 +884,8 @@ TABLE OF CONTENTS:
             </button>
         </div>
     </div>
-    <!-- END: Fullscreen Video Modal Component -->
 
     <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
-    <!-- START: Settings Menu Component -->
-    <!-- @id:menu-settings -->
-    <!-- #region Settings Menu -->
     <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
         <div class="menu-title mt-0 pt-0"><h1>Settings</h1><p class="color-highlight">Flexible and Easy to Use</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
         <div class="divider divider-margins mb-n2"></div>
@@ -997,12 +919,7 @@ TABLE OF CONTENTS:
             </div>
         </div>
     </div>
-    <!-- #endregion Settings Menu -->
-    <!-- END: Settings Menu Component -->
-
-    <!-- START: Highlights Menu Component -->
-    <!-- @id:menu-highlights -->
-    <!-- #region Highlights Menu -->
+    <!-- Menu Settings Highlights-->
     <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached">
         <div class="menu-title"><h1>Highlights</h1><p class="color-highlight">Any Element can have a Highlight Color</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
         <div class="divider divider-margins mb-n2"></div>
@@ -1028,12 +945,7 @@ TABLE OF CONTENTS:
             <a href="#" data-menu="menu-settings" class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
         </div>
     </div>
-    <!-- #endregion Highlights Menu -->
-    <!-- END: Highlights Menu Component -->
-
-    <!-- START: Backgrounds Menu Component -->
-    <!-- @id:menu-backgrounds -->
-    <!-- #region Backgrounds Menu -->
+    <!-- Menu Settings Backgrounds-->
     <div id="menu-backgrounds" class="menu menu-box-bottom menu-box-detached">
         <div class="menu-title"><h1>Backgrounds</h1><p class="color-highlight">Change Page Color Behind Content Boxes</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
         <div class="divider divider-margins mb-n2"></div>
@@ -1054,12 +966,7 @@ TABLE OF CONTENTS:
             <a href="#" data-menu="menu-settings" class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
         </div>
     </div>
-    <!-- #endregion Backgrounds Menu -->
-    <!-- END: Backgrounds Menu Component -->
-
-    <!-- START: Share Menu Component -->
-    <!-- @id:menu-share -->
-    <!-- #region Share Menu -->
+    <!-- Menu Share -->
     <div id="menu-share" class="menu menu-box-bottom menu-box-detached">
         <div class="menu-title mt-n1"><h1>Share the Love</h1><p class="color-highlight">Just Tap the Social Icon. We'll add the Link</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
         <div class="content mb-0">
@@ -1093,18 +1000,9 @@ TABLE OF CONTENTS:
             </div>
         </div>
     </div>
-    <!-- #endregion Share Menu -->
-    <!-- END: Share Menu Component -->
-
-    <!-- #endregion Modals and Menus -->
-    <!-- ===== END MODALS AND MENUS SECTION ===== -->
 
 </div>
-<!-- ===== END PAGE CONTAINER ===== -->
 
-<!-- ===== SCRIPTS SECTION ===== -->
-<!-- @id:scripts -->
-<!-- #region Scripts -->
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript">
@@ -1665,12 +1563,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-<!-- #endregion Scripts -->
-<!-- ===== END SCRIPTS SECTION ===== -->
 
-<!-- ===== STYLES SECTION ===== -->
-<!-- @id:inline-styles -->
-<!-- #region Inline Styles -->
 <style>
 /* ==========================================================================
    SPRINT RESULTS CARD SYSTEM
@@ -1999,6 +1892,4 @@ document.addEventListener('DOMContentLoaded', function() {
     filter: hue-rotate(120deg) saturate(1.1);
 }
 </style>
-<!-- #endregion Inline Styles -->
-<!-- ===== END STYLES SECTION ===== -->
 </body>
