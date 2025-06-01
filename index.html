@@ -2506,6 +2506,38 @@ document.addEventListener('DOMContentLoaded', function() {
         font-size: 14px;
     }
 }
+
+/* ==========================================================================
+   MOBILE TOUCH OPTIMIZATIONS
+   ========================================================================== */
+
+/* Disable hover effects on touch devices to prevent conflicts */
+@media (hover: none) and (pointer: coarse) {
+    .video-card-container:hover {
+        transform: none !important;
+    }
+
+    .video-card-container:hover .card-video-bg {
+        filter: brightness(0.7) !important;
+        transform: none !important;
+    }
+
+    /* Ensure video cards are easily tappable on mobile */
+    .video-card-container {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Make play button more prominent on mobile */
+    .play-now-btn {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
+        min-height: 44px; /* iOS recommended touch target size */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 </style>
 <!-- #endregion Inline Styles -->
 <!-- ===== END STYLES SECTION ===== -->
@@ -2553,9 +2585,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 pauseVideo(video, card);
             });
 
-            // Touch support for mobile
+            // Touch support for mobile - tap to play/pause video in card
             card.addEventListener('touchstart', function(e) {
+                // Only handle if it's not a button or link
+                if (e.target.closest('.play-now-btn') || e.target.closest('a') || e.target.closest('button')) {
+                    return; // Let the button handle its own touch event
+                }
+
                 e.preventDefault();
+                e.stopPropagation();
+
                 if (video.readyState >= 2) {
                     if (video.paused) {
                         playVideo(video, card);
@@ -2563,7 +2602,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         pauseVideo(video, card);
                     }
                 }
-            });
+            }, { passive: false });
 
             // Preload video metadata
             video.load();

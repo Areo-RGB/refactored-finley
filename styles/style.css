@@ -2614,8 +2614,16 @@ button {
   transition: transform 0.3s ease;
 }
 
-.video-card-container:hover {
-  transform: scale(1.02);
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) {
+  .video-card-container:hover {
+    transform: scale(1.02);
+  }
+
+  .video-card-container:hover .card-video-bg {
+    filter: brightness(0.9);
+    transform: scale(1.05);
+  }
 }
 
 /* Video Background */
@@ -2629,11 +2637,6 @@ button {
   z-index: 1;
   transition: all 0.3s ease;
   filter: brightness(0.7);
-}
-
-.video-card-container:hover .card-video-bg {
-  filter: brightness(0.9);
-  transform: scale(1.05);
 }
 
 /* Ensure content is above video */
@@ -2689,8 +2692,23 @@ button {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .video-card-container:hover {
-    transform: scale(1.01);
+  /* Only apply hover effects on devices that support hover (non-touch) */
+  @media (hover: hover) {
+    .video-card-container:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .video-card-container:hover {
+      transform: none !important;
+    }
+
+    .video-card-container:hover .card-video-bg {
+      filter: brightness(0.7) !important;
+      transform: none !important;
+    }
   }
 }
 
