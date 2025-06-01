@@ -2620,40 +2620,12 @@ button {
 }
 
 /* Play Indicator */
+/* Play Indicator - Hidden for hover-to-play functionality */
 .video-play-indicator {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 20px;
-  opacity: 0;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.video-card-container:hover .video-play-indicator {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.video-play-indicator i {
-  margin-left: 3px; /* Adjust play icon position */
+  display: none;
 }
 
 /* Video playing state */
-.video-card-container.playing .video-play-indicator {
-  opacity: 0;
-}
 
 .video-card-container.playing .card-video-bg {
   filter: brightness(1);
@@ -2692,22 +2664,12 @@ button {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .video-play-indicator {
-    width: 50px;
-    height: 50px;
-    font-size: 16px;
-  }
-
   .video-card-container:hover {
     transform: scale(1.01);
   }
 }
 
 /* Dark theme support for video cards */
-.theme-dark .video-play-indicator {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
 
 .theme-dark .video-card-container.loading::before {
   background: linear-gradient(45deg, #495057 25%, transparent 25%),

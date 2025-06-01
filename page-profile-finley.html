@@ -203,9 +203,18 @@ document.addEventListener('DOMContentLoaded', function() {
     let timerSeconds = 15;
     let timerInterval = null;
     let isTimerRunning = false;
+    let currentExercise = 1;
+    const totalExercises = 6;
 
     function updateTimerDisplay() {
         timerDisplay.textContent = `${timerSeconds}s`;
+    }
+
+    function updateExerciseCounter() {
+        const exerciseCounterElement = document.querySelector('.row.text-center .col-4:first-child .color-white');
+        if (exerciseCounterElement) {
+            exerciseCounterElement.textContent = `${currentExercise}/${totalExercises}`;
+        }
     }
 
     function updateToggleButton() {
@@ -232,11 +241,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     updateToggleButton();
                     console.log('⏰ Timer finished!');
 
-                    // Optional: Add completion effect
+                    // Increment exercise counter if not at max
+                    if (currentExercise < totalExercises) {
+                        currentExercise++;
+                        updateExerciseCounter();
+                        console.log(`📈 Exercise incremented to ${currentExercise}/${totalExercises}`);
+                    }
+
+                    // Add completion effect and reset timer
                     timerDisplay.style.color = '#ff6b6b';
                     setTimeout(() => {
                         timerDisplay.style.color = '';
-                        resetTimer();
+                        timerSeconds = 15;
+                        updateTimerDisplay();
+                        console.log('🔄 Timer reset to 15s');
                     }, 2000);
                 }
             }, 1000);

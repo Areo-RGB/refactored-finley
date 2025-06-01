@@ -78,10 +78,7 @@
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
 
-						<!-- Play indicator -->
-						<div class="video-play-indicator">
-							<i class="fa fa-play"></i>
-						</div>
+
 					</div>
 					<div class="content mt-n3">
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -122,10 +119,7 @@
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
 
-						<!-- Play indicator -->
-						<div class="video-play-indicator">
-							<i class="fa fa-play"></i>
-						</div>
+
 					</div>
 					<div class="content mt-n3">
 						<p>
@@ -168,10 +162,7 @@
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
 
-						<!-- Play indicator -->
-						<div class="video-play-indicator">
-							<i class="fa fa-play"></i>
-						</div>
+
 					</div>
 					<div class="content mt-n3">
 						<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris viverra veniam sit amet lacus.</p>
@@ -212,10 +203,7 @@
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
 
-						<!-- Play indicator -->
-						<div class="video-play-indicator">
-							<i class="fa fa-play"></i>
-						</div>
+
 					</div>
 					<div class="content mt-n3">
 						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede.</p>
@@ -256,10 +244,7 @@
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
 
-						<!-- Play indicator -->
-						<div class="video-play-indicator">
-							<i class="fa fa-play"></i>
-						</div>
+
 					</div>
 					<div class="content mt-n3">
 						<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim donec pede justo.</p>
@@ -300,10 +285,7 @@
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
 
-						<!-- Play indicator -->
-						<div class="video-play-indicator">
-							<i class="fa fa-play"></i>
-						</div>
+
 					</div>
 					<div class="content mt-n3">
 						<p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi nam eget dui etiam rhoncus maecenas.</p>
@@ -624,10 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .catch(error => {
                         console.warn('⚠️ Video play failed:', error);
-                        // Handle autoplay restrictions
-                        if (error.name === 'NotAllowedError') {
-                            showPlayButton(card);
-                        }
+                        // Handle autoplay restrictions silently
                     });
             }
         } catch (error) {
@@ -646,35 +625,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function showPlayButton(card) {
-        const playIndicator = card.querySelector('.video-play-indicator');
-        if (playIndicator) {
-            playIndicator.style.opacity = '1';
-            playIndicator.innerHTML = '<i class="fa fa-volume-up"></i>';
 
-            // Add click to play functionality
-            playIndicator.addEventListener('click', function() {
-                const video = card.querySelector('.card-video-bg');
-                if (video) {
-                    video.muted = false; // Unmute for user interaction
-                    playVideo(video, card);
-                }
-            });
-        }
-    }
 
     function addVideoFallback(card) {
         // Create fallback background with gradient
         card.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-
-        // Update play indicator to show error state
-        const playIndicator = card.querySelector('.video-play-indicator');
-        if (playIndicator) {
-            playIndicator.innerHTML = '<i class="fa fa-exclamation-triangle"></i>';
-            playIndicator.style.opacity = '0.7';
-            playIndicator.style.background = 'rgba(255, 0, 0, 0.6)';
-        }
-
         console.log('🔄 Applied fallback background for failed video');
     }
 
