@@ -14,11 +14,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
 
 <!-- Preload critical profile images for better performance -->
-<link rel="preload" as="image" href="images/players/finley.webp">
-<link rel="preload" as="image" href="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" crossorigin="anonymous">
+<link rel="preload" as="image" href="images/players/finley.webp" fetchpriority="high">
+<link rel="preload" as="image" href="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" crossorigin fetchpriority="low">
 
 <!-- DNS prefetch for CDN -->
 <link rel="dns-prefetch" href="//data3.fra1.cdn.digitaloceanspaces.com">
+<link rel="preconnect" href="https://data3.fra1.cdn.digitaloceanspaces.com" crossorigin>
 </head>
 
 <body class="theme-dark" data-highlight="blue-default" data-gradient="body-default">
@@ -71,10 +72,11 @@ TABLE OF CONTENTS:
         <div class="card mb-0 profile-image-card"
              data-src="images/players/finley.webp"
              data-fallback="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp"
-             data-card-height="600">
+             data-card-height="600"
+             style="background-image: url('images/players/finley.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
             <!-- Loading State -->
-            <div class="profile-loading-state">
+            <div class="profile-loading-state" style="display: none;">
                 <div class="profile-skeleton">
                     <div class="skeleton-shimmer"></div>
                 </div>
@@ -82,6 +84,9 @@ TABLE OF CONTENTS:
                     <div class="spinner-border text-light" role="status">
                         <span class="visually-hidden">Loading profile image...</span>
                     </div>
+                </div>
+                <div class="loading-text mt-3">
+                    <p class="text-light text-center mb-0">Loading profile image...</p>
                 </div>
             </div>
 
@@ -1008,10 +1013,18 @@ TABLE OF CONTENTS:
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript">
-// Enhanced Profile Image Loading System
+// Simplified and Reliable Profile Image Loading System
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize enhanced profile image loading
+    console.log('🚀 Initializing profile image loading system...');
+
+    // Check if images are already cached
+    checkImageCache();
+
+    // Initialize profile image loading
     initProfileImageLoading();
+
+    // Add network status monitoring
+    monitorNetworkStatus();
 
     // Legacy support for old preload-img elements
     const legacyPreloadImages = document.querySelectorAll('.preload-img[data-fallback]');
@@ -1020,6 +1033,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const fallbackSrc = element.getAttribute('data-fallback');
 
         const testImg = new Image();
+
+        // Set CORS to match preload
+        if (primarySrc.includes('digitaloceanspaces.com') || primarySrc.includes('http')) {
+            testImg.crossOrigin = '';
+        }
+
         testImg.onload = function() {
             element.style.backgroundImage = `url('${primarySrc}')`;
         };
@@ -1030,11 +1049,13 @@ document.addEventListener('DOMContentLoaded', function() {
         testImg.src = primarySrc;
     });
 
-    // Enhanced Profile Image Loading Function
+    // Simplified Profile Image Loading Function
     function initProfileImageLoading() {
         const profileCards = document.querySelectorAll('.profile-image-card');
+        console.log(`📸 Found ${profileCards.length} profile cards to load`);
 
-        profileCards.forEach(function(card) {
+        profileCards.forEach(function(card, index) {
+            console.log(`🔄 Loading profile card ${index + 1}...`);
             loadProfileImage(card);
         });
     }
@@ -1042,77 +1063,115 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadProfileImage(card, retryCount = 0) {
         const primarySrc = card.getAttribute('data-src');
         const fallbackSrc = card.getAttribute('data-fallback');
-        const maxRetries = 3;
+        const maxRetries = 2; // Reduced retries for faster failure detection
+
+        console.log(`📥 Attempting to load: ${primarySrc} (attempt ${retryCount + 1})`);
 
         const loadingState = card.querySelector('.profile-loading-state');
         const errorState = card.querySelector('.profile-error-state');
         const retryBtn = card.querySelector('.retry-image-btn');
 
-        // Show loading state
-        card.classList.add('loading');
-        card.classList.remove('loaded', 'error');
-        if (loadingState) loadingState.style.display = 'flex';
-        if (errorState) errorState.style.display = 'none';
+        // Show loading state immediately
+        showLoadingState(card);
 
-        // Directly use preloaded image
-        try {
-            // Set the primary image as background
-            setImageBackground(card, primarySrc);
+        // Create a new image to test loading
+        const testImg = new Image();
 
-            // Create dummy image to verify it's loaded properly
-            const bgImg = new Image();
-            bgImg.crossOrigin = primarySrc.includes('digitaloceanspaces.com') ? 'anonymous' : null;
-
-            bgImg.onload = () => {
-                showImageLoaded(card);
-                trackImageLoadSuccess(primarySrc, retryCount);
-            };
-
-            bgImg.onerror = () => {
-                // Primary image failed, try fallback
-                if (fallbackSrc) {
-                    setImageBackground(card, fallbackSrc);
-                    showImageLoaded(card);
-                    trackImageLoadFallback(primarySrc, fallbackSrc, retryCount);
-                } else {
-                    handleImageError(card, primarySrc, retryCount);
-                }
-            };
-
-            // Just check if image is valid, don't trigger a new load
-            // This uses the browser's cached version from preload
-            bgImg.src = primarySrc;
-        } catch (error) {
-            handleImageError(card, primarySrc, retryCount);
+        // Set CORS for external images to match preload
+        if (primarySrc.includes('digitaloceanspaces.com') || primarySrc.includes('http')) {
+            testImg.crossOrigin = '';  // Empty string = anonymous mode, matches preload
+            console.log(`🔒 CORS mode set for: ${primarySrc}`);
         }
+
+        // Set up success handler
+        testImg.onload = function() {
+            console.log(`✅ Primary image loaded successfully: ${primarySrc}`);
+            setImageBackground(card, primarySrc);
+            showImageLoaded(card);
+            trackImageLoadSuccess(primarySrc, retryCount);
+        };
+
+        // Set up error handler
+        testImg.onerror = function() {
+            console.log(`❌ Primary image failed: ${primarySrc}`);
+
+            // Try fallback if available
+            if (fallbackSrc && retryCount === 0) {
+                console.log(`🔄 Trying fallback image: ${fallbackSrc}`);
+                tryFallbackImage(card, fallbackSrc, primarySrc, retryCount);
+            } else if (retryCount < maxRetries) {
+                // Retry with exponential backoff
+                const delay = Math.pow(2, retryCount) * 500; // Reduced delay
+                console.log(`⏳ Retrying in ${delay}ms...`);
+                setTimeout(() => {
+                    loadProfileImage(card, retryCount + 1);
+                }, delay);
+            } else {
+                // All attempts failed
+                console.error(`💥 All attempts failed for: ${primarySrc}`);
+                showImageError(card);
+                trackImageLoadError(primarySrc, retryCount);
+            }
+        };
+
+        // Start loading
+        testImg.src = primarySrc;
 
         // Setup retry button
         if (retryBtn) {
             retryBtn.onclick = () => {
+                console.log('🔄 Manual retry triggered');
                 loadProfileImage(card, 0);
             };
         }
     }
 
-    function handleImageError(card, src, retryCount) {
-        const maxRetries = 3;
-        const fallbackSrc = card.getAttribute('data-fallback');
+    function tryFallbackImage(card, fallbackSrc, originalSrc, retryCount) {
+        const fallbackImg = new Image();
 
-        // If we have retries left, try again with backoff
-        if (retryCount < maxRetries) {
-            const delay = Math.pow(2, retryCount) * 1000;
-            setTimeout(() => {
-                loadProfileImage(card, retryCount + 1);
-            }, delay);
-        } else {
-            // Show error state after all retries fail
-            showImageError(card);
-            trackImageLoadError(src, retryCount);
+        if (fallbackSrc.includes('digitaloceanspaces.com') || fallbackSrc.includes('http')) {
+            fallbackImg.crossOrigin = '';  // Empty string = anonymous mode, matches preload
         }
+
+        fallbackImg.onload = function() {
+            console.log(`✅ Fallback image loaded successfully: ${fallbackSrc}`);
+            setImageBackground(card, fallbackSrc);
+            showImageLoaded(card);
+            trackImageLoadFallback(originalSrc, fallbackSrc, retryCount);
+        };
+
+        fallbackImg.onerror = function() {
+            console.log(`❌ Fallback image also failed: ${fallbackSrc}`);
+            // Retry the original image
+            if (retryCount < 2) {
+                setTimeout(() => {
+                    loadProfileImage(card, retryCount + 1);
+                }, 1000);
+            } else {
+                showImageError(card);
+                trackImageLoadError(originalSrc, retryCount);
+            }
+        };
+
+        fallbackImg.src = fallbackSrc;
+    }
+
+    function showLoadingState(card) {
+        const loadingState = card.querySelector('.profile-loading-state');
+        const errorState = card.querySelector('.profile-error-state');
+
+        card.classList.add('loading');
+        card.classList.remove('loaded', 'error');
+
+        if (loadingState) loadingState.style.display = 'flex';
+        if (errorState) errorState.style.display = 'none';
     }
 
     function setImageBackground(card, src) {
         card.style.backgroundImage = `url('${src}')`;
+        card.style.backgroundSize = 'cover';
+        card.style.backgroundPosition = 'center';
+        card.style.backgroundRepeat = 'no-repeat';
         card.classList.add('sharp');
     }
 
@@ -1126,8 +1185,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (loadingState) {
             loadingState.classList.add('hidden');
             setTimeout(() => {
-                loadingState.style.display = 'none';
-            }, 500);
+                if (loadingState) loadingState.style.display = 'none';
+            }, 300); // Reduced timeout for faster transitions
         }
 
         if (errorState) {
@@ -1148,6 +1207,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (errorState) {
             errorState.style.display = 'flex';
+        }
+    }
+
+    // Helper functions for debugging
+    function checkImageCache() {
+        const images = [
+            'images/players/finley.webp',
+            'https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp'
+        ];
+
+        console.log('🔍 Checking image cache status...');
+        images.forEach(src => {
+            const img = new Image();
+            img.onload = () => console.log(`✅ Cached: ${src}`);
+            img.onerror = () => console.log(`❌ Not cached: ${src}`);
+            img.src = src;
+        });
+    }
+
+    function monitorNetworkStatus() {
+        if ('navigator' in window && 'onLine' in navigator) {
+            console.log(`🌐 Network status: ${navigator.onLine ? 'Online' : 'Offline'}`);
+
+            window.addEventListener('online', () => {
+                console.log('🌐 Network: Back online');
+                // Retry failed images
+                const errorCards = document.querySelectorAll('.profile-image-card.error');
+                errorCards.forEach(card => {
+                    console.log('🔄 Retrying failed image due to network recovery');
+                    loadProfileImage(card, 0);
+                });
+            });
+
+            window.addEventListener('offline', () => {
+                console.log('🌐 Network: Gone offline');
+            });
         }
     }
 
