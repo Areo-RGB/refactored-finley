@@ -1,5 +1,5 @@
 # Timer Text Component Implementation
-
+3
 ## Overview
 
 This implementation provides a timer functionality that displays different text based on the countdown timer. The main feature is that when the timer reaches 5 seconds, the text changes from "Power Lifting Professional Level - Video Training" to "NEXT Up".
