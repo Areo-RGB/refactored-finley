@@ -59,6 +59,31 @@ body {
   min-height: 60vh;
 }
 
+/* PWA Status Bar Fix for Dark Mode */
+@media (display-mode: standalone) {
+  body.theme-dark {
+    background-color: #1b1d21 !important;
+  }
+
+  /* Ensure no white line at top in PWA mode */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #1b1d21;
+  }
+
+  .theme-dark html {
+    background-color: #1b1d21 !important;
+  }
+
+  /* Fix for iOS PWA status bar */
+  .theme-dark #page {
+    background-color: #1b1d21 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
 .notch-clear {
   padding-top: calc(0px + constant(safe-area-inset-top) * 0.8) !important;
   padding-top: calc(0px + env(safe-area-inset-top) * 0.8) !important;
@@ -5733,6 +5758,44 @@ input[type=number] {
 
 .theme-dark[data-gradient=body-default] #page, .body-default {
   background-image: none !important;
+}
+
+/* Additional PWA Dark Mode Fixes */
+.theme-dark html {
+  background-color: #1b1d21 !important;
+}
+
+.theme-dark body {
+  background-color: #1b1d21 !important;
+}
+
+/* Ensure no white gaps in PWA mode */
+@media (display-mode: standalone) {
+  html {
+    background-color: #1b1d21 !important;
+  }
+
+  body.theme-dark {
+    background-color: #1b1d21 !important;
+  }
+
+  .theme-dark #page {
+    background-color: #1b1d21 !important;
+  }
+
+  /* Fix for potential white line at very top */
+  .theme-dark::before,
+  .theme-dark body::before,
+  .theme-dark #page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top, 0px);
+    background-color: #1b1d21;
+    z-index: 9999;
+  }
 }
 
 .theme-dark input::placeholder,
