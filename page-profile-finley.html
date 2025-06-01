@@ -5,104 +5,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>QuoVadis</title>
+<title>Finley Profile - QuoVadis</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="manifest" href="/manifest.json?v=2" data-pwa-version="set_in_manifest_and_pwa_js">
+<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+<link rel="manifest" href="/manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-<style>
-
-    /* Text Overlay Styles */
-    .video-text-overlay {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
-        color: white;
-        padding: 15px;
-        border-radius: 8px;
-        z-index: 3;
-        transition: opacity 0.3s ease;
-    }
-
-    .video-text-overlay h1 {
-        font-size: 24px;
-        margin: 0;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        font-weight: 700;
-    }
-
-    .video-text-overlay p {
-        font-size: 18px;
-        margin: 5px 0 0;
-        opacity: 0.9;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-    }
-
-    /* Exercise Selector Styles */
-    .exercise-selector {
-        transition: all 0.3s ease;
-        border-radius: 8px;
-        padding: 8px;
-        margin: -8px;
-    }
-
-    .exercise-selector:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        transform: translateY(-2px);
-    }
-
-    .exercise-selector.active-exercise {
-        background-color: rgba(0, 123, 255, 0.2);
-        border: 2px solid rgba(0, 123, 255, 0.5);
-    }
-
-    .exercise-selector.active-exercise h5,
-    .exercise-selector.active-exercise h3 {
-        color: #007bff !important;
-    }
-
-    /* Video error styling */
-    .video-error-message {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.7);
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        z-index: 5;
-        padding: 20px;
-    }
-
-    .video-error-message i {
-        font-size: 48px;
-        margin-bottom: 15px;
-        color: #dc3545;
-    }
-
-    .video-loading {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 4;
-    }
-</style>
 </head>
 
 <body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
@@ -111,187 +20,119 @@
 
 <div id="page">
 
+    <!-- Footer Navigation -->
     <div id="footer-bar" class="footer-bar-1">
         <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="page-dfb.html" ><i class="fa fa-running"></i><span>DFB</span></a>
+        <a href="page-dfb.html"><i class="fa fa-running"></i><span>DFB</span></a>
         <a href="page-profile-finley.html" class="active-nav"><i class="fa fa-futbol"></i><span>Finley</span></a>
         <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
     </div>
 
-   <div class="page-content">
-       <div class="page-content header-clear-small">
-        <!-- Video Card -->
-        <div class="card card-style video-card" id="main-video-card">
-            <div class="video-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 400px; background-color: #000;">
-                <video class="responsive-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;" id="main-video" preload="metadata" playsinline>
-                    <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00002092_V1-0001.mp4" type="video/mp4">
-                    Your browser doesn't support HTML5 video.
-                </video>
-                <canvas class="video-thumbnail" style="display: none;"></canvas>
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="page-content header-clear-small">
 
-                <!-- Loading indicator -->
-                <div class="video-loading" id="video-loading">
-                    <div class="spinner-border color-highlight" role="status"></div>
+            <!-- Page Title -->
+            <div class="card card-style">
+                <div class="content">
+                    <h1 class="mb-0">Finley Profile</h1>
+                    <p class="color-highlight mb-2">Football Training Videos</p>
                 </div>
+            </div>
 
-                <!-- Error message container -->
-                <div class="video-error-message" id="video-error" style="display: none;">
-                    <i class="fa fa-exclamation-triangle"></i>
-                    <h3>Video konnte nicht geladen werden</h3>
-                    <p>Bitte versuchen Sie es später noch einmal oder wählen Sie ein anderes Video.</p>
-                </div>
-
-                <!-- Text Overlay for Video Info -->
-                <div class="video-text-overlay">
-                    <h1 id="current-video-title">Übung 1</h1>
-                </div>
-                <div class="video-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; align-items: center; justify-content: center;">
-                    <div class="play-button">
-                        <i class="fa fa-play fa-2x color-white"></i>
+            <!-- Main Video Card -->
+            <div class="card card-style">
+                <div class="content">
+                    <h3 id="video-title">Übung 1</h3>
+                    <div style="background: #000; border-radius: 10px; overflow: hidden;">
+                        <video
+                            id="main-video"
+                            controls
+                            style="width: 100%; height: 300px; display: block;"
+                            crossorigin="anonymous">
+                            <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4" type="video/mp4">
+                            Your browser doesn't support HTML5 video.
+                        </video>
                     </div>
                 </div>
             </div>
-            <div class="content" style="display: none;">
-                <h1 class="mb-n1" id="current-video-content-title">Übung 1</h1>
-            </div>
-        </div>
 
-        <!-- Exercise Selection Cards -->
-        <div class="card card-style mx-0">
-            <div class="content">
-                <a href="#" class="d-flex mb-3 exercise-selector active-exercise" data-video="1" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00002092_V1-0001.mp4">
-                    <div class="w-100 me-3">
-                        <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/13t.jpg')"></div>
+            <!-- Exercise Cards -->
+            <div class="card card-style">
+                <div class="content">
+                    <h3>Exercise Selection</h3>
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <div class="card card-style bg-highlight exercise-card" data-video="1" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
+                                <div class="content">
+                                    <h5>Übung 1</h5>
+                                    <p class="mb-0">Finley Training Video 1 (2.55MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card card-style exercise-card" data-video="2" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
+                                <div class="content">
+                                    <h5>Übung 2</h5>
+                                    <p class="mb-0">Finley Training Video 2 (4.94MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card card-style exercise-card" data-video="4" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
+                                <div class="content">
+                                    <h5>Übung 4</h5>
+                                    <p class="mb-0">Finley Training Video 4 (5.46MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card card-style exercise-card" data-video="5" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
+                                <div class="content">
+                                    <h5>Übung 5</h5>
+                                    <p class="mb-0">Finley Training Video 5 (3.73MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card card-style exercise-card" data-video="6" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
+                                <div class="content">
+                                    <h5>Übung 6</h5>
+                                    <p class="mb-0">Finley Training Video 6 (5.24MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card card-style exercise-card" data-video="7" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
+                                <div class="content">
+                                    <h5>Übung 7</h5>
+                                    <p class="mb-0">Finley Training Video 7 (5.28MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card card-style exercise-card" data-video="8" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000012852%20V1-0008.mp4">
+                                <div class="content">
+                                    <h5>Übung 8</h5>
+                                    <p class="mb-0">Finley Training Video 8 (7.8MB)</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ms-auto w-100">
-                        <h5 class="font-600 font-16 line-height-sm pt-1">Übung 1</h5>
-                        <span class="d-block font-11 font-400 opacity-60">Video 1</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 1</h3>
-                    </div>
-                </a>
-                <div class="divider mt-3 mb-3"></div>
-                <a href="#" class="d-flex mb-3 exercise-selector" data-video="2" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00003176_V1-0002.mp4">
-                    <div class="w-100 me-3">
-                        <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/12t.jpg')"></div>
-                    </div>
-                    <div class="ms-auto w-100">
-                        <h5 class="font-600 font-16 line-height-sm pt-1">Übung 2</h5>
-                        <span class="d-block font-11 font-400 opacity-60">Video 2</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 2</h3>
-                    </div>
-                </a>
-                <div class="divider mt-3 mb-3"></div>
-                <a href="#" class="d-flex mb-3 exercise-selector" data-video="3" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00004343_V1-0003.mp4">
-                    <div class="w-100 me-3">
-                        <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/14t.jpg')"></div>
-                    </div>
-                    <div class="ms-auto w-100">
-                        <h5 class="font-600 font-16 line-height-sm pt-1">Übung 3</h5>
-                        <span class="d-block font-11 font-400 opacity-60">Video 3</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 3</h3>
-                    </div>
-                </a>
-                <div class="divider mt-3 mb-3"></div>
-                <a href="#" class="d-flex mb-3 exercise-selector" data-video="4" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00005572_V1-0004.mp4">
-                    <div class="w-100 me-3">
-                        <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/13t.jpg')"></div>
-                    </div>
-                    <div class="ms-auto w-100">
-                        <h5 class="font-600 font-16 line-height-sm pt-1">Übung 4</h5>
-                        <span class="d-block font-11 font-400 opacity-60">Video 4</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 4</h3>
-                    </div>
-                </a>
-                <div class="divider mt-3 mb-3"></div>
-                <a href="#" class="d-flex mb-3 exercise-selector" data-video="5" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00007004_V1-0005.mp4">
-                    <div class="w-100 me-3">
-                        <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/12t.jpg')"></div>
-                    </div>
-                    <div class="ms-auto w-100">
-                        <h5 class="font-600 font-16 line-height-sm pt-1">Übung 5</h5>
-                        <span class="d-block font-11 font-400 opacity-60">Video 5</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 5</h3>
-                    </div>
-                </a>
+                </div>
             </div>
+
         </div>
     </div>
-    <!-- Menu Settings Highlights-->
-    <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached">
-        <div class="menu-title"><h1>Highlights</h1><p class="color-highlight">Any Element can have a Highlight Color</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="divider divider-margins mb-n2"></div>
+
+    <!-- Settings Menu -->
+    <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
+        <div class="menu-title"><h1>Settings</h1><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
         <div class="content">
-            <div class="highlight-changer">
-                <a href="#" data-change-highlight="blue"><i class="fa fa-circle color-blue-dark"></i><span class="color-blue-light">Default</span></a>
-                <a href="#" data-change-highlight="red"><i class="fa fa-circle color-red-dark"></i><span class="color-red-light">Red</span></a>
-                <a href="#" data-change-highlight="orange"><i class="fa fa-circle color-orange-dark"></i><span class="color-orange-light">Orange</span></a>
-                <a href="#" data-change-highlight="pink2"><i class="fa fa-circle color-pink2-dark"></i><span class="color-pink-dark">Pink</span></a>
-                <a href="#" data-change-highlight="magenta"><i class="fa fa-circle color-magenta-dark"></i><span class="color-magenta-light">Purple</span></a>
-                <a href="#" data-change-highlight="aqua"><i class="fa fa-circle color-aqua-dark"></i><span class="color-aqua-light">Aqua</span></a>
-                <a href="#" data-change-highlight="teal"><i class="fa fa-circle color-teal-dark"></i><span class="color-teal-light">Teal</span></a>
-                <a href="#" data-change-highlight="mint"><i class="fa fa-circle color-mint-dark"></i><span class="color-mint-light">Mint</span></a>
-                <a href="#" data-change-highlight="green"><i class="fa fa-circle color-green-light"></i><span class="color-green-light">Green</span></a>
-                <a href="#" data-change-highlight="grass"><i class="fa fa-circle color-green-dark"></i><span class="color-green-dark">Grass</span></a>
-                <a href="#" data-change-highlight="sunny"><i class="fa fa-circle color-yellow-light"></i><span class="color-yellow-light">Sunny</span></a>
-                <a href="#" data-change-highlight="yellow"><i class="fa fa-circle color-yellow-dark"></i><span class="color-yellow-light">Goldish</span></a>
-                <a href="#" data-change-highlight="brown"><i class="fa fa-circle color-brown-dark"></i><span class="color-brown-light">Wood</span></a>
-                <a href="#" data-change-highlight="night"><i class="fa fa-circle color-dark-dark"></i><span class="color-dark-light">Night</span></a>
-                <a href="#" data-change-highlight="dark"><i class="fa fa-circle color-dark-light"></i><span class="color-dark-light">Dark</span></a>
-                <div class="clearfix"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
-        </div>
-    </div>
-    <!-- Menu Settings Backgrounds-->
-    <div id="menu-backgrounds" class="menu menu-box-bottom menu-box-detached">
-        <div class="menu-title"><h1>Backgrounds</h1><p class="color-highlight">Change Page Color Behind Content Boxes</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="divider divider-margins mb-n2"></div>
-        <div class="content">
-            <div class="background-changer">
-                <a href="#" data-change-background="default"><i class="bg-theme"></i><span class="color-dark-dark">Default</span></a>
-                <a href="#" data-change-background="plum"><i class="body-plum"></i><span class="color-plum-dark">Plum</span></a>
-                <a href="#" data-change-background="magenta"><i class="body-magenta"></i><span class="color-dark-dark">Magenta</span></a>
-                <a href="#" data-change-background="dark"><i class="body-dark"></i><span class="color-dark-dark">Dark</span></a>
-                <a href="#" data-change-background="violet"><i class="body-violet"></i><span class="color-violet-dark">Violet</span></a>
-                <a href="#" data-change-background="red"><i class="body-red"></i><span class="color-red-dark">Red</span></a>
-                <a href="#" data-change-background="green"><i class="body-green"></i><span class="color-green-dark">Green</span></a>
-                <a href="#" data-change-background="sky"><i class="body-sky"></i><span class="color-sky-dark">Sky</span></a>
-                <a href="#" data-change-background="orange"><i class="body-orange"></i><span class="color-orange-dark">Orange</span></a>
-                <a href="#" data-change-background="yellow"><i class="body-yellow"></i><span class="color-yellow-dark">Yellow</span></a>
-                <div class="clearfix"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
-        </div>
-    </div>
-    <!-- Menu Share -->
-    <div id="menu-share" class="menu menu-box-bottom menu-box-detached">
-        <div class="menu-title mt-n1"><h1>Share the Love</h1><p class="color-highlight">Just Tap the Social Icon. We'll add the Link</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="content mb-0">
-            <div class="divider mb-0"></div>
-            <div class="list-group list-custom-small list-icon-0">
-                <a href="auto_generated" class="shareToFacebook external-link">
-                    <i class="font-18 fab fa-facebook-square color-facebook"></i>
-                    <span class="font-13">Facebook</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToTwitter external-link">
-                    <i class="font-18 fab fa-twitter-square color-twitter"></i>
-                    <span class="font-13">Twitter</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToLinkedIn external-link">
-                    <i class="font-18 fab fa-linkedin color-linkedin"></i>
-                    <span class="font-13">LinkedIn</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToWhatsApp external-link">
-                    <i class="font-18 fab fa-whatsapp-square color-whatsapp"></i>
-                    <span class="font-13">WhatsApp</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToMail external-link border-0">
-                    <i class="font-18 fa fa-envelope-square color-mail"></i>
-                    <span class="font-13">Email</span>
+            <div class="list-group list-custom-small">
+                <a href="#" data-toggle-theme>
+                    <i class="fa fa-moon gradient-highlight color-white"></i>
+                    <span>Dark Mode</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </div>
@@ -306,440 +147,59 @@
 document.addEventListener('DOMContentLoaded', function() {
     'use strict'
 
-    // Image fallback functionality
-    const preloadImages = document.querySelectorAll('.preload-img[data-fallback]');
+    console.log('🎯 Finley Profile Page Loaded Successfully');
 
-    preloadImages.forEach(function(element) {
-        const primarySrc = element.getAttribute('data-src');
-        const fallbackSrc = element.getAttribute('data-fallback');
+    // Get elements
+    const mainVideo = document.getElementById('main-video');
+    const videoTitle = document.getElementById('video-title');
+    const exerciseCards = document.querySelectorAll('.exercise-card');
 
-        // Test if primary image loads
-        const testImg = new Image();
-        testImg.onload = function() {
-            // Primary image loaded successfully, use it
-            element.style.backgroundImage = `url('${primarySrc}')`;
-        };
-        testImg.onerror = function() {
-            // Primary image failed, use fallback
-            element.style.backgroundImage = `url('${fallbackSrc}')`;
-            element.setAttribute('data-src', fallbackSrc);
-        };
-        testImg.src = primarySrc;
+    console.log('Found elements:', {
+        mainVideo: !!mainVideo,
+        videoTitle: !!videoTitle,
+        exerciseCards: exerciseCards.length
     });
 
-    // Video card functionality
-    const videoCards = document.querySelectorAll('.video-card');
+    // Add click listeners to exercise cards
+    exerciseCards.forEach((card, index) => {
+        card.addEventListener('click', function() {
+            console.log(`Exercise ${index + 1} clicked`);
 
-    // Video switching functionality for main video player
-    const mainVideo = document.getElementById('main-video');
-    const mainVideoContentTitle = document.getElementById('current-video-content-title');
-    const exerciseSelectors = document.querySelectorAll('.exercise-selector');
+            const videoNumber = this.getAttribute('data-video');
+            const videoUrl = this.getAttribute('data-url');
+            const exerciseTitle = this.querySelector('h5').textContent;
 
-    // Debug: Check if elements are found
-    console.log('🔍 Debug - Elements found:');
-    console.log('  Main video:', mainVideo);
-    console.log('  Main video content title:', mainVideoContentTitle);
-    console.log('  Exercise selectors:', exerciseSelectors.length);
+            console.log('Switching to:', { videoNumber, videoUrl, exerciseTitle });
 
-    // Function to switch video in main player
-    function switchMainVideo(videoNumber, videoUrl, exerciseTitle) {
-        console.log('🎬 Switching video:', { videoNumber, videoUrl, exerciseTitle });
-
-        if (mainVideo) {
             // Update video source
-            const source = mainVideo.querySelector('source');
-            if (source) {
-                console.log('📹 Updating video source from:', source.src, 'to:', videoUrl);
-                source.src = videoUrl;
-                mainVideo.load();
-            } else {
-                console.error('❌ No video source element found');
+            if (mainVideo) {
+                const source = mainVideo.querySelector('source');
+                if (source) {
+                    source.src = videoUrl;
+                    mainVideo.load();
+                    console.log('Video source updated to:', videoUrl);
+                }
             }
 
             // Update title
-            if (mainVideoContentTitle) {
-                mainVideoContentTitle.textContent = exerciseTitle;
-                console.log('📝 Updated video title to:', exerciseTitle);
+            if (videoTitle) {
+                videoTitle.textContent = exerciseTitle;
             }
 
-            // Update active state on exercise selectors
-            exerciseSelectors.forEach(selector => {
-                selector.classList.remove('active-exercise');
-            });
-
-            // Find and activate the clicked selector
-            const activeSelector = document.querySelector(`[data-video="${videoNumber}"]`);
-            if (activeSelector) {
-                activeSelector.classList.add('active-exercise');
-                console.log('✅ Activated exercise selector:', videoNumber);
-            } else {
-                console.error('❌ Could not find exercise selector for video:', videoNumber);
-            }
-        } else {
-            console.error('❌ Main video element not found');
-        }
-    }
-
-    // Add click event listeners to exercise selectors
-    console.log('🎯 Found', exerciseSelectors.length, 'exercise selectors');
-
-    exerciseSelectors.forEach((selector, index) => {
-        console.log('🔗 Adding click listener to selector', index + 1);
-
-        selector.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('🖱️ Exercise selector clicked:', this);
-
-            const videoNumber = this.getAttribute('data-video');
-            const videoUrl = this.getAttribute('data-video-url');
-            const exerciseTitle = this.querySelector('h5').textContent;
-
-            console.log('📊 Extracted data:', { videoNumber, videoUrl, exerciseTitle });
-
-            switchMainVideo(videoNumber, videoUrl, exerciseTitle);
+            // Update active state
+            exerciseCards.forEach(c => c.classList.remove('bg-highlight'));
+            this.classList.add('bg-highlight');
         });
     });
 
-    // Initialize main video with basic event logging
+    // Video event listeners
     if (mainVideo) {
-        mainVideo.addEventListener('loadstart', function() {
-            console.log('🔄 Video load started');
-        });
-
-        mainVideo.addEventListener('canplay', function() {
-            console.log('✅ Video can play');
-        });
-
-        mainVideo.addEventListener('play', function() {
-            console.log('▶️ Video started playing');
-        });
-
-        mainVideo.addEventListener('pause', function() {
-            console.log('⏸️ Video paused');
-        });
-
-        mainVideo.addEventListener('ended', function() {
-            console.log('🏁 Video ended');
-        });
-
-        mainVideo.addEventListener('error', function(e) {
-            console.error('❌ Video error:', e);
-            console.error('❌ Video error details:', mainVideo.error);
-        });
+        mainVideo.addEventListener('loadstart', () => console.log('🔄 Video loading started'));
+        mainVideo.addEventListener('canplay', () => console.log('✅ Video can play'));
+        mainVideo.addEventListener('error', (e) => console.error('❌ Video error:', e));
     }
-
-    // Home Workout functionality
-    let workoutTimer = null;
-    let workoutStartTime = 0;
-    let workoutElapsedTime = 0;
-    let workoutPaused = false;
-    let currentExerciseDuration = 15 * 60; // 15 minutes default
-
-    const exercises = {
-        'push-ups': { name: 'Push-Up Challenge', duration: 15 * 60, video: 'images/players/bent.m.mp4' },
-        'squats': { name: 'Squats', duration: 5 * 60, video: 'images/players/vgl-b-f.MP4' },
-        'planks': { name: 'Planks', duration: 3 * 60, video: 'images/players/bent.m.mp4' },
-        'burpees': { name: 'Burpees', duration: 4 * 60, video: 'images/players/vgl-b-f.MP4' }
-    };
-
-    let currentExercise = 'push-ups';
-
-    // Workout timer functions
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    }
-
-    function updateWorkoutTimer() {
-        const timerElement = document.getElementById('workout-timer');
-        if (timerElement) {
-            const elapsed = formatTime(workoutElapsedTime);
-            const total = formatTime(currentExerciseDuration);
-            timerElement.textContent = `${elapsed} / ${total}`;
-        }
-    }
-
-    function startWorkoutTimer() {
-        if (!workoutPaused) {
-            workoutStartTime = Date.now() - (workoutElapsedTime * 1000);
-        } else {
-            workoutStartTime = Date.now() - (workoutElapsedTime * 1000);
-            workoutPaused = false;
-        }
-
-        workoutTimer = setInterval(() => {
-            workoutElapsedTime = Math.floor((Date.now() - workoutStartTime) / 1000);
-            updateWorkoutTimer();
-
-            if (workoutElapsedTime >= currentExerciseDuration) {
-                pauseWorkoutTimer();
-            }
-        }, 1000);
-    }
-
-    function pauseWorkoutTimer() {
-        if (workoutTimer) {
-            clearInterval(workoutTimer);
-            workoutTimer = null;
-            workoutPaused = true;
-        }
-    }
-
-    function resetWorkoutTimer() {
-        if (workoutTimer) {
-            clearInterval(workoutTimer);
-            workoutTimer = null;
-        }
-        workoutElapsedTime = 0;
-        workoutPaused = false;
-        updateWorkoutTimer();
-    }
-
-    // Main video player functionality
-    function initMainVideoPlayer() {
-        const mainVideo = document.getElementById('main-workout-video');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const videoProgress = document.getElementById('video-progress');
-        const videoTime = document.getElementById('video-time');
-        const overlay = document.getElementById('main-video-overlay');
-
-        if (!mainVideo) return;
-
-        // Update video time and progress
-        mainVideo.addEventListener('timeupdate', function() {
-            if (mainVideo.duration) {
-                const progress = (mainVideo.currentTime / mainVideo.duration) * 100;
-                if (videoProgress) videoProgress.style.width = progress + '%';
-
-                if (videoTime) {
-                    const current = formatTime(Math.floor(mainVideo.currentTime));
-                    const duration = formatTime(Math.floor(mainVideo.duration));
-                    videoTime.textContent = `${current} / ${duration}`;
-                }
-            }
-        });
-
-        // Play/pause functionality
-        function togglePlayPause() {
-            if (mainVideo.paused) {
-                mainVideo.play();
-                if (playPauseBtn) playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
-                if (overlay) overlay.style.opacity = '0';
-            } else {
-                mainVideo.pause();
-                if (playPauseBtn) playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
-                if (overlay) overlay.style.opacity = '1';
-            }
-        }
-
-        // Event listeners
-        if (overlay) overlay.addEventListener('click', togglePlayPause);
-        if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayPause);
-        mainVideo.addEventListener('click', togglePlayPause);
-    }
-
-    // Switch exercise function
-    function switchExercise(exerciseKey) {
-        const exercise = exercises[exerciseKey];
-        if (!exercise) return;
-
-        currentExercise = exerciseKey;
-        currentExerciseDuration = exercise.duration;
-
-        // Update UI
-        const titleElement = document.getElementById('current-exercise-title');
-        if (titleElement) titleElement.textContent = exercise.name;
-
-        // Update main video
-        const mainVideo = document.getElementById('main-workout-video');
-        if (mainVideo) {
-            mainVideo.pause();
-            mainVideo.querySelector('source').src = exercise.video;
-            mainVideo.load();
-        }
-
-        // Reset timer
-        resetWorkoutTimer();
-
-        // Reset video controls
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const overlay = document.getElementById('main-video-overlay');
-        if (playPauseBtn) playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
-        if (overlay) overlay.style.opacity = '1';
-    }
-
-    // Function to extract thumbnail from video
-    function extractThumbnail(video, canvas, time = 1) {
-        return new Promise((resolve, reject) => {
-            const tempVideo = document.createElement('video');
-            tempVideo.crossOrigin = 'anonymous';
-            tempVideo.muted = true;
-            tempVideo.preload = 'metadata';
-
-            tempVideo.addEventListener('loadedmetadata', function() {
-                tempVideo.currentTime = Math.min(time, tempVideo.duration * 0.1); // 10% into video or 1 second
-            });
-
-            tempVideo.addEventListener('seeked', function() {
-                try {
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = tempVideo.videoWidth;
-                    canvas.height = tempVideo.videoHeight;
-                    ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
-
-                    // Convert canvas to blob and create object URL
-                    canvas.toBlob(function(blob) {
-                        const thumbnailUrl = URL.createObjectURL(blob);
-                        resolve(thumbnailUrl);
-                    }, 'image/jpeg', 0.8);
-                } catch (error) {
-                    reject(error);
-                }
-            });
-
-            tempVideo.addEventListener('error', function() {
-                reject(new Error('Failed to load video for thumbnail extraction'));
-            });
-
-            tempVideo.src = video.querySelector('source').src;
-        });
-    }
-
-    // Set proper aspect ratio for video containers
-    function setVideoContainerAspectRatio() {
-        const videoContainers = document.querySelectorAll('.video-container');
-        videoContainers.forEach(function(container) {
-            const video = container.querySelector('video');
-
-            if (video) {
-                // Create a temporary video element to get the natural dimensions
-                const tempVideo = document.createElement('video');
-                tempVideo.preload = 'metadata';
-
-                tempVideo.onloadedmetadata = function() {
-                    // Calculate aspect ratio
-                    const aspectRatio = tempVideo.videoHeight / tempVideo.videoWidth;
-
-                    // Set container padding-top based on aspect ratio to maintain it
-                    // This is the percentage padding trick for responsive aspect ratios
-                    container.style.paddingTop = (aspectRatio * 100) + '%';
-
-                    // Clean up
-                    tempVideo.remove();
-                };
-
-                // Load just the metadata
-                tempVideo.src = video.querySelector('source').src;
-            }
-        });
-    }
-
-    // Old video cards functionality removed - now using main video player with exercise selectors
-
-    // Tab control functionality (simplified - no longer managing multiple video cards)
-    const tabControls = document.querySelectorAll('.tab-controls a[data-bs-toggle="collapse"]');
-
-    tabControls.forEach(function(tabControl) {
-        tabControl.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            // Get the target tab content
-            const targetId = this.getAttribute('data-bs-target');
-            const targetTab = document.querySelector(targetId);
-
-            if (targetTab) {
-                // Pause main video when switching tabs
-                if (mainVideo && !mainVideo.paused) {
-                    mainVideo.pause();
-                }
-
-                // Handle Bootstrap collapse manually
-                const parentId = targetTab.getAttribute('data-bs-parent');
-                const parent = document.querySelector(parentId);
-
-                if (parent) {
-                    // Hide all other tabs in the same group
-                    const allTabs = parent.querySelectorAll('.collapse');
-                    allTabs.forEach(function(tab) {
-                        if (tab !== targetTab) {
-                            tab.classList.remove('show');
-                        }
-                    });
-
-                    // Show the target tab
-                    targetTab.classList.add('show');
-
-                    // Update active state on tab controls
-                    const allTabControls = parent.parentElement.querySelectorAll('.tab-controls a');
-                    allTabControls.forEach(function(control) {
-                        control.removeAttribute('data-active');
-                    });
-                    this.setAttribute('data-active', '');
-                }
-            }
-        });
-    });
-
-    // Initialize home workout functionality
-    initMainVideoPlayer();
-    updateWorkoutTimer();
-
-    // Timer control event listeners
-    const timerStartBtn = document.getElementById('timer-start');
-    const timerPauseBtn = document.getElementById('timer-pause');
-    const timerResetBtn = document.getElementById('timer-reset');
-
-    if (timerStartBtn) {
-        timerStartBtn.addEventListener('click', startWorkoutTimer);
-    }
-
-    if (timerPauseBtn) {
-        timerPauseBtn.addEventListener('click', pauseWorkoutTimer);
-    }
-
-    if (timerResetBtn) {
-        timerResetBtn.addEventListener('click', resetWorkoutTimer);
-    }
-
-    // Exercise preview click handlers
-    const exercisePreviews = document.querySelectorAll('.exercise-preview');
-    exercisePreviews.forEach(function(preview) {
-        preview.addEventListener('click', function(e) {
-            e.preventDefault();
-            const exerciseKey = this.getAttribute('data-exercise');
-            if (exerciseKey) {
-                switchExercise(exerciseKey);
-            }
-        });
-    });
-
-    // Add video card functionality to preview videos
-    const previewVideos = document.querySelectorAll('.preview-video');
-    previewVideos.forEach(function(container) {
-        const video = container.querySelector('video');
-        const canvas = container.querySelector('.video-thumbnail');
-        const overlay = container.querySelector('.video-overlay');
-
-        if (video && canvas && overlay) {
-            // Extract and set thumbnail for preview videos
-            extractThumbnail(video, canvas)
-                .then(function(thumbnailUrl) {
-                    const thumbnailImg = document.createElement('img');
-                    thumbnailImg.src = thumbnailUrl;
-                    thumbnailImg.className = 'video-thumbnail';
-                    thumbnailImg.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;';
-
-                    container.insertBefore(thumbnailImg, overlay);
-                })
-                .catch(function(error) {
-                    console.warn('Failed to extract preview thumbnail:', error);
-                });
-        }
-    });
-
-    // Set proper aspect ratio for video containers
-    setVideoContainerAspectRatio();
 });
 </script>
+
 </body>
+</html>
