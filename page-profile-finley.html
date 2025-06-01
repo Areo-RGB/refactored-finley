@@ -40,87 +40,111 @@
                 </div>
             </div>
 
-            <!-- Main Video Card -->
+            <!-- Mini Dashboard Card -->
+            <div class="card card-style gradient-blue" style="position: relative;">
+                <!-- Timer Control Button (Toggle) -->
+                <button id="timer-toggle-btn" class="color-white" style="position: absolute; top: 85px; left: 16.66%; transform: translateX(-50%); z-index: 10; background: none; border: none; font-size: 3rem; font-weight: 900; cursor: pointer; opacity: 0.9;">
+                    <i id="timer-toggle-icon" class="fa fa-play"></i>
+                </button>
+
+                <div class="content pt-4 pb-4">
+                    <h3 class="mb-3 color-white text-center">Training Dashboard</h3>
+
+                    <!-- Timer Display -->
+                    <div class="text-center mb-4">
+                        <div id="timer-display" class="color-white" style="font-size: 4rem; font-weight: 900; line-height: 1;">15s</div>
+                        <p class="color-white opacity-80 mb-0" style="font-size: 0.9rem;">Session Timer</p>
+                    </div>
+
+                    <!-- Dashboard Stats Row -->
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div class="color-white" style="font-size: 1.5rem; font-weight: 700;">6</div>
+                            <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem;">Exercises</p>
+                        </div>
+                        <div class="col-4">
+                            <div class="color-white" style="font-size: 1.5rem; font-weight: 700;">2:45</div>
+                            <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem;">Duration</p>
+                        </div>
+                        <div class="col-4">
+                            <div class="color-white" style="font-size: 1.5rem; font-weight: 700;">85%</div>
+                            <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem;">Progress</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Video Card with Custom Player -->
             <div class="card card-style">
                 <div class="content">
                     <h3 id="video-title">Übung 1</h3>
-                    <div style="background: #000; border-radius: 10px; overflow: hidden;">
+                    <div class="custom-video-player" style="position: relative; background: #000; border-radius: 10px; overflow: hidden;">
                         <video
                             id="main-video"
-                            controls
                             style="width: 100%; height: 300px; display: block;"
                             crossorigin="anonymous">
                             <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4" type="video/mp4">
                             Your browser doesn't support HTML5 video.
                         </video>
+
+                        <!-- Custom Play/Pause Button -->
+                        <div class="custom-controls" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: opacity 0.3s ease;">
+                            <button id="play-pause-btn" class="play-pause-button" style="
+                                background: rgba(255,255,255,0.9);
+                                border: none;
+                                border-radius: 50%;
+                                width: 80px;
+                                height: 80px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                            ">
+                                <i id="play-pause-icon" class="fa fa-play" style="font-size: 28px; color: #333; margin-left: 4px;"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Exercise Cards -->
+            <!-- Finley Performance Metrics -->
             <div class="card card-style">
                 <div class="content">
-                    <h3>Exercise Selection</h3>
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            <div class="card card-style bg-highlight exercise-card" data-video="1" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
-                                <div class="content">
-                                    <h5>Übung 1</h5>
-                                    <p class="mb-0">Finley Training Video 1 (2.55MB)</p>
-                                </div>
+                    <h3>Performance Metrics</h3>
+                    <div class="row mb-0">
+                        <div class="col-6">
+                            <div class="card card-style m-0 exercise-card bg-highlight" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center;" data-video="1" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
                             </div>
                         </div>
-                        <div class="col-12 mb-3">
-                            <div class="card card-style exercise-card" data-video="2" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
-                                <div class="content">
-                                    <h5>Übung 2</h5>
-                                    <p class="mb-0">Finley Training Video 2 (4.94MB)</p>
-                                </div>
+                        <div class="col-6">
+                            <div class="card card-style m-0 exercise-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center;" data-video="2" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
                             </div>
                         </div>
-                        <div class="col-12 mb-3">
-                            <div class="card card-style exercise-card" data-video="4" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
-                                <div class="content">
-                                    <h5>Übung 4</h5>
-                                    <p class="mb-0">Finley Training Video 4 (5.46MB)</p>
-                                </div>
+                        <div class="col-12"><div class="divider mt-2 mb-4"></div></div>
+                        <div class="col-6">
+                            <div class="card card-style m-0 exercise-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center;" data-video="4" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
                             </div>
                         </div>
-                        <div class="col-12 mb-3">
-                            <div class="card card-style exercise-card" data-video="5" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
-                                <div class="content">
-                                    <h5>Übung 5</h5>
-                                    <p class="mb-0">Finley Training Video 5 (3.73MB)</p>
-                                </div>
+                        <div class="col-6">
+                            <div class="card card-style m-0 exercise-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center;" data-video="5" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
                             </div>
                         </div>
-                        <div class="col-12 mb-3">
-                            <div class="card card-style exercise-card" data-video="6" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
-                                <div class="content">
-                                    <h5>Übung 6</h5>
-                                    <p class="mb-0">Finley Training Video 6 (5.24MB)</p>
-                                </div>
+                        <div class="col-12"><div class="divider mt-2 mb-4"></div></div>
+                        <div class="col-6">
+                            <div class="card card-style m-0 exercise-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center;" data-video="6" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
                             </div>
                         </div>
-                        <div class="col-12 mb-3">
-                            <div class="card card-style exercise-card" data-video="7" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
-                                <div class="content">
-                                    <h5>Übung 7</h5>
-                                    <p class="mb-0">Finley Training Video 7 (5.28MB)</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="card card-style exercise-card" data-video="8" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000012852%20V1-0008.mp4">
-                                <div class="content">
-                                    <h5>Übung 8</h5>
-                                    <p class="mb-0">Finley Training Video 8 (7.8MB)</p>
-                                </div>
+                        <div class="col-6">
+                            <div class="card card-style m-0 exercise-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center;" data-video="7" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
 
         </div>
     </div>
@@ -153,26 +177,238 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainVideo = document.getElementById('main-video');
     const videoTitle = document.getElementById('video-title');
     const exerciseCards = document.querySelectorAll('.exercise-card');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const playPauseIcon = document.getElementById('play-pause-icon');
+    const customControls = document.querySelector('.custom-controls');
+
+    // Timer elements
+    const timerDisplay = document.getElementById('timer-display');
+    const timerToggleBtn = document.getElementById('timer-toggle-btn');
+    const timerToggleIcon = document.getElementById('timer-toggle-icon');
 
     console.log('Found elements:', {
         mainVideo: !!mainVideo,
         videoTitle: !!videoTitle,
-        exerciseCards: exerciseCards.length
+        exerciseCards: exerciseCards.length,
+        playPauseBtn: !!playPauseBtn,
+        customControls: !!customControls,
+        timerDisplay: !!timerDisplay,
+        timerToggleBtn: !!timerToggleBtn,
+        timerToggleIcon: !!timerToggleIcon
     });
 
-    // Add click listeners to exercise cards
+    // Timer functionality
+    let timerSeconds = 15;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    function updateTimerDisplay() {
+        timerDisplay.textContent = `${timerSeconds}s`;
+    }
+
+    function updateToggleButton() {
+        if (isTimerRunning) {
+            timerToggleIcon.className = 'fa fa-pause';
+        } else {
+            timerToggleIcon.className = 'fa fa-play';
+        }
+    }
+
+    function startTimer() {
+        if (!isTimerRunning && timerSeconds > 0) {
+            isTimerRunning = true;
+            updateToggleButton();
+            console.log('⏱️ Timer started');
+
+            timerInterval = setInterval(() => {
+                timerSeconds--;
+                updateTimerDisplay();
+
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    isTimerRunning = false;
+                    updateToggleButton();
+                    console.log('⏰ Timer finished!');
+
+                    // Optional: Add completion effect
+                    timerDisplay.style.color = '#ff6b6b';
+                    setTimeout(() => {
+                        timerDisplay.style.color = '';
+                        resetTimer();
+                    }, 2000);
+                }
+            }, 1000);
+        }
+    }
+
+    function pauseTimer() {
+        if (isTimerRunning) {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            updateToggleButton();
+            console.log('⏸️ Timer paused');
+        }
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        timerSeconds = 15;
+        updateTimerDisplay();
+        updateToggleButton();
+        console.log('🔄 Timer reset');
+    }
+
+    function toggleTimer() {
+        if (isTimerRunning) {
+            pauseTimer();
+        } else {
+            startTimer();
+        }
+    }
+
+    // Timer toggle button event listener
+    if (timerToggleBtn) {
+        timerToggleBtn.addEventListener('click', function() {
+            toggleTimer();
+        });
+    }
+
+    // Function to extract video thumbnail
+    function extractThumbnail(videoUrl, card) {
+        const video = document.createElement('video');
+        video.crossOrigin = 'anonymous';
+        video.muted = true;
+        video.preload = 'metadata';
+
+        video.addEventListener('loadedmetadata', function() {
+            // Seek to 1 second into the video for a better thumbnail
+            video.currentTime = 1;
+        });
+
+        video.addEventListener('seeked', function() {
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                const thumbnailUrl = canvas.toDataURL('image/jpeg', 0.8);
+                card.style.backgroundImage = `url(${thumbnailUrl})`;
+
+                console.log('✅ Thumbnail extracted for video:', videoUrl);
+            } catch (error) {
+                console.error('❌ Error extracting thumbnail:', error);
+                // Fallback to a gradient background
+                card.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            }
+        });
+
+        video.addEventListener('error', function() {
+            console.error('❌ Error loading video for thumbnail:', videoUrl);
+            // Fallback to a gradient background
+            card.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        });
+
+        video.src = videoUrl;
+    }
+
+    // Extract thumbnails for all exercise cards
+    exerciseCards.forEach((card, index) => {
+        const videoUrl = card.getAttribute('data-url');
+        if (videoUrl) {
+            console.log(`🖼️ Extracting thumbnail for card ${index + 1}:`, videoUrl);
+            extractThumbnail(videoUrl, card);
+        }
+    });
+
+    // Custom Player Functions
+    function updatePlayPauseButton() {
+        if (mainVideo.paused) {
+            playPauseIcon.className = 'fa fa-play';
+            playPauseIcon.style.marginLeft = '4px'; // Slight offset for play icon
+            customControls.style.opacity = '1';
+        } else {
+            playPauseIcon.className = 'fa fa-pause';
+            playPauseIcon.style.marginLeft = '0';
+            customControls.style.opacity = '0';
+        }
+    }
+
+    function togglePlayPause() {
+        if (mainVideo.paused) {
+            mainVideo.play();
+            console.log('▶️ Video playing');
+        } else {
+            mainVideo.pause();
+            console.log('⏸️ Video paused');
+        }
+        updatePlayPauseButton();
+    }
+
+    // Play/Pause button click handler
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            togglePlayPause();
+        });
+
+        // Hover effects
+        playPauseBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.background = 'rgba(255,255,255,1)';
+        });
+
+        playPauseBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.background = 'rgba(255,255,255,0.9)';
+        });
+    }
+
+    // Video container click handler
+    if (customControls) {
+        customControls.addEventListener('click', function(e) {
+            if (e.target === this) {
+                togglePlayPause();
+            }
+        });
+    }
+
+    // Show/hide controls on video hover
+    const videoPlayer = document.querySelector('.custom-video-player');
+    if (videoPlayer) {
+        videoPlayer.addEventListener('mouseenter', function() {
+            if (mainVideo.paused) {
+                customControls.style.opacity = '1';
+            }
+        });
+
+        videoPlayer.addEventListener('mouseleave', function() {
+            if (!mainVideo.paused) {
+                customControls.style.opacity = '0';
+            }
+        });
+    }
+
+    // Add click listeners to exercise cards (now performance metric cards)
     exerciseCards.forEach((card, index) => {
         card.addEventListener('click', function() {
-            console.log(`Exercise ${index + 1} clicked`);
+            console.log(`Performance metric card ${index + 1} clicked`);
 
             const videoNumber = this.getAttribute('data-video');
             const videoUrl = this.getAttribute('data-url');
-            const exerciseTitle = this.querySelector('h5').textContent;
+            const exerciseTitle = `Übung ${videoNumber}`;
 
             console.log('Switching to:', { videoNumber, videoUrl, exerciseTitle });
 
-            // Update video source
+            // Pause current video and reset controls
             if (mainVideo) {
+                mainVideo.pause();
+                updatePlayPauseButton();
+
                 const source = mainVideo.querySelector('source');
                 if (source) {
                     source.src = videoUrl;
@@ -194,9 +430,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Video event listeners
     if (mainVideo) {
-        mainVideo.addEventListener('loadstart', () => console.log('🔄 Video loading started'));
-        mainVideo.addEventListener('canplay', () => console.log('✅ Video can play'));
-        mainVideo.addEventListener('error', (e) => console.error('❌ Video error:', e));
+        mainVideo.addEventListener('loadstart', () => {
+            console.log('🔄 Video loading started');
+            updatePlayPauseButton();
+        });
+
+        mainVideo.addEventListener('canplay', () => {
+            console.log('✅ Video can play');
+            updatePlayPauseButton();
+        });
+
+        mainVideo.addEventListener('play', () => {
+            console.log('▶️ Video started playing');
+            updatePlayPauseButton();
+        });
+
+        mainVideo.addEventListener('pause', () => {
+            console.log('⏸️ Video paused');
+            updatePlayPauseButton();
+        });
+
+        mainVideo.addEventListener('ended', () => {
+            console.log('🏁 Video ended');
+            updatePlayPauseButton();
+        });
+
+        mainVideo.addEventListener('error', (e) => {
+            console.error('❌ Video error:', e);
+            updatePlayPauseButton();
+        });
+
+        // Initialize button state
+        updatePlayPauseButton();
     }
 });
 </script>
