@@ -3,7 +3,7 @@
   "lang": "en",
   "name": "QuoVadis",
   "scope": "/",
-  "display": "standalone",
+  "display": "fullscreen",
   "start_url": "/index.html",
   "short_name": "QuoVadis",
   "description": "QuoVadis - Football Training App",
