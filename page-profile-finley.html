@@ -64,6 +64,44 @@
     .exercise-selector.active-exercise h3 {
         color: #007bff !important;
     }
+
+    /* Video error styling */
+    .video-error-message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.7);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 5;
+        padding: 20px;
+    }
+
+    .video-error-message i {
+        font-size: 48px;
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .video-loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 4;
+    }
 </style>
 </head>
 
@@ -85,11 +123,24 @@
         <!-- Video Card -->
         <div class="card card-style video-card" id="main-video-card">
             <div class="video-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 400px; background-color: #000;">
-                <video class="responsive-video" controls crossorigin="anonymous" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;" id="main-video">
+                <video class="responsive-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;" id="main-video" preload="metadata" playsinline>
                     <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00002092_V1-0001.mp4" type="video/mp4">
                     Your browser doesn't support HTML5 video.
                 </video>
                 <canvas class="video-thumbnail" style="display: none;"></canvas>
+
+                <!-- Loading indicator -->
+                <div class="video-loading" id="video-loading">
+                    <div class="spinner-border color-highlight" role="status"></div>
+                </div>
+
+                <!-- Error message container -->
+                <div class="video-error-message" id="video-error" style="display: none;">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    <h3>Video konnte nicht geladen werden</h3>
+                    <p>Bitte versuchen Sie es später noch einmal oder wählen Sie ein anderes Video.</p>
+                </div>
+
                 <!-- Text Overlay for Video Info -->
                 <div class="video-text-overlay">
                     <h1 id="current-video-title">Übung 1</h1>
@@ -281,14 +332,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Video switching functionality for main video player
     const mainVideo = document.getElementById('main-video');
-    const mainVideoTitle = document.getElementById('current-video-title');
     const mainVideoContentTitle = document.getElementById('current-video-content-title');
     const exerciseSelectors = document.querySelectorAll('.exercise-selector');
 
     // Debug: Check if elements are found
     console.log('🔍 Debug - Elements found:');
     console.log('  Main video:', mainVideo);
-    console.log('  Main video title:', mainVideoTitle);
     console.log('  Main video content title:', mainVideoContentTitle);
     console.log('  Exercise selectors:', exerciseSelectors.length);
 
@@ -297,9 +346,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('🎬 Switching video:', { videoNumber, videoUrl, exerciseTitle });
 
         if (mainVideo) {
-            // Pause current video
-            mainVideo.pause();
-
             // Update video source
             const source = mainVideo.querySelector('source');
             if (source) {
@@ -310,13 +356,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('❌ No video source element found');
             }
 
-            // Update titles
-            if (mainVideoTitle) {
-                mainVideoTitle.textContent = exerciseTitle;
-                console.log('📝 Updated main video title to:', exerciseTitle);
-            }
+            // Update title
             if (mainVideoContentTitle) {
                 mainVideoContentTitle.textContent = exerciseTitle;
+                console.log('📝 Updated video title to:', exerciseTitle);
             }
 
             // Update active state on exercise selectors
@@ -331,13 +374,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('✅ Activated exercise selector:', videoNumber);
             } else {
                 console.error('❌ Could not find exercise selector for video:', videoNumber);
-            }
-
-            // Reset video overlay
-            const overlay = document.querySelector('#main-video-card .video-overlay');
-            if (overlay) {
-                overlay.style.opacity = '';
-                console.log('🎭 Reset video overlay');
             }
         } else {
             console.error('❌ Main video element not found');
@@ -364,59 +400,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Removed old loadNextVideo function - replaced with switchMainVideo functionality
+    // Initialize main video with basic event logging
+    if (mainVideo) {
+        mainVideo.addEventListener('loadstart', function() {
+            console.log('🔄 Video load started');
+        });
 
-    // Initialize main video card functionality
-    const mainVideoCard = document.getElementById('main-video-card');
-    if (mainVideoCard) {
-        const video = mainVideoCard.querySelector('video');
-        const overlay = mainVideoCard.querySelector('.video-overlay');
-        const playButton = mainVideoCard.querySelector('.play-button');
+        mainVideo.addEventListener('canplay', function() {
+            console.log('✅ Video can play');
+        });
 
-        if (video && overlay && playButton) {
-            // Handle main video card click to play/pause
-            mainVideoCard.addEventListener('click', function(e) {
-                e.preventDefault();
+        mainVideo.addEventListener('play', function() {
+            console.log('▶️ Video started playing');
+        });
 
-                if (video.paused) {
-                    video.play();
-                    overlay.style.opacity = '0';
-                } else {
-                    video.pause();
-                    overlay.style.opacity = '';
-                }
-            });
+        mainVideo.addEventListener('pause', function() {
+            console.log('⏸️ Video paused');
+        });
 
-            // Handle video events
-            video.addEventListener('play', function() {
-                overlay.style.opacity = '0';
-                console.log('▶️ Video started playing');
-            });
+        mainVideo.addEventListener('ended', function() {
+            console.log('🏁 Video ended');
+        });
 
-            video.addEventListener('pause', function() {
-                overlay.style.opacity = '';
-                console.log('⏸️ Video paused');
-            });
-
-            video.addEventListener('ended', function() {
-                overlay.style.opacity = '';
-                video.currentTime = 0;
-                console.log('🏁 Video ended');
-            });
-
-            video.addEventListener('loadstart', function() {
-                console.log('🔄 Video load started');
-            });
-
-            video.addEventListener('canplay', function() {
-                console.log('✅ Video can play');
-            });
-
-            video.addEventListener('error', function(e) {
-                console.error('❌ Video error:', e);
-                console.error('❌ Video error details:', video.error);
-            });
-        }
+        mainVideo.addEventListener('error', function(e) {
+            console.error('❌ Video error:', e);
+            console.error('❌ Video error details:', mainVideo.error);
+        });
     }
 
     // Home Workout functionality
