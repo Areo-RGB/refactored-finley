@@ -1249,6 +1249,15 @@ TABLE OF CONTENTS:
                     </div>
                     <i class="fa fa-angle-right"></i>
                 </a>
+                <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
+                    <i class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"></i>
+                    <span>Fullscreen Mode</span>
+                    <div class="custom-control scale-switch ios-switch">
+                        <input type="checkbox" class="ios-input" id="switch-fullscreen-mode">
+                        <label class="custom-control-label" for="switch-fullscreen-mode"></label>
+                    </div>
+                    <i class="fa fa-angle-right"></i>
+                </a>
             </div>
             <div class="list-group list-custom-large">
                 <!-- <a data-menu="menu-highlights" href="#">
@@ -1777,70 +1786,102 @@ document.addEventListener('DOMContentLoaded', function() {
         if (overlay) overlay.style.opacity = '1';
     }
 
-    // Function to extract thumbnail from video
+    // Function to extract thumbnail from video with improved error handling
     function extractThumbnail(video, canvas, time = 1) {
         return new Promise((resolve, reject) => {
             const tempVideo = document.createElement('video');
             tempVideo.crossOrigin = 'anonymous';
             tempVideo.muted = true;
             tempVideo.preload = 'metadata';
+            tempVideo.playsInline = true;
+
+            // Set timeout for thumbnail extraction
+            const timeoutId = setTimeout(() => {
+                console.warn('⏰ Thumbnail extraction timeout');
+                reject(new Error('Thumbnail extraction timeout'));
+            }, 8000); // 8 second timeout
 
             tempVideo.addEventListener('loadedmetadata', function() {
+                console.log('📊 Video metadata loaded for thumbnail extraction');
                 tempVideo.currentTime = Math.min(time, tempVideo.duration * 0.1); // 10% into video or 1 second
             });
 
             tempVideo.addEventListener('seeked', function() {
                 try {
+                    console.log('🎯 Video seeked, extracting thumbnail frame...');
+
                     const ctx = canvas.getContext('2d');
-                    canvas.width = tempVideo.videoWidth;
-                    canvas.height = tempVideo.videoHeight;
+                    canvas.width = tempVideo.videoWidth || 640;
+                    canvas.height = tempVideo.videoHeight || 360;
                     ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
 
                     // Convert canvas to blob and create object URL
                     canvas.toBlob(function(blob) {
-                        const thumbnailUrl = URL.createObjectURL(blob);
-                        resolve(thumbnailUrl);
+                        if (blob) {
+                            const thumbnailUrl = URL.createObjectURL(blob);
+                            clearTimeout(timeoutId);
+                            resolve(thumbnailUrl);
+                            console.log('✅ Thumbnail extracted successfully');
+                        } else {
+                            clearTimeout(timeoutId);
+                            reject(new Error('Failed to create blob from canvas'));
+                        }
                     }, 'image/jpeg', 0.8);
                 } catch (error) {
+                    console.error('❌ Error extracting thumbnail:', error);
+                    clearTimeout(timeoutId);
                     reject(error);
                 }
             });
 
-            tempVideo.addEventListener('error', function() {
+            tempVideo.addEventListener('error', function(e) {
+                console.error('❌ Video error during thumbnail extraction:', e);
+                clearTimeout(timeoutId);
                 reject(new Error('Failed to load video for thumbnail extraction'));
+            });
+
+            tempVideo.addEventListener('loadstart', function() {
+                console.log('🔄 Video loading started for thumbnail extraction');
             });
 
             tempVideo.src = video.querySelector('source').src;
         });
     }
 
-    videoCards.forEach(function(card) {
+    videoCards.forEach(function(card, index) {
         const video = card.querySelector('video');
         const canvas = card.querySelector('.video-thumbnail');
         const overlay = card.querySelector('.video-overlay');
         const playButton = card.querySelector('.play-button');
 
         if (video && canvas && overlay && playButton) {
-            // Extract and set thumbnail
-            extractThumbnail(video, canvas)
-                .then(function(thumbnailUrl) {
-                    // Create thumbnail image element
-                    const thumbnailImg = document.createElement('img');
-                    thumbnailImg.src = thumbnailUrl;
-                    thumbnailImg.className = 'video-thumbnail';
-                    thumbnailImg.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;';
+            // Stagger thumbnail extraction to prevent browser overload
+            setTimeout(() => {
+                console.log(`🖼️ Extracting thumbnail for video card ${index + 1}`);
 
-                    // Insert thumbnail before overlay
-                    card.querySelector('.video-container').insertBefore(thumbnailImg, overlay);
+                // Extract and set thumbnail
+                extractThumbnail(video, canvas)
+                    .then(function(thumbnailUrl) {
+                        // Create thumbnail image element
+                        const thumbnailImg = document.createElement('img');
+                        thumbnailImg.src = thumbnailUrl;
+                        thumbnailImg.className = 'video-thumbnail';
+                        thumbnailImg.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;';
 
-                    // Store reference for later removal
-                    card.thumbnailImg = thumbnailImg;
-                })
-                .catch(function(error) {
-                    console.warn('Failed to extract thumbnail:', error);
-                    // Fallback: show video element directly
-                    video.style.display = 'block';
-                });
+                        // Insert thumbnail before overlay
+                        card.querySelector('.video-container').insertBefore(thumbnailImg, overlay);
+
+                        // Store reference for later removal
+                        card.thumbnailImg = thumbnailImg;
+
+                        console.log(`✅ Thumbnail loaded for video card ${index + 1}`);
+                    })
+                    .catch(function(error) {
+                        console.warn(`❌ Failed to extract thumbnail for video card ${index + 1}:`, error);
+                        // Fallback: show video element directly
+                        video.style.display = 'block';
+                    });
+            }, index * 300); // 300ms delay between each thumbnail extraction
 
             // Handle card click to play/pause video
             card.addEventListener('click', function(e) {
@@ -2042,27 +2083,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add video card functionality to preview videos
+    // Add video card functionality to preview videos with staggered loading
     const previewVideos = document.querySelectorAll('.preview-video');
-    previewVideos.forEach(function(container) {
+    previewVideos.forEach(function(container, index) {
         const video = container.querySelector('video');
         const canvas = container.querySelector('.video-thumbnail');
         const overlay = container.querySelector('.video-overlay');
 
         if (video && canvas && overlay) {
-            // Extract and set thumbnail for preview videos
-            extractThumbnail(video, canvas)
-                .then(function(thumbnailUrl) {
-                    const thumbnailImg = document.createElement('img');
-                    thumbnailImg.src = thumbnailUrl;
-                    thumbnailImg.className = 'video-thumbnail';
-                    thumbnailImg.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;';
+            // Stagger preview thumbnail extraction
+            setTimeout(() => {
+                console.log(`🖼️ Extracting preview thumbnail ${index + 1}`);
 
-                    container.insertBefore(thumbnailImg, overlay);
-                })
-                .catch(function(error) {
-                    console.warn('Failed to extract preview thumbnail:', error);
-                });
+                // Extract and set thumbnail for preview videos
+                extractThumbnail(video, canvas)
+                    .then(function(thumbnailUrl) {
+                        const thumbnailImg = document.createElement('img');
+                        thumbnailImg.src = thumbnailUrl;
+                        thumbnailImg.className = 'video-thumbnail';
+                        thumbnailImg.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;';
+
+                        container.insertBefore(thumbnailImg, overlay);
+                        console.log(`✅ Preview thumbnail loaded ${index + 1}`);
+                    })
+                    .catch(function(error) {
+                        console.warn(`❌ Failed to extract preview thumbnail ${index + 1}:`, error);
+                        // Fallback: show video element directly
+                        video.style.display = 'block';
+                    });
+            }, (videoCards.length * 300) + (index * 200)); // Start after main video cards, with 200ms intervals
         }
     });
 });
@@ -2588,6 +2637,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPWAFullscreen();
     initVideoCards();
     initFullscreenModal();
+    initSettingsFullscreenToggle();
 
     // PWA Fullscreen Functionality
     function initPWAFullscreen() {
@@ -2868,6 +2918,161 @@ document.addEventListener('DOMContentLoaded', function() {
         videoContainer.addEventListener('click', function(e) {
             e.stopPropagation();
         });
+    }
+
+    // Settings Fullscreen Toggle Functionality
+    function initSettingsFullscreenToggle() {
+        const fullscreenToggle = document.getElementById('fullscreen-toggle');
+        const fullscreenSwitch = document.getElementById('switch-fullscreen-mode');
+        const fullscreenIcon = fullscreenToggle.querySelector('i');
+
+        // Check if fullscreen is supported
+        const isFullscreenSupported = document.documentElement.requestFullscreen ||
+                                    document.documentElement.webkitRequestFullscreen ||
+                                    document.documentElement.msRequestFullscreen;
+
+        if (!isFullscreenSupported) {
+            // Hide fullscreen option if not supported
+            fullscreenToggle.style.display = 'none';
+            console.log('❌ Fullscreen not supported on this device');
+            return;
+        }
+
+        // Load saved fullscreen preference
+        const savedFullscreenState = localStorage.getItem('fullscreen-mode') === 'true';
+        fullscreenSwitch.checked = savedFullscreenState;
+        updateFullscreenIcon(savedFullscreenState);
+
+        // Apply saved state on page load
+        if (savedFullscreenState) {
+            // Small delay to ensure page is fully loaded
+            setTimeout(() => {
+                requestFullscreenMode();
+            }, 1000);
+        }
+
+        // Handle toggle click
+        fullscreenToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleFullscreenMode();
+        });
+
+        // Handle switch change
+        fullscreenSwitch.addEventListener('change', function() {
+            toggleFullscreenMode();
+        });
+
+        function toggleFullscreenMode() {
+            const isCurrentlyFullscreen = document.fullscreenElement ||
+                                        document.webkitFullscreenElement ||
+                                        document.msFullscreenElement;
+
+            if (isCurrentlyFullscreen) {
+                exitFullscreenMode();
+            } else {
+                requestFullscreenMode();
+            }
+        }
+
+        function requestFullscreenMode() {
+            const element = document.documentElement;
+
+            if (element.requestFullscreen) {
+                element.requestFullscreen().then(() => {
+                    onFullscreenEnter();
+                }).catch(err => {
+                    console.warn('Fullscreen request failed:', err);
+                    onFullscreenError();
+                });
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+                onFullscreenEnter();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+                onFullscreenEnter();
+            }
+        }
+
+        function exitFullscreenMode() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen().then(() => {
+                    onFullscreenExit();
+                }).catch(err => {
+                    console.warn('Exit fullscreen failed:', err);
+                });
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+                onFullscreenExit();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+                onFullscreenExit();
+            }
+        }
+
+        function onFullscreenEnter() {
+            fullscreenSwitch.checked = true;
+            updateFullscreenIcon(true);
+            localStorage.setItem('fullscreen-mode', 'true');
+            document.body.classList.add('fullscreen-active');
+            console.log('✅ Entered fullscreen mode');
+        }
+
+        function onFullscreenExit() {
+            fullscreenSwitch.checked = false;
+            updateFullscreenIcon(false);
+            localStorage.setItem('fullscreen-mode', 'false');
+            document.body.classList.remove('fullscreen-active');
+            console.log('❌ Exited fullscreen mode');
+        }
+
+        function onFullscreenError() {
+            fullscreenSwitch.checked = false;
+            updateFullscreenIcon(false);
+            localStorage.setItem('fullscreen-mode', 'false');
+            console.error('❌ Fullscreen request failed');
+        }
+
+        function updateFullscreenIcon(isFullscreen) {
+            if (isFullscreen) {
+                fullscreenIcon.className = 'fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3';
+            } else {
+                fullscreenIcon.className = 'fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3';
+            }
+        }
+
+        // Listen for fullscreen changes (user pressing F11 or Esc)
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+        function handleFullscreenChange() {
+            const isCurrentlyFullscreen = document.fullscreenElement ||
+                                        document.webkitFullscreenElement ||
+                                        document.msFullscreenElement;
+
+            if (isCurrentlyFullscreen) {
+                onFullscreenEnter();
+            } else {
+                onFullscreenExit();
+            }
+        }
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // F11 key handling
+            if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreenMode();
+            }
+
+            // Ctrl/Cmd + Shift + F for fullscreen toggle
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'F') {
+                e.preventDefault();
+                toggleFullscreenMode();
+            }
+        });
+
+        console.log('🔲 Settings fullscreen toggle initialized');
     }
 });
 </script>

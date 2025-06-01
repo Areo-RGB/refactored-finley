@@ -468,6 +468,15 @@
                     </div>
                     <i class="fa fa-angle-right"></i>
                 </a>
+                <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
+                    <i class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"></i>
+                    <span>Fullscreen Mode</span>
+                    <div class="custom-control scale-switch ios-switch">
+                        <input type="checkbox" class="ios-input" id="switch-fullscreen-mode">
+                        <label class="custom-control-label" for="switch-fullscreen-mode"></label>
+                    </div>
+                    <i class="fa fa-angle-right"></i>
+                </a>
             </div>
             <div class="list-group list-custom-large">
                 <!-- <a data-menu="menu-highlights" href="#">
@@ -544,6 +553,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     initVideoCards();
+    initSettingsFullscreenToggle();
 
     function initVideoCards() {
         const videoCards = document.querySelectorAll('.video-card-container');
@@ -676,6 +686,161 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.video-card-container').forEach(card => {
             videoObserver.observe(card);
         });
+    }
+
+    // Settings Fullscreen Toggle Functionality
+    function initSettingsFullscreenToggle() {
+        const fullscreenToggle = document.getElementById('fullscreen-toggle');
+        const fullscreenSwitch = document.getElementById('switch-fullscreen-mode');
+        const fullscreenIcon = fullscreenToggle.querySelector('i');
+
+        // Check if fullscreen is supported
+        const isFullscreenSupported = document.documentElement.requestFullscreen ||
+                                    document.documentElement.webkitRequestFullscreen ||
+                                    document.documentElement.msRequestFullscreen;
+
+        if (!isFullscreenSupported) {
+            // Hide fullscreen option if not supported
+            fullscreenToggle.style.display = 'none';
+            console.log('❌ Fullscreen not supported on this device');
+            return;
+        }
+
+        // Load saved fullscreen preference
+        const savedFullscreenState = localStorage.getItem('fullscreen-mode') === 'true';
+        fullscreenSwitch.checked = savedFullscreenState;
+        updateFullscreenIcon(savedFullscreenState);
+
+        // Apply saved state on page load
+        if (savedFullscreenState) {
+            // Small delay to ensure page is fully loaded
+            setTimeout(() => {
+                requestFullscreenMode();
+            }, 1000);
+        }
+
+        // Handle toggle click
+        fullscreenToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleFullscreenMode();
+        });
+
+        // Handle switch change
+        fullscreenSwitch.addEventListener('change', function() {
+            toggleFullscreenMode();
+        });
+
+        function toggleFullscreenMode() {
+            const isCurrentlyFullscreen = document.fullscreenElement ||
+                                        document.webkitFullscreenElement ||
+                                        document.msFullscreenElement;
+
+            if (isCurrentlyFullscreen) {
+                exitFullscreenMode();
+            } else {
+                requestFullscreenMode();
+            }
+        }
+
+        function requestFullscreenMode() {
+            const element = document.documentElement;
+
+            if (element.requestFullscreen) {
+                element.requestFullscreen().then(() => {
+                    onFullscreenEnter();
+                }).catch(err => {
+                    console.warn('Fullscreen request failed:', err);
+                    onFullscreenError();
+                });
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+                onFullscreenEnter();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+                onFullscreenEnter();
+            }
+        }
+
+        function exitFullscreenMode() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen().then(() => {
+                    onFullscreenExit();
+                }).catch(err => {
+                    console.warn('Exit fullscreen failed:', err);
+                });
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+                onFullscreenExit();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+                onFullscreenExit();
+            }
+        }
+
+        function onFullscreenEnter() {
+            fullscreenSwitch.checked = true;
+            updateFullscreenIcon(true);
+            localStorage.setItem('fullscreen-mode', 'true');
+            document.body.classList.add('fullscreen-active');
+            console.log('✅ Entered fullscreen mode');
+        }
+
+        function onFullscreenExit() {
+            fullscreenSwitch.checked = false;
+            updateFullscreenIcon(false);
+            localStorage.setItem('fullscreen-mode', 'false');
+            document.body.classList.remove('fullscreen-active');
+            console.log('❌ Exited fullscreen mode');
+        }
+
+        function onFullscreenError() {
+            fullscreenSwitch.checked = false;
+            updateFullscreenIcon(false);
+            localStorage.setItem('fullscreen-mode', 'false');
+            console.error('❌ Fullscreen request failed');
+        }
+
+        function updateFullscreenIcon(isFullscreen) {
+            if (isFullscreen) {
+                fullscreenIcon.className = 'fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3';
+            } else {
+                fullscreenIcon.className = 'fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3';
+            }
+        }
+
+        // Listen for fullscreen changes (user pressing F11 or Esc)
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+        function handleFullscreenChange() {
+            const isCurrentlyFullscreen = document.fullscreenElement ||
+                                        document.webkitFullscreenElement ||
+                                        document.msFullscreenElement;
+
+            if (isCurrentlyFullscreen) {
+                onFullscreenEnter();
+            } else {
+                onFullscreenExit();
+            }
+        }
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // F11 key handling
+            if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreenMode();
+            }
+
+            // Ctrl/Cmd + Shift + F for fullscreen toggle
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'F') {
+                e.preventDefault();
+                toggleFullscreenMode();
+            }
+        });
+
+        console.log('🔲 Settings fullscreen toggle initialized');
     }
 });
 </script>
