@@ -1,7 +1,7 @@
 {
   "name": "starter-3",
   "version": "1.0.0",
-  "description": "Static web app with Vite development server",
+  "  "description": "Static web app with Vite development server",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,5 +10,3 @@
   },
   "devDependencies": {
     "vite": "^5.0.0"
-  }
-}

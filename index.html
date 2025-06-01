@@ -14,12 +14,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
 
 <!-- Preload critical profile images for better performance -->
-<link rel="preload" as="image" href="images/players/finley.webp" fetchpriority="high">
-<link rel="preload" as="image" href="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" crossorigin fetchpriority="low">
+<link rel="preload" as="image" href="https://videos-data.fra1.cdn.digitaloceanspaces.com/Finley_portrait.png" crossorigin fetchpriority="high">
+<link rel="preload" as="image" href="images/players/finley.webp" fetchpriority="low">
 
 <!-- DNS prefetch for CDN -->
-<link rel="dns-prefetch" href="//data3.fra1.cdn.digitaloceanspaces.com">
-<link rel="preconnect" href="https://data3.fra1.cdn.digitaloceanspaces.com" crossorigin>
+<link rel="dns-prefetch" href="//videos-data.fra1.cdn.digitaloceanspaces.com">
+<link rel="preconnect" href="https://videos-data.fra1.cdn.digitaloceanspaces.com" crossorigin>
 </head>
 
 <body class="theme-dark" data-highlight="blue-default" data-gradient="body-default">
@@ -70,10 +70,10 @@ TABLE OF CONTENTS:
         <!-- START: Player Profile Card Component -->
         <!-- @id:player-profile-card -->
         <div class="card mb-0 profile-image-card"
-             data-src="images/players/finley.webp"
-             data-fallback="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp"
+             data-src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Finley_portrait.png"
+             data-fallback="images/players/finley.webp"
              data-card-height="600"
-             style="background-image: url('images/players/finley.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+             style="background-image: url('https://videos-data.fra1.cdn.digitaloceanspaces.com/Finley_portrait.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
             <!-- Loading State -->
             <div class="profile-loading-state" style="display: none;">
@@ -1213,8 +1213,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Helper functions for debugging
     function checkImageCache() {
         const images = [
-            'images/players/finley.webp',
-            'https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp'
+            'https://videos-data.fra1.cdn.digitaloceanspaces.com/Finley_portrait.png',
+            'images/players/finley.webp'
         ];
 
         console.log('🔍 Checking image cache status...');
