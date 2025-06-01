@@ -9,54 +9,11 @@
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
 <style>
-    /* Timer Styles */
-    .video-timer-overlay {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(30,30,30,0.8);
-        color: #ff3b30;
-        padding: 8px 12px;
-        border-radius: 8px;
-        z-index: 3;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 800;
-        font-size: 28px;
-        letter-spacing: -1px;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-        border: 2px solid rgba(255,59,48,0.5);
-    }
-
-    .video-timer {
-        font-size: 32px;
-        line-height: 1;
-        display: inline-block;
-        min-width: 45px;
-        text-align: right;
-    }
-
-    .timer-unit {
-        font-size: 20px;
-        margin-left: 8px; /* Add space between numbers and unit */
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
-
-    .pulse-animation {
-        animation: pulse 0.8s ease-in-out infinite;
-        display: inline-block;
-    }
 
     /* Text Overlay Styles */
     .video-text-overlay {
@@ -102,53 +59,48 @@
 
    <div class="page-content">
        <div class="page-content header-clear-small">		<!-- Compact Training Timer -->
-		<div class="card card-style bg-18 mb-3" data-card-height="160">
-			<div class="card-center text-center">
-				<h2 class="color-white font-24 text-center text-uppercase font-700 mb-4">TRAININGS ZEIT</h2>
-				<div class="countdown row text-center mt-3 justify-content-center align-items-center">
-					<div class="col-4 d-flex flex-column align-items-center">
-						<h3 class="mb-0 color-white font-26" id="hours">0</h3>
-						<p class="mt-n1 color-white font-12 opacity-70">hours</p>
-					</div>
-					<div class="col-4 d-flex flex-column align-items-center">
-						<h3 class="mb-0 color-white font-26" id="minutes">0</h3>
-						<p class="mt-n1 color-white font-12 opacity-70">minutes</p>
-					</div>
-					<div class="col-4 d-flex flex-column align-items-center">
-						<h3 class="mb-0 color-white font-26" id="seconds">0</h3>
-						<p class="mt-n1 color-white font-12 opacity-70">seconds</p>
-					</div>
-				</div>
-			</div>
-			<div class="card-overlay bg-black opacity-80"></div>
-		</div>
+        <div class="card card-style bg-18 mb-3" data-card-height="160">
+            <div class="card-center text-center">
+                <h2 class="color-white font-24 text-center text-uppercase font-700 mb-4">TRAININGS ZEIT</h2>
+                <div class="countdown row text-center mt-3 justify-content-center align-items-center">
+                    <div class="col-4 d-flex flex-column align-items-center">
+                        <h3 class="mb-0 color-white font-26" id="hours">0</h3>
+                        <p class="mt-n1 color-white font-12 opacity-70">hours</p>
+                    </div>
+                    <div class="col-4 d-flex flex-column align-items-center">
+                        <h3 class="mb-0 color-white font-26" id="minutes">0</h3>
+                        <p class="mt-n1 color-white font-12 opacity-70">minutes</p>
+                    </div>
+                    <div class="col-4 d-flex flex-column align-items-center">
+                        <h3 class="mb-0 color-white font-26" id="seconds">0</h3>
+                        <p class="mt-n1 color-white font-12 opacity-70">seconds</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-overlay bg-black opacity-80"></div>
+        </div>
 
-		<!-- Video Card -->
-		<div class="card card-style video-card">
-			<div class="video-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 400px; background-color: #000;">
-				<video class="responsive-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;">
-					<source src="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" type="video/mp4">
-					Your browser doesn't support HTML5 video.
-				</video>
-				<canvas class="video-thumbnail" style="display: none;"></canvas>
-				<!-- Timer Overlay -->
-				<div class="video-timer-overlay" style="display: none;">
-					<span class="video-timer">15</span><span class="timer-unit">s</span>
-				</div>
-				<!-- Text Overlay for Video Info -->
-				<div class="video-text-overlay">
-					<h1>Übung 1</h1>
-				</div>
-				<div class="video-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; align-items: center; justify-content: center;">
-					<div class="play-button">
-						<i class="fa fa-play fa-2x color-white"></i>
-					</div>
-				</div>
-			</div>
-			<div class="content" style="display: none;">
-				<h1 class="mb-n1">Übung 1</h1>
-			</div>
-		</div>
+        <!-- Video Card -->
+        <div class="card card-style video-card">
+            <div class="video-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 400px; background-color: #000;">
+                <video class="responsive-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;">
+                    <source src="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" type="video/mp4">
+                    Your browser doesn't support HTML5 video.
+                </video>				<canvas class="video-thumbnail" style="display: none;"></canvas>
+                <!-- Text Overlay for Video Info -->
+                <div class="video-text-overlay">
+                    <h1>Übung 1</h1>
+                </div>
+                <div class="video-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; align-items: center; justify-content: center;">
+                    <div class="play-button">
+                        <i class="fa fa-play fa-2x color-white"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="content" style="display: none;">
+                <h1 class="mb-n1">Übung 1</h1>
+            </div>
+        </div>
 
         <!-- Lift for Strength Cards -->
         <div class="card card-style mx-0">
@@ -311,139 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         VIDEO_4: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xx00000000.mp4',
         current: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4',
         currentIndex: 1
-    };
-
-    // Timer related functions
-    function startVideoTimer(card) {
-        const timerOverlay = card.querySelector('.video-timer-overlay');
-        const timerElement = card.querySelector('.video-timer');
-        const video = card.querySelector('video');
-        const textOverlay = card.querySelector('.video-text-overlay');
-
-        if (!timerOverlay || !timerElement || !video) return;
-
-        // Show the timer overlay
-        timerOverlay.style.display = 'block';
-
-        // Reset to 15 seconds
-        timerElement.textContent = '15';
-
-        // Reset text overlay to show current exercise number
-        if (textOverlay) {
-            const titleElement = textOverlay.querySelector('h1');
-            if (titleElement) titleElement.textContent = 'Übung ' + videoStates.currentIndex;
-        }
-
-        // Clear any existing timer
-        if (card.timerInterval) {
-            clearInterval(card.timerInterval);
-        }
-
-        // Start the countdown
-        card.timerInterval = setInterval(function() {
-            let seconds = parseInt(timerElement.textContent);
-            seconds--;
-
-            // Change text when timer reaches 5 seconds
-            if (seconds === 5) {
-                const textOverlay = card.querySelector('.video-text-overlay');
-                if (textOverlay) {
-                    const nextIndex = (videoStates.currentIndex % 4) + 1;
-                    const titleElement = textOverlay.querySelector('h1');
-                    const subtitleElement = textOverlay.querySelector('p');
-
-                    if (titleElement) {
-                        titleElement.textContent = 'NÄCHSTE ÜBUNG';
-                    }
-                }
-            }
-
-            if (seconds <= 0) {
-                // Stop the timer when it reaches 0
-                clearInterval(card.timerInterval);
-                seconds = 0;
-
-                // Load the next video when timer finishes
-                loadNextVideo(card);
-            }
-
-            // Apply destructive styling for low time remaining
-            if (seconds <= 5) {
-                timerElement.style.color = '#ff3b30'; // Bright red
-
-                // Add pulsing effect when time is low
-                if (!timerElement.classList.contains('pulse-animation')) {
-                    // Add pulsing animation class
-                    timerElement.classList.add('pulse-animation');
-
-                    // Create keyframe animation if it doesn't exist yet
-                    if (!document.getElementById('pulse-keyframes')) {
-                        const style = document.createElement('style');
-                        style.id = 'pulse-keyframes';
-                        style.textContent = `
-                            @keyframes pulse {
-                                0% { transform: scale(1); }
-                                50% { transform: scale(1.2); }
-                                100% { transform: scale(1); }
-                            }
-                            .pulse-animation {
-                                animation: pulse 0.8s ease-in-out infinite;
-                                display: inline-block;
-                            }
-                        `;
-                        document.head.appendChild(style);
-                    }
-                }
-            } else {
-                // Remove pulse effect when time is not critical
-                timerElement.style.color = '';
-                timerElement.classList.remove('pulse-animation');
-            }
-
-            timerElement.textContent = seconds;
-        }, 1000);
-    }
-
-    // Alternative implementation using TimerTextComponent
-    // Uncomment this function to use the component-based approach:
-    /*
-    function startVideoTimerWithComponent(card) {
-        const timerOverlay = card.querySelector('.video-timer-overlay');
-        const timerElement = card.querySelector('.video-timer');
-        const textOverlay = card.querySelector('.video-text-overlay');
-        const video = card.querySelector('video');
-
-        if (!timerOverlay || !timerElement || !video) return;
-
-        // Show the timer overlay
-        timerOverlay.style.display = 'block';
-
-        // Stop any existing timer component
-        if (card.timerComponent) {
-            card.timerComponent.stop();
-        }
-
-        // Create new timer component
-        card.timerComponent = new TimerTextComponent({
-            timerElement: timerElement,
-            textElement: textOverlay,
-            initialDuration: 15,
-            textChanges: [
-                {
-                    triggerTime: 5,
-                    title: 'NÄCHSTE ÜBUNG',
-                    subtitle: ''
-                }
-            ],
-            onComplete: function() {
-                loadNextVideo(card);
-            }
-        });
-
-        // Start the timer
-        card.timerComponent.start();
-    }
-    */
+    };    // Timer related functions removed
 
     function loadNextVideo(card) {
         const video = card.querySelector('video');
@@ -486,14 +306,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (titleElement) {
                     titleElement.textContent = 'Übung ' + videoStates.currentIndex;
                 }
-            }
-
-            // Load and play the new video
+            }            // Load and play the new video
             video.load();
             video.play();
 
-            // Reset timer for the new video
-            startVideoTimer(card);
+            // Timer functionality removed
 
             // Make sure video is visible and overlay is hidden
             if (card.thumbnailImg) {
@@ -508,20 +325,8 @@ document.addEventListener('DOMContentLoaded', function() {
             video.style.display = 'block';
             video.classList.add('playing');
         }
-    }
-
-    function stopVideoTimer(card) {
-        // Clear the timer interval
-        if (card.timerInterval) {
-            clearInterval(card.timerInterval);
-            card.timerInterval = null;
-        }
-
-        // Hide the timer overlay
-        const timerOverlay = card.querySelector('.video-timer-overlay');
-        if (timerOverlay) {
-            timerOverlay.style.display = 'none';
-        }
+    }    function stopVideoTimer(card) {
+        // Timer functionality removed
     }
 
     // Initialize any new video cards that might not have all required elements
@@ -821,25 +626,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Hide thumbnail and play video
                     if (card.thumbnailImg) {
                         card.thumbnailImg.style.display = 'none';
-                    }
-                    video.style.display = 'block'; // Make sure video is visible
+                    }                    video.style.display = 'block'; // Make sure video is visible
                     video.classList.add('playing');
                     video.play();
                     overlay.style.opacity = '0';
 
-                    // Start the timer if it exists
-                    const timerOverlay = card.querySelector('.video-timer-overlay');
-                    if (timerOverlay) {
-                        // Make sure we have the correct exercise number displayed
-                        const textOverlay = card.querySelector('.video-text-overlay');
-                        if (textOverlay) {
-                            const titleElement = textOverlay.querySelector('h1');
-                            if (titleElement) {
-                                titleElement.textContent = 'Übung ' + videoStates.currentIndex;
-                            }
-                        }
-                        startVideoTimer(card);
-                    }
+                    // Timer functionality removed
                 } else {
                     video.pause();
                     // Show thumbnail again
@@ -849,8 +641,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     video.classList.remove('playing');
                     overlay.style.opacity = '';
 
-                    // Stop the timer if it exists
-                    stopVideoTimer(card);
+                    // Timer functionality removed
                 }
             });
 
@@ -864,8 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.thumbnailImg.style.display = 'block';
                 }
 
-                // Stop the timer when video ends
-                stopVideoTimer(card);
+                // Timer functionality removed
             });
 
             // Handle video pause event
@@ -877,8 +667,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.thumbnailImg.style.display = 'block';
                 }
 
-                // Stop the timer when video is paused
-                stopVideoTimer(card);
+                // Timer functionality removed
             });
 
             // Handle video play event
@@ -888,18 +677,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Hide thumbnail
                 if (card.thumbnailImg) {
                     card.thumbnailImg.style.display = 'none';
-                }
-
-                // Start the timer when video plays
-                // Make sure we have the correct exercise number displayed
-                const textOverlay = card.querySelector('.video-text-overlay');
-                if (textOverlay) {
-                    const titleElement = textOverlay.querySelector('h1');
-                    if (titleElement) {
-                        titleElement.textContent = 'Übung ' + videoStates.currentIndex;
-                    }
-                }
-                startVideoTimer(card);
+                }                // Timer functionality removed
             });
 
             // Handle direct video clicks for play/pause
@@ -929,22 +707,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         card.thumbnailImg.style.display = 'none';
                     }
                     video.classList.add('playing');
-                    video.play();
-                    overlay.style.opacity = '0';
+                    video.play();                    overlay.style.opacity = '0';
 
-                    // Start the timer if it exists
-                    const timerOverlay = card.querySelector('.video-timer-overlay');
-                    if (timerOverlay) {
-                        // Make sure we have the correct exercise number displayed
-                        const textOverlay = card.querySelector('.video-text-overlay');
-                        if (textOverlay) {
-                            const titleElement = textOverlay.querySelector('h1');
-                            if (titleElement) {
-                                titleElement.textContent = 'Übung ' + videoStates.currentIndex;
-                            }
-                        }
-                        startVideoTimer(card);
-                    }
+                    // Timer functionality removed
                 } else {
                     video.pause();
                     // Show thumbnail again
@@ -954,8 +719,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     video.classList.remove('playing');
                     overlay.style.opacity = '';
 
-                    // Stop the timer if it exists
-                    stopVideoTimer(card);
+                    // Timer functionality removed
                 }
             });
         }

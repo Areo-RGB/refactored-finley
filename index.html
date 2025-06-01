@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -15,8 +14,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
 
 <!-- Preload critical profile images for better performance -->
-<link rel="preload" as="image" href="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" crossorigin="anonymous">
 <link rel="preload" as="image" href="images/players/finley.webp">
+<link rel="preload" as="image" href="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" crossorigin="anonymous">
 
 <!-- DNS prefetch for CDN -->
 <link rel="dns-prefetch" href="//data3.fra1.cdn.digitaloceanspaces.com">
@@ -38,12 +37,6 @@ TABLE OF CONTENTS:
             2.2.3.4. Ballkontrolle Accordion Item (@id:accordion-ballkontrolle)
             2.2.3.5. Balljonglieren Accordion Item (@id:accordion-balljonglieren)
             2.2.3.6. Dribbling Accordion Item (@id:accordion-dribbling)
-    2.3. Modals and Menus (@id:modals-and-menus)
-        2.3.1. Fullscreen Video Modal (@id:fullscreen-video-modal)
-        2.3.2. Settings Menu (@id:menu-settings)
-        2.3.3. Highlights Menu (@id:menu-highlights)
-        2.3.4. Backgrounds Menu (@id:menu-backgrounds)
-        2.3.5. Share Menu (@id:menu-share)
 3. Scripts (@id:scripts)
 4. Inline Styles (@id:inline-styles)
 -->
@@ -76,8 +69,8 @@ TABLE OF CONTENTS:
         <!-- START: Player Profile Card Component -->
         <!-- @id:player-profile-card -->
         <div class="card mb-0 profile-image-card"
-             data-src="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp"
-             data-fallback="images/players/finley.webp"
+             data-src="images/players/finley.webp"
+             data-fallback="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp"
              data-card-height="600">
 
             <!-- Loading State -->
@@ -125,37 +118,37 @@ TABLE OF CONTENTS:
                 <!-- Individual Training Metrics -->
                 <div class="row mb-0 text-center">
                     <div class="col-4 mb-3">
-                        <a href="#" class="metric-card" data-video="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" data-title="10M SPRINT">
+                        <a href="#">
                             <h1 class="mb-n1 color-highlight font-24">2.00s</h1>
                             <p class="font-9 mb-0 pb-0 opacity-70">10M SPRINT</p>
                         </a>
                     </div>
                     <div class="col-4 mb-3">
-                        <a href="#" class="metric-card" data-video="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201x00000000.mp4" data-title="20M SPRINT">
+                        <a href="#">
                             <h1 class="mb-n1 color-highlight font-24">3.59s</h1>
                             <p class="font-9 mb-0 pb-0 opacity-70">20M SPRINT</p>
                         </a>
                     </div>
                     <div class="col-4 mb-3">
-                        <a href="#" class="metric-card" data-video="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xxs00000000.mp4" data-title="GEWANDTHEIT">
+                        <a href="#">
                             <h1 class="mb-n1 color-highlight font-24">7.81s</h1>
                             <p class="font-9 mb-0 pb-0 opacity-70">GEWANDTHEIT</p>
                         </a>
                     </div>
                     <div class="col-4">
-                        <a href="#" class="metric-card" data-video="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xx00000000.mp4" data-title="BALLKONTROLLE">
+                        <a href="#">
                             <h1 class="mb-n1 color-highlight font-24">8.45s</h1>
                             <p class="font-9 mb-0 pb-0 opacity-70">BALLKONTROLLE</p>
                         </a>
                     </div>
                     <div class="col-4">
-                        <a href="#" class="metric-card" data-video="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" data-title="BALLJONGLIEREN">
+                        <a href="#">
                             <h1 class="mb-n1 color-highlight font-24">0</h1>
                             <p class="font-9 mb-0 pb-0 opacity-70">BALLJONGLIEREN</p>
                         </a>
                     </div>
                     <div class="col-4">
-                        <a href="#" class="metric-card" data-video="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201x00000000.mp4" data-title="DRIBBLING">
+                        <a href="#">
                             <h1 class="mb-n1 color-highlight font-24">10.27s</h1>
                             <p class="font-9 mb-0 pb-0 opacity-70">DRIBBLING</p>
                         </a>
@@ -963,32 +956,6 @@ TABLE OF CONTENTS:
     <!-- @id:modals-and-menus -->
     <!-- #region Modals and Menus -->
 
-    <!-- START: Fullscreen Video Modal Component -->
-    <!-- @id:fullscreen-video-modal -->
-    <div id="fullscreen-video-modal" class="fullscreen-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999;">
-        <div class="fullscreen-video-container" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-            <!-- Close Button -->
-            <button id="close-fullscreen-video" style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.7); border: none; color: white; font-size: 24px; padding: 10px 15px; border-radius: 50%; z-index: 10001; cursor: pointer;">
-                <i class="fa fa-times"></i>
-            </button>
-
-            <!-- Video Title -->
-            <div id="fullscreen-video-title" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 18px; font-weight: bold; z-index: 10001;"></div>
-
-            <!-- Video Element -->
-            <video id="fullscreen-video" controls style="max-width: 100%; max-height: 100%; width: auto; height: auto;">
-                <source src="" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
-            <!-- Fullscreen Toggle Button -->
-            <button id="toggle-fullscreen" style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); border: none; color: white; font-size: 18px; padding: 10px 15px; border-radius: 5px; z-index: 10001; cursor: pointer;">
-                <i class="fa fa-expand"></i> Fullscreen
-            </button>
-        </div>
-    </div>
-    <!-- END: Fullscreen Video Modal Component -->
-
     <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
     <!-- START: Settings Menu Component -->
     <!-- @id:menu-settings -->
@@ -1028,102 +995,6 @@ TABLE OF CONTENTS:
     </div>
     <!-- #endregion Settings Menu -->
     <!-- END: Settings Menu Component -->
-
-    <!-- START: Highlights Menu Component -->
-    <!-- @id:menu-highlights -->
-    <!-- #region Highlights Menu -->
-    <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached">
-        <div class="menu-title"><h1>Highlights</h1><p class="color-highlight">Any Element can have a Highlight Color</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="divider divider-margins mb-n2"></div>
-        <div class="content">
-            <div class="highlight-changer">
-                <a href="#" data-change-highlight="blue"><i class="fa fa-circle color-blue-dark"></i><span class="color-blue-light">Default</span></a>
-                <a href="#" data-change-highlight="red"><i class="fa fa-circle color-red-dark"></i><span class="color-red-light">Red</span></a>
-                <a href="#" data-change-highlight="orange"><i class="fa fa-circle color-orange-dark"></i><span class="color-orange-light">Orange</span></a>
-                <a href="#" data-change-highlight="pink2"><i class="fa fa-circle color-pink2-dark"></i><span class="color-pink-dark">Pink</span></a>
-                <a href="#" data-change-highlight="magenta"><i class="fa fa-circle color-magenta-dark"></i><span class="color-magenta-light">Purple</span></a>
-                <a href="#" data-change-highlight="aqua"><i class="fa fa-circle color-aqua-dark"></i><span class="color-aqua-light">Aqua</span></a>
-                <a href="#" data-change-highlight="teal"><i class="fa fa-circle color-teal-dark"></i><span class="color-teal-light">Teal</span></a>
-                <a href="#" data-change-highlight="mint"><i class="fa fa-circle color-mint-dark"></i><span class="color-mint-light">Mint</span></a>
-                <a href="#" data-change-highlight="green"><i class="fa fa-circle color-green-light"></i><span class="color-green-light">Green</span></a>
-                <a href="#" data-change-highlight="grass"><i class="fa fa-circle color-green-dark"></i><span class="color-green-dark">Grass</span></a>
-                <a href="#" data-change-highlight="sunny"><i class="fa fa-circle color-yellow-light"></i><span class="color-yellow-light">Sunny</span></a>
-                <a href="#" data-change-highlight="yellow"><i class="fa fa-circle color-yellow-dark"></i><span class="color-yellow-light">Goldish</span></a>
-                <a href="#" data-change-highlight="brown"><i class="fa fa-circle color-brown-dark"></i><span class="color-brown-light">Wood</span></a>
-                <a href="#" data-change-highlight="night"><i class="fa fa-circle color-dark-dark"></i><span class="color-dark-light">Night</span></a>
-                <a href="#" data-change-highlight="dark"><i class="fa fa-circle color-dark-light"></i><span class="color-dark-light">Dark</span></a>
-                <div class="clearfix"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
-        </div>
-    </div>
-    <!-- #endregion Highlights Menu -->
-    <!-- END: Highlights Menu Component -->
-
-    <!-- START: Backgrounds Menu Component -->
-    <!-- @id:menu-backgrounds -->
-    <!-- #region Backgrounds Menu -->
-    <div id="menu-backgrounds" class="menu menu-box-bottom menu-box-detached">
-        <div class="menu-title"><h1>Backgrounds</h1><p class="color-highlight">Change Page Color Behind Content Boxes</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="divider divider-margins mb-n2"></div>
-        <div class="content">
-            <div class="background-changer">
-                <a href="#" data-change-background="default"><i class="bg-theme"></i><span class="color-dark-dark">Default</span></a>
-                <a href="#" data-change-background="plum"><i class="body-plum"></i><span class="color-plum-dark">Plum</span></a>
-                <a href="#" data-change-background="magenta"><i class="body-magenta"></i><span class="color-dark-dark">Magenta</span></a>
-                <a href="#" data-change-background="dark"><i class="body-dark"></i><span class="color-dark-dark">Dark</span></a>
-                <a href="#" data-change-background="violet"><i class="body-violet"></i><span class="color-violet-dark">Violet</span></a>
-                <a href="#" data-change-background="red"><i class="body-red"></i><span class="color-red-dark">Red</span></a>
-                <a href="#" data-change-background="green"><i class="body-green"></i><span class="color-green-dark">Green</span></a>
-                <a href="#" data-change-background="sky"><i class="body-sky"></i><span class="color-sky-dark">Sky</span></a>
-                <a href="#" data-change-background="orange"><i class="body-orange"></i><span class="color-orange-dark">Orange</span></a>
-                <a href="#" data-change-background="yellow"><i class="body-yellow"></i><span class="color-yellow-dark">Yellow</span></a>
-                <div class="clearfix"></div>
-            </div>
-            <a href="#" data-menu="menu-settings" class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to Settings</a>
-        </div>
-    </div>
-    <!-- #endregion Backgrounds Menu -->
-    <!-- END: Backgrounds Menu Component -->
-
-    <!-- START: Share Menu Component -->
-    <!-- @id:menu-share -->
-    <!-- #region Share Menu -->
-    <div id="menu-share" class="menu menu-box-bottom menu-box-detached">
-        <div class="menu-title mt-n1"><h1>Share the Love</h1><p class="color-highlight">Just Tap the Social Icon. We'll add the Link</p><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
-        <div class="content mb-0">
-            <div class="divider mb-0"></div>
-            <div class="list-group list-custom-small list-icon-0">
-                <a href="auto_generated" class="shareToFacebook external-link">
-                    <i class="font-18 fab fa-facebook-square color-facebook"></i>
-                    <span class="font-13">Facebook</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToTwitter external-link">
-                    <i class="font-18 fab fa-twitter-square color-twitter"></i>
-                    <span class="font-13">Twitter</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToLinkedIn external-link">
-                    <i class="font-18 fab fa-linkedin color-linkedin"></i>
-                    <span class="font-13">LinkedIn</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToWhatsApp external-link">
-                    <i class="font-18 fab fa-whatsapp-square color-whatsapp"></i>
-                    <span class="font-13">WhatsApp</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="auto_generated" class="shareToMail external-link border-0">
-                    <i class="font-18 fa fa-envelope-square color-mail"></i>
-                    <span class="font-13">Email</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- #endregion Share Menu -->
-    <!-- END: Share Menu Component -->
 
     <!-- #endregion Modals and Menus -->
     <!-- ===== END MODALS AND MENUS SECTION ===== -->
@@ -1183,77 +1054,60 @@ document.addEventListener('DOMContentLoaded', function() {
         if (loadingState) loadingState.style.display = 'flex';
         if (errorState) errorState.style.display = 'none';
 
-        // Create image loading promise with timeout
-        const loadImageWithTimeout = (src, timeout = 10000) => {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                const timer = setTimeout(() => {
-                    reject(new Error('Image load timeout'));
-                }, timeout);
+        // Directly use preloaded image
+        try {
+            // Set the primary image as background
+            setImageBackground(card, primarySrc);
 
-                img.onload = () => {
-                    clearTimeout(timer);
-                    resolve(src);
-                };
+            // Create dummy image to verify it's loaded properly
+            const bgImg = new Image();
+            bgImg.crossOrigin = primarySrc.includes('digitaloceanspaces.com') ? 'anonymous' : null;
 
-                img.onerror = () => {
-                    clearTimeout(timer);
-                    reject(new Error('Image load failed'));
-                };
-
-                // Add crossorigin for CDN images
-                if (src.includes('digitaloceanspaces.com')) {
-                    img.crossOrigin = 'anonymous';
-                }
-
-                img.src = src;
-            });
-        };
-
-        // Try to load primary image
-        loadImageWithTimeout(primarySrc)
-            .then(() => {
-                // Primary image loaded successfully
-                setImageBackground(card, primarySrc);
+            bgImg.onload = () => {
                 showImageLoaded(card);
                 trackImageLoadSuccess(primarySrc, retryCount);
-            })
-            .catch(() => {
-                // Primary failed, try fallback
+            };
+
+            bgImg.onerror = () => {
+                // Primary image failed, try fallback
                 if (fallbackSrc) {
-                    return loadImageWithTimeout(fallbackSrc);
-                } else {
-                    throw new Error('No fallback available');
-                }
-            })
-            .then((src) => {
-                // Fallback loaded successfully
-                if (src === fallbackSrc) {
                     setImageBackground(card, fallbackSrc);
                     showImageLoaded(card);
                     trackImageLoadFallback(primarySrc, fallbackSrc, retryCount);
-                }
-            })
-            .catch(() => {
-                // Both primary and fallback failed
-                if (retryCount < maxRetries) {
-                    // Retry with exponential backoff
-                    const delay = Math.pow(2, retryCount) * 1000;
-                    setTimeout(() => {
-                        loadProfileImage(card, retryCount + 1);
-                    }, delay);
                 } else {
-                    // Show error state
-                    showImageError(card);
-                    trackImageLoadError(primarySrc, retryCount);
+                    handleImageError(card, primarySrc, retryCount);
                 }
-            });
+            };
+
+            // Just check if image is valid, don't trigger a new load
+            // This uses the browser's cached version from preload
+            bgImg.src = primarySrc;
+        } catch (error) {
+            handleImageError(card, primarySrc, retryCount);
+        }
 
         // Setup retry button
         if (retryBtn) {
             retryBtn.onclick = () => {
                 loadProfileImage(card, 0);
             };
+        }
+    }
+
+    function handleImageError(card, src, retryCount) {
+        const maxRetries = 3;
+        const fallbackSrc = card.getAttribute('data-fallback');
+
+        // If we have retries left, try again with backoff
+        if (retryCount < maxRetries) {
+            const delay = Math.pow(2, retryCount) * 1000;
+            setTimeout(() => {
+                loadProfileImage(card, retryCount + 1);
+            }, delay);
+        } else {
+            // Show error state after all retries fail
+            showImageError(card);
+            trackImageLoadError(src, retryCount);
         }
     }
 
@@ -2186,3 +2040,4 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- #endregion Inline Styles -->
 <!-- ===== END STYLES SECTION ===== -->
 </body>
+</html>

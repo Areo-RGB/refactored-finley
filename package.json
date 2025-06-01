@@ -1,24 +1,21 @@
 {
-  "name": "dfb-training-app",
+  "name": "starter-3",
   "version": "1.0.0",
-  "description": "DFB Training App - Football training performance tracker",
-  "main": "server.js",
+  "description": "Preview server with clean cache and cookies",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "preview": "npm run kill-preview && npm run clean && npm run serve-and-open",
+    "kill-preview": "fkill :8080 --force || exit 0",
+    "serve-and-open": "concurrently \"npm run serve\" \"npm run open-browser\"",
+    "open-browser": "npx open http://localhost:8080",
+    "clean": "del \"styles/**/*.css\" \"styles/**/*.map\" && npm run clean-cookies",
+    "clean-cookies": "node scripts/clean-cookies.js",
+    "serve": "npx http-server -c-1 -p 8080"
   },
-  "engines": {
-    "node": "18.x"
-  },
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "keywords": [
-    "football",
-    "training",
-    "dfb",
-    "sports"
-  ],
-  "author": "Your Name",
-  "license": "MIT"
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "del-cli": "^5.1.0",
+    "fkill-cli": "^6.2.0",
+    "concurrently": "^8.2.2",
+    "open": "^9.2.0"
+  }
 }
