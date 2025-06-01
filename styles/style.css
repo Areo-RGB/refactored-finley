@@ -2359,6 +2359,364 @@ button {
   min-height: 0; /* Allow flex items to shrink below content size */
 }
 
+/* ===== PROFILE IMAGE LOADING IMPROVEMENTS ===== */
+
+/* Profile Image Card Enhancements */
+.profile-image-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.profile-image-card.loading {
+  background-color: #f8f9fa;
+}
+
+.profile-image-card.loaded {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile-image-card.error {
+  background-color: #6c757d;
+}
+
+/* Loading State Styles */
+.profile-loading-state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+
+.profile-loading-state.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Skeleton Loading Animation */
+.profile-skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  position: relative;
+  z-index: 2;
+}
+
+.loading-spinner .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3em;
+}
+
+/* Error State Styles */
+.profile-error-state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  z-index: 10;
+}
+
+.error-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.retry-image-btn {
+  transition: all 0.3s ease;
+}
+
+.retry-image-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Progressive Image Loading */
+.profile-image-card.sharp {
+  filter: blur(0);
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+
+/* Image loading performance optimizations */
+.profile-image-card {
+  will-change: background-image, filter, transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Fade-in animation for loaded images */
+.profile-image-card.loaded {
+  animation: fadeInImage 0.6s ease-out;
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading state improvements */
+.profile-loading-state {
+  backdrop-filter: blur(2px);
+}
+
+/* Pulse animation for loading spinner */
+.loading-spinner .spinner-border {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive optimizations */
+@media (max-width: 768px) {
+  .loading-spinner .spinner-border {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0.25em;
+  }
+
+  .error-content {
+    padding: 1rem;
+  }
+
+  .error-content i {
+    font-size: 3rem !important;
+  }
+}
+
+/* Dark theme support */
+.theme-dark .profile-loading-state {
+  background: linear-gradient(135deg, #343a40 0%, #495057 100%);
+}
+
+.theme-dark .profile-skeleton {
+  background: linear-gradient(90deg, #495057 25%, #6c757d 50%, #495057 75%);
+  background-size: 200% 100%;
+}
+
+.theme-dark .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+/* ===== VIDEO CARD BACKGROUND SYSTEM ===== */
+
+/* Video Card Container */
+.video-card-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.video-card-container:hover {
+  transform: scale(1.02);
+}
+
+/* Video Background */
+.card-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: all 0.3s ease;
+  filter: brightness(0.7);
+}
+
+.video-card-container:hover .card-video-bg {
+  filter: brightness(0.9);
+  transform: scale(1.05);
+}
+
+/* Ensure content is above video */
+.video-card-container .card-top,
+.video-card-container .card-bottom,
+.video-card-container .card-overlay {
+  position: relative;
+  z-index: 3;
+}
+
+/* Play Indicator */
+.video-play-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.video-card-container:hover .video-play-indicator {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-play-indicator i {
+  margin-left: 3px; /* Adjust play icon position */
+}
+
+/* Video playing state */
+.video-card-container.playing .video-play-indicator {
+  opacity: 0;
+}
+
+.video-card-container.playing .card-video-bg {
+  filter: brightness(1);
+}
+
+/* Loading state for videos */
+.video-card-container.loading .card-video-bg {
+  opacity: 0;
+}
+
+.video-card-container.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+              linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+              linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  animation: loading-pattern 1s linear infinite;
+  z-index: 2;
+}
+
+@keyframes loading-pattern {
+  0% {
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  100% {
+    background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-play-indicator {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .video-card-container:hover {
+    transform: scale(1.01);
+  }
+}
+
+/* Dark theme support for video cards */
+.theme-dark .video-play-indicator {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.theme-dark .video-card-container.loading::before {
+  background: linear-gradient(45deg, #495057 25%, transparent 25%),
+              linear-gradient(-45deg, #495057 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, #495057 75%),
+              linear-gradient(-45deg, transparent 75%, #495057 75%);
+  background-size: 20px 20px;
+}
+
 .video-card .p-2 {
   /* Ensure text content area maintains proper spacing */
   flex-grow: 1;

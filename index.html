@@ -13,9 +13,16 @@
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+
+<!-- Preload critical profile images for better performance -->
+<link rel="preload" as="image" href="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" crossorigin="anonymous">
+<link rel="preload" as="image" href="images/players/finley.webp">
+
+<!-- DNS prefetch for CDN -->
+<link rel="dns-prefetch" href="//data3.fra1.cdn.digitaloceanspaces.com">
 </head>
 
-<body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
+<body class="theme-dark" data-highlight="blue-default" data-gradient="body-default">
 <!--
 TABLE OF CONTENTS:
 1. Preloader (@id:preloader)
@@ -68,17 +75,41 @@ TABLE OF CONTENTS:
     <div class="page-content">
         <!-- START: Player Profile Card Component -->
         <!-- @id:player-profile-card -->
-        <div class="card mb-0 preload-img" data-src="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp" data-fallback="images/players/finley.webp" data-card-height="600">
+        <div class="card mb-0 profile-image-card"
+             data-src="https://data3.fra1.cdn.digitaloceanspaces.com/Bilder/Finley_portrait.webp"
+             data-fallback="images/players/finley.webp"
+             data-card-height="600">
+
+            <!-- Loading State -->
+            <div class="profile-loading-state">
+                <div class="profile-skeleton">
+                    <div class="skeleton-shimmer"></div>
+                </div>
+                <div class="loading-spinner">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading profile image...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div class="profile-error-state" style="display: none;">
+                <div class="error-content">
+                    <i class="fa fa-user-circle fa-5x text-light opacity-50"></i>
+                    <p class="text-light mt-2 mb-0">Image unavailable</p>
+                    <button class="btn btn-sm btn-outline-light mt-2 retry-image-btn">
+                        <i class="fa fa-refresh me-1"></i>Retry
+                    </button>
+                </div>
+            </div>
+
             <!-- Logo Display - Upper Right Corner -->
-
-
             <div class="card-top">
               <h6 class="text-center mt-3 opacity-30 font-300"> </h6>
             </div>
             <div class="card-bottom ms-3">
                 <h1 class="font-40 line-height-xl">Finley<br>Charlier</h1>
                 <p class="pb-0 mb-0 font-12"><i class="fa fa-map-marker me-2"></i>F.C. Hertha 03 Zehlendorf e. V. </p>
-
             </div>
             <div class="card-overlay bg-gradient-fade-small"></div>
         </div>
@@ -1106,27 +1137,181 @@ TABLE OF CONTENTS:
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript">
-// Image fallback functionality
+// Enhanced Profile Image Loading System
 document.addEventListener('DOMContentLoaded', function() {
-    const preloadImages = document.querySelectorAll('.preload-img[data-fallback]');
+    // Initialize enhanced profile image loading
+    initProfileImageLoading();
 
-    preloadImages.forEach(function(element) {
+    // Legacy support for old preload-img elements
+    const legacyPreloadImages = document.querySelectorAll('.preload-img[data-fallback]');
+    legacyPreloadImages.forEach(function(element) {
         const primarySrc = element.getAttribute('data-src');
         const fallbackSrc = element.getAttribute('data-fallback');
 
-        // Test if primary image loads
         const testImg = new Image();
         testImg.onload = function() {
-            // Primary image loaded successfully, use it
             element.style.backgroundImage = `url('${primarySrc}')`;
         };
         testImg.onerror = function() {
-            // Primary image failed, use fallback
             element.style.backgroundImage = `url('${fallbackSrc}')`;
             element.setAttribute('data-src', fallbackSrc);
         };
         testImg.src = primarySrc;
     });
+
+    // Enhanced Profile Image Loading Function
+    function initProfileImageLoading() {
+        const profileCards = document.querySelectorAll('.profile-image-card');
+
+        profileCards.forEach(function(card) {
+            loadProfileImage(card);
+        });
+    }
+
+    function loadProfileImage(card, retryCount = 0) {
+        const primarySrc = card.getAttribute('data-src');
+        const fallbackSrc = card.getAttribute('data-fallback');
+        const maxRetries = 3;
+
+        const loadingState = card.querySelector('.profile-loading-state');
+        const errorState = card.querySelector('.profile-error-state');
+        const retryBtn = card.querySelector('.retry-image-btn');
+
+        // Show loading state
+        card.classList.add('loading');
+        card.classList.remove('loaded', 'error');
+        if (loadingState) loadingState.style.display = 'flex';
+        if (errorState) errorState.style.display = 'none';
+
+        // Create image loading promise with timeout
+        const loadImageWithTimeout = (src, timeout = 10000) => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                const timer = setTimeout(() => {
+                    reject(new Error('Image load timeout'));
+                }, timeout);
+
+                img.onload = () => {
+                    clearTimeout(timer);
+                    resolve(src);
+                };
+
+                img.onerror = () => {
+                    clearTimeout(timer);
+                    reject(new Error('Image load failed'));
+                };
+
+                // Add crossorigin for CDN images
+                if (src.includes('digitaloceanspaces.com')) {
+                    img.crossOrigin = 'anonymous';
+                }
+
+                img.src = src;
+            });
+        };
+
+        // Try to load primary image
+        loadImageWithTimeout(primarySrc)
+            .then(() => {
+                // Primary image loaded successfully
+                setImageBackground(card, primarySrc);
+                showImageLoaded(card);
+                trackImageLoadSuccess(primarySrc, retryCount);
+            })
+            .catch(() => {
+                // Primary failed, try fallback
+                if (fallbackSrc) {
+                    return loadImageWithTimeout(fallbackSrc);
+                } else {
+                    throw new Error('No fallback available');
+                }
+            })
+            .then((src) => {
+                // Fallback loaded successfully
+                if (src === fallbackSrc) {
+                    setImageBackground(card, fallbackSrc);
+                    showImageLoaded(card);
+                    trackImageLoadFallback(primarySrc, fallbackSrc, retryCount);
+                }
+            })
+            .catch(() => {
+                // Both primary and fallback failed
+                if (retryCount < maxRetries) {
+                    // Retry with exponential backoff
+                    const delay = Math.pow(2, retryCount) * 1000;
+                    setTimeout(() => {
+                        loadProfileImage(card, retryCount + 1);
+                    }, delay);
+                } else {
+                    // Show error state
+                    showImageError(card);
+                    trackImageLoadError(primarySrc, retryCount);
+                }
+            });
+
+        // Setup retry button
+        if (retryBtn) {
+            retryBtn.onclick = () => {
+                loadProfileImage(card, 0);
+            };
+        }
+    }
+
+    function setImageBackground(card, src) {
+        card.style.backgroundImage = `url('${src}')`;
+        card.classList.add('sharp');
+    }
+
+    function showImageLoaded(card) {
+        const loadingState = card.querySelector('.profile-loading-state');
+        const errorState = card.querySelector('.profile-error-state');
+
+        card.classList.remove('loading', 'error');
+        card.classList.add('loaded');
+
+        if (loadingState) {
+            loadingState.classList.add('hidden');
+            setTimeout(() => {
+                loadingState.style.display = 'none';
+            }, 500);
+        }
+
+        if (errorState) {
+            errorState.style.display = 'none';
+        }
+    }
+
+    function showImageError(card) {
+        const loadingState = card.querySelector('.profile-loading-state');
+        const errorState = card.querySelector('.profile-error-state');
+
+        card.classList.remove('loading', 'loaded');
+        card.classList.add('error');
+
+        if (loadingState) {
+            loadingState.style.display = 'none';
+        }
+
+        if (errorState) {
+            errorState.style.display = 'flex';
+        }
+    }
+
+    // Performance tracking functions
+    function trackImageLoadSuccess(src, retryCount) {
+        console.log(`✅ Image loaded successfully: ${src} (attempts: ${retryCount + 1})`);
+        // You can send this data to analytics service
+    }
+
+    function trackImageLoadFallback(primarySrc, fallbackSrc, retryCount) {
+        console.log(`⚠️ Fallback image used: ${primarySrc} -> ${fallbackSrc} (attempts: ${retryCount + 1})`);
+        // You can send this data to analytics service
+    }
+
+    function trackImageLoadError(src, retryCount) {
+        console.error(`❌ Image load failed completely: ${src} (attempts: ${retryCount + 1})`);
+        // You can send this data to analytics service
+    }
 
     // Metric card functionality for fullscreen video
     const metricCards = document.querySelectorAll('.metric-card');

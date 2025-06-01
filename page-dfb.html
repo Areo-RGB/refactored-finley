@@ -12,6 +12,12 @@
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+
+<!-- Preload video for better performance -->
+<link rel="preload" as="video" href="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4" type="video/mp4">
+
+<!-- DNS prefetch for video CDN -->
+<link rel="dns-prefetch" href="//data3.fra1.cdn.digitaloceanspaces.com">
 </head>
 
 <body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
@@ -28,41 +34,7 @@
     </div>
 
     <div class="page-content">
-        <!-- Main Content Card -->
-       <div class="page-content header-clear-small">
-
-    <div class="card card-style bg-18" data-card-height="230">
-            <div class="card-center">
-                <h1 class="color-white font-33 text-center text-uppercase font-800">DISCOUNTS</h1>
-                <h4 class="color-white font-12 text-center text-uppercase font-700 mt-n1 mb-n2">LImited TIME Offer. Don't Wait</h4>
-                <div class="content mb-n4">
-                    <div class="countdown row mb-4 mt-5 ms-4 me-4 text-center">
-                        <!-- change time in plugins/countdown/countdown-call.js -->
-                        <div class="disabled">
-                            <h1 class="mb-0 color-white font-26" id="years"></h1>
-                            <p class="mt-n1 color-white font-11 opacity-30">years</p>
-                        </div>
-                        <div class="col-3">
-                            <h1 class="mb-0 color-white font-26" id="days"></h1>
-                            <p class="mt-n1 color-white font-11 opacity-30">days</p>
-                        </div>
-                        <div class="col-3">
-                            <h1 class="mb-0 color-white font-26" id="hours"></h1>
-                            <p class="mt-n1 color-white font-11 opacity-30">hours</p>
-                        </div>
-                        <div class="col-3">
-                            <h1 class="mb-0 color-white font-26" id="minutes"></h1>
-                            <p class="mt-n1 color-white font-11 opacity-30">minutes</p>
-                        </div>
-                        <div class="col-3">
-                            <h1 class="mb-0 color-white font-26" id="seconds"></h1>
-                            <p class="mt-n1 color-white font-11 opacity-30">seconds</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-overlay bg-black opacity-80"></div>
-        </div>
+        <!-- Main Content Card -->       <div class="page-content header-clear-small">
 
         <div class="content mt-n1">
 
@@ -70,39 +42,34 @@
 
 		<div class="content mb-0" id="tab-group-listing">
 			<div class="card card-style mx-0 mb-3">
-				<div class="tab-controls" data-highlight="color-red-dark">
-					<a href="#" class="no-effect font-15 font-600 py-2 border-0" data-active data-bs-toggle="collapse" data-bs-target="#tab-1">
+				<div class="tab-controls" data-highlight="color-red-dark">					<a href="#" class="no-effect font-15 font-600 py-2 border-0" data-active data-bs-toggle="collapse" data-bs-target="#tab-1">
 						<span class="d-block font-30 pt-2"><i class="fa fa-running"></i></span>
-						<span class="font-11 d-block mb-n2 pt-2">Train for</span>
+						<span class="font-11 d-block mb-n2 pt-2"></span>
 						<span class="font-16 d-block pb-2">Speed</span>
-					</a>
-					<a href="#" class="no-effect font-15 font-600 py-2 border-0" data-bs-toggle="collapse" data-bs-target="#tab-2">
+					</a>					<a href="#" class="no-effect font-15 font-600 py-2 border-0" data-bs-toggle="collapse" data-bs-target="#tab-2">
 						<span class="d-block font-30 pt-2"><i class="fa fa-dumbbell"></i></span>
-						<span class="font-11 d-block mb-n2 pt-2">Lift for</span>
+						<span class="font-11 d-block mb-n2 pt-2"></span>
 						<span class="font-16 d-block pb-2">Strength</span>
-					</a>
-					<a href="#" class="no-effect font-15 font-600 py-2 border-0" data-bs-toggle="collapse" data-bs-target="#tab-3">
-						<span class="d-block font-30 pt-2"><i class="fa fa-swimmer"></i></span>
-						<span class="font-11 d-block mb-n2 pt-2">Muscle</span>
-						<span class="font-16 d-block pb-2">Relaxation</span>
+					</a>					<a href="#" class="no-effect font-15 font-600 py-2 border-0" data-bs-toggle="collapse" data-bs-target="#tab-3">
+						<span class="d-block font-30 pt-2"><i class="fa fa-bullseye"></i></span>
+						<span class="font-11 d-block mb-n2 pt-2"></span>
+						<span class="font-16 d-block pb-2">Technik</span>
 					</a>
 				</div>
 			</div>
 			<!-- Card Style-->
 			<div data-bs-parent="#tab-group-listing" class="collapse show" id="tab-1">
 				<div class="card card-style mx-0">
-					<div class="card card-style mx-2 mt-2" data-card-height="170" style="background-image:url('images/fitness/8m.jpg')">
-						<div class="card-top p-3">
-							<div class="float-start">
+					<div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+						<!-- Video Background -->
+						<video class="card-video-bg" muted loop preload="metadata">
+							<source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4" type="video/mp4">
+						</video>
+
+						<div class="card-top p-3">							<div class="float-start">
 								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
 									<i class="fa fa-clock color-blue-dark pe-1"></i>
 									2.00 s
-								</span>
-							</div>
-							<div class="float-end">
-								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
-									<i class="fa fa-fire color-orange-dark pe-1"></i>
-									430 kcal
 								</span>
 							</div>
 						</div>
@@ -110,9 +77,14 @@
 							<h2 class="color-white">10m Sprint</h2>
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
+
+						<!-- Play indicator -->
+						<div class="video-play-indicator">
+							<i class="fa fa-play"></i>
+						</div>
 					</div>
 					<div class="content mt-n3">
-						<p>Unlike traditional squats, bands provide a more focused contraction on your quads, giving you that extra burn!</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<div class="divider mt-n3 mb-3"></div>
 						<div class="d-flex">
 							<div class="align-self-center">
@@ -132,18 +104,16 @@
 					</div>
 				</div>
 				<div class="card card-style mx-0">
-					<div class="card card-style mx-2 mt-2" data-card-height="170" style="background-image:url('images/fitness/5m.jpg')">
-						<div class="card-top p-3">
-							<div class="float-start">
+					<div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+						<!-- Video Background -->
+						<video class="card-video-bg" muted loop preload="metadata">
+							<source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4" type="video/mp4">
+						</video>
+
+						<div class="card-top p-3">							<div class="float-start">
 								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
 									<i class="fa fa-clock color-blue-dark pe-1"></i>
 									3.59 s
-								</span>
-							</div>
-							<div class="float-end">
-								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
-									<i class="fa fa-fire color-orange-dark pe-1"></i>
-									540 kcal
 								</span>
 							</div>
 						</div>
@@ -151,6 +121,11 @@
 							<h2 class="color-white">20m Sprint</h2>
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
+
+						<!-- Play indicator -->
+						<div class="video-play-indicator">
+							<i class="fa fa-play"></i>
+						</div>
 					</div>
 					<div class="content mt-n3">
 						<p>
@@ -164,7 +139,7 @@
 									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
 									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
 									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
-									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+									<i class="fa fa-star-o font-12 color-white pe-1"></i>
 								</span>
 
 							</div>
@@ -175,18 +150,16 @@
 					</div>
 				</div>
 				<div class="card card-style mx-0">
-					<div class="card card-style mx-2 mt-2" data-card-height="170" style="background-image:url('images/fitness/6m.jpg')">
-						<div class="card-top p-3">
-							<div class="float-start">
+					<div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+						<!-- Video Background -->
+						<video class="card-video-bg" muted loop preload="metadata">
+							<source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4" type="video/mp4">
+						</video>
+
+						<div class="card-top p-3">							<div class="float-start">
 								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
 									<i class="fa fa-clock color-blue-dark pe-1"></i>
 									7.81 s
-								</span>
-							</div>
-							<div class="float-end">
-								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
-									<i class="fa fa-fire color-orange-dark pe-1"></i>
-									380 kcal
 								</span>
 							</div>
 						</div>
@@ -194,9 +167,14 @@
 							<h2 class="color-white">Gewandtheit</h2>
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
+
+						<!-- Play indicator -->
+						<div class="video-play-indicator">
+							<i class="fa fa-play"></i>
+						</div>
 					</div>
 					<div class="content mt-n3">
-						<p>HIIT workouts combine short bursts of intense exercise with recovery periods to maximize speed and endurance gains.</p>
+						<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris viverra veniam sit amet lacus.</p>
 						<div class="divider mt-n3 mb-3"></div>
 						<div class="d-flex">
 							<div class="align-self-center">
@@ -216,18 +194,16 @@
 					</div>
 				</div>
 				<div class="card card-style mx-0">
-					<div class="card card-style mx-2 mt-2" data-card-height="170" style="background-image:url('images/fitness/7m.jpg')">
-						<div class="card-top p-3">
-							<div class="float-start">
+					<div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+						<!-- Video Background -->
+						<video class="card-video-bg" muted loop preload="metadata">
+							<source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4" type="video/mp4">
+						</video>
+
+						<div class="card-top p-3">							<div class="float-start">
 								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
 									<i class="fa fa-clock color-blue-dark pe-1"></i>
 									10.82 s
-								</span>
-							</div>
-							<div class="float-end">
-								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
-									<i class="fa fa-fire color-orange-dark pe-1"></i>
-									320 kcal
 								</span>
 							</div>
 						</div>
@@ -235,9 +211,14 @@
 							<h2 class="color-white">Ballkontrolle</h2>
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
+
+						<!-- Play indicator -->
+						<div class="video-play-indicator">
+							<i class="fa fa-play"></i>
+						</div>
 					</div>
 					<div class="content mt-n3">
-						<p>Explosive jumping exercises that develop power, speed, and agility. Perfect for athletes looking to improve their vertical leap.</p>
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede.</p>
 						<div class="divider mt-n3 mb-3"></div>
 						<div class="d-flex">
 							<div class="align-self-center">
@@ -257,18 +238,16 @@
 					</div>
 				</div>
 				<div class="card card-style mx-0">
-					<div class="card card-style mx-2 mt-2" data-card-height="170" style="background-image:url('images/fitness/9m.jpg')">
-						<div class="card-top p-3">
-							<div class="float-start">
+					<div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+						<!-- Video Background -->
+						<video class="card-video-bg" muted loop preload="metadata">
+							<source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4" type="video/mp4">
+						</video>
+
+						<div class="card-top p-3">							<div class="float-start">
 								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
 									<i class="fa fa-clock color-blue-dark pe-1"></i>
 									0.00 P
-								</span>
-							</div>
-							<div class="float-end">
-								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
-									<i class="fa fa-fire color-orange-dark pe-1"></i>
-									450 kcal
 								</span>
 							</div>
 						</div>
@@ -276,18 +255,23 @@
 							<h2 class="color-white">Balljonglieren</h2>
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
+
+						<!-- Play indicator -->
+						<div class="video-play-indicator">
+							<i class="fa fa-play"></i>
+						</div>
 					</div>
 					<div class="content mt-n3">
-						<p>Quick footwork patterns that enhance coordination, speed, and reaction time. Essential for sports performance improvement.</p>
+						<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim donec pede justo.</p>
 						<div class="divider mt-n3 mb-3"></div>
 						<div class="d-flex">
 							<div class="align-self-center">
 								<span>
-									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
-									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
-									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
-									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
-									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+									<i class="fa fa-star-o font-12 color-white pe-1"></i>
+									<i class="fa fa-star-o font-12 color-white pe-1"></i>
+									<i class="fa fa-star-o font-12 color-white pe-1"></i>
+									<i class="fa fa-star-o font-12 color-white pe-1"></i>
+									<i class="fa fa-star-o font-12 color-white pe-1"></i>
 								</span>
 
 							</div>
@@ -298,18 +282,16 @@
 					</div>
 				</div>
 				<div class="card card-style mx-0">
-					<div class="card card-style mx-2 mt-2" data-card-height="170" style="background-image:url('images/fitness/15m.jpg')">
-						<div class="card-top p-3">
-							<div class="float-start">
+					<div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+						<!-- Video Background -->
+						<video class="card-video-bg" muted loop preload="metadata">
+							<source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4" type="video/mp4">
+						</video>
+
+						<div class="card-top p-3">							<div class="float-start">
 								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
 									<i class="fa fa-clock color-blue-dark pe-1"></i>
 									10.27 s
-								</span>
-							</div>
-							<div class="float-end">
-								<span class="bg-theme color-theme px-2 py-2 rounded-sm">
-									<i class="fa fa-fire color-orange-dark pe-1"></i>
-									520 kcal
 								</span>
 							</div>
 						</div>
@@ -317,9 +299,14 @@
 							<h2 class="color-white">Dribbling</h2>
 						</div>
 						<div class="card-overlay bg-gradient opacity-70"></div>
+
+						<!-- Play indicator -->
+						<div class="video-play-indicator">
+							<i class="fa fa-play"></i>
+						</div>
 					</div>
 					<div class="content mt-n3">
-						<p>Challenging circuits that combine speed work with endurance training to build lasting power and cardiovascular fitness.</p>
+						<p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi nam eget dui etiam rhoncus maecenas.</p>
 						<div class="divider mt-n3 mb-3"></div>
 						<div class="d-flex">
 							<div class="align-self-center">
@@ -328,7 +315,7 @@
 									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
 									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
 									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
-									<i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+									<i class="fa fa-star-o font-12 color-white pe-1"></i>
 								</span>
 
 							</div>
@@ -568,5 +555,173 @@
 
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+
+<!-- Video Card Hover-to-Play Functionality -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    initVideoCards();
+
+    function initVideoCards() {
+        const videoCards = document.querySelectorAll('.video-card-container');
+
+        videoCards.forEach(function(card) {
+            const video = card.querySelector('.card-video-bg');
+            if (!video) return;
+
+            // Add loading state initially
+            card.classList.add('loading');
+
+            // Handle video loading
+            video.addEventListener('loadeddata', function() {
+                card.classList.remove('loading');
+                console.log('✅ Video loaded successfully');
+            });
+
+            video.addEventListener('error', function() {
+                card.classList.remove('loading');
+                console.error('❌ Video failed to load:', video.src);
+                // Optionally add fallback image here
+                addVideoFallback(card);
+            });
+
+            // Hover to play functionality
+            card.addEventListener('mouseenter', function() {
+                if (video.readyState >= 2) { // HAVE_CURRENT_DATA
+                    playVideo(video, card);
+                }
+            });
+
+            card.addEventListener('mouseleave', function() {
+                pauseVideo(video, card);
+            });
+
+            // Touch support for mobile
+            card.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                if (video.readyState >= 2) {
+                    if (video.paused) {
+                        playVideo(video, card);
+                    } else {
+                        pauseVideo(video, card);
+                    }
+                }
+            });
+
+            // Preload video metadata
+            video.load();
+        });
+    }
+
+    function playVideo(video, card) {
+        try {
+            const playPromise = video.play();
+
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        card.classList.add('playing');
+                        console.log('▶️ Video playing');
+                    })
+                    .catch(error => {
+                        console.warn('⚠️ Video play failed:', error);
+                        // Handle autoplay restrictions
+                        if (error.name === 'NotAllowedError') {
+                            showPlayButton(card);
+                        }
+                    });
+            }
+        } catch (error) {
+            console.error('❌ Video play error:', error);
+        }
+    }
+
+    function pauseVideo(video, card) {
+        try {
+            video.pause();
+            video.currentTime = 0; // Reset to beginning
+            card.classList.remove('playing');
+            console.log('⏸️ Video paused and reset');
+        } catch (error) {
+            console.error('❌ Video pause error:', error);
+        }
+    }
+
+    function showPlayButton(card) {
+        const playIndicator = card.querySelector('.video-play-indicator');
+        if (playIndicator) {
+            playIndicator.style.opacity = '1';
+            playIndicator.innerHTML = '<i class="fa fa-volume-up"></i>';
+
+            // Add click to play functionality
+            playIndicator.addEventListener('click', function() {
+                const video = card.querySelector('.card-video-bg');
+                if (video) {
+                    video.muted = false; // Unmute for user interaction
+                    playVideo(video, card);
+                }
+            });
+        }
+    }
+
+    function addVideoFallback(card) {
+        // Create fallback background with gradient
+        card.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+
+        // Update play indicator to show error state
+        const playIndicator = card.querySelector('.video-play-indicator');
+        if (playIndicator) {
+            playIndicator.innerHTML = '<i class="fa fa-exclamation-triangle"></i>';
+            playIndicator.style.opacity = '0.7';
+            playIndicator.style.background = 'rgba(255, 0, 0, 0.6)';
+        }
+
+        console.log('🔄 Applied fallback background for failed video');
+    }
+
+    // Performance optimization: Pause all videos when page becomes hidden
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            const videos = document.querySelectorAll('.card-video-bg');
+            videos.forEach(video => {
+                if (!video.paused) {
+                    video.pause();
+                }
+            });
+        }
+    });
+
+    // Intersection Observer for performance optimization
+    if ('IntersectionObserver' in window) {
+        const videoObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                const video = entry.target.querySelector('.card-video-bg');
+                if (!video) return;
+
+                if (entry.isIntersecting) {
+                    // Video is in viewport, ensure it's ready
+                    if (video.readyState < 2) {
+                        video.load();
+                    }
+                } else {
+                    // Video is out of viewport, pause if playing
+                    if (!video.paused) {
+                        video.pause();
+                        entry.target.classList.remove('playing');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        // Observe all video cards
+        document.querySelectorAll('.video-card-container').forEach(card => {
+            videoObserver.observe(card);
+        });
+    }
+});
+</script>
+
 </body>
 </html>
