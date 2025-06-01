@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+<link rel="manifest" href="/manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
 <style>
 
@@ -41,6 +41,29 @@
         opacity: 0.9;
         text-shadow: 0 1px 2px rgba(0,0,0,0.8);
     }
+
+    /* Exercise Selector Styles */
+    .exercise-selector {
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        padding: 8px;
+        margin: -8px;
+    }
+
+    .exercise-selector:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .exercise-selector.active-exercise {
+        background-color: rgba(0, 123, 255, 0.2);
+        border: 2px solid rgba(0, 123, 255, 0.5);
+    }
+
+    .exercise-selector.active-exercise h5,
+    .exercise-selector.active-exercise h3 {
+        color: #007bff !important;
+    }
 </style>
 </head>
 
@@ -60,15 +83,16 @@
    <div class="page-content">
        <div class="page-content header-clear-small">
         <!-- Video Card -->
-        <div class="card card-style video-card">
+        <div class="card card-style video-card" id="main-video-card">
             <div class="video-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 400px; background-color: #000;">
-                <video class="responsive-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;">
-                    <source src="https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4" type="video/mp4">
+                <video class="responsive-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;" id="main-video">
+                    <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00002092_V1-0001.mp4" type="video/mp4">
                     Your browser doesn't support HTML5 video.
-                </video>				<canvas class="video-thumbnail" style="display: none;"></canvas>
+                </video>
+                <canvas class="video-thumbnail" style="display: none;"></canvas>
                 <!-- Text Overlay for Video Info -->
                 <div class="video-text-overlay">
-                    <h1>Übung 1</h1>
+                    <h1 id="current-video-title">Übung 1</h1>
                 </div>
                 <div class="video-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; align-items: center; justify-content: center;">
                     <div class="play-button">
@@ -77,43 +101,65 @@
                 </div>
             </div>
             <div class="content" style="display: none;">
-                <h1 class="mb-n1">Übung 1</h1>
+                <h1 class="mb-n1" id="current-video-content-title">Übung 1</h1>
             </div>
         </div>
 
-        <!-- Lift for Strength Cards -->
+        <!-- Exercise Selection Cards -->
         <div class="card card-style mx-0">
             <div class="content">
-                <a href="#" class="d-flex mb-3">
+                <a href="#" class="d-flex mb-3 exercise-selector active-exercise" data-video="1" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00002092_V1-0001.mp4">
                     <div class="w-100 me-3">
                         <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/13t.jpg')"></div>
                     </div>
                     <div class="ms-auto w-100">
                         <h5 class="font-600 font-16 line-height-sm pt-1">Übung 1</h5>
-                        <span class="d-block font-11 font-400 opacity-60">15:00 s</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15:00 s</h3>
+                        <span class="d-block font-11 font-400 opacity-60">Video 1</span>
+                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 1</h3>
                     </div>
                 </a>
                 <div class="divider mt-3 mb-3"></div>
-                <a href="#" class="d-flex mb-3">
+                <a href="#" class="d-flex mb-3 exercise-selector" data-video="2" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00003176_V1-0002.mp4">
                     <div class="w-100 me-3">
                         <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/12t.jpg')"></div>
                     </div>
                     <div class="ms-auto w-100">
                         <h5 class="font-600 font-16 line-height-sm pt-1">Übung 2</h5>
-                        <span class="d-block font-11 font-400 opacity-60">15:00 s</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15:00 s</h3>
+                        <span class="d-block font-11 font-400 opacity-60">Video 2</span>
+                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 2</h3>
                     </div>
                 </a>
                 <div class="divider mt-3 mb-3"></div>
-                <a href="#" class="d-flex mb-3">
+                <a href="#" class="d-flex mb-3 exercise-selector" data-video="3" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00004343_V1-0003.mp4">
                     <div class="w-100 me-3">
                         <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/14t.jpg')"></div>
                     </div>
                     <div class="ms-auto w-100">
                         <h5 class="font-600 font-16 line-height-sm pt-1">Übung 3</h5>
-                        <span class="d-block font-11 font-400 opacity-60">15:00 s</span>
-                        <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15:00 s</h3>
+                        <span class="d-block font-11 font-400 opacity-60">Video 3</span>
+                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 3</h3>
+                    </div>
+                </a>
+                <div class="divider mt-3 mb-3"></div>
+                <a href="#" class="d-flex mb-3 exercise-selector" data-video="4" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00005572_V1-0004.mp4">
+                    <div class="w-100 me-3">
+                        <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/13t.jpg')"></div>
+                    </div>
+                    <div class="ms-auto w-100">
+                        <h5 class="font-600 font-16 line-height-sm pt-1">Übung 4</h5>
+                        <span class="d-block font-11 font-400 opacity-60">Video 4</span>
+                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 4</h3>
+                    </div>
+                </a>
+                <div class="divider mt-3 mb-3"></div>
+                <a href="#" class="d-flex mb-3 exercise-selector" data-video="5" data-video-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled_1_00007004_V1-0005.mp4">
+                    <div class="w-100 me-3">
+                        <div class="card card-style m-0" data-card-height="110" style="background-image:url('images/fitness/12t.jpg')"></div>
+                    </div>
+                    <div class="ms-auto w-100">
+                        <h5 class="font-600 font-16 line-height-sm pt-1">Übung 5</h5>
+                        <span class="d-block font-11 font-400 opacity-60">Video 5</span>
+                        <h3 class="pt-2 mt-n1"><i class="fa fa-play color-blue-dark pe-2"></i> Video 5</h3>
                     </div>
                 </a>
             </div>
@@ -234,110 +280,103 @@ document.addEventListener('DOMContentLoaded', function() {
     // Video card functionality
     const videoCards = document.querySelectorAll('.video-card');
 
-    // Track which video is currently playing
-    const videoStates = {
-        VIDEO_1: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4',
-        VIDEO_2: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201x00000000.mp4',
-        VIDEO_3: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xxs00000000.mp4',
-        VIDEO_4: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201xx00000000.mp4',
-        current: 'https://data3.fra1.cdn.digitaloceanspaces.com/Timeline%201_00000000.mp4',
-        currentIndex: 1
-    };    // Timer related functions removed
+    // Video switching functionality for main video player
+    const mainVideo = document.getElementById('main-video');
+    const mainVideoTitle = document.getElementById('current-video-title');
+    const mainVideoContentTitle = document.getElementById('current-video-content-title');
+    const exerciseSelectors = document.querySelectorAll('.exercise-selector');
 
-    function loadNextVideo(card) {
-        const video = card.querySelector('video');
-        const source = video.querySelector('source');
-        const textOverlay = card.querySelector('.video-text-overlay');
-
-        if (video && source) {
+    // Function to switch video in main player
+    function switchMainVideo(videoNumber, videoUrl, exerciseTitle) {
+        if (mainVideo) {
             // Pause current video
-            video.pause();
+            mainVideo.pause();
 
-            // Update current index
-            videoStates.currentIndex = (videoStates.currentIndex % 4) + 1;
-
-            // Set the next video based on the current index
-            switch(videoStates.currentIndex) {
-                case 1:
-                    source.src = videoStates.VIDEO_1;
-                    videoStates.current = videoStates.VIDEO_1;
-                    break;
-                case 2:
-                    source.src = videoStates.VIDEO_2;
-                    videoStates.current = videoStates.VIDEO_2;
-                    break;
-                case 3:
-                    source.src = videoStates.VIDEO_3;
-                    videoStates.current = videoStates.VIDEO_3;
-                    break;
-                case 4:
-                    source.src = videoStates.VIDEO_4;
-                    videoStates.current = videoStates.VIDEO_4;
-                    break;
+            // Update video source
+            const source = mainVideo.querySelector('source');
+            if (source) {
+                source.src = videoUrl;
+                mainVideo.load();
             }
 
-            // Update text overlay to show what's coming next
-            if (textOverlay) {
-                const nextIndex = (videoStates.currentIndex % 4) + 1;
-                const titleElement = textOverlay.querySelector('h1');
-                const subtitleElement = textOverlay.querySelector('p');
-
-                if (titleElement) {
-                    titleElement.textContent = 'Übung ' + videoStates.currentIndex;
-                }
-            }            // Load and play the new video
-            video.load();
-            video.play();
-
-            // Timer functionality removed
-
-            // Make sure video is visible and overlay is hidden
-            if (card.thumbnailImg) {
-                card.thumbnailImg.style.display = 'none';
+            // Update titles
+            if (mainVideoTitle) {
+                mainVideoTitle.textContent = exerciseTitle;
+            }
+            if (mainVideoContentTitle) {
+                mainVideoContentTitle.textContent = exerciseTitle;
             }
 
-            const overlay = card.querySelector('.video-overlay');
+            // Update active state on exercise selectors
+            exerciseSelectors.forEach(selector => {
+                selector.classList.remove('active-exercise');
+            });
+
+            // Find and activate the clicked selector
+            const activeSelector = document.querySelector(`[data-video="${videoNumber}"]`);
+            if (activeSelector) {
+                activeSelector.classList.add('active-exercise');
+            }
+
+            // Reset video overlay
+            const overlay = document.querySelector('#main-video-card .video-overlay');
             if (overlay) {
-                overlay.style.opacity = '0';
+                overlay.style.opacity = '';
             }
-
-            video.style.display = 'block';
-            video.classList.add('playing');
         }
-    }    function stopVideoTimer(card) {
-        // Timer functionality removed
     }
 
-    // Initialize any new video cards that might not have all required elements
-    videoCards.forEach(function(card) {
-        // Make sure the card has the necessary elements
-        if(!card.querySelector('.video-overlay')) {
-            const videoContainer = card.querySelector('.video-container');
-            if(videoContainer) {
-                const overlay = document.createElement('div');
-                overlay.className = 'video-overlay';
-                overlay.style.cssText = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; align-items: center; justify-content: center;';
+    // Add click event listeners to exercise selectors
+    exerciseSelectors.forEach(selector => {
+        selector.addEventListener('click', function(e) {
+            e.preventDefault();
 
-                const playButton = document.createElement('div');
-                playButton.className = 'play-button';
-                playButton.innerHTML = '<i class="fa fa-play fa-2x color-white"></i>';
+            const videoNumber = this.getAttribute('data-video');
+            const videoUrl = this.getAttribute('data-video-url');
+            const exerciseTitle = this.querySelector('h5').textContent;
 
-                overlay.appendChild(playButton);
-                videoContainer.appendChild(overlay);
-            }
-        }
-
-        // Make sure the card has a canvas for thumbnails
-        if(!card.querySelector('.video-thumbnail')) {
-            const videoContainer = card.querySelector('.video-container');
-            if(videoContainer) {
-                const canvas = document.createElement('canvas');
-                canvas.className = 'video-thumbnail';
-                canvas.style.display = 'none';
-                videoContainer.appendChild(canvas);
-            }
-        }
+            switchMainVideo(videoNumber, videoUrl, exerciseTitle);
+        });
     });
+
+    // Removed old loadNextVideo function - replaced with switchMainVideo functionality
+
+    // Initialize main video card functionality
+    const mainVideoCard = document.getElementById('main-video-card');
+    if (mainVideoCard) {
+        const video = mainVideoCard.querySelector('video');
+        const overlay = mainVideoCard.querySelector('.video-overlay');
+        const playButton = mainVideoCard.querySelector('.play-button');
+
+        if (video && overlay && playButton) {
+            // Handle main video card click to play/pause
+            mainVideoCard.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                if (video.paused) {
+                    video.play();
+                    overlay.style.opacity = '0';
+                } else {
+                    video.pause();
+                    overlay.style.opacity = '';
+                }
+            });
+
+            // Handle video events
+            video.addEventListener('play', function() {
+                overlay.style.opacity = '0';
+            });
+
+            video.addEventListener('pause', function() {
+                overlay.style.opacity = '';
+            });
+
+            video.addEventListener('ended', function() {
+                overlay.style.opacity = '';
+                video.currentTime = 0;
+            });
+        }
+    }
 
     // Home Workout functionality
     let workoutTimer = null;
@@ -546,165 +585,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    videoCards.forEach(function(card) {
-        const video = card.querySelector('video');
-        const canvas = card.querySelector('.video-thumbnail');
-        const overlay = card.querySelector('.video-overlay');
-        const playButton = card.querySelector('.play-button');
+    // Old video cards functionality removed - now using main video player with exercise selectors
 
-        if (video && canvas && overlay && playButton) {
-            // Extract and set thumbnail
-            extractThumbnail(video, canvas)
-                .then(function(thumbnailUrl) {
-                    // Create thumbnail image element
-                    const thumbnailImg = document.createElement('img');
-                    thumbnailImg.src = thumbnailUrl;
-                    thumbnailImg.className = 'video-thumbnail';
-                    thumbnailImg.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;';
-
-                    // Insert thumbnail before overlay
-                    card.querySelector('.video-container').insertBefore(thumbnailImg, overlay);
-
-                    // Store reference for later removal
-                    card.thumbnailImg = thumbnailImg;
-                })
-                .catch(function(error) {
-                    console.warn('Failed to extract thumbnail:', error);
-                    // Fallback: show video element directly
-                    video.style.display = 'block';
-                });
-
-            // Handle card click to play/pause video
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                if (video.paused) {
-                    // Pause all other videos first
-                    videoCards.forEach(function(otherCard) {
-                        const otherVideo = otherCard.querySelector('video');
-                        if (otherVideo && !otherVideo.paused) {
-                            otherVideo.pause();
-                            // Show thumbnail again
-                            if (otherCard.thumbnailImg) {
-                                otherCard.thumbnailImg.style.display = 'block';
-                            }
-                            otherVideo.classList.remove('playing');
-                            otherCard.querySelector('.video-overlay').style.opacity = '';
-                        }
-                    });
-
-                    // Update the current video state based on the source
-                    const source = video.querySelector('source');
-                    if (source) {
-                        // Extract the filename from the src attribute
-                        const srcPath = source.getAttribute('src');
-                        const filename = srcPath.split('/').pop();
-                        videoStates.current = filename;
-                    }
-
-                    // Hide thumbnail and play video
-                    if (card.thumbnailImg) {
-                        card.thumbnailImg.style.display = 'none';
-                    }                    video.style.display = 'block'; // Make sure video is visible
-                    video.classList.add('playing');
-                    video.play();
-                    overlay.style.opacity = '0';
-
-                    // Timer functionality removed
-                } else {
-                    video.pause();
-                    // Show thumbnail again
-                    if (card.thumbnailImg) {
-                        card.thumbnailImg.style.display = 'block';
-                    }
-                    video.classList.remove('playing');
-                    overlay.style.opacity = '';
-
-                    // Timer functionality removed
-                }
-            });
-
-            // Handle video ended event
-            video.addEventListener('ended', function() {
-                overlay.style.opacity = '';
-                video.currentTime = 0; // Reset to beginning
-                video.classList.remove('playing');
-                // Show thumbnail again
-                if (card.thumbnailImg) {
-                    card.thumbnailImg.style.display = 'block';
-                }
-
-                // Timer functionality removed
-            });
-
-            // Handle video pause event
-            video.addEventListener('pause', function() {
-                overlay.style.opacity = '';
-                video.classList.remove('playing');
-                // Show thumbnail again
-                if (card.thumbnailImg) {
-                    card.thumbnailImg.style.display = 'block';
-                }
-
-                // Timer functionality removed
-            });
-
-            // Handle video play event
-            video.addEventListener('play', function() {
-                overlay.style.opacity = '0';
-                video.classList.add('playing');
-                // Hide thumbnail
-                if (card.thumbnailImg) {
-                    card.thumbnailImg.style.display = 'none';
-                }                // Timer functionality removed
-            });
-
-            // Handle direct video clicks for play/pause
-            video.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                // Toggle play/pause when clicking directly on video
-                if (video.paused) {
-                    // Pause all other videos first
-                    videoCards.forEach(function(otherCard) {
-                        const otherVideo = otherCard.querySelector('video');
-                        if (otherVideo && !otherVideo.paused) {
-                            otherVideo.pause();
-                            // Show thumbnail again
-                            if (otherCard.thumbnailImg) {
-
-                                otherCard.thumbnailImg.style.display = 'block';
-                            }
-                            otherVideo.classList.remove('playing');
-                            otherCard.querySelector('.video-overlay').style.opacity = '';
-                        }
-                    });
-
-                    // Hide thumbnail and play video
-                    if (card.thumbnailImg) {
-                        card.thumbnailImg.style.display = 'none';
-                    }
-                    video.classList.add('playing');
-                    video.play();                    overlay.style.opacity = '0';
-
-                    // Timer functionality removed
-                } else {
-                    video.pause();
-                    // Show thumbnail again
-                    if (card.thumbnailImg) {
-                        card.thumbnailImg.style.display = 'block';
-                    }
-                    video.classList.remove('playing');
-                    overlay.style.opacity = '';
-
-                    // Timer functionality removed
-                }
-            });
-        }
-    });
-
-    // Tab control functionality
+    // Tab control functionality (simplified - no longer managing multiple video cards)
     const tabControls = document.querySelectorAll('.tab-controls a[data-bs-toggle="collapse"]');
 
     tabControls.forEach(function(tabControl) {
@@ -716,23 +599,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetTab = document.querySelector(targetId);
 
             if (targetTab) {
-                // Pause all videos when switching away from DFB tab
-                if (!targetId.includes('dfb')) {
-                    videoCards.forEach(function(card) {
-                        const video = card.querySelector('video');
-                        if (video && !video.paused) {
-                            video.pause();
-                            // Show thumbnail again
-                            if (card.thumbnailImg) {
-                                card.thumbnailImg.style.display = 'block';
-                            }
-                            video.classList.remove('playing');
-                            const overlay = card.querySelector('.video-overlay');
-                            if (overlay) {
-                                overlay.style.opacity = '';
-                            }
-                        }
-                    });
+                // Pause main video when switching tabs
+                if (mainVideo && !mainVideo.paused) {
+                    mainVideo.pause();
                 }
 
                 // Handle Bootstrap collapse manually
