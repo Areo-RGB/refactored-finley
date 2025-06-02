@@ -2018,19 +2018,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if ("storage" in navigator && "estimate" in navigator.storage) {
           const estimate = await navigator.storage.estimate();
           const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-          const maxStorage = isIOS ? 50 * 1024 * 1024 : 100 * 1024 * 1024;
+          const fallbackStorage = isIOS ? 50 * 1024 * 1024 : 100 * 1024 * 1024;
+          const actualQuota = estimate.quota || fallbackStorage;
 
           return {
             used: estimate.usage || 0,
-            available: estimate.quota || maxStorage,
-            percentage: estimate.usage
-              ? estimate.usage / (estimate.quota || maxStorage)
-              : 0,
+            available: actualQuota,
+            percentage: estimate.usage ? estimate.usage / actualQuota : 0,
             usedMB: Math.round((estimate.usage || 0) / 1024 / 1024),
-            availableMB: Math.round(
-              (estimate.quota || maxStorage) / 1024 / 1024
-            ),
+            availableMB: Math.round(actualQuota / 1024 / 1024),
             isIOS: isIOS,
+            actualQuotaMB: Math.round((estimate.quota || 0) / 1024 / 1024),
+            usingFallback: !estimate.quota,
           };
         }
         return null;
@@ -2056,8 +2055,11 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("Storage Usage:", {
             used: info.usedMB + "MB",
             available: info.availableMB + "MB",
+            actualQuota: info.actualQuotaMB + "MB",
+            usingFallback: info.usingFallback,
             percentage: Math.round(info.percentage * 100) + "%",
             platform: info.isIOS ? "iOS" : "Other",
+            cacheThreshold: "95%",
           });
 
           // Also log cache breakdown
@@ -2066,7 +2068,10 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Cache Status:", {
               caches: cacheNames.length,
               thumbnailCachingEnabled: true,
-              videosCached: false,
+              videosCached: true,
+              videoCacheThreshold: "70%",
+              storageUtilization:
+                Math.round(info.percentage * 100) + "% of available quota",
             });
           } catch (error) {
             console.log("Could not get cache details:", error);
@@ -2199,6 +2204,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if ("scrollRestoration" in window.history)
     window.history.scrollRestoration = "manual";
 
+  // Global variable to store current page cleanup function
+  let currentPageCleanupFunction = null;
+
   //End of Init Template
   if (isAJAX === true) {
     if (window.location.protocol !== "file:") {
@@ -2211,11 +2219,63 @@ document.addEventListener("DOMContentLoaded", () => {
           'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])',
       };
       const swup = new Swup(options);
-      document.addEventListener("swup:pageView", (e) => {
+
+      // Before Swup replaces content, run cleanup for the outgoing page
+      swup.on("willReplaceContent", () => {
+        console.log("🧹 Swup: Cleaning up current page");
+        if (typeof currentPageCleanupFunction === "function") {
+          currentPageCleanupFunction();
+          currentPageCleanupFunction = null;
+        }
+      });
+
+      // After Swup has replaced content and the new page is viewed
+      swup.on("pageView", () => {
+        console.log("🔄 Swup: New page loaded, initializing...");
         init_template();
+
+        // Initialize page-specific functionality based on page identifier
+        initializePageSpecificFunctionality();
       });
     }
   }
 
+  // Function to initialize page-specific functionality
+  function initializePageSpecificFunctionality() {
+    // Check for page-specific identifiers and initialize accordingly
+    const pageContainer = document.getElementById("page");
+    if (!pageContainer) return;
+
+    // Check for Finley profile page
+    if (
+      pageContainer.querySelector(".page-finley-profile") ||
+      document.title.includes("Finley") ||
+      window.location.pathname.includes("finley")
+    ) {
+      console.log("🎯 Initializing Finley Profile Page");
+      if (typeof window.initializeFinleyProfilePage === "function") {
+        currentPageCleanupFunction = window.initializeFinleyProfilePage();
+      }
+    }
+    // Check for Statistiken page
+    else if (
+      pageContainer.querySelector(".page-statistiken") ||
+      document.title.includes("Statistiken") ||
+      window.location.pathname.includes("statistiken")
+    ) {
+      console.log("📊 Initializing Statistiken Page");
+      if (typeof window.initializeStatistikenPage === "function") {
+        currentPageCleanupFunction = window.initializeStatistikenPage();
+      }
+    }
+    // Add more page checks as needed
+    else {
+      console.log("📄 Generic page loaded, no specific initialization needed");
+    }
+  }
+
   init_template();
+
+  // Initialize page-specific functionality on initial load
+  initializePageSpecificFunctionality();
 });

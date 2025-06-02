@@ -24,17 +24,19 @@ This PWA now implements a smart cache priority system designed to handle iOS sto
 - Optional plugins (charts, filterizr, etc.)
 - **Static thumbnail images (server-side generated)**
 
-### 🔵 LOW (Priority 4) - Never Cached
+### 🔵 LOW (Priority 4) - Cached When Storage Available
 
-- **Videos (.mp4, .webm, .ogg, etc.)**
+- **Videos (.mp4, .webm, .ogg, etc.)** - Cached when storage usage < 70%
 - Large images from /images/players/ and /images/fitness/
 - Content from DigitalOcean Spaces
+- **First to be removed** during cache cleanup
 
 ## Storage Limits
 
-- **iOS**: 50MB maximum cache size
-- **Other platforms**: 100MB maximum cache size
-- **Cleanup threshold**: 80% of available storage
+- **iOS**: Uses actual system quota (fallback: 50MB if quota unavailable)
+- **Other platforms**: Uses actual system quota (fallback: 100MB if quota unavailable)
+- **Cleanup threshold**: 95% of available storage (increased for better utilization)
+- **HIGH priority threshold**: 98% (HIGH priority items cached until nearly full)
 
 ## How It Works
 
@@ -43,8 +45,8 @@ This PWA now implements a smart cache priority system designed to handle iOS sto
    - File priority level
    - Current storage usage
    - Platform (iOS vs others)
-3. **Automatic Cleanup**: Removes MEDIUM priority files when storage is 80% full
-4. **Video Exclusion**: Videos are never cached, always streamed from network
+3. **Automatic Cleanup**: Removes LOW priority files (videos) first, then MEDIUM priority files when storage is 95% full
+4. **Smart Video Caching**: Videos are cached when storage usage < 70%, removed first during cleanup
 5. **Server-Side Thumbnails**: Static thumbnail images are cached as MEDIUM priority using video poster attributes
 
 ## Cache Management

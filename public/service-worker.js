@@ -1,13 +1,13 @@
 // To clear cache on devices, always increase APP_VER number after making changes.
 // The app will serve fresh content right away or after 2-3 refreshes (open / close)
 var APP_NAME = "QuoVadis";
-var APP_VER = "4.8.6"; // Incremented for removed theme options
+var APP_VER = "4.9.0"; // Incremented for video caching enabled
 var CACHE_NAME = APP_NAME + "-" + APP_VER;
 
 // iOS Storage Limits and Configuration
-var IOS_MAX_STORAGE = 50 * 1024 * 1024; // 50MB limit for iOS
-var GENERAL_MAX_STORAGE = 100 * 1024 * 1024; // 100MB for other platforms
-var CACHE_CLEANUP_THRESHOLD = 0.8; // Clean up when 80% full
+var IOS_MAX_STORAGE = 50 * 1024 * 1024; // 50MB fallback for iOS (use actual quota when available)
+var GENERAL_MAX_STORAGE = 100 * 1024 * 1024; // 100MB fallback for other platforms
+var CACHE_CLEANUP_THRESHOLD = 0.95; // Clean up when 95% full (increased from 80% to use more available storage)
 
 // Cache Priority Levels
 var PRIORITY = {
@@ -62,7 +62,7 @@ var CACHE_FILES = {
     "preview",
   ],
 
-  // PRIORITY.LOW files (videos, large images) are never cached
+  // PRIORITY.LOW files (videos, large images) - cached when storage available, cleaned up first
 };
 
 // Service Worker Diagnostic. Set true to get console logs.
@@ -119,10 +119,22 @@ async function getStorageUsage() {
 async function shouldCache(request, priority) {
   const url = request.url;
 
-  // Never cache videos or large images (LOW priority)
+  // Check storage for videos and large images (LOW priority)
   if (isVideoRequest(url) || isLargeImageRequest(url)) {
-    if (APP_DIAG) console.log("SW: Skipping cache for video/large image:", url);
-    return false;
+    const storage = await getStorageUsage();
+    // Only cache videos/large images when storage usage is below 70%
+    if (storage.percentage > 0.7) {
+      if (APP_DIAG)
+        console.log(
+          "SW: Storage too full for video/large image:",
+          url,
+          storage.percentage
+        );
+      return false;
+    }
+    if (APP_DIAG)
+      console.log("SW: Caching video/large image (LOW priority):", url);
+    return true;
   }
 
   // Cache thumbnails as MEDIUM priority
@@ -149,6 +161,12 @@ async function shouldCache(request, priority) {
   const storage = await getStorageUsage();
   const isNearLimit = storage.percentage > CACHE_CLEANUP_THRESHOLD;
 
+  // Always cache HIGH priority items unless extremely close to limit
+  if (priority === PRIORITY.HIGH) {
+    return storage.percentage < 0.98; // Only skip HIGH priority at 98% full
+  }
+
+  // For MEDIUM priority, respect the cleanup threshold
   if (isNearLimit && priority > PRIORITY.HIGH) {
     if (APP_DIAG)
       console.log("SW: Storage near limit, skipping medium/low priority:", url);
@@ -171,21 +189,32 @@ async function cleanupCache() {
   const cache = await caches.open(CACHE_NAME);
   const requests = await cache.keys();
 
-  // Remove MEDIUM priority files first, then HIGH (never remove CRITICAL)
+  // Remove LOW priority files first (videos), then MEDIUM, then HIGH (never remove CRITICAL)
   const toDelete = [];
 
+  // First pass: Remove videos and large images (LOW priority)
   for (const request of requests) {
     const url = request.url;
-    const isMediumPriority = CACHE_FILES[PRIORITY.MEDIUM].some((file) =>
-      url.includes(file)
-    );
-
-    if (isMediumPriority) {
+    if (isVideoRequest(url) || isLargeImageRequest(url)) {
       toDelete.push(request);
     }
   }
 
-  // Delete medium priority files
+  // Second pass: If still need space, remove MEDIUM priority files
+  if (toDelete.length === 0) {
+    for (const request of requests) {
+      const url = request.url;
+      const isMediumPriority = CACHE_FILES[PRIORITY.MEDIUM].some((file) =>
+        url.includes(file)
+      );
+
+      if (isMediumPriority || isThumbnailRequest(url)) {
+        toDelete.push(request);
+      }
+    }
+  }
+
+  // Delete selected files
   for (const request of toDelete) {
     await cache.delete(request);
     if (APP_DIAG) console.log("SW: Deleted from cache:", request.url);
@@ -252,17 +281,18 @@ self.addEventListener("fetch", function (event) {
           return networkResponse;
         }
 
-        // Skip caching for videos and large images
-        if (isVideoRequest(url) || isLargeImageRequest(url)) {
-          if (APP_DIAG) console.log("SW: Not caching video/large image:", url);
-          return networkResponse;
-        }
-
         // Determine priority and cache if appropriate
+        const url = event.request.url;
         let priority = PRIORITY.MEDIUM; // Default priority
 
-        // Check if it's a thumbnail (special handling)
-        if (isThumbnailRequest(url)) {
+        // Check if it's a video or large image (LOW priority)
+        if (isVideoRequest(url) || isLargeImageRequest(url)) {
+          priority = PRIORITY.LOW;
+          if (APP_DIAG)
+            console.log("SW: Detected video/large image request:", url);
+        }
+        // Check if it's a thumbnail (MEDIUM priority)
+        else if (isThumbnailRequest(url)) {
           priority = PRIORITY.MEDIUM;
           if (APP_DIAG) console.log("SW: Detected thumbnail request:", url);
         }
