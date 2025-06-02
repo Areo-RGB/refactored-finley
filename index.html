@@ -178,7 +178,6 @@
               ><span>e</span><span>y</span>
             </h1>
             <p class="color-white opacity-70 pt-2 pb-2">
-              <!-- Adjusted padding -->
               <i class="fa fa-futbol me-2"></i>F.C. Hertha 03 Zehlendorf e.V.
             </p>
             <!-- Statistics Container -->
@@ -187,10 +186,10 @@
               style="
                 margin-top: 10px;
                 width: 90%;
-                max-width: 350px;
+                max-width: 380px;
                 margin-left: auto;
                 margin-right: auto;
-                font-size: 0.85rem;
+                font-size: 0.9rem;
               "
             >
               <!-- Statistics items will be populated by JavaScript -->
@@ -551,28 +550,31 @@
       /* Statistics Animation */
       .statistic-item {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 4px 0; /* Slightly more padding for readability */
+        padding: 5px 0; /* Slightly increased padding */
         color: white;
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
-        min-height: 2em; /* Ensure items have some height */
+        min-height: 2.4em; /* Ensure items have some height */
       }
       .statistic-item .stat-exercise-name,
-      .statistic-item .stat-result {
+      .statistic-item .stat-result,
+      .statistic-item .stat-ausgezeichnet-container {
         opacity: 0;
         white-space: nowrap;
-        flex-shrink: 0; /* Prevent shrinking if AUSGEZEICHNET is long */
       }
       .statistic-item .stat-exercise-name {
+        flex-basis: 38%;
+        flex-shrink: 0;
         text-align: left;
-        margin-right: auto; /* Pushes it left */
+        /* Font size will be inherited from .statistics-container */
       }
       .statistic-item .stat-result {
+        font-weight: 600; /* Slightly bolder result */
+        flex-basis: 22%;
+        flex-shrink: 0;
         text-align: right;
-        font-weight: 500;
-        margin-left: auto; /* Pushes it right */
+        /* Font size will be inherited from .statistics-container */
       }
       .animate-slide-in-left {
         animation: slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -605,27 +607,25 @@
 
       /* AUSGEZEICHNET specific styles */
       .stat-ausgezeichnet-container {
-        opacity: 0; /* Start hidden */
-        transform: translateY(-25px); /* Start above for drop-in */
+        transform: translateY(-25px);
         text-align: center;
-        padding: 0 8px; /* Horizontal padding around AUSGEZEICHNET */
-        /* flex-grow: 1; /* Uncomment if you want it to take more central space */
-        flex-shrink: 1; /* Allow to shrink if needed */
+        flex-grow: 1;
+        flex-basis: 40%;
       }
       .stat-ausgezeichnet-text {
-        font-size: 0.75em; /* Adjust size as needed */
+        font-size: 0.9em; /* Relative to parent .statistic-item's font-size */
         font-weight: bold;
-        color: #00ffff; /* Bright neon base color (cyan) */
-        text-shadow: 0 0 2px rgba(255, 255, 255, 0.7),
-          /* Softer inner white glow */ 0 0 5px #00ffff, 0 0 10px #00ffff,
-          0 0 15px #00dddd, 0 0 20px #00bbbb, 0 0 25px #00aaaa;
-        white-space: nowrap; /* Prevent wrapping */
-        display: inline-block; /* Allows transform */
+        color: white;
+        background-color: #28a745; /* Bootstrap success green */
+        padding: 3px 8px; /* Padding inside the green background */
+        border-radius: 4px; /* Rounded corners for a badge look */
+        white-space: nowrap;
+        display: inline-block;
+        line-height: 1.3; /* Adjust line-height for better vertical centering within bg */
       }
       .animate-ausgezeichnet-drop-in {
-        /* Applied to the container */
         animation: ausgezeichnetDropInAnimation 0.7s
-          cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; /* Bounce effect */
+          cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
       }
       @keyframes ausgezeichnetDropInAnimation {
         0% {
@@ -633,7 +633,6 @@
           transform: translateY(-25px) scale(0.8);
         }
         60% {
-          /* Overshoot for bounce */
           opacity: 1;
           transform: translateY(5px) scale(1.05);
         }
@@ -737,7 +736,7 @@
             { name: "20m Sprint", value: "3.59s" },
             { name: "Gewandtheit", value: "7.81s" },
             { name: "Dribbling", value: "10.27s" },
-            { name: "Balljonglieren", value: "0.00" }, // Assuming score, no unit
+            { name: "Balljonglieren", value: "0.00" },
             { name: "Ballkontrolle", value: "10.82s" },
           ];
           const statsContainer = document.querySelector(
@@ -745,7 +744,7 @@
           );
 
           if (statsContainer) {
-            const statsAnimationStartTime = totalFinleyAnimationDuration + 200; // Start after Finley anim + buffer
+            const statsAnimationStartTime = totalFinleyAnimationDuration + 200;
 
             setTimeout(() => {
               statsData.forEach((stat, index) => {
@@ -774,15 +773,15 @@
                 item.appendChild(valueSpan);
                 statsContainer.appendChild(item);
 
-                const rowBaseDelay = index * 300; // Stagger each row's appearance
+                const rowBaseDelay = index * 300;
 
                 setTimeout(() => {
                   item.style.opacity = "1";
                   nameSpan.classList.add("animate-slide-in-left");
                   valueSpan.classList.add("animate-slide-in-right");
 
-                  const nameValueAnimationDuration = 600; // 0.6s for slide-ins
-                  const ausgezeichnetBuffer = 100; // ms buffer after slide-ins finish
+                  const nameValueAnimationDuration = 600;
+                  const ausgezeichnetBuffer = 100;
 
                   setTimeout(() => {
                     ausgezeichnetContainer.classList.add(
