@@ -7,22 +7,11 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
-    <meta name="mobile-web-app-capable" content="yes" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
     />
-    <meta
-      name="theme-color"
-      content="#1b1d21"
-      media="(prefers-color-scheme: dark)"
-    />
-    <meta
-      name="theme-color"
-      content="#ffffff"
-      media="(prefers-color-scheme: light)"
-    />
-    <title>QuoVadis</title>
+    <title>StickyMobile BootStrap</title>
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <link
@@ -36,7 +25,7 @@
     />
     <link
       rel="manifest"
-      href="/manifest.json"
+      href="_manifest.json"
       data-pwa-version="set_in_manifest_and_pwa_js"
     />
     <link
@@ -44,44 +33,18 @@
       sizes="180x180"
       href="app/icons/icon-192x192.png"
     />
-    <link rel="icon" type="image/x-icon" href="app/icons/favicon.ico" />
-
-    <!-- Preload video for better performance -->
-    <link
-      rel="preload"
-      as="video"
-      href="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
-      type="video/mp4"
-    />
-
-    <!-- DNS prefetch for CDN -->
-    <link
-      rel="dns-prefetch"
-      href="//videos-data.fra1.cdn.digitaloceanspaces.com"
-    />
-    <link rel="dns-prefetch" href="//data3.fra1.cdn.digitaloceanspaces.com" />
-    <link
-      rel="preconnect"
-      href="https://videos-data.fra1.cdn.digitaloceanspaces.com"
-      crossorigin
-    />
   </head>
 
   <body
-    class="theme-dark"
-    data-highlight="blue-default"
+    class="theme-light"
+    data-highlight="highlight-red"
     data-gradient="body-default"
   >
-
-    <!-- @id:preloader -->
     <div id="preloader">
       <div class="spinner-border color-highlight" role="status"></div>
     </div>
 
-
-    <!-- @id:page-container -->
     <div id="page">
-      <!-- @id:footer-bar -->
       <div id="footer-bar" class="footer-bar-1">
         <a href="page-statistiken.html"
           ><i class="fa fa-chart-bar"></i><span>Statistiken</span></a
@@ -98,73 +61,224 @@
         <a href="#" data-menu="menu-settings"
           ><i class="fa fa-cog"></i><span>Settings</span></a
         >
-        </div>
+      </div>
 
-
-
-      <div class="page-content">
-
+      <div class="page-content pb-0">
         <div
-          class="card mb-0 profile-image-card"
-          data-card-height="600"
-          style="
-            background-image: url('https://videos-data.fra1.cdn.digitaloceanspaces.com/Finley_portrait.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-          "
+          class="card mb-0"
+          data-card-height="cover"
+          style="position: relative; overflow: hidden"
+          id="video-swiper"
         >
-
-          <div class="card-top">
-            <h6 class="text-center mt-3 opacity-30 font-300"></h6>
+          <!-- Video Slide 1 -->
+          <div class="video-slide active" data-slide="0">
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+              "
+            >
+              <source
+                src="https://videos-data.fra1.cdn.digitaloceanspaces.com/finley-page-profile"
+                type="video/mp4"
+              />
+            </video>
           </div>
-          <div class="card-bottom ms-3">
-            <h1 class="font-40 line-height-xl">Finley<br />Charlier</h1>
-            <p class="pb-0 mb-0 font-12">
-              <i class="fa fa-map-marker me-2"></i>F.C. Hertha 03 Zehlendorf e.
-              V.
+
+          <!-- Video Slide 2 -->
+          <div class="video-slide" data-slide="1">
+            <video
+              muted
+              loop
+              playsinline
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+              "
+            >
+              <source
+                src="https://videos-data.fra1.cdn.digitaloceanspaces.com/3.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+
+          <!-- Swipe indicators -->
+          <div
+            class="swipe-indicators"
+            style="
+              position: absolute;
+              bottom: 20px;
+              left: 50%;
+              transform: translateX(-50%);
+              z-index: 4;
+              display: flex;
+              gap: 8px;
+            "
+          >
+            <div
+              class="indicator active"
+              data-slide="0"
+              style="
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.8);
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="indicator"
+              data-slide="1"
+              style="
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                cursor: pointer;
+              "
+            ></div>
+          </div>
+
+          <div class="card-top pt-3" style="position: relative; z-index: 2">
+            <div class="header-clear"></div>
+          </div>
+          <div
+            class="card-bottom px-3"
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 3;
+              text-align: center;
+              width: 100%;
+            "
+          >
+            <h1 class="color-white font-24 opacity-50">Hello, I am</h1>
+            <h1
+              class="color-white finley-animated-heading"
+              style="font-size: 4rem; font-weight: bold; margin: 15px 0 10px"
+            >
+              <span>F</span><span>i</span><span>n</span><span>l</span
+              ><span>e</span><span>y</span>
+            </h1>
+            <p class="color-white opacity-70 pt-2 pb-2">
+              <!-- Adjusted padding -->
+              <i class="fa fa-futbol me-2"></i>F.C. Hertha 03 Zehlendorf e.V.
             </p>
+            <!-- Statistics Container -->
+            <div
+              class="statistics-container"
+              style="
+                margin-top: 10px;
+                width: 90%;
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 0.85rem;
+              "
+            >
+              <!-- Statistics items will be populated by JavaScript -->
+            </div>
           </div>
-          <div class="card-overlay bg-gradient-fade-small"></div>
+          <div class="card-overlay bg-gradient" style="z-index: 2"></div>
+          <div
+            class="card-overlay bg-gradient fa-rotate-180 opacity-50"
+            style="z-index: 2"
+          ></div>
         </div>
-
-
-        <!-- @id:sprint-results-accordion -->
-        >
       </div>
       <!-- End of Page Content-->
-      <!-- #endregion Main Page Content -->
-      <!-- ===== END MAIN CONTENT SECTION ===== -->
-
-      <!-- ===== MODALS AND MENUS SECTION ===== -->
-      <!-- @id:modals-and-menus -->
-      <!-- #region Modals and Menus -->
-
       <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
 
-      <!-- Fullscreen Video Modal -->
-      <div id="fullscreen-video-modal" class="fullscreen-video-modal">
-        <div class="fullscreen-video-container">
-          <button class="fullscreen-close-btn" id="fullscreen-close-btn">
-            <i class="fa fa-times"></i>
-          </button>
-          <video id="fullscreen-video" class="fullscreen-video" controls>
-            <source src="" type="video/mp4" />
-          </video>
-          <div class="fullscreen-video-info">
-            <div class="fullscreen-video-title" id="fullscreen-video-title">
-              Exercise Name
-            </div>
-            <div class="fullscreen-video-time" id="fullscreen-video-time">
-              0.00 s
-            </div>
+      <div
+        id="menu-schedule"
+        class="menu menu-box-modal menu-box-detached rounded-m"
+      >
+        <div class="menu-title">
+          <h1>Book a Photoshoot</h1>
+          <a href="#" class="close-menu mt-n2"
+            ><i class="fa fa-times font-16"></i
+          ></a>
+        </div>
+        <div class="divider divider-margins mt-3"></div>
+        <div class="content">
+          <div
+            class="input-style has-borders input-style-always-active has-icon validate-field mb-4"
+          >
+            <i class="fa fa-user"></i>
+            <input
+              type="name"
+              class="form-control validate-name"
+              id="form1"
+              placeholder="Name"
+            />
+            <label for="form1" class="color-blue-dark">Name</label>
+            <i class="fa fa-times disabled invalid color-red-dark"></i>
+            <i class="fa fa-check disabled valid color-green-dark"></i>
+            <em>(required)</em>
           </div>
+
+          <div
+            class="input-style has-borders input-style-always-active has-icon validate-field mb-4"
+          >
+            <i class="fa fa-phone"></i>
+            <input
+              type="tel"
+              class="form-control validate-text"
+              id="form4"
+              placeholder="Phone"
+            />
+            <label for="form4" class="color-blue-dark">Phone</label>
+            <i class="fa fa-times disabled invalid color-red-dark"></i>
+            <i class="fa fa-check disabled valid color-green-dark"></i>
+            <em>(required)</em>
+          </div>
+
+          <div
+            class="input-style has-borders input-style-always-active has-icon mb-4"
+          >
+            <i class="fa fa-calendar"></i>
+            <input
+              type="date"
+              value="2030-12-31"
+              max="2030-01-01"
+              min="2021-01-01"
+              class="form-control validate-text"
+              id="form6"
+              placeholder="Phone"
+            />
+            <label for="form6" class="color-blue-dark">Select Date</label>
+            <i
+              class="fa fa-check disabled valid me-4 pe-3 font-12 color-green-dark"
+            ></i>
+            <i
+              class="fa fa-check disabled invalid me-4 pe-3 font-12 color-red-dark"
+            ></i>
+          </div>
+          <a
+            href="#"
+            class="close-menu btn btn-m text-uppercase font-700 btn-full bg-blue-dark rounded-sm mt-4 mb-4"
+            >Call me for Booking</a
+          >
         </div>
       </div>
 
-      <!-- START: Settings Menu Component -->
-      <!-- @id:menu-settings -->
-      <!-- #region Settings Menu -->
       <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
         <div class="menu-title mt-0 pt-0">
           <h1>Settings</h1>
@@ -198,1735 +312,487 @@
               </div>
               <i class="fa fa-angle-right"></i>
             </a>
-            <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
-              <i
-                class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"
-              ></i>
-              <span>Fullscreen Mode</span>
-              <div class="custom-control scale-switch ios-switch">
-                <input
-                  type="checkbox"
-                  class="ios-input"
-                  id="switch-fullscreen-mode"
-                />
-                <label
-                  class="custom-control-label"
-                  for="switch-fullscreen-mode"
-                ></label>
-              </div>
+          </div>
+          <div class="list-group list-custom-large">
+            <a data-menu="menu-highlights" href="#">
+              <i class="fa font-14 fa-tint bg-green-dark rounded-s"></i>
+              <span>Page Highlight</span>
+              <strong>16 Colors Highlights Included</strong>
+              <span class="badge bg-highlight color-white">HOT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <a data-menu="menu-backgrounds" href="#" class="border-0">
+              <i class="fa font-14 fa-cog bg-blue-dark rounded-s"></i>
+              <span>Background Color</span>
+              <strong>10 Page Gradients Included</strong>
+              <span class="badge bg-highlight color-white">NEW</span>
               <i class="fa fa-angle-right"></i>
             </a>
           </div>
-          <div class="list-group list-custom-large">
-            <!-- <a data-menu="menu-highlights" href="#">
-                    <i class="fa font-14 fa-tint bg-green-dark rounded-s"></i>
-                    <span>Page Highlight</span>
-                    <strong>16 Colors Highlights Included</strong>
-                    <span class="badge bg-highlight color-white">HOT</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a data-menu="menu-backgrounds" href="#" class="border-0">
-                    <i class="fa font-14 fa-cog bg-blue-dark rounded-s"></i>
-                    <span>Background Color</span>
-                    <strong>10 Page Gradients Included</strong>
-                    <span class="badge bg-highlight color-white">NEW</span>
-                    <i class="fa fa-angle-right"></i>
-                </a> -->
+        </div>
+      </div>
+      <!-- Menu Settings Highlights-->
+      <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached">
+        <div class="menu-title">
+          <h1>Highlights</h1>
+          <p class="color-highlight">Any Element can have a Highlight Color</p>
+          <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="divider divider-margins mb-n2"></div>
+        <div class="content">
+          <div class="highlight-changer">
+            <a href="#" data-change-highlight="blue"
+              ><i class="fa fa-circle color-blue-dark"></i
+              ><span class="color-blue-light">Default</span></a
+            >
+            <a href="#" data-change-highlight="red"
+              ><i class="fa fa-circle color-red-dark"></i
+              ><span class="color-red-light">Red</span></a
+            >
+            <a href="#" data-change-highlight="orange"
+              ><i class="fa fa-circle color-orange-dark"></i
+              ><span class="color-orange-light">Orange</span></a
+            >
+            <a href="#" data-change-highlight="pink2"
+              ><i class="fa fa-circle color-pink2-dark"></i
+              ><span class="color-pink-dark">Pink</span></a
+            >
+            <a href="#" data-change-highlight="magenta"
+              ><i class="fa fa-circle color-magenta-dark"></i
+              ><span class="color-magenta-light">Purple</span></a
+            >
+            <a href="#" data-change-highlight="aqua"
+              ><i class="fa fa-circle color-aqua-dark"></i
+              ><span class="color-aqua-light">Aqua</span></a
+            >
+            <a href="#" data-change-highlight="teal"
+              ><i class="fa fa-circle color-teal-dark"></i
+              ><span class="color-teal-light">Teal</span></a
+            >
+            <a href="#" data-change-highlight="mint"
+              ><i class="fa fa-circle color-mint-dark"></i
+              ><span class="color-mint-light">Mint</span></a
+            >
+            <a href="#" data-change-highlight="green"
+              ><i class="fa fa-circle color-green-light"></i
+              ><span class="color-green-light">Green</span></a
+            >
+            <a href="#" data-change-highlight="grass"
+              ><i class="fa fa-circle color-green-dark"></i
+              ><span class="color-green-dark">Grass</span></a
+            >
+            <a href="#" data-change-highlight="sunny"
+              ><i class="fa fa-circle color-yellow-light"></i
+              ><span class="color-yellow-light">Sunny</span></a
+            >
+            <a href="#" data-change-highlight="yellow"
+              ><i class="fa fa-circle color-yellow-dark"></i
+              ><span class="color-yellow-light">Goldish</span></a
+            >
+            <a href="#" data-change-highlight="brown"
+              ><i class="fa fa-circle color-brown-dark"></i
+              ><span class="color-brown-light">Wood</span></a
+            >
+            <a href="#" data-change-highlight="night"
+              ><i class="fa fa-circle color-dark-dark"></i
+              ><span class="color-dark-light">Night</span></a
+            >
+            <a href="#" data-change-highlight="dark"
+              ><i class="fa fa-circle color-dark-light"></i
+              ><span class="color-dark-light">Dark</span></a
+            >
+            <div class="clearfix"></div>
+          </div>
+          <a
+            href="#"
+            data-menu="menu-settings"
+            class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4"
+            >Back to Settings</a
+          >
+        </div>
+      </div>
+      <!-- Menu Settings Backgrounds-->
+      <div id="menu-backgrounds" class="menu menu-box-bottom menu-box-detached">
+        <div class="menu-title">
+          <h1>Backgrounds</h1>
+          <p class="color-highlight">Change Page Color Behind Content Boxes</p>
+          <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="divider divider-margins mb-n2"></div>
+        <div class="content">
+          <div class="background-changer">
+            <a href="#" data-change-background="default"
+              ><i class="bg-theme"></i
+              ><span class="color-dark-dark">Default</span></a
+            >
+            <a href="#" data-change-background="plum"
+              ><i class="body-plum"></i
+              ><span class="color-plum-dark">Plum</span></a
+            >
+            <a href="#" data-change-background="magenta"
+              ><i class="body-magenta"></i
+              ><span class="color-dark-dark">Magenta</span></a
+            >
+            <a href="#" data-change-background="dark"
+              ><i class="body-dark"></i
+              ><span class="color-dark-dark">Dark</span></a
+            >
+            <a href="#" data-change-background="violet"
+              ><i class="body-violet"></i
+              ><span class="color-violet-dark">Violet</span></a
+            >
+            <a href="#" data-change-background="red"
+              ><i class="body-red"></i
+              ><span class="color-red-dark">Red</span></a
+            >
+            <a href="#" data-change-background="green"
+              ><i class="body-green"></i
+              ><span class="color-green-dark">Green</span></a
+            >
+            <a href="#" data-change-background="sky"
+              ><i class="body-sky"></i
+              ><span class="color-sky-dark">Sky</span></a
+            >
+            <a href="#" data-change-background="orange"
+              ><i class="body-orange"></i
+              ><span class="color-orange-dark">Orange</span></a
+            >
+            <a href="#" data-change-background="yellow"
+              ><i class="body-yellow"></i
+              ><span class="color-yellow-dark">Yellow</span></a
+            >
+            <div class="clearfix"></div>
+          </div>
+          <a
+            href="#"
+            data-menu="menu-settings"
+            class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4"
+            >Back to Settings</a
+          >
+        </div>
+      </div>
+      <!-- Menu Share -->
+      <div id="menu-share" class="menu menu-box-bottom menu-box-detached">
+        <div class="menu-title mt-n1">
+          <h1>Share the Love</h1>
+          <p class="color-highlight">
+            Just Tap the Social Icon. We'll add the Link
+          </p>
+          <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="content mb-0">
+          <div class="divider mb-0"></div>
+          <div class="list-group list-custom-small list-icon-0">
+            <a href="auto_generated" class="shareToFacebook external-link">
+              <i class="font-18 fab fa-facebook-square color-facebook"></i>
+              <span class="font-13">Facebook</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="auto_generated" class="shareToTwitter external-link">
+              <i class="font-18 fab fa-twitter-square color-twitter"></i>
+              <span class="font-13">Twitter</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="auto_generated" class="shareToLinkedIn external-link">
+              <i class="font-18 fab fa-linkedin color-linkedin"></i>
+              <span class="font-13">LinkedIn</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="auto_generated" class="shareToWhatsApp external-link">
+              <i class="font-18 fab fa-whatsapp-square color-whatsapp"></i>
+              <span class="font-13">WhatsApp</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="auto_generated" class="shareToMail external-link border-0">
+              <i class="font-18 fa fa-envelope-square color-mail"></i>
+              <span class="font-13">Email</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
           </div>
         </div>
       </div>
-      <!-- #endregion Settings Menu -->
-      <!-- END: Settings Menu Component -->
-
-      <!-- #endregion Modals and Menus -->
-      <!-- ===== END MODALS AND MENUS SECTION ===== -->
     </div>
-    <!-- ===== END PAGE CONTAINER ===== -->
 
-    <!-- ===== SCRIPTS SECTION ===== -->
-    <!-- @id:scripts -->
-    <!-- #region Scripts -->
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="scripts/custom.js"></script>
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function () {
-        console.log("🚀 Initializing page functionality...");
 
-        // Metric card functionality for fullscreen video
-        const metricCards = document.querySelectorAll(".metric-card");
-        const fullscreenModal = document.getElementById(
-          "fullscreen-video-modal"
-        );
-        const fullscreenVideo = document.getElementById("fullscreen-video");
-        const fullscreenVideoTitle = document.getElementById(
-          "fullscreen-video-title"
-        );
-        const closeFullscreenBtn = document.getElementById(
-          "close-fullscreen-video"
-        );
-        const toggleFullscreenBtn =
-          document.getElementById("toggle-fullscreen");
-
-        // Handle metric card clicks
-        metricCards.forEach(function (card) {
-          card.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            const videoUrl = card.getAttribute("data-video");
-            const title = card.getAttribute("data-title");
-
-            if (videoUrl && fullscreenModal && fullscreenVideo) {
-              // Set video source and title
-              fullscreenVideo.querySelector("source").src = videoUrl;
-              fullscreenVideo.load();
-              fullscreenVideoTitle.textContent = title;
-
-              // Show modal
-              fullscreenModal.style.display = "block";
-              document.body.style.overflow = "hidden"; // Prevent background scrolling
-
-              // Auto-play video
-              fullscreenVideo.play().catch(function (error) {
-                console.log("Auto-play prevented:", error);
-              });
-            }
-          });
-        });
-
-        // Close fullscreen video
-        function closeFullscreenVideo() {
-          if (fullscreenModal) {
-            fullscreenModal.style.display = "none";
-            document.body.style.overflow = ""; // Restore scrolling
-
-            if (fullscreenVideo) {
-              fullscreenVideo.pause();
-              fullscreenVideo.currentTime = 0;
-            }
-
-            // Exit browser fullscreen if active
-            if (document.fullscreenElement) {
-              document.exitFullscreen();
-            }
-          }
-        }
-
-        // Close button event
-        if (closeFullscreenBtn) {
-          closeFullscreenBtn.addEventListener("click", closeFullscreenVideo);
-        }
-
-        // Close on modal background click
-        if (fullscreenModal) {
-          fullscreenModal.addEventListener("click", function (e) {
-            if (e.target === fullscreenModal) {
-              closeFullscreenVideo();
-            }
-          });
-        }
-
-        // Escape key to close
-        document.addEventListener("keydown", function (e) {
-          if (
-            e.key === "Escape" &&
-            fullscreenModal &&
-            fullscreenModal.style.display === "block"
-          ) {
-            closeFullscreenVideo();
-          }
-        });
-
-        // Toggle browser fullscreen
-        if (toggleFullscreenBtn) {
-          toggleFullscreenBtn.addEventListener("click", function () {
-            if (!document.fullscreenElement) {
-              fullscreenModal
-                .requestFullscreen()
-                .then(function () {
-                  toggleFullscreenBtn.innerHTML =
-                    '<i class="fa fa-compress"></i> Exit Fullscreen';
-                })
-                .catch(function (error) {
-                  console.log("Fullscreen request failed:", error);
-                });
-            } else {
-              document.exitFullscreen().then(function () {
-                toggleFullscreenBtn.innerHTML =
-                  '<i class="fa fa-expand"></i> Fullscreen';
-              });
-            }
-          });
-        }
-
-        // Handle fullscreen change events
-        document.addEventListener("fullscreenchange", function () {
-          if (toggleFullscreenBtn) {
-            if (document.fullscreenElement) {
-              toggleFullscreenBtn.innerHTML =
-                '<i class="fa fa-compress"></i> Exit Fullscreen';
-            } else {
-              toggleFullscreenBtn.innerHTML =
-                '<i class="fa fa-expand"></i> Fullscreen';
-            }
-          }
-        });
-
-        // Video card functionality
-        const videoCards = document.querySelectorAll(".video-card");
-
-        // Home Workout functionality
-        let workoutTimer = null;
-        let workoutStartTime = 0;
-        let workoutElapsedTime = 0;
-        let workoutPaused = false;
-        let currentExerciseDuration = 15 * 60; // 15 minutes default
-
-        const exercises = {
-          "push-ups": {
-            name: "Push-Up Challenge",
-            duration: 15 * 60,
-            video: "images/players/bent.m.mp4",
-          },
-          squats: {
-            name: "Squats",
-            duration: 5 * 60,
-            video: "images/players/vgl-b-f.MP4",
-          },
-          planks: {
-            name: "Planks",
-            duration: 3 * 60,
-            video: "images/players/bent.m.mp4",
-          },
-          burpees: {
-            name: "Burpees",
-            duration: 4 * 60,
-            video: "images/players/vgl-b-f.MP4",
-          },
-        };
-
-        let currentExercise = "push-ups";
-
-        // Workout timer functions
-        function formatTime(seconds) {
-          const mins = Math.floor(seconds / 60);
-          const secs = seconds % 60;
-          return `${mins
-            .toString()
-            .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
-        }
-
-        function updateWorkoutTimer() {
-          const timerElement = document.getElementById("workout-timer");
-          if (timerElement) {
-            const elapsed = formatTime(workoutElapsedTime);
-            const total = formatTime(currentExerciseDuration);
-            timerElement.textContent = `${elapsed} / ${total}`;
-          }
-        }
-
-        function startWorkoutTimer() {
-          if (!workoutPaused) {
-            workoutStartTime = Date.now() - workoutElapsedTime * 1000;
-          } else {
-            workoutStartTime = Date.now() - workoutElapsedTime * 1000;
-            workoutPaused = false;
-          }
-
-          workoutTimer = setInterval(() => {
-            workoutElapsedTime = Math.floor(
-              (Date.now() - workoutStartTime) / 1000
-            );
-            updateWorkoutTimer();
-
-            if (workoutElapsedTime >= currentExerciseDuration) {
-              pauseWorkoutTimer();
-            }
-          }, 1000);
-        }
-
-        function pauseWorkoutTimer() {
-          if (workoutTimer) {
-            clearInterval(workoutTimer);
-            workoutTimer = null;
-            workoutPaused = true;
-          }
-        }
-
-        function resetWorkoutTimer() {
-          if (workoutTimer) {
-            clearInterval(workoutTimer);
-            workoutTimer = null;
-          }
-          workoutElapsedTime = 0;
-          workoutPaused = false;
-          updateWorkoutTimer();
-        }
-
-        // Main video player functionality
-        function initMainVideoPlayer() {
-          const mainVideo = document.getElementById("main-workout-video");
-          const playPauseBtn = document.getElementById("play-pause-btn");
-          const videoProgress = document.getElementById("video-progress");
-          const videoTime = document.getElementById("video-time");
-          const overlay = document.getElementById("main-video-overlay");
-
-          if (!mainVideo) return;
-
-          // Update video time and progress
-          mainVideo.addEventListener("timeupdate", function () {
-            if (mainVideo.duration) {
-              const progress =
-                (mainVideo.currentTime / mainVideo.duration) * 100;
-              if (videoProgress) videoProgress.style.width = progress + "%";
-
-              if (videoTime) {
-                const current = formatTime(Math.floor(mainVideo.currentTime));
-                const duration = formatTime(Math.floor(mainVideo.duration));
-                videoTime.textContent = `${current} / ${duration}`;
-              }
-            }
-          });
-
-          // Play/pause functionality
-          function togglePlayPause() {
-            if (mainVideo.paused) {
-              mainVideo.play();
-              if (playPauseBtn)
-                playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
-              if (overlay) overlay.style.opacity = "0";
-            } else {
-              mainVideo.pause();
-              if (playPauseBtn)
-                playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
-              if (overlay) overlay.style.opacity = "1";
-            }
-          }
-
-          // Event listeners
-          if (overlay) overlay.addEventListener("click", togglePlayPause);
-          if (playPauseBtn)
-            playPauseBtn.addEventListener("click", togglePlayPause);
-          mainVideo.addEventListener("click", togglePlayPause);
-        }
-
-        // Switch exercise function
-        function switchExercise(exerciseKey) {
-          const exercise = exercises[exerciseKey];
-          if (!exercise) return;
-
-          currentExercise = exerciseKey;
-          currentExerciseDuration = exercise.duration;
-
-          // Update UI
-          const titleElement = document.getElementById(
-            "current-exercise-title"
-          );
-          if (titleElement) titleElement.textContent = exercise.name;
-
-          // Update main video
-          const mainVideo = document.getElementById("main-workout-video");
-          if (mainVideo) {
-            mainVideo.pause();
-            mainVideo.querySelector("source").src = exercise.video;
-            mainVideo.load();
-          }
-
-          // Reset timer
-          resetWorkoutTimer();
-
-          // Reset video controls
-          const playPauseBtn = document.getElementById("play-pause-btn");
-          const overlay = document.getElementById("main-video-overlay");
-          if (playPauseBtn)
-            playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
-          if (overlay) overlay.style.opacity = "1";
-        }
-
-        // Function to extract thumbnail from video with improved error handling
-        function extractThumbnail(video, canvas, time = 1) {
-          return new Promise((resolve, reject) => {
-            const tempVideo = document.createElement("video");
-            tempVideo.crossOrigin = "anonymous";
-            tempVideo.muted = true;
-            tempVideo.preload = "metadata";
-            tempVideo.playsInline = true;
-
-            // Set timeout for thumbnail extraction
-            const timeoutId = setTimeout(() => {
-              console.warn("⏰ Thumbnail extraction timeout");
-              reject(new Error("Thumbnail extraction timeout"));
-            }, 8000); // 8 second timeout
-
-            tempVideo.addEventListener("loadedmetadata", function () {
-              console.log("📊 Video metadata loaded for thumbnail extraction");
-              tempVideo.currentTime = Math.min(time, tempVideo.duration * 0.1); // 10% into video or 1 second
-            });
-
-            tempVideo.addEventListener("seeked", function () {
-              try {
-                console.log("🎯 Video seeked, extracting thumbnail frame...");
-
-                const ctx = canvas.getContext("2d");
-                canvas.width = tempVideo.videoWidth || 640;
-                canvas.height = tempVideo.videoHeight || 360;
-                ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
-
-                // Convert canvas to blob and create object URL
-                canvas.toBlob(
-                  function (blob) {
-                    if (blob) {
-                      const thumbnailUrl = URL.createObjectURL(blob);
-                      clearTimeout(timeoutId);
-                      resolve(thumbnailUrl);
-                      console.log("✅ Thumbnail extracted successfully");
-                    } else {
-                      clearTimeout(timeoutId);
-                      reject(new Error("Failed to create blob from canvas"));
-                    }
-                  },
-                  "image/jpeg",
-                  0.8
-                );
-              } catch (error) {
-                console.error("❌ Error extracting thumbnail:", error);
-                clearTimeout(timeoutId);
-                reject(error);
-              }
-            });
-
-            tempVideo.addEventListener("error", function (e) {
-              console.error("❌ Video error during thumbnail extraction:", e);
-              clearTimeout(timeoutId);
-              reject(
-                new Error("Failed to load video for thumbnail extraction")
-              );
-            });
-
-            tempVideo.addEventListener("loadstart", function () {
-              console.log("🔄 Video loading started for thumbnail extraction");
-            });
-
-            tempVideo.src = video.querySelector("source").src;
-          });
-        }
-
-        videoCards.forEach(function (card, index) {
-          const video = card.querySelector("video");
-          const canvas = card.querySelector(".video-thumbnail");
-          const overlay = card.querySelector(".video-overlay");
-          const playButton = card.querySelector(".play-button");
-
-          if (video && canvas && overlay && playButton) {
-            // Stagger thumbnail extraction to prevent browser overload
-            setTimeout(() => {
-              console.log(
-                `🖼️ Extracting thumbnail for video card ${index + 1}`
-              );
-
-              // Extract and set thumbnail
-              extractThumbnail(video, canvas)
-                .then(function (thumbnailUrl) {
-                  // Create thumbnail image element
-                  const thumbnailImg = document.createElement("img");
-                  thumbnailImg.src = thumbnailUrl;
-                  thumbnailImg.className = "video-thumbnail";
-                  thumbnailImg.style.cssText =
-                    "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;";
-
-                  // Insert thumbnail before overlay
-                  card
-                    .querySelector(".video-container")
-                    .insertBefore(thumbnailImg, overlay);
-
-                  // Store reference for later removal
-                  card.thumbnailImg = thumbnailImg;
-
-                  console.log(
-                    `✅ Thumbnail loaded for video card ${index + 1}`
-                  );
-                })
-                .catch(function (error) {
-                  console.warn(
-                    `❌ Failed to extract thumbnail for video card ${
-                      index + 1
-                    }:`,
-                    error
-                  );
-                  // Fallback: show video element directly
-                  video.style.display = "block";
-                });
-            }, index * 300); // 300ms delay between each thumbnail extraction
-
-            // Handle card click to play/pause video
-            card.addEventListener("click", function (e) {
-              e.preventDefault();
-
-              if (video.paused) {
-                // Pause all other videos first
-                videoCards.forEach(function (otherCard) {
-                  const otherVideo = otherCard.querySelector("video");
-                  if (otherVideo && !otherVideo.paused) {
-                    otherVideo.pause();
-                    // Show thumbnail again
-                    if (otherCard.thumbnailImg) {
-                      otherCard.thumbnailImg.style.display = "block";
-                    }
-                    otherVideo.classList.remove("playing");
-                    otherCard.querySelector(".video-overlay").style.opacity =
-                      "";
-                  }
-                });
-
-                // Hide thumbnail and play video
-                if (card.thumbnailImg) {
-                  card.thumbnailImg.style.display = "none";
-                }
-                video.classList.add("playing");
-                video.play();
-                overlay.style.opacity = "0";
-              } else {
-                video.pause();
-                // Show thumbnail again
-                if (card.thumbnailImg) {
-                  card.thumbnailImg.style.display = "block";
-                }
-                video.classList.remove("playing");
-                overlay.style.opacity = "";
-              }
-            });
-
-            // Handle video ended event
-            video.addEventListener("ended", function () {
-              overlay.style.opacity = "";
-              video.currentTime = 0; // Reset to beginning
-              video.classList.remove("playing");
-              // Show thumbnail again
-              if (card.thumbnailImg) {
-                card.thumbnailImg.style.display = "block";
-              }
-            });
-
-            // Handle video pause event
-            video.addEventListener("pause", function () {
-              overlay.style.opacity = "";
-              video.classList.remove("playing");
-              // Show thumbnail again
-              if (card.thumbnailImg) {
-                card.thumbnailImg.style.display = "block";
-              }
-            });
-
-            // Handle video play event
-            video.addEventListener("play", function () {
-              overlay.style.opacity = "0";
-              video.classList.add("playing");
-              // Hide thumbnail
-              if (card.thumbnailImg) {
-                card.thumbnailImg.style.display = "none";
-              }
-            });
-
-            // Handle direct video clicks for play/pause
-            video.addEventListener("click", function (e) {
-              e.preventDefault();
-              e.stopPropagation();
-
-              // Toggle play/pause when clicking directly on video
-              if (video.paused) {
-                // Pause all other videos first
-                videoCards.forEach(function (otherCard) {
-                  const otherVideo = otherCard.querySelector("video");
-                  if (otherVideo && !otherVideo.paused) {
-                    otherVideo.pause();
-                    // Show thumbnail again
-                    if (otherCard.thumbnailImg) {
-                      otherCard.thumbnailImg.style.display = "block";
-                    }
-                    otherVideo.classList.remove("playing");
-                    otherCard.querySelector(".video-overlay").style.opacity =
-                      "";
-                  }
-                });
-
-                // Hide thumbnail and play video
-                if (card.thumbnailImg) {
-                  card.thumbnailImg.style.display = "none";
-                }
-                video.classList.add("playing");
-                video.play();
-                overlay.style.opacity = "0";
-              } else {
-                video.pause();
-                // Show thumbnail again
-                if (card.thumbnailImg) {
-                  card.thumbnailImg.style.display = "block";
-                }
-                video.classList.remove("playing");
-                overlay.style.opacity = "";
-              }
-            });
-          }
-        });
-
-        // Tab control functionality
-        const tabControls = document.querySelectorAll(
-          '.tab-controls a[data-bs-toggle="collapse"]'
-        );
-
-        tabControls.forEach(function (tabControl) {
-          tabControl.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            // Get the target tab content
-            const targetId = this.getAttribute("data-bs-target");
-            const targetTab = document.querySelector(targetId);
-
-            if (targetTab) {
-              // Pause all videos when switching away from DFB tab
-              if (!targetId.includes("dfb")) {
-                videoCards.forEach(function (card) {
-                  const video = card.querySelector("video");
-                  if (video && !video.paused) {
-                    video.pause();
-                    // Show thumbnail again
-                    if (card.thumbnailImg) {
-                      card.thumbnailImg.style.display = "block";
-                    }
-                    video.classList.remove("playing");
-                    const overlay = card.querySelector(".video-overlay");
-                    if (overlay) {
-                      overlay.style.opacity = "";
-                    }
-                  }
-                });
-              }
-
-              // Handle Bootstrap collapse manually
-              const parentId = targetTab.getAttribute("data-bs-parent");
-              const parent = document.querySelector(parentId);
-
-              if (parent) {
-                // Hide all other tabs in the same group
-                const allTabs = parent.querySelectorAll(".collapse");
-                allTabs.forEach(function (tab) {
-                  if (tab !== targetTab) {
-                    tab.classList.remove("show");
-                  }
-                });
-
-                // Show the target tab
-                targetTab.classList.add("show");
-
-                // Update active state on tab controls
-                const allTabControls =
-                  parent.parentElement.querySelectorAll(".tab-controls a");
-                allTabControls.forEach(function (control) {
-                  control.removeAttribute("data-active");
-                });
-                this.setAttribute("data-active", "");
-              }
-            }
-          });
-        });
-
-        // Initialize home workout functionality
-        initMainVideoPlayer();
-        updateWorkoutTimer();
-
-        // Timer control event listeners
-        const timerStartBtn = document.getElementById("timer-start");
-        const timerPauseBtn = document.getElementById("timer-pause");
-        const timerResetBtn = document.getElementById("timer-reset");
-
-        if (timerStartBtn) {
-          timerStartBtn.addEventListener("click", startWorkoutTimer);
-        }
-
-        if (timerPauseBtn) {
-          timerPauseBtn.addEventListener("click", pauseWorkoutTimer);
-        }
-
-        if (timerResetBtn) {
-          timerResetBtn.addEventListener("click", resetWorkoutTimer);
-        }
-
-        // Exercise preview click handlers
-        const exercisePreviews = document.querySelectorAll(".exercise-preview");
-        exercisePreviews.forEach(function (preview) {
-          preview.addEventListener("click", function (e) {
-            e.preventDefault();
-            const exerciseKey = this.getAttribute("data-exercise");
-            if (exerciseKey) {
-              switchExercise(exerciseKey);
-            }
-          });
-        });
-
-        // Add video card functionality to preview videos with staggered loading
-        const previewVideos = document.querySelectorAll(".preview-video");
-        previewVideos.forEach(function (container, index) {
-          const video = container.querySelector("video");
-          const canvas = container.querySelector(".video-thumbnail");
-          const overlay = container.querySelector(".video-overlay");
-
-          if (video && canvas && overlay) {
-            // Stagger preview thumbnail extraction
-            setTimeout(() => {
-              console.log(`🖼️ Extracting preview thumbnail ${index + 1}`);
-
-              // Extract and set thumbnail for preview videos
-              extractThumbnail(video, canvas)
-                .then(function (thumbnailUrl) {
-                  const thumbnailImg = document.createElement("img");
-                  thumbnailImg.src = thumbnailUrl;
-                  thumbnailImg.className = "video-thumbnail";
-                  thumbnailImg.style.cssText =
-                    "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;";
-
-                  container.insertBefore(thumbnailImg, overlay);
-                  console.log(`✅ Preview thumbnail loaded ${index + 1}`);
-                })
-                .catch(function (error) {
-                  console.warn(
-                    `❌ Failed to extract preview thumbnail ${index + 1}:`,
-                    error
-                  );
-                  // Fallback: show video element directly
-                  video.style.display = "block";
-                });
-            }, videoCards.length * 300 + index * 200); // Start after main video cards, with 200ms intervals
-          }
-        });
-      });
-    </script>
-    <!-- #endregion Scripts -->
-    <!-- ===== END SCRIPTS SECTION ===== -->
-
-    <!-- ===== STYLES SECTION ===== -->
-    <!-- @id:inline-styles -->
-    <!-- #region Inline Styles -->
     <style>
-      /* ==========================================================================
-   SPRINT RESULTS CARD SYSTEM
-   ========================================================================== */
-
-      /* Container */
-      .sprint-results-cards {
-        max-width: 100%;
-      }
-
-      /* Base Card Styles */
-      .sprint-card {
-        /* Layout */
-        border-radius: 8px;
-        padding: 12px 16px;
-        position: relative;
-
-        /* Visual */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-
-        /* Background Pattern */
-        background-image: url("images/svg/card-pattern.svg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        /* Animation */
-        transition: all 0.2s ease;
-      }
-
-      /* Card Header Styles */
-      .sprint-card-header {
-        background-color: rgba(0, 0, 0, 0.03);
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        font-weight: 600;
-        background-image: none;
-      }
-
-      /* Card Text Elements */
-      .sprint-card-label {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-        opacity: 0.8;
-      }
-
-      .sprint-card-rank {
-        font-size: 14px;
-        font-weight: 500;
-        min-width: 30px;
-        text-align: left;
-      }
-
-      .sprint-card-name {
-        font-size: 14px;
-        font-weight: 500;
-        flex: 1;
-        text-align: center;
-      }
-
-      .sprint-card-result {
-        font-size: 14px;
-        font-weight: 600;
-        font-family: "Source Sans Pro", sans-serif;
-        min-width: 60px;
-        text-align: right;
-      }
-
-      /* ==========================================================================
-   CARD VARIANTS
-   ========================================================================== */
-
-      /* Benchmark Cards (DFB Values) */
-      .benchmark-card {
-        /* Gray pattern background */
-        background-color: #ffffff;
-        background-image: url("images/svg/Shiny Overlay Gray.svg") !important;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        /* Clean styling */
-        border: 1px solid rgba(0, 0, 0, 0.08) !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-
-        /* Remove filters */
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        filter: none !important;
-      }
-
-      .benchmark-card:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-        border: 1px solid rgba(0, 0, 0, 0.12) !important;
-      }
-
-      .benchmark-card .sprint-card-name,
-      .benchmark-card .sprint-card-result {
-        color: #ffffff !important;
-        font-weight: 500;
-        opacity: 1;
-      }
-
-      /* Player Cards - Shared Properties */
-      .player-card,
-      .player-card-secondary {
-        transform: scale(1.02);
-      }
-
-      /* Player Card Background Patterns */
-      .player-card {
-        background-image: url("images/svg/Shiny Overlay.svg");
-      }
-
-      .player-card-secondary {
-        background-image: url("images/svg/Shiny Overlay Red.svg");
-      }
-
-      .player-card:hover,
-      .player-card-secondary:hover {
-        transform: scale(1.03) translateY(-1px);
-      }
-
-      /* Primary Player Cards (Finley) - Color Theme */
-      .player-card {
-        background-color: #ffffff;
-        border: 1px solid rgba(218, 68, 83, 0.2);
-        box-shadow: 0 4px 12px rgba(218, 68, 83, 0.25);
-      }
-
-      .player-card:hover {
-        box-shadow: 0 6px 16px rgba(218, 68, 83, 0.35);
-      }
-
-      /* Secondary Player Cards (Bent) - Color Theme */
-      .player-card-secondary {
-        background-color: #fde8e8;
-        border: 1px solid rgba(220, 53, 69, 0.2);
-        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.25);
-      }
-
-      .player-card-secondary:hover {
-        box-shadow: 0 6px 16px rgba(220, 53, 69, 0.35);
-      }
-
-      .player-card-secondary .sprint-card-name,
-      .player-card-secondary .sprint-card-result {
-        color: #dc3545;
-        font-weight: 600;
-      }
-
-      /* ==========================================================================
-   DARK THEME OVERRIDES
-   ========================================================================== */
-
-      /* Base Card Dark Theme */
-      .theme-dark .sprint-card {
-        background-color: #21252a;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        background-image: url("images/svg/card-pattern.svg");
-        filter: invert(1) hue-rotate(180deg) brightness(0.8);
-      }
-
-      .theme-dark .sprint-card-header {
-        background-color: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background-image: none;
-        filter: none;
-      }
-
-      .theme-dark .sprint-card-label,
-      .theme-dark .sprint-card-rank,
-      .theme-dark .sprint-card-name,
-      .theme-dark .sprint-card-result {
-        color: #ffffff;
-      }
-
-      /* Benchmark Cards Dark Theme */
-      .theme-dark .benchmark-card {
-        /* Gray pattern background (same as light theme) */
-        background-color: #ffffff;
-        background-image: url("images/svg/Shiny Overlay Gray.svg") !important;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        /* Clean styling for dark theme */
-        border: 1px solid rgba(0, 0, 0, 0.08) !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-        filter: none !important;
-      }
-
-      .theme-dark .benchmark-card:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-        border: 1px solid rgba(0, 0, 0, 0.12) !important;
-      }
-
-      .theme-dark .benchmark-card .sprint-card-name,
-      .theme-dark .benchmark-card .sprint-card-result {
-        color: #ffffff !important;
-      }
-
-      /* Player Cards Dark Theme */
-      .theme-dark .player-card {
-        background-image: url("images/svg/Shiny Overlay.svg");
-        box-shadow: 0 4px 12px rgba(218, 68, 83, 0.4);
-        filter: brightness(0.9);
-      }
-
-      .theme-dark .player-card:hover {
-        box-shadow: 0 6px 16px rgba(218, 68, 83, 0.5);
-      }
-
-      .theme-dark .player-card-secondary {
-        background-color: #321a1a;
-        background-image: url("images/svg/Shiny Overlay Red.svg");
-        border: 1px solid rgba(220, 53, 69, 0.3);
-        box-shadow: 0 2px 6px rgba(220, 53, 69, 0.2);
-        filter: brightness(0.8);
-      }
-
-      .theme-dark .player-card-secondary:hover {
-        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.35);
-      }
-
-      .theme-dark .player-card-secondary .sprint-card-name,
-      .theme-dark .player-card-secondary .sprint-card-result {
-        color: #ff6b7a;
-      }
-
-      /* ==========================================================================
-   RESPONSIVE DESIGN
-   ========================================================================== */
-
-      @media (max-width: 576px) {
-        .sprint-card {
-          padding: 10px 12px;
-          margin-bottom: 8px !important;
-        }
-
-        .sprint-card-label {
-          font-size: 10px;
-        }
-
-        .sprint-card-rank,
-        .sprint-card-name,
-        .sprint-card-result {
-          font-size: 13px;
-        }
-
-        .player-card,
-        .player-card-secondary {
-          transform: scale(1.01);
-        }
-
-        .player-card:hover,
-        .player-card-secondary:hover {
-          transform: scale(1.02) translateY(-1px);
-        }
-      }
-
-      /* ==========================================================================
-   ANIMATIONS
-   ========================================================================== */
-
-      /* Card Entrance Animation */
-      @keyframes cardFadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Apply Animation to All Cards */
-      .sprint-card {
-        animation: cardFadeIn 0.3s ease-out;
-      }
-
-      /* Staggered Animation Delays */
-      .sprint-card:nth-child(1) {
-        animation-delay: 0.05s;
-      }
-      .sprint-card:nth-child(2) {
-        animation-delay: 0.1s;
-      }
-      .sprint-card:nth-child(3) {
-        animation-delay: 0.15s;
-      }
-      .sprint-card:nth-child(4) {
-        animation-delay: 0.2s;
-      }
-      .sprint-card:nth-child(5) {
-        animation-delay: 0.25s;
-      }
-      .sprint-card:nth-child(6) {
-        animation-delay: 0.3s;
-      }
-      .sprint-card:nth-child(7) {
-        animation-delay: 0.35s;
-      }
-      .sprint-card:nth-child(8) {
-        animation-delay: 0.4s;
-      }
-      .sprint-card:nth-child(9) {
-        animation-delay: 0.45s;
-      }
-      .sprint-card:nth-child(10) {
-        animation-delay: 0.5s;
-      }
-      .sprint-card:nth-child(11) {
-        animation-delay: 0.55s;
-      }
-      .sprint-card:nth-child(12) {
-        animation-delay: 0.6s;
-      }
-      .sprint-card:nth-child(13) {
-        animation-delay: 0.65s;
-      }
-
-      /* ==========================================================================
-   ACCORDION BACKGROUND PATTERNS
-   ========================================================================== */
-
-      /* Light Blue SVG Backgrounds */
-      .bg-light-blue-1 {
-        background-image: url("images/svg/Rect Light.svg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      .bg-light-blue-2 {
-        background-image: url("images/svg/Rect Light.svg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: hue-rotate(20deg) saturate(1.1);
-      }
-
-      /* Clean text rendering for accordion titles */
-      .accordion-btn h3 {
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        font-weight: 700;
-      }
-
-      /* ==========================================================================
-   FULLSCREEN VIDEO MODAL
-   ========================================================================== */
-
-      .fullscreen-video-modal {
-        position: fixed;
+      /* Existing video swiper styles */
+      .video-slide {
+        position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(10px);
-      }
-
-      .fullscreen-video-modal.active {
-        display: flex;
-      }
-
-      .fullscreen-video-container {
-        position: relative;
-        width: 90vw;
-        height: 90vh;
-        max-width: 1200px;
-        max-height: 675px;
-        background: #000;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      }
-
-      .fullscreen-video {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .video-slide.active {
+        opacity: 1;
+      }
+      .indicator.active {
+        background: rgba(255, 255, 255, 0.8) !important;
       }
 
-      .fullscreen-close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        border-radius: 50%;
+      /* Finley Letter Animation */
+      .finley-animated-heading span {
+        display: inline-block;
+        opacity: 0;
+      }
+      .finley-animated-heading span.fade-in-letter-anim {
+        animation: fadeInLetter 0.5s forwards;
+      }
+      @keyframes fadeInLetter {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Statistics Animation */
+      .statistic-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 0; /* Slightly more padding for readability */
         color: white;
-        font-size: 20px;
-        cursor: pointer;
-        z-index: 10000;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        min-height: 2em; /* Ensure items have some height */
       }
-
-      .fullscreen-close-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: scale(1.1);
+      .statistic-item .stat-exercise-name,
+      .statistic-item .stat-result {
+        opacity: 0;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent shrinking if AUSGEZEICHNET is long */
       }
-
-      .fullscreen-video-info {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        color: white;
-        z-index: 10000;
+      .statistic-item .stat-exercise-name {
+        text-align: left;
+        margin-right: auto; /* Pushes it left */
       }
-
-      .fullscreen-video-title {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 5px;
+      .statistic-item .stat-result {
+        text-align: right;
+        font-weight: 500;
+        margin-left: auto; /* Pushes it right */
       }
-
-      .fullscreen-video-time {
-        font-size: 16px;
-        opacity: 0.8;
+      .animate-slide-in-left {
+        animation: slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
       }
-
-      /* Responsive adjustments for fullscreen modal */
-      @media (max-width: 768px) {
-        .fullscreen-video-container {
-          width: 95vw;
-          height: 95vh;
-          border-radius: 8px;
+      .animate-slide-in-right {
+        animation: slideInFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      }
+      @keyframes slideInFromLeft {
+        0% {
+          transform: translateX(-40px);
+          opacity: 0;
         }
-
-        .fullscreen-close-btn {
-          width: 40px;
-          height: 40px;
-          font-size: 16px;
-          top: 15px;
-          right: 15px;
+        100% {
+          transform: translateX(0);
+          opacity: 1;
         }
-
-        .fullscreen-video-title {
-          font-size: 20px;
+      }
+      @keyframes slideInFromRight {
+        0% {
+          transform: translateX(40px);
+          opacity: 0;
         }
-
-        .fullscreen-video-time {
-          font-size: 14px;
+        100% {
+          transform: translateX(0);
+          opacity: 1;
         }
       }
 
-      /* ==========================================================================
-   MOBILE TOUCH OPTIMIZATIONS
-   ========================================================================== */
-
-      /* Disable hover effects on touch devices to prevent conflicts */
-      @media (hover: none) and (pointer: coarse) {
-        .video-card-container:hover {
-          transform: none !important;
-        }
-
-        .video-card-container:hover .card-video-bg {
-          filter: brightness(0.7) !important;
-          transform: none !important;
-        }
-
-        /* Ensure video cards are easily tappable on mobile */
-        .video-card-container {
-          cursor: pointer;
-          -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-        }
-
-        /* Make play button more prominent on mobile */
-        .play-now-btn {
-          padding: 8px 16px !important;
-          font-size: 14px !important;
-          min-height: 44px; /* iOS recommended touch target size */
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+      /* AUSGEZEICHNET specific styles */
+      .stat-ausgezeichnet-container {
+        opacity: 0; /* Start hidden */
+        transform: translateY(-25px); /* Start above for drop-in */
+        text-align: center;
+        padding: 0 8px; /* Horizontal padding around AUSGEZEICHNET */
+        /* flex-grow: 1; /* Uncomment if you want it to take more central space */
+        flex-shrink: 1; /* Allow to shrink if needed */
       }
-
-      /* ==========================================================================
-   PWA FULLSCREEN MODE
-   ========================================================================== */
-
-      /* Fullscreen mode adjustments */
-      .fullscreen-mode {
-        overflow: hidden;
+      .stat-ausgezeichnet-text {
+        font-size: 0.75em; /* Adjust size as needed */
+        font-weight: bold;
+        color: #00ffff; /* Bright neon base color (cyan) */
+        text-shadow: 0 0 2px rgba(255, 255, 255, 0.7),
+          /* Softer inner white glow */ 0 0 5px #00ffff, 0 0 10px #00ffff,
+          0 0 15px #00dddd, 0 0 20px #00bbbb, 0 0 25px #00aaaa;
+        white-space: nowrap; /* Prevent wrapping */
+        display: inline-block; /* Allows transform */
       }
-
-      .fullscreen-mode .page-content {
-        height: 100vh;
-        overflow-y: auto;
+      .animate-ausgezeichnet-drop-in {
+        /* Applied to the container */
+        animation: ausgezeichnetDropInAnimation 0.7s
+          cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; /* Bounce effect */
       }
-
-      /* Hide browser UI elements in fullscreen */
-      @media (display-mode: fullscreen) {
-        body {
-          padding-top: 0 !important;
+      @keyframes ausgezeichnetDropInAnimation {
+        0% {
+          opacity: 0;
+          transform: translateY(-25px) scale(0.8);
         }
-
-        .page-content {
-          padding-top: 0 !important;
+        60% {
+          /* Overshoot for bounce */
+          opacity: 1;
+          transform: translateY(5px) scale(1.05);
         }
-      }
-
-      /* Standalone PWA mode */
-      @media (display-mode: standalone) {
-        body {
-          padding-top: env(safe-area-inset-top, 0);
-        }
-
-        .page-content {
-          padding-top: env(safe-area-inset-top, 0);
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
         }
       }
     </style>
-    <!-- #endregion Inline Styles -->
-    <!-- ===== END STYLES SECTION ===== -->
 
-    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="scripts/custom.js"></script>
-
-    <!-- Video Card Hover-to-Play Functionality -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        initPWAFullscreen();
-        initVideoCards();
-        initFullscreenModal();
-        initSettingsFullscreenToggle();
+        // Video Swiper Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".video-slide");
+        const indicators = document.querySelectorAll(".indicator");
+        const swiper = document.getElementById("video-swiper");
+        let startX = 0;
+        let startY = 0;
 
-        // PWA Fullscreen Functionality
-        function initPWAFullscreen() {
-          // Check if app is running as PWA
-          const isPWA =
-            window.matchMedia("(display-mode: fullscreen)").matches ||
-            window.matchMedia("(display-mode: standalone)").matches ||
-            window.navigator.standalone === true;
-
-          // Request fullscreen for PWA
-          if (isPWA || window.location.search.includes("pwa=true")) {
-            // Try to enter fullscreen mode
-            const requestFullscreen = () => {
-              const element = document.documentElement;
-              if (element.requestFullscreen) {
-                element.requestFullscreen().catch((err) => {
-                  console.log("Fullscreen request failed:", err);
-                });
-              } else if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-              } else if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-              }
-            };
-
-            // Request fullscreen on user interaction
-            const enableFullscreen = () => {
-              requestFullscreen();
-              document.removeEventListener("touchstart", enableFullscreen);
-              document.removeEventListener("click", enableFullscreen);
-            };
-
-            // Wait for user interaction to request fullscreen
-            document.addEventListener("touchstart", enableFullscreen, {
-              once: true,
-            });
-            document.addEventListener("click", enableFullscreen, {
-              once: true,
-            });
-
-            console.log("🔲 PWA Fullscreen mode initialized");
-          }
-
-          // Handle fullscreen changes
-          document.addEventListener("fullscreenchange", function () {
-            if (document.fullscreenElement) {
-              console.log("✅ Entered fullscreen mode");
-              document.body.classList.add("fullscreen-mode");
-            } else {
-              console.log("❌ Exited fullscreen mode");
-              document.body.classList.remove("fullscreen-mode");
-            }
-          });
-
-          // Handle orientation changes in fullscreen
-          window.addEventListener("orientationchange", function () {
-            if (document.fullscreenElement) {
-              // Small delay to ensure orientation change is complete
-              setTimeout(() => {
-                // Force a repaint to handle any layout issues
-                document.body.style.display = "none";
-                document.body.offsetHeight; // Trigger reflow
-                document.body.style.display = "";
-              }, 100);
-            }
-          });
-        }
-
-        function initVideoCards() {
-          const videoCards = document.querySelectorAll(".video-card-container");
-
-          videoCards.forEach(function (card) {
-            const video = card.querySelector(".card-video-bg");
-            if (!video) return;
-
-            // Add loading state initially
-            card.classList.add("loading");
-
-            // Handle video loading
-            video.addEventListener("loadeddata", function () {
-              card.classList.remove("loading");
-              console.log("✅ Video loaded successfully");
-            });
-
-            video.addEventListener("error", function () {
-              card.classList.remove("loading");
-              console.error("❌ Video failed to load:", video.src);
-              // Optionally add fallback image here
-              addVideoFallback(card);
-            });
-
-            // Hover to play functionality
-            card.addEventListener("mouseenter", function () {
-              if (video.readyState >= 2) {
-                // HAVE_CURRENT_DATA
-                playVideo(video, card);
-              }
-            });
-
-            card.addEventListener("mouseleave", function () {
-              pauseVideo(video, card);
-            });
-
-            // Touch support for mobile - tap to play/pause video in card
-            card.addEventListener(
-              "touchstart",
-              function (e) {
-                // Only handle if it's not a button or link
-                if (
-                  e.target.closest(".play-now-btn") ||
-                  e.target.closest("a") ||
-                  e.target.closest("button")
-                ) {
-                  return; // Let the button handle its own touch event
-                }
-
-                e.preventDefault();
-                e.stopPropagation();
-
-                if (video.readyState >= 2) {
-                  if (video.paused) {
-                    playVideo(video, card);
-                  } else {
-                    pauseVideo(video, card);
-                  }
-                }
-              },
-              { passive: false }
-            );
-
-            // Preload video metadata
-            video.load();
-          });
-        }
-
-        function playVideo(video, card) {
-          try {
-            const playPromise = video.play();
-
-            if (playPromise !== undefined) {
-              playPromise
-                .then(() => {
-                  card.classList.add("playing");
-                  console.log("▶️ Video playing");
-                })
-                .catch((error) => {
-                  console.warn("⚠️ Video play failed:", error);
-                  // Handle autoplay restrictions silently
-                });
-            }
-          } catch (error) {
-            console.error("❌ Video play error:", error);
-          }
-        }
-
-        function pauseVideo(video, card) {
-          try {
-            video.pause();
-            video.currentTime = 0; // Reset to beginning
-            card.classList.remove("playing");
-            console.log("⏸️ Video paused and reset");
-          } catch (error) {
-            console.error("❌ Video pause error:", error);
-          }
-        }
-
-        function addVideoFallback(card) {
-          // Create fallback background with gradient
-          card.style.background =
-            "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
-          console.log("🔄 Applied fallback background for failed video");
-        }
-
-        // Performance optimization: Pause all videos when page becomes hidden
-        document.addEventListener("visibilitychange", function () {
-          if (document.hidden) {
-            const videos = document.querySelectorAll(".card-video-bg");
-            videos.forEach((video) => {
-              if (!video.paused) {
-                video.pause();
-              }
-            });
-          }
-        });
-
-        // Intersection Observer for performance optimization
-        if ("IntersectionObserver" in window) {
-          const videoObserver = new IntersectionObserver(
-            function (entries) {
-              entries.forEach((entry) => {
-                const video = entry.target.querySelector(".card-video-bg");
-                if (!video) return;
-
-                if (entry.isIntersecting) {
-                  // Video is in viewport, ensure it's ready
-                  if (video.readyState < 2) {
-                    video.load();
-                  }
-                } else {
-                  // Video is out of viewport, pause if playing
-                  if (!video.paused) {
-                    video.pause();
-                    entry.target.classList.remove("playing");
-                  }
-                }
-              });
-            },
-            {
-              threshold: 0.1,
-              rootMargin: "50px",
-            }
-          );
-
-          // Observe all video cards
-          document.querySelectorAll(".video-card-container").forEach((card) => {
-            videoObserver.observe(card);
-          });
-        }
-
-        // Fullscreen Modal Functionality
-        function initFullscreenModal() {
-          const modal = document.getElementById("fullscreen-video-modal");
-          const fullscreenVideo = document.getElementById("fullscreen-video");
-          const closeBtn = document.getElementById("fullscreen-close-btn");
-          const titleElement = document.getElementById(
-            "fullscreen-video-title"
-          );
-          const timeElement = document.getElementById("fullscreen-video-time");
-          const playNowButtons = document.querySelectorAll(".play-now-btn");
-
-          // Add click handlers to all "Play Now" buttons
-          playNowButtons.forEach(function (button) {
-            button.addEventListener("click", function (e) {
-              e.preventDefault();
-
-              // Find the video card container
-              const videoCard = button
-                .closest(".card")
-                .querySelector(".video-card-container");
-              if (!videoCard) return;
-
-              const video = videoCard.querySelector(".card-video-bg");
-              if (!video) return;
-
-              // Get video info
-              const title =
-                videoCard.querySelector(".card-bottom h2").textContent;
-              const timeSpan = videoCard.querySelector(".card-top span");
-              const time = timeSpan ? timeSpan.textContent.trim() : "0.00 s";
-
-              // Set up fullscreen video
-              const videoSrc = video.querySelector("source").src;
-              fullscreenVideo.querySelector("source").src = videoSrc;
-              fullscreenVideo.load();
-
-              // Set info
-              titleElement.textContent = title;
-              timeElement.textContent = time;
-
-              // Show modal
-              modal.classList.add("active");
-              document.body.style.overflow = "hidden";
-
-              // Auto-play video
-              fullscreenVideo.play().catch((error) => {
-                console.warn("Fullscreen video autoplay failed:", error);
-              });
-
-              console.log("🎬 Opened fullscreen video:", title);
-            });
-          });
-
-          // Close modal functionality
-          function closeModal() {
-            modal.classList.remove("active");
-            document.body.style.overflow = "";
-            fullscreenVideo.pause();
-            fullscreenVideo.currentTime = 0;
-            console.log("❌ Closed fullscreen video");
-          }
-
-          // Close button
-          closeBtn.addEventListener("click", closeModal);
-
-          // Click outside to close
-          modal.addEventListener("click", function (e) {
-            if (e.target === modal) {
-              closeModal();
-            }
-          });
-
-          // Escape key to close
-          document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && modal.classList.contains("active")) {
-              closeModal();
-            }
-          });
-
-          // Prevent video container clicks from closing modal
-          const videoContainer = modal.querySelector(
-            ".fullscreen-video-container"
-          );
-          videoContainer.addEventListener("click", function (e) {
-            e.stopPropagation();
-          });
-        }
-
-        // Settings Fullscreen Toggle Functionality
-        function initSettingsFullscreenToggle() {
-          const fullscreenToggle = document.getElementById("fullscreen-toggle");
-          const fullscreenSwitch = document.getElementById(
-            "switch-fullscreen-mode"
-          );
-          const fullscreenIcon = fullscreenToggle.querySelector("i");
-
-          // Check if fullscreen is supported
-          const isFullscreenSupported =
-            document.documentElement.requestFullscreen ||
-            document.documentElement.webkitRequestFullscreen ||
-            document.documentElement.msRequestFullscreen;
-
-          if (!isFullscreenSupported) {
-            // Hide fullscreen option if not supported
-            fullscreenToggle.style.display = "none";
-            console.log("❌ Fullscreen not supported on this device");
+        function showSlide(index) {
+          if (
+            !slides.length ||
+            !indicators.length ||
+            index < 0 ||
+            index >= slides.length
+          )
             return;
+
+          slides.forEach((slide) => {
+            slide.classList.remove("active");
+            const video = slide.querySelector("video");
+            if (video) video.pause();
+          });
+
+          indicators.forEach((indicator) => {
+            indicator.classList.remove("active");
+          });
+
+          if (slides[index] && indicators[index]) {
+            slides[index].classList.add("active");
+            indicators[index].classList.add("active");
+            const currentVideo = slides[index].querySelector("video");
+            if (currentVideo) {
+              currentVideo.currentTime = 0;
+              currentVideo
+                .play()
+                .catch((e) => console.warn("Video play failed:", e));
+            }
           }
+          currentSlide = index;
+        }
 
-          // Load saved fullscreen preference
-          const savedFullscreenState =
-            localStorage.getItem("fullscreen-mode") === "true";
-          fullscreenSwitch.checked = savedFullscreenState;
-          updateFullscreenIcon(savedFullscreenState);
+        if (swiper) {
+          swiper.addEventListener("touchstart", function (e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+          });
+          swiper.addEventListener("touchend", function (e) {
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+              if (diffX > 0) {
+                showSlide((currentSlide + 1) % slides.length);
+              } else {
+                showSlide((currentSlide - 1 + slides.length) % slides.length);
+              }
+            }
+          });
+        }
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener("click", () => {
+            showSlide(index);
+          });
+        });
+        if (slides.length > 0) {
+          showSlide(0);
+        }
 
-          // Apply saved state on page load
-          if (savedFullscreenState) {
-            // Small delay to ensure page is fully loaded
+        // Finley Text and Statistics Animation Logic
+        const finleyHeading = document.querySelector(
+          ".finley-animated-heading"
+        );
+        if (finleyHeading) {
+          const finleyLetters = finleyHeading.querySelectorAll("span");
+          finleyLetters.forEach((span, index) => {
+            span.style.animationDelay = `${index * 0.1}s`;
+            span.classList.add("fade-in-letter-anim");
+          });
+
+          const finleyAnimationTimePerLetter = 0.5;
+          const finleyLastLetterDelay =
+            finleyLetters.length > 0 ? (finleyLetters.length - 1) * 0.1 : 0;
+          const totalFinleyAnimationDuration =
+            (finleyLastLetterDelay + finleyAnimationTimePerLetter) * 1000;
+
+          const statsData = [
+            { name: "10m Sprint", value: "2.00s" },
+            { name: "20m Sprint", value: "3.59s" },
+            { name: "Gewandtheit", value: "7.81s" },
+            { name: "Dribbling", value: "10.27s" },
+            { name: "Balljonglieren", value: "0.00" }, // Assuming score, no unit
+            { name: "Ballkontrolle", value: "10.82s" },
+          ];
+          const statsContainer = document.querySelector(
+            ".statistics-container"
+          );
+
+          if (statsContainer) {
+            const statsAnimationStartTime = totalFinleyAnimationDuration + 200; // Start after Finley anim + buffer
+
             setTimeout(() => {
-              requestFullscreenMode();
-            }, 1000);
+              statsData.forEach((stat, index) => {
+                const item = document.createElement("div");
+                item.classList.add("statistic-item");
+
+                const nameSpan = document.createElement("span");
+                nameSpan.classList.add("stat-exercise-name");
+                nameSpan.textContent = stat.name;
+
+                const ausgezeichnetContainer = document.createElement("span");
+                ausgezeichnetContainer.classList.add(
+                  "stat-ausgezeichnet-container"
+                );
+                const ausgezeichnetText = document.createElement("span");
+                ausgezeichnetText.classList.add("stat-ausgezeichnet-text");
+                ausgezeichnetText.textContent = "AUSGEZEICHNET";
+                ausgezeichnetContainer.appendChild(ausgezeichnetText);
+
+                const valueSpan = document.createElement("span");
+                valueSpan.classList.add("stat-result");
+                valueSpan.textContent = stat.value;
+
+                item.appendChild(nameSpan);
+                item.appendChild(ausgezeichnetContainer);
+                item.appendChild(valueSpan);
+                statsContainer.appendChild(item);
+
+                const rowBaseDelay = index * 300; // Stagger each row's appearance
+
+                setTimeout(() => {
+                  item.style.opacity = "1";
+                  nameSpan.classList.add("animate-slide-in-left");
+                  valueSpan.classList.add("animate-slide-in-right");
+
+                  const nameValueAnimationDuration = 600; // 0.6s for slide-ins
+                  const ausgezeichnetBuffer = 100; // ms buffer after slide-ins finish
+
+                  setTimeout(() => {
+                    ausgezeichnetContainer.classList.add(
+                      "animate-ausgezeichnet-drop-in"
+                    );
+                  }, nameValueAnimationDuration + ausgezeichnetBuffer);
+                }, rowBaseDelay);
+              });
+            }, statsAnimationStartTime);
           }
-
-          // Handle toggle click
-          fullscreenToggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            toggleFullscreenMode();
-          });
-
-          // Handle switch change
-          fullscreenSwitch.addEventListener("change", function () {
-            toggleFullscreenMode();
-          });
-
-          function toggleFullscreenMode() {
-            const isCurrentlyFullscreen =
-              document.fullscreenElement ||
-              document.webkitFullscreenElement ||
-              document.msFullscreenElement;
-
-            if (isCurrentlyFullscreen) {
-              exitFullscreenMode();
-            } else {
-              requestFullscreenMode();
-            }
-          }
-
-          function requestFullscreenMode() {
-            const element = document.documentElement;
-
-            if (element.requestFullscreen) {
-              element
-                .requestFullscreen()
-                .then(() => {
-                  onFullscreenEnter();
-                })
-                .catch((err) => {
-                  console.warn("Fullscreen request failed:", err);
-                  onFullscreenError();
-                });
-            } else if (element.webkitRequestFullscreen) {
-              element.webkitRequestFullscreen();
-              onFullscreenEnter();
-            } else if (element.msRequestFullscreen) {
-              element.msRequestFullscreen();
-              onFullscreenEnter();
-            }
-          }
-
-          function exitFullscreenMode() {
-            if (document.exitFullscreen) {
-              document
-                .exitFullscreen()
-                .then(() => {
-                  onFullscreenExit();
-                })
-                .catch((err) => {
-                  console.warn("Exit fullscreen failed:", err);
-                });
-            } else if (document.webkitExitFullscreen) {
-              document.webkitExitFullscreen();
-              onFullscreenExit();
-            } else if (document.msExitFullscreen) {
-              document.msExitFullscreen();
-              onFullscreenExit();
-            }
-          }
-
-          function onFullscreenEnter() {
-            fullscreenSwitch.checked = true;
-            updateFullscreenIcon(true);
-            localStorage.setItem("fullscreen-mode", "true");
-            document.body.classList.add("fullscreen-active");
-            console.log("✅ Entered fullscreen mode");
-          }
-
-          function onFullscreenExit() {
-            fullscreenSwitch.checked = false;
-            updateFullscreenIcon(false);
-            localStorage.setItem("fullscreen-mode", "false");
-            document.body.classList.remove("fullscreen-active");
-            console.log("❌ Exited fullscreen mode");
-          }
-
-          function onFullscreenError() {
-            fullscreenSwitch.checked = false;
-            updateFullscreenIcon(false);
-            localStorage.setItem("fullscreen-mode", "false");
-            console.error("❌ Fullscreen request failed");
-          }
-
-          function updateFullscreenIcon(isFullscreen) {
-            if (isFullscreen) {
-              fullscreenIcon.className =
-                "fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3";
-            } else {
-              fullscreenIcon.className =
-                "fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3";
-            }
-          }
-
-          // Listen for fullscreen changes (user pressing F11 or Esc)
-          document.addEventListener("fullscreenchange", handleFullscreenChange);
-          document.addEventListener(
-            "webkitfullscreenchange",
-            handleFullscreenChange
-          );
-          document.addEventListener(
-            "msfullscreenchange",
-            handleFullscreenChange
-          );
-
-          function handleFullscreenChange() {
-            const isCurrentlyFullscreen =
-              document.fullscreenElement ||
-              document.webkitFullscreenElement ||
-              document.msFullscreenElement;
-
-            if (isCurrentlyFullscreen) {
-              onFullscreenEnter();
-            } else {
-              onFullscreenExit();
-            }
-          }
-
-          // Handle keyboard shortcuts
-          document.addEventListener("keydown", function (e) {
-            // F11 key handling
-            if (e.key === "F11") {
-              e.preventDefault();
-              toggleFullscreenMode();
-            }
-
-            // Ctrl/Cmd + Shift + F for fullscreen toggle
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "F") {
-              e.preventDefault();
-              toggleFullscreenMode();
-            }
-          });
-
-          console.log("🔲 Settings fullscreen toggle initialized");
         }
       });
     </script>
