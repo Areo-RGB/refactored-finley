@@ -186,7 +186,7 @@
               style="
                 margin-top: 10px;
                 width: 90%;
-                max-width: 380px;
+                max-width: 420px;
                 margin-left: auto;
                 margin-right: auto;
                 font-size: 0.9rem;
@@ -551,30 +551,28 @@
       .statistic-item {
         display: flex;
         align-items: center;
-        padding: 5px 0; /* Slightly increased padding */
+        padding: 5px 0;
         color: white;
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
-        min-height: 2.4em; /* Ensure items have some height */
+        min-height: 2.4em;
       }
       .statistic-item .stat-exercise-name,
       .statistic-item .stat-result,
-      .statistic-item .stat-ausgezeichnet-container {
+      .statistic-item .stat-rating-container {
         opacity: 0;
         white-space: nowrap;
       }
       .statistic-item .stat-exercise-name {
-        flex-basis: 38%;
+        flex-basis: 35%;
         flex-shrink: 0;
         text-align: left;
-        /* Font size will be inherited from .statistics-container */
       }
       .statistic-item .stat-result {
-        font-weight: 600; /* Slightly bolder result */
-        flex-basis: 22%;
+        font-weight: 600;
+        flex-basis: 20%;
         flex-shrink: 0;
         text-align: right;
-        /* Font size will be inherited from .statistics-container */
       }
       .animate-slide-in-left {
         animation: slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -605,29 +603,52 @@
         }
       }
 
-      /* AUSGEZEICHNET specific styles */
-      .stat-ausgezeichnet-container {
+      /* Rating Label specific styles */
+      .stat-rating-container {
         transform: translateY(-25px);
         text-align: center;
         flex-grow: 1;
-        flex-basis: 40%;
+        flex-basis: 45%;
       }
-      .stat-ausgezeichnet-text {
-        font-size: 0.9em; /* Relative to parent .statistic-item's font-size */
+      .stat-rating-text {
         font-weight: bold;
-        color: white;
-        background-color: #28a745; /* Bootstrap success green */
-        padding: 3px 8px; /* Padding inside the green background */
-        border-radius: 4px; /* Rounded corners for a badge look */
+        padding: 4px 8px;
+        border-radius: 4px;
         white-space: nowrap;
         display: inline-block;
-        line-height: 1.3; /* Adjust line-height for better vertical centering within bg */
+        line-height: 1.3;
+        font-size: 0.85em;
+        text-transform: uppercase; /* Optional: for consistency in labels */
       }
-      .animate-ausgezeichnet-drop-in {
-        animation: ausgezeichnetDropInAnimation 0.7s
+      .label-ausgezeichnet {
+        background-color: #28a745; /* Green */
+        color: white;
+      }
+      .label-sehr-gut {
+        background-color: #17a2b8; /* Info Blue/Teal */
+        color: white;
+      }
+      .label-durchschnittlich {
+        background-color: #ffc107; /* Yellow */
+        color: #212529; /* Dark text for yellow bg */
+      }
+      .label-unterdurchschnittlich {
+        background-color: #dc3545; /* Red */
+        color: white;
+      }
+      /* Add more classes here for other labels like "GUT" if needed */
+      /*
+      .label-gut {
+          background-color: #007bff; // Primary Blue
+          color: white;
+      }
+      */
+
+      .animate-rating-drop-in {
+        animation: ratingDropInAnimation 0.7s
           cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
       }
-      @keyframes ausgezeichnetDropInAnimation {
+      @keyframes ratingDropInAnimation {
         0% {
           opacity: 0;
           transform: translateY(-25px) scale(0.8);
@@ -732,12 +753,20 @@
             (finleyLastLetterDelay + finleyAnimationTimePerLetter) * 1000;
 
           const statsData = [
-            { name: "10m Sprint", value: "2.00s" },
-            { name: "20m Sprint", value: "3.59s" },
-            { name: "Gewandtheit", value: "7.81s" },
-            { name: "Dribbling", value: "10.27s" },
-            { name: "Balljonglieren", value: "0.00" },
-            { name: "Ballkontrolle", value: "10.82s" },
+            { name: "10m Sprint", value: "2.00s", label: "AUSGEZEICHNET" },
+            { name: "20m Sprint", value: "3.59s", label: "SEHR GUT" },
+            { name: "Gewandtheit", value: "7.81s", label: "AUSGEZEICHNET" },
+            { name: "Dribbling", value: "10.27s", label: "AUSGEZEICHNET" },
+            {
+              name: "Balljonglieren",
+              value: "0.00",
+              label: "UNTERDURCHSCHNITTLICH",
+            },
+            {
+              name: "Ballkontrolle",
+              value: "10.82s",
+              label: "DURCHSCHNITTLICH",
+            },
           ];
           const statsContainer = document.querySelector(
             ".statistics-container"
@@ -755,21 +784,32 @@
                 nameSpan.classList.add("stat-exercise-name");
                 nameSpan.textContent = stat.name;
 
-                const ausgezeichnetContainer = document.createElement("span");
-                ausgezeichnetContainer.classList.add(
-                  "stat-ausgezeichnet-container"
-                );
-                const ausgezeichnetText = document.createElement("span");
-                ausgezeichnetText.classList.add("stat-ausgezeichnet-text");
-                ausgezeichnetText.textContent = "AUSGEZEICHNET";
-                ausgezeichnetContainer.appendChild(ausgezeichnetText);
+                const ratingContainer = document.createElement("span");
+                ratingContainer.classList.add("stat-rating-container");
+                const ratingText = document.createElement("span");
+                ratingText.classList.add("stat-rating-text");
+                ratingText.textContent = stat.label;
+
+                // Dynamically add class based on the label for styling
+                if (stat.label === "AUSGEZEICHNET") {
+                  ratingText.classList.add("label-ausgezeichnet");
+                } else if (stat.label === "SEHR GUT") {
+                  ratingText.classList.add("label-sehr-gut");
+                } else if (stat.label === "DURCHSCHNITTLICH") {
+                  ratingText.classList.add("label-durchschnittlich");
+                } else if (stat.label === "UNTERDURCHSCHNITTLICH") {
+                  ratingText.classList.add("label-unterdurchschnittlich");
+                }
+                // Add more 'else if' for other labels like "GUT"
+
+                ratingContainer.appendChild(ratingText);
 
                 const valueSpan = document.createElement("span");
                 valueSpan.classList.add("stat-result");
                 valueSpan.textContent = stat.value;
 
                 item.appendChild(nameSpan);
-                item.appendChild(ausgezeichnetContainer);
+                item.appendChild(ratingContainer);
                 item.appendChild(valueSpan);
                 statsContainer.appendChild(item);
 
@@ -781,13 +821,11 @@
                   valueSpan.classList.add("animate-slide-in-right");
 
                   const nameValueAnimationDuration = 600;
-                  const ausgezeichnetBuffer = 100;
+                  const ratingBuffer = 100;
 
                   setTimeout(() => {
-                    ausgezeichnetContainer.classList.add(
-                      "animate-ausgezeichnet-drop-in"
-                    );
-                  }, nameValueAnimationDuration + ausgezeichnetBuffer);
+                    ratingContainer.classList.add("animate-rating-drop-in");
+                  }, nameValueAnimationDuration + ratingBuffer);
                 }, rowBaseDelay);
               });
             }, statsAnimationStartTime);
