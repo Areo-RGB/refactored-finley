@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#1e3a8a" stroke-width="4"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#1e3a8a" stroke-width="2"/>
+
+  <!-- Outer text: F.C. HERTHA 03 -->
+  <path id="outer-circle" d="M 100,100 m -85,0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a">
+    <textPath href="#outer-circle" startOffset="5%">F.C. HERTHA 03</textPath>
+  </text>
+
+  <!-- Bottom text: BERLIN-ZEHLENDORF -->
+  <path id="bottom-circle" d="M 100,100 m -85,0 a 85,85 0 1,0 170,0 a 85,85 0 1,0 -170,0" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a">
+    <textPath href="#bottom-circle" startOffset="15%">BERLIN-ZEHLENDORF</textPath>
+  </text>
+
+  <!-- Central flag design -->
+  <g transform="translate(100,100)">
+    <!-- Flag pole -->
+    <line x1="-25" y1="-20" x2="-25" y2="25" stroke="#1e3a8a" stroke-width="2"/>
+
+    <!-- Flag -->
+    <path d="M -25,-20 L 20,-20 L 15,-10 L 20,0 L -25,0 Z" fill="none" stroke="#1e3a8a" stroke-width="1.5"/>
+
+    <!-- H in flag -->
+    <text x="-5" y="-7" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e3a8a" text-anchor="middle">H</text>
+
+    <!-- 03 in lower part -->
+    <text x="5" y="15" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">03</text>
+
+    <!-- Medical symbol (caduceus) -->
+    <g transform="translate(-35,5)">
+      <line x1="0" y1="-10" x2="0" y2="10" stroke="#1e3a8a" stroke-width="1"/>
+      <path d="M -3,-5 Q 0,-8 3,-5 Q 0,-2 -3,-5" fill="none" stroke="#1e3a8a" stroke-width="1"/>
+      <path d="M -3,5 Q 0,2 3,5 Q 0,8 -3,5" fill="none" stroke="#1e3a8a" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- Stars -->
+  <g fill="#1e3a8a">
+    <polygon points="35,100 37,106 43,106 38,110 40,116 35,112 30,116 32,110 27,106 33,106" transform="rotate(-45 35 100)"/>
+    <polygon points="165,100 167,106 173,106 168,110 170,116 165,112 160,116 162,110 157,106 163,106" transform="rotate(45 165 100)"/>
+  </g>
+</svg>
