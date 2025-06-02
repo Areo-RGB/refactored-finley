@@ -25,7 +25,7 @@ set "footer_content="
 :: Read index.html line by line to extract footer bar
 for /f "usebackq delims=" %%a in ("index.html") do (
     set "line=%%a"
-    
+
     :: Check if we found the footer bar start
     if "!line!" == "    <div id=""footer-bar"" class=""footer-bar-1"">" (
         set "found_footer=true"
@@ -34,7 +34,7 @@ for /f "usebackq delims=" %%a in ("index.html") do (
     ) else if "!found_footer!" == "true" (
         echo %%a >> "!temp_footer!"
         set "footer_content=!footer_content!%%a"
-        
+
         :: Check if we reached the end of footer bar
         if "!line!" == "    </div>" (
             set "found_footer=false"
@@ -54,7 +54,7 @@ echo Footer bar extracted successfully.
 echo.
 
 :: Function to update footer in a specific file
-call :update_file_footer "page-dfb.html" "DFB"
+call :update_file_footer "page-statistiken.html" "Statistiken"
 call :update_file_footer "page-profile-finley.html" "Finley"
 
 :: Clean up
@@ -94,27 +94,27 @@ set "footer_updated=false"
 :: Process the target file
 for /f "usebackq delims=" %%a in ("!target_file!") do (
     set "line=%%a"
-    
+
     :: Check if we found the footer bar start
     if "!line!" == "    <div id=""footer-bar"" class=""footer-bar-1"">" (
         set "in_footer=true"
-        
+
         :: Write the new footer content with correct active state
         for /f "usebackq delims=" %%b in ("!temp_footer!") do (
             set "footer_line=%%b"
-            
+
             :: Remove any existing active-nav class
             set "footer_line=!footer_line: class=""active-nav""=!"
             set "footer_line=!footer_line:class=""active-nav"" =!"
-            
+
             :: Add active-nav class to the correct page
-            if "!active_page!" == "DFB" (
-                set "footer_line=!footer_line:page-dfb.html"">page-dfb.html"" class=""active-nav"">"
+            if "!active_page!" == "Statistiken" (
+                set "footer_line=!footer_line:page-statistiken.html"">page-statistiken.html"" class=""active-nav"">"
             )
             if "!active_page!" == "Finley" (
                 set "footer_line=!footer_line:page-profile-finley.html"">page-profile-finley.html"" class=""active-nav"">"
             )
-            
+
             echo !footer_line! >> "!temp_output!"
         )
         set "footer_updated=true"

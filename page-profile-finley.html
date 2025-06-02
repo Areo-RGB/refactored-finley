@@ -1,851 +1,2000 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#1b1d21" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<title>Finley Profile - QuoVadis</title>
-<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="styles/style.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-<link rel="manifest" href="/manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
-<link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-</head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="theme-color"
+      content="#1b1d21"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <title>Finley Profile - QuoVadis</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/css/fontawesome-all.min.css"
+    />
+    <link
+      rel="manifest"
+      href="/manifest.json"
+      data-pwa-version="set_in_manifest_and_pwa_js"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="app/icons/icon-192x192.png"
+    />
+  </head>
 
-<body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
+  <body
+    class="theme-dark"
+    data-highlight="highlight-blue"
+    data-gradient="body-default"
+  >
+    <div id="preloader">
+      <div class="spinner-border color-highlight" role="status"></div>
+    </div>
 
-<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
-
-<div id="page">
-
-    <!-- Footer Navigation -->
-    <div id="footer-bar" class="footer-bar-1">
-        <a href="page-dfb.html"><i class="fa fa-running"></i><span>DFB</span></a>
-        <a href="page-profile-finley.html" class="active-nav"><i class="fa fa-futbol"></i><span>Finley</span></a>
+    <div id="page">
+      <!-- Footer Navigation -->
+      <div id="footer-bar" class="footer-bar-1">
+        <a href="page-dfb.html"
+          ><i class="fa fa-chart-bar"></i><span>Statistiken</span></a
+        >
+        <a href="page-profile-finley.html" class="active-nav"
+          ><i class="fa fa-futbol"></i><span>Finley</span></a
+        >
         <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="page-videos.html"><i class="fa fa-video"></i><span>Videos</span></a>
-        <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
-    </div>
+        <a href="page-videos.html"
+          ><i class="fa fa-video"></i><span>Videos</span></a
+        >
+        <a href="#" data-menu="menu-settings"
+          ><i class="fa fa-cog"></i><span>Settings</span></a
+        >
+      </div>
 
-    <!-- Page Content -->
-    <div class="page-content">
+      <!-- Page Content -->
+      <div class="page-content">
         <div class="page-content header-clear-small">
+          <!-- Workout Pre-Setup -->
+          <div
+            class="card card-style gradient-green"
+            style="position: relative"
+          >
+            <div class="content pt-4 pb-4">
+              <h3
+                class="mb-3 color-white text-center"
+                style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important"
+              >
+                Workout Setup
+              </h3>
+              <p
+                class="color-white opacity-80 mb-3 text-center"
+                style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important"
+              >
+                Configure your training session
+              </p>
 
-            <!-- Page Title -->
-            <div class="card card-style">
-                <div class="content">
-                    <h1 class="mb-0">Finley Profile</h1>
-                    <p class="color-highlight mb-2">Football Training Videos</p>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label
+                    class="form-label font-700 mb-2"
+                    style="
+                      color: white !important;
+                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+                      background: none !important;
+                      background-color: transparent !important;
+                      padding: 0 !important;
+                      border-radius: 0 !important;
+                    "
+                    >Number of Exercises</label
+                  >
+                  <select
+                    id="exercise-amount-select"
+                    class="form-select border-0 shadow-m rounded-m"
+                    style="
+                      color: #212529;
+                      background: #ffffff;
+                      font-weight: 600;
+                    "
+                  >
+                    <option
+                      value="1"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      1 Exercise
+                    </option>
+                    <option
+                      value="2"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      2 Exercises
+                    </option>
+                    <option
+                      value="3"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      3 Exercises
+                    </option>
+                    <option
+                      value="4"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      4 Exercises
+                    </option>
+                    <option
+                      value="5"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      5 Exercises
+                    </option>
+                    <option
+                      value="6"
+                      selected
+                      style="color: #212529; background: #ffffff"
+                    >
+                      6 Exercises
+                    </option>
+                    <option
+                      value="7"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      7 Exercises
+                    </option>
+                    <option
+                      value="8"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      8 Exercises
+                    </option>
+                  </select>
                 </div>
-            </div>
-
-            <!-- Mini Dashboard Card -->
-            <div class="card card-style gradient-blue" style="position: relative;">
-                <!-- Timer Control Button (Toggle) -->
-                <button id="timer-toggle-btn" class="color-white" style="position: absolute; top: 85px; left: 16.66%; transform: translateX(-50%); z-index: 10; background: none; border: none; font-size: 3rem; font-weight: 900; cursor: pointer; opacity: 0.9;">
-                    <i id="timer-toggle-icon" class="fa fa-play"></i>
-                </button>
-
-                <div class="content pt-4 pb-4">
-                    <h3 class="mb-3 color-white text-center">Training Dashboard</h3>
-
-                    <!-- Timer Display -->
-                    <div class="text-center mb-4">
-                        <div id="timer-display" class="color-white" style="font-size: 4rem; font-weight: 900; line-height: 1;">15s</div>
-                        <p class="color-white opacity-80 mb-0" style="font-size: 0.9rem;">Session Timer</p>
-                    </div>
-
-                    <!-- Dashboard Stats Row -->
-                    <div class="row text-center">
-                        <div class="col-4">
-                            <div class="color-white" style="font-size: 1.5rem; font-weight: 700;">1/6</div>
-                            <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem;">Exercises</p>
-                        </div>
-                        <div class="col-4">
-                            <div class="color-white" style="font-size: 1.5rem; font-weight: 700;">2:45</div>
-                            <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem;">Duration</p>
-                        </div>
-                        <div class="col-4">
-                            <div class="color-white" style="font-size: 1.5rem; font-weight: 700;">85%</div>
-                            <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem;">Progress</p>
-                        </div>
-                    </div>
+                <div class="col-6">
+                  <label
+                    class="form-label font-700 mb-2"
+                    style="
+                      color: white !important;
+                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+                      background: none !important;
+                      background-color: transparent !important;
+                      padding: 0 !important;
+                      border-radius: 0 !important;
+                    "
+                    >Timer Duration</label
+                  >
+                  <select
+                    id="timer-duration-select"
+                    class="form-select border-0 shadow-m rounded-m"
+                    style="
+                      color: #212529;
+                      background: #ffffff;
+                      font-weight: 600;
+                    "
+                  >
+                    <option
+                      value="10"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      10 seconds
+                    </option>
+                    <option
+                      value="15"
+                      selected
+                      style="color: #212529; background: #ffffff"
+                    >
+                      15 seconds
+                    </option>
+                    <option
+                      value="20"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      20 seconds
+                    </option>
+                    <option
+                      value="30"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      30 seconds
+                    </option>
+                    <option
+                      value="45"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      45 seconds
+                    </option>
+                    <option
+                      value="60"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      60 seconds
+                    </option>
+                    <option
+                      value="90"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      90 seconds
+                    </option>
+                    <option
+                      value="120"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      2 minutes
+                    </option>
+                  </select>
                 </div>
-            </div>
+              </div>
 
-            <!-- Main Video Card with Custom Player -->
-            <div class="card card-style">
-                <div class="content">
-                    <div class="custom-video-player" style="position: relative; background: #000; border-radius: 10px; overflow: hidden;">
-                        <video
-                            id="main-video"
-                            style="width: 100%; height: 300px; display: block; object-fit: cover;"
-                            crossorigin="anonymous">
-                            <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4" type="video/mp4">
-                            Your browser doesn't support HTML5 video.
-                        </video>
-
-                        <!-- Video Title Overlay -->
-                        <div id="video-title" style="position: absolute; top: 15px; left: 15px; z-index: 15; color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Übung 1</div>
-
-                        <!-- Custom Play/Pause Button -->
-                        <div class="custom-controls" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: opacity 0.3s ease;">
-                            <button id="play-pause-btn" class="play-pause-button" style="
-                                background: rgba(255,255,255,0.9);
-                                border: none;
-                                border-radius: 50%;
-                                width: 80px;
-                                height: 80px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                cursor: pointer;
-                                transition: all 0.3s ease;
-                                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-                            ">
-                                <i id="play-pause-icon" class="fa fa-play" style="font-size: 28px; color: #333; margin-left: 4px;"></i>
-                            </button>
-                        </div>
-                    </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label
+                    class="form-label font-700 mb-2"
+                    style="
+                      color: white !important;
+                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+                      background: none !important;
+                      background-color: transparent !important;
+                      padding: 0 !important;
+                      border-radius: 0 !important;
+                    "
+                    >Rest Between Exercises</label
+                  >
+                  <select
+                    id="rest-duration-select"
+                    class="form-select border-0 shadow-m rounded-m"
+                    style="
+                      color: #212529;
+                      background: #ffffff;
+                      font-weight: 600;
+                    "
+                  >
+                    <option
+                      value="5"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      5 seconds
+                    </option>
+                    <option
+                      value="10"
+                      selected
+                      style="color: #212529; background: #ffffff"
+                    >
+                      10 seconds
+                    </option>
+                    <option
+                      value="15"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      15 seconds
+                    </option>
+                    <option
+                      value="30"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      30 seconds
+                    </option>
+                    <option
+                      value="60"
+                      style="color: #212529; background: #ffffff"
+                    >
+                      1 minute
+                    </option>
+                  </select>
                 </div>
-            </div>
+              </div>
 
-            <!-- Finley Performance Metrics -->
-            <div class="card card-style">
-                <div class="content">
-                    <h3>Performance Metrics</h3>
-                    <div class="row mb-0">
-                        <div class="col-6">
-                            <div class="card card-style m-0 exercise-card bg-highlight loading-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-video="1" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
-                                <div class="loading-overlay">
-                                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                                </div>
-                                <div class="card-overlay">
-                                    <h5 class="text-white font-weight-bold">Übung 1</h5>
-                                    <p class="text-white-50 mb-0">Sprint Training</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-video="2" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
-                                <div class="loading-overlay">
-                                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                                </div>
-                                <div class="card-overlay">
-                                    <h5 class="text-white font-weight-bold">Übung 2</h5>
-                                    <p class="text-white-50 mb-0">Agility Training</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12"><div class="divider mt-2 mb-4"></div></div>
-                        <div class="col-6">
-                            <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-video="4" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
-                                <div class="loading-overlay">
-                                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                                </div>
-                                <div class="card-overlay">
-                                    <h5 class="text-white font-weight-bold">Übung 4</h5>
-                                    <p class="text-white-50 mb-0">Ball Control</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-video="5" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
-                                <div class="loading-overlay">
-                                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                                </div>
-                                <div class="card-overlay">
-                                    <h5 class="text-white font-weight-bold">Übung 5</h5>
-                                    <p class="text-white-50 mb-0">Dribbling</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12"><div class="divider mt-2 mb-4"></div></div>
-                        <div class="col-6">
-                            <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-video="6" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
-                                <div class="loading-overlay">
-                                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                                </div>
-                                <div class="card-overlay">
-                                    <h5 class="text-white font-weight-bold">Übung 6</h5>
-                                    <p class="text-white-50 mb-0">Finishing</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="cursor: pointer; background-size: cover; background-position: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-video="7" data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
-                                <div class="loading-overlay">
-                                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                                </div>
-                                <div class="card-overlay">
-                                    <h5 class="text-white font-weight-bold">Übung 7</h5>
-                                    <p class="text-white-50 mb-0">Coordination</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="row">
+                <div class="col-6">
+                  <button
+                    id="apply-workout-settings"
+                    class="btn btn-m btn-full rounded-m text-uppercase font-900 shadow-s"
+                    style="
+                      background: rgba(255, 255, 255, 0.98);
+                      color: #155724;
+                      border: 2px solid rgba(255, 255, 255, 0.8);
+                      font-weight: 700;
+                    "
+                  >
+                    Apply Settings
+                  </button>
                 </div>
+                <div class="col-6">
+                  <button
+                    id="reset-workout-settings"
+                    class="btn btn-m btn-full rounded-m text-uppercase font-600 shadow-s"
+                    style="
+                      background: rgba(255, 255, 255, 0.85);
+                      color: #495057;
+                      border: 2px solid rgba(255, 255, 255, 0.6);
+                      font-weight: 600;
+                    "
+                  >
+                    Reset Default
+                  </button>
+                </div>
+              </div>
             </div>
+          </div>
 
+          <!-- Mini Dashboard Card -->
+          <div class="card card-style gradient-blue" style="position: relative">
+            <!-- Timer Control Button (Toggle) -->
+            <button
+              id="timer-toggle-btn"
+              class="color-white"
+              style="
+                position: absolute;
+                top: 85px;
+                left: 16.66%;
+                transform: translateX(-50%);
+                z-index: 10;
+                background: none;
+                border: none;
+                font-size: 3rem;
+                font-weight: 900;
+                cursor: pointer;
+                opacity: 0.9;
+              "
+            >
+              <i id="timer-toggle-icon" class="fa fa-play"></i>
+            </button>
 
+            <div class="content pt-4 pb-4">
+              <h3 class="mb-3 color-white text-center">Training Dashboard</h3>
 
+              <!-- Timer Display -->
+              <div class="text-center mb-4">
+                <div
+                  id="timer-display"
+                  class="color-white"
+                  style="font-size: 4rem; font-weight: 900; line-height: 1"
+                >
+                  15s
+                </div>
+                <p
+                  class="color-white opacity-80 mb-0"
+                  style="font-size: 0.9rem"
+                >
+                  Session Timer
+                </p>
+              </div>
+
+              <!-- Dashboard Stats Row -->
+              <div class="row text-center">
+                <div class="col-4">
+                  <div
+                    class="color-white"
+                    style="font-size: 1.5rem; font-weight: 700"
+                  >
+                    1/6
+                  </div>
+                  <p
+                    class="color-white opacity-70 mb-0"
+                    style="font-size: 0.8rem"
+                  >
+                    Exercises
+                  </p>
+                </div>
+                <div class="col-4">
+                  <div
+                    id="total-duration-display"
+                    class="color-white"
+                    style="font-size: 1.5rem; font-weight: 700"
+                  >
+                    2:45
+                  </div>
+                  <p
+                    class="color-white opacity-70 mb-0"
+                    style="font-size: 0.8rem"
+                  >
+                    Duration
+                  </p>
+                </div>
+                <div class="col-4">
+                  <div
+                    id="progress-percentage"
+                    class="color-white"
+                    style="font-size: 1.5rem; font-weight: 700"
+                  >
+                    0%
+                  </div>
+                  <p
+                    class="color-white opacity-70 mb-0"
+                    style="font-size: 0.8rem"
+                  >
+                    Progress
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Video Card with Custom Player -->
+          <div class="card card-style">
+            <div class="content">
+              <div
+                class="custom-video-player"
+                style="
+                  position: relative;
+                  background: #000;
+                  border-radius: 10px;
+                  overflow: hidden;
+                "
+              >
+                <video
+                  id="main-video"
+                  style="
+                    width: 100%;
+                    height: 300px;
+                    display: block;
+                    object-fit: cover;
+                  "
+                  crossorigin="anonymous"
+                >
+                  <source
+                    src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser doesn't support HTML5 video.
+                </video>
+
+                <!-- Video Title Overlay -->
+                <div
+                  id="video-title"
+                  style="
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                    z-index: 15;
+                    color: white;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                  "
+                >
+                  Übung 1
+                </div>
+
+                <!-- Custom Play/Pause Button -->
+                <div
+                  class="custom-controls"
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(0, 0, 0, 0.3);
+                    transition: opacity 0.3s ease;
+                  "
+                >
+                  <button
+                    id="play-pause-btn"
+                    class="play-pause-button"
+                    style="
+                      background: rgba(255, 255, 255, 0.9);
+                      border: none;
+                      border-radius: 50%;
+                      width: 80px;
+                      height: 80px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                    "
+                  >
+                    <i
+                      id="play-pause-icon"
+                      class="fa fa-play"
+                      style="font-size: 28px; color: #333; margin-left: 4px"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finley Performance Metrics -->
+          <div class="card card-style">
+            <div class="content">
+              <h3>Performance Metrics</h3>
+              <div class="row mb-0">
+                <div class="col-6">
+                  <div
+                    class="card card-style m-0 exercise-card bg-highlight loading-card"
+                    data-card-height="140"
+                    style="
+                      cursor: pointer;
+                      background-size: cover;
+                      background-position: center;
+                      background: #f8f9fa;
+                    "
+                    data-video="1"
+                    data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4"
+                  >
+                    <div class="loading-overlay">
+                      <div
+                        class="spinner-border spinner-border-sm text-white"
+                        role="status"
+                      ></div>
+                    </div>
+                    <div class="card-overlay">
+                      <h5 class="text-white font-weight-bold">Übung 1</h5>
+                      <p class="text-white-50 mb-0">Sprint Training</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div
+                    class="card card-style m-0 exercise-card loading-card"
+                    data-card-height="140"
+                    style="
+                      cursor: pointer;
+                      background-size: cover;
+                      background-position: center;
+                      background: #f8f9fa;
+                    "
+                    data-video="2"
+                    data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4"
+                  >
+                    <div class="loading-overlay">
+                      <div
+                        class="spinner-border spinner-border-sm text-white"
+                        role="status"
+                      ></div>
+                    </div>
+                    <div class="card-overlay">
+                      <h5 class="text-white font-weight-bold">Übung 2</h5>
+                      <p class="text-white-50 mb-0">Agility Training</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12"><div class="divider mt-2 mb-4"></div></div>
+                <div class="col-6">
+                  <div
+                    class="card card-style m-0 exercise-card loading-card"
+                    data-card-height="140"
+                    style="
+                      cursor: pointer;
+                      background-size: cover;
+                      background-position: center;
+                      background: #f8f9fa;
+                    "
+                    data-video="4"
+                    data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4"
+                  >
+                    <div class="loading-overlay">
+                      <div
+                        class="spinner-border spinner-border-sm text-white"
+                        role="status"
+                      ></div>
+                    </div>
+                    <div class="card-overlay">
+                      <h5 class="text-white font-weight-bold">Übung 4</h5>
+                      <p class="text-white-50 mb-0">Ball Control</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div
+                    class="card card-style m-0 exercise-card loading-card"
+                    data-card-height="140"
+                    style="
+                      cursor: pointer;
+                      background-size: cover;
+                      background-position: center;
+                      background: #f8f9fa;
+                    "
+                    data-video="5"
+                    data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4"
+                  >
+                    <div class="loading-overlay">
+                      <div
+                        class="spinner-border spinner-border-sm text-white"
+                        role="status"
+                      ></div>
+                    </div>
+                    <div class="card-overlay">
+                      <h5 class="text-white font-weight-bold">Übung 5</h5>
+                      <p class="text-white-50 mb-0">Dribbling</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12"><div class="divider mt-2 mb-4"></div></div>
+                <div class="col-6">
+                  <div
+                    class="card card-style m-0 exercise-card loading-card"
+                    data-card-height="140"
+                    style="
+                      cursor: pointer;
+                      background-size: cover;
+                      background-position: center;
+                      background: #f8f9fa;
+                    "
+                    data-video="6"
+                    data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4"
+                  >
+                    <div class="loading-overlay">
+                      <div
+                        class="spinner-border spinner-border-sm text-white"
+                        role="status"
+                      ></div>
+                    </div>
+                    <div class="card-overlay">
+                      <h5 class="text-white font-weight-bold">Übung 6</h5>
+                      <p class="text-white-50 mb-0">Finishing</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div
+                    class="card card-style m-0 exercise-card loading-card"
+                    data-card-height="140"
+                    style="
+                      cursor: pointer;
+                      background-size: cover;
+                      background-position: center;
+                      background: #f8f9fa;
+                    "
+                    data-video="7"
+                    data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4"
+                  >
+                    <div class="loading-overlay">
+                      <div
+                        class="spinner-border spinner-border-sm text-white"
+                        role="status"
+                      ></div>
+                    </div>
+                    <div class="card-overlay">
+                      <h5 class="text-white font-weight-bold">Übung 7</h5>
+                      <p class="text-white-50 mb-0">Coordination</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Settings Menu -->
-    <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
-        <div class="menu-title"><h1>Settings</h1><a href="#" class="close-menu"><i class="fa fa-times"></i></a></div>
+      <!-- Settings Menu -->
+      <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
+        <div class="menu-title">
+          <h1>Settings</h1>
+          <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+        </div>
         <div class="content">
-            <div class="list-group list-custom-small">
-                <a href="#" data-toggle-theme class="pb-2 ms-n1">
-                    <i class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"></i>
-                    <span>Dark Mode</span>
-                    <div class="custom-control scale-switch ios-switch">
-                        <input data-toggle-theme type="checkbox" class="ios-input" id="switch-dark-mode">
-                        <label class="custom-control-label" for="switch-dark-mode"></label>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
-                    <i class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"></i>
-                    <span>Fullscreen Mode</span>
-                    <div class="custom-control scale-switch ios-switch">
-                        <input type="checkbox" class="ios-input" id="switch-fullscreen-mode">
-                        <label class="custom-control-label" for="switch-fullscreen-mode"></label>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
+          <div class="list-group list-custom-small">
+            <a href="#" data-toggle-theme class="pb-2 ms-n1">
+              <i
+                class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"
+              ></i>
+              <span>Dark Mode</span>
+              <div class="custom-control scale-switch ios-switch">
+                <input
+                  data-toggle-theme
+                  type="checkbox"
+                  class="ios-input"
+                  id="switch-dark-mode"
+                />
+                <label
+                  class="custom-control-label"
+                  for="switch-dark-mode"
+                ></label>
+              </div>
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
+              <i
+                class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"
+              ></i>
+              <span>Fullscreen Mode</span>
+              <div class="custom-control scale-switch ios-switch">
+                <input
+                  type="checkbox"
+                  class="ios-input"
+                  id="switch-fullscreen-mode"
+                />
+                <label
+                  class="custom-control-label"
+                  for="switch-fullscreen-mode"
+                ></label>
+              </div>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
 
-</div>
+    <!-- Exercise Card Styles -->
+    <style>
+      /* Gradient Green for Workout Setup Card */
+      .gradient-green {
+        background: linear-gradient(
+          135deg,
+          #28a745 0%,
+          #20c997 50%,
+          #17a2b8 100%
+        );
+        background-size: 200% 200%;
+        animation: gradientShift 8s ease infinite;
+      }
 
-<!-- Exercise Card Styles -->
-<style>
-.loading-card {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-.loading-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: opacity 0.3s ease;
-}
+      .loading-card {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
 
-.loading-card.loaded .loading-overlay {
-    opacity: 0;
-    pointer-events: none;
-}
+      .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: opacity 0.3s ease;
+      }
 
-.card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-    padding: 15px;
-    z-index: 5;
-}
+      .loading-card.loaded .loading-overlay {
+        opacity: 0;
+        pointer-events: none;
+      }
 
-.exercise-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+      .card-overlay {
+        display: none !important;
+      }
 
-.exercise-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
+      .exercise-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-.exercise-card.bg-highlight {
-    border: 3px solid #007bff;
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
-}
+      .exercise-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
 
-/* Fallback gradients for different exercise types */
-.exercise-card[data-video="1"] {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
-}
+      .exercise-card.bg-highlight {
+        border: 3px solid #007bff;
+        box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+      }
 
-.exercise-card[data-video="2"] {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-}
+      /* NO GRADIENTS - REMOVED */
 
-.exercise-card[data-video="4"] {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
-}
+      /* When thumbnail is loaded, override the gradient */
+      .exercise-card.loaded {
+        background-size: cover !important;
+        background-position: center !important;
+      }
 
-.exercise-card[data-video="5"] {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
-}
+      /* Hide card overlay when thumbnail is loaded */
+      .exercise-card.loaded .card-overlay {
+        display: none !important;
+      }
 
-.exercise-card[data-video="6"] {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-}
+      /* Video Text Overlay Styles */
+      .video-text-overlay {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 10;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
 
-.exercise-card[data-video="7"] {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
-}
+      .exercise-card:hover .video-text-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-/* When thumbnail is loaded, override the gradient */
-.exercise-card.loaded {
-    background-size: cover !important;
-    background-position: center !important;
-}
-</style>
+      .video-text-overlay .overlay-title {
+        font-weight: 600;
+        margin-bottom: 2px;
+        font-size: 15px;
+      }
 
-<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    'use strict'
+      .video-text-overlay .overlay-description {
+        font-size: 12px;
+        opacity: 0.9;
+        margin: 0;
+      }
+    </style>
 
-    console.log('🎯 Finley Profile Page Loaded Successfully');
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        "use strict";
 
-    // Get elements
-    const mainVideo = document.getElementById('main-video');
-    const videoTitle = document.getElementById('video-title');
-    const exerciseCards = document.querySelectorAll('.exercise-card');
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    const playPauseIcon = document.getElementById('play-pause-icon');
-    const customControls = document.querySelector('.custom-controls');
+        console.log("🎯 Finley Profile Page Loaded Successfully");
 
-    // Timer elements
-    const timerDisplay = document.getElementById('timer-display');
-    const timerToggleBtn = document.getElementById('timer-toggle-btn');
-    const timerToggleIcon = document.getElementById('timer-toggle-icon');
+        // Video Text Overlay Configuration Component
+        const VideoOverlayConfig = {
+          overlays: {
+            1: {
+              title: "Sprint Training",
+              description: "High-intensity speed development",
+              category: "Speed",
+            },
+            2: {
+              title: "Agility Training",
+              description: "Quick direction changes and coordination",
+              category: "Agility",
+            },
+            4: {
+              title: "Ball Control",
+              description: "Technical skills and ball mastery",
+              category: "Technical",
+            },
+            5: {
+              title: "Dribbling",
+              description: "1v1 skills and close control",
+              category: "Technical",
+            },
+            6: {
+              title: "Finishing",
+              description: "Goal scoring techniques",
+              category: "Shooting",
+            },
+            7: {
+              title: "Coordination",
+              description: "Body movement and balance",
+              category: "Physical",
+            },
+          },
 
-    console.log('Found elements:', {
-        mainVideo: !!mainVideo,
-        videoTitle: !!videoTitle,
-        exerciseCards: exerciseCards.length,
-        playPauseBtn: !!playPauseBtn,
-        customControls: !!customControls,
-        timerDisplay: !!timerDisplay,
-        timerToggleBtn: !!timerToggleBtn,
-        timerToggleIcon: !!timerToggleIcon
-    });
+          // Get overlay data for a specific video
+          getOverlay: function (videoNumber) {
+            return this.overlays[videoNumber] || null;
+          },
 
-    // Timer functionality
-    let timerSeconds = 15;
-    let timerInterval = null;
-    let isTimerRunning = false;
-    let currentExercise = 1;
-    const totalExercises = 6;
+          // Add or update overlay for a video
+          setOverlay: function (
+            videoNumber,
+            title,
+            description,
+            category = ""
+          ) {
+            this.overlays[videoNumber] = {
+              title: title,
+              description: description,
+              category: category,
+            };
+            console.log(
+              `📝 Updated overlay for video ${videoNumber}:`,
+              this.overlays[videoNumber]
+            );
+          },
 
-    function updateTimerDisplay() {
-        timerDisplay.textContent = `${timerSeconds}s`;
-    }
+          // Remove overlay for a video
+          removeOverlay: function (videoNumber) {
+            if (this.overlays[videoNumber]) {
+              delete this.overlays[videoNumber];
+              console.log(`🗑️ Removed overlay for video ${videoNumber}`);
+              return true;
+            }
+            return false;
+          },
 
-    function updateExerciseCounter() {
-        const exerciseCounterElement = document.querySelector('.row.text-center .col-4:first-child .color-white');
-        if (exerciseCounterElement) {
+          // Get all configured overlays
+          getAllOverlays: function () {
+            return this.overlays;
+          },
+        };
+
+        // Video Text Overlay Manager Component
+        const VideoTextOverlayManager = {
+          // Create overlay element for a card
+          createOverlay: function (card, overlayData) {
+            if (!overlayData) return null;
+
+            const overlay = document.createElement("div");
+            overlay.className = "video-text-overlay";
+
+            const title = document.createElement("div");
+            title.className = "overlay-title";
+            title.textContent = overlayData.title;
+
+            const description = document.createElement("div");
+            description.className = "overlay-description";
+            description.textContent = overlayData.description;
+
+            overlay.appendChild(title);
+            overlay.appendChild(description);
+
+            return overlay;
+          },
+
+          // Add overlay to a specific card
+          addOverlayToCard: function (card) {
+            const videoNumber = card.getAttribute("data-video");
+            const overlayData = VideoOverlayConfig.getOverlay(videoNumber);
+
+            if (!overlayData) {
+              console.log(`⚠️ No overlay data found for video ${videoNumber}`);
+              return false;
+            }
+
+            // Remove existing overlay if present
+            this.removeOverlayFromCard(card);
+
+            const overlay = this.createOverlay(card, overlayData);
+            if (overlay) {
+              card.appendChild(overlay);
+              console.log(
+                `✅ Added text overlay to video ${videoNumber}:`,
+                overlayData.title
+              );
+              return true;
+            }
+            return false;
+          },
+
+          // Remove overlay from a card
+          removeOverlayFromCard: function (card) {
+            const existingOverlay = card.querySelector(".video-text-overlay");
+            if (existingOverlay) {
+              existingOverlay.remove();
+              return true;
+            }
+            return false;
+          },
+
+          // Initialize overlays for all cards
+          initializeAllOverlays: function (cards) {
+            let successCount = 0;
+            cards.forEach((card, index) => {
+              if (this.addOverlayToCard(card)) {
+                successCount++;
+              }
+            });
+            console.log(
+              `🎯 Initialized ${successCount} text overlays out of ${cards.length} cards`
+            );
+            return successCount;
+          },
+
+          // Update overlay for a specific video
+          updateOverlay: function (
+            videoNumber,
+            title,
+            description,
+            category = ""
+          ) {
+            VideoOverlayConfig.setOverlay(
+              videoNumber,
+              title,
+              description,
+              category
+            );
+
+            // Find and update the card
+            const card = document.querySelector(
+              `[data-video="${videoNumber}"]`
+            );
+            if (card) {
+              this.addOverlayToCard(card);
+              return true;
+            }
+            return false;
+          },
+
+          // Remove overlay for a specific video
+          removeOverlay: function (videoNumber) {
+            VideoOverlayConfig.removeOverlay(videoNumber);
+
+            // Find and remove from card
+            const card = document.querySelector(
+              `[data-video="${videoNumber}"]`
+            );
+            if (card) {
+              this.removeOverlayFromCard(card);
+              return true;
+            }
+            return false;
+          },
+        };
+
+        // Get elements
+        const mainVideo = document.getElementById("main-video");
+        const videoTitle = document.getElementById("video-title");
+        const exerciseCards = document.querySelectorAll(".exercise-card");
+        const playPauseBtn = document.getElementById("play-pause-btn");
+        const playPauseIcon = document.getElementById("play-pause-icon");
+        const customControls = document.querySelector(".custom-controls");
+
+        // Timer elements
+        const timerDisplay = document.getElementById("timer-display");
+        const timerToggleBtn = document.getElementById("timer-toggle-btn");
+        const timerToggleIcon = document.getElementById("timer-toggle-icon");
+
+        // Progress elements
+        const progressPercentageElement = document.getElementById(
+          "progress-percentage"
+        );
+        const totalDurationDisplay = document.getElementById(
+          "total-duration-display"
+        );
+
+        // Workout setup elements
+        const exerciseAmountSelect = document.getElementById(
+          "exercise-amount-select"
+        );
+        const timerDurationSelect = document.getElementById(
+          "timer-duration-select"
+        );
+        const restDurationSelect = document.getElementById(
+          "rest-duration-select"
+        );
+        const applySettingsBtn = document.getElementById(
+          "apply-workout-settings"
+        );
+        const resetSettingsBtn = document.getElementById(
+          "reset-workout-settings"
+        );
+
+        console.log("Found elements:", {
+          mainVideo: !!mainVideo,
+          videoTitle: !!videoTitle,
+          exerciseCards: exerciseCards.length,
+          playPauseBtn: !!playPauseBtn,
+          customControls: !!customControls,
+          timerDisplay: !!timerDisplay,
+          timerToggleBtn: !!timerToggleBtn,
+          timerToggleIcon: !!timerToggleIcon,
+          progressPercentageElement: !!progressPercentageElement,
+          totalDurationDisplay: !!totalDurationDisplay,
+          exerciseAmountSelect: !!exerciseAmountSelect,
+          timerDurationSelect: !!timerDurationSelect,
+          restDurationSelect: !!restDurationSelect,
+          applySettingsBtn: !!applySettingsBtn,
+          resetSettingsBtn: !!resetSettingsBtn,
+        });
+
+        // Workout setup configuration
+        let workoutConfig = {
+          totalExercises: 6,
+          timerDuration: 15,
+          restDuration: 10,
+        };
+
+        // Timer functionality
+        let timerSeconds = workoutConfig.timerDuration;
+        let timerInterval = null;
+        let isTimerRunning = false;
+        let currentExercise = 1; // Starting at exercise 1 (beginning of workout)
+        let totalExercises = workoutConfig.totalExercises;
+
+        function updateTimerDisplay() {
+          timerDisplay.textContent = `${timerSeconds}s`;
+        }
+
+        function updateProgressPercentage() {
+          // Calculate total workout duration
+          const exerciseDuration =
+            workoutConfig.timerDuration * workoutConfig.totalExercises;
+          const restDuration =
+            workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
+          const totalWorkoutSeconds = exerciseDuration + restDuration;
+
+          // Calculate elapsed time: completed exercises + current exercise progress + rest periods
+          const completedExercises = currentExercise - 1;
+          const completedExerciseTime =
+            completedExercises * workoutConfig.timerDuration;
+          const currentExerciseElapsed =
+            workoutConfig.timerDuration - timerSeconds;
+          const completedRestTime =
+            completedExercises * workoutConfig.restDuration;
+
+          const totalElapsedSeconds =
+            completedExerciseTime + currentExerciseElapsed + completedRestTime;
+
+          // Calculate progress percentage (0% = start, 100% = complete workout)
+          const workoutProgress = Math.round(
+            (totalElapsedSeconds / totalWorkoutSeconds) * 100
+          );
+
+          if (progressPercentageElement) {
+            progressPercentageElement.textContent = `${workoutProgress}%`;
+            console.log(
+              `📊 Workout progress updated: ${workoutProgress}% (${totalElapsedSeconds}s/${totalWorkoutSeconds}s completed)`
+            );
+          }
+        }
+
+        function updateTotalDuration() {
+          // Calculate total duration: (timer duration × total exercises) + (rest duration × (total exercises - 1))
+          const exerciseDuration =
+            workoutConfig.timerDuration * workoutConfig.totalExercises;
+          const restDuration =
+            workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
+          const totalSeconds = exerciseDuration + restDuration;
+
+          // Convert to minutes and seconds
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = totalSeconds % 60;
+
+          // Format as MM:SS
+          const formattedTime = `${minutes}:${seconds
+            .toString()
+            .padStart(2, "0")}`;
+
+          if (totalDurationDisplay) {
+            totalDurationDisplay.textContent = formattedTime;
+            console.log(
+              `⏱️ Total duration updated: ${formattedTime} (${exerciseDuration}s exercises + ${restDuration}s rest = ${totalSeconds}s total)`
+            );
+          }
+        }
+
+        // Workout Setup Management Functions
+        function applyWorkoutSettings() {
+          const newTotalExercises = parseInt(exerciseAmountSelect.value);
+          const newTimerDuration = parseInt(timerDurationSelect.value);
+          const newRestDuration = parseInt(restDurationSelect.value);
+
+          // Update configuration
+          workoutConfig.totalExercises = newTotalExercises;
+          workoutConfig.timerDuration = newTimerDuration;
+          workoutConfig.restDuration = newRestDuration;
+
+          // Update working variables
+          totalExercises = newTotalExercises;
+          timerSeconds = newTimerDuration;
+
+          // Reset current exercise if it exceeds new total
+          if (currentExercise > totalExercises) {
+            currentExercise = 1;
+          }
+
+          // Update displays
+          updateTimerDisplay();
+          updateProgressPercentage();
+          updateExerciseCounter();
+          updateTotalDuration();
+
+          console.log("⚙️ Workout settings applied:", workoutConfig);
+
+          // Show success feedback
+          applySettingsBtn.textContent = "Applied!";
+          applySettingsBtn.style.background = "#155724";
+          applySettingsBtn.style.color = "white";
+          applySettingsBtn.style.border = "2px solid #155724";
+
+          setTimeout(() => {
+            applySettingsBtn.textContent = "Apply Settings";
+            applySettingsBtn.style.background = "rgba(255,255,255,0.98)";
+            applySettingsBtn.style.color = "#155724";
+            applySettingsBtn.style.border = "2px solid rgba(255,255,255,0.8)";
+          }, 2000);
+        }
+
+        function resetWorkoutSettings() {
+          // Reset to defaults
+          workoutConfig = {
+            totalExercises: 6,
+            timerDuration: 15,
+            restDuration: 10,
+          };
+
+          // Update select elements
+          exerciseAmountSelect.value = workoutConfig.totalExercises;
+          timerDurationSelect.value = workoutConfig.timerDuration;
+          restDurationSelect.value = workoutConfig.restDuration;
+
+          // Update working variables
+          totalExercises = workoutConfig.totalExercises;
+          timerSeconds = workoutConfig.timerDuration;
+          currentExercise = 1; // Reset to beginning of workout
+
+          // Update displays
+          updateTimerDisplay();
+          updateProgressPercentage();
+          updateExerciseCounter();
+          updateTotalDuration();
+
+          console.log("🔄 Workout settings reset to defaults:", workoutConfig);
+
+          // Show reset feedback
+          resetSettingsBtn.textContent = "Reset!";
+          resetSettingsBtn.style.backgroundColor = "#721c24";
+          resetSettingsBtn.style.color = "white";
+          resetSettingsBtn.style.opacity = "1";
+
+          setTimeout(() => {
+            resetSettingsBtn.textContent = "Reset Default";
+            resetSettingsBtn.style.backgroundColor = "white";
+            resetSettingsBtn.style.color = "#6c757d";
+            resetSettingsBtn.style.opacity = "0.9";
+          }, 2000);
+        }
+
+        function updateExerciseCounter() {
+          const exerciseCounterElement = document.querySelector(
+            ".row.text-center .col-4:first-child .color-white"
+          );
+          if (exerciseCounterElement) {
             exerciseCounterElement.textContent = `${currentExercise}/${totalExercises}`;
+          }
+          // Update progress percentage whenever exercise counter changes
+          updateProgressPercentage();
         }
-    }
 
-    function updateToggleButton() {
-        if (isTimerRunning) {
-            timerToggleIcon.className = 'fa fa-pause';
-        } else {
-            timerToggleIcon.className = 'fa fa-play';
+        function updateToggleButton() {
+          if (isTimerRunning) {
+            timerToggleIcon.className = "fa fa-pause";
+          } else {
+            timerToggleIcon.className = "fa fa-play";
+          }
         }
-    }
 
-    function startTimer() {
-        if (!isTimerRunning && timerSeconds > 0) {
+        function startTimer() {
+          if (!isTimerRunning && timerSeconds > 0) {
             isTimerRunning = true;
             updateToggleButton();
-            console.log('⏱️ Timer started');
+            console.log("⏱️ Timer started");
 
             timerInterval = setInterval(() => {
-                timerSeconds--;
-                updateTimerDisplay();
+              timerSeconds--;
+              updateTimerDisplay();
+              updateProgressPercentage();
 
-                if (timerSeconds <= 0) {
-                    clearInterval(timerInterval);
-                    isTimerRunning = false;
-                    updateToggleButton();
-                    console.log('⏰ Timer finished!');
+              if (timerSeconds <= 0) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                updateToggleButton();
+                console.log("⏰ Timer finished!");
 
-                    // Increment exercise counter if not at max
-                    if (currentExercise < totalExercises) {
-                        currentExercise++;
-                        updateExerciseCounter();
-                        console.log(`📈 Exercise incremented to ${currentExercise}/${totalExercises}`);
-                    }
-
-                    // Add completion effect and reset timer
-                    timerDisplay.style.color = '#ff6b6b';
-                    setTimeout(() => {
-                        timerDisplay.style.color = '';
-                        timerSeconds = 15;
-                        updateTimerDisplay();
-                        console.log('🔄 Timer reset to 15s');
-                    }, 2000);
+                // Increment exercise counter if not at max
+                if (currentExercise < totalExercises) {
+                  currentExercise++;
+                  updateExerciseCounter();
+                  console.log(
+                    `📈 Exercise incremented to ${currentExercise}/${totalExercises}`
+                  );
                 }
-            }, 1000);
-        }
-    }
 
-    function pauseTimer() {
-        if (isTimerRunning) {
+                // Add completion effect and reset timer
+                timerDisplay.style.color = "#ff6b6b";
+                setTimeout(() => {
+                  timerDisplay.style.color = "";
+                  timerSeconds = workoutConfig.timerDuration;
+                  updateTimerDisplay();
+                  updateProgressPercentage();
+                  console.log(
+                    `🔄 Timer reset to ${workoutConfig.timerDuration}s`
+                  );
+                }, 2000);
+              }
+            }, 1000);
+          }
+        }
+
+        function pauseTimer() {
+          if (isTimerRunning) {
             clearInterval(timerInterval);
             isTimerRunning = false;
             updateToggleButton();
-            console.log('⏸️ Timer paused');
+            console.log("⏸️ Timer paused");
+          }
         }
-    }
 
-    function resetTimer() {
-        clearInterval(timerInterval);
-        isTimerRunning = false;
-        timerSeconds = 15;
-        updateTimerDisplay();
-        updateToggleButton();
-        console.log('🔄 Timer reset');
-    }
+        function resetTimer() {
+          clearInterval(timerInterval);
+          isTimerRunning = false;
+          timerSeconds = workoutConfig.timerDuration;
+          updateTimerDisplay();
+          updateProgressPercentage();
+          updateToggleButton();
+          console.log(`🔄 Timer reset to ${workoutConfig.timerDuration}s`);
+        }
 
-    function toggleTimer() {
-        if (isTimerRunning) {
+        function toggleTimer() {
+          if (isTimerRunning) {
             pauseTimer();
-        } else {
+          } else {
             startTimer();
+          }
         }
-    }
 
-    // Timer toggle button event listener
-    if (timerToggleBtn) {
-        timerToggleBtn.addEventListener('click', function() {
+        // Timer toggle button event listener
+        if (timerToggleBtn) {
+          timerToggleBtn.addEventListener("click", function () {
             toggleTimer();
-        });
-    }
+          });
+        }
 
-    // Function to extract video thumbnail with improved error handling
-    function extractThumbnail(videoUrl, card) {
-        const loadingOverlay = card.querySelector('.loading-overlay');
-        const videoNumber = card.getAttribute('data-video');
+        // Initialize progress percentage and total duration on page load
+        updateProgressPercentage();
+        updateTotalDuration();
 
-        console.log(`🖼️ Starting thumbnail extraction for video ${videoNumber}:`, videoUrl);
+        // Workout setup event listeners
+        if (applySettingsBtn) {
+          applySettingsBtn.addEventListener("click", function () {
+            applyWorkoutSettings();
+          });
+        }
 
-        const video = document.createElement('video');
-        video.crossOrigin = 'anonymous';
-        video.muted = true;
-        video.preload = 'metadata';
-        video.playsInline = true;
+        if (resetSettingsBtn) {
+          resetSettingsBtn.addEventListener("click", function () {
+            resetWorkoutSettings();
+          });
+        }
 
-        // Set timeout for thumbnail extraction
-        const timeoutId = setTimeout(() => {
-            console.warn(`⏰ Thumbnail extraction timeout for video ${videoNumber}`);
+        // Function to extract video thumbnail with improved error handling
+        function extractThumbnail(videoUrl, card) {
+          const loadingOverlay = card.querySelector(".loading-overlay");
+          const videoNumber = card.getAttribute("data-video");
+
+          console.log(
+            `🖼️ Starting thumbnail extraction for video ${videoNumber}:`,
+            videoUrl
+          );
+
+          const video = document.createElement("video");
+          video.crossOrigin = "anonymous";
+          video.muted = true;
+          video.preload = "metadata";
+          video.playsInline = true;
+
+          // Set timeout for thumbnail extraction
+          const timeoutId = setTimeout(() => {
+            console.warn(
+              `⏰ Thumbnail extraction timeout for video ${videoNumber}`
+            );
             finalizeThumbnailLoading(card, false);
-        }, 10000); // 10 second timeout
+          }, 10000); // 10 second timeout
 
-        video.addEventListener('loadedmetadata', function() {
+          video.addEventListener("loadedmetadata", function () {
             console.log(`📊 Video metadata loaded for video ${videoNumber}`);
             // Seek to 1 second into the video for a better thumbnail
             video.currentTime = Math.min(1, video.duration * 0.1);
-        });
+          });
 
-        video.addEventListener('seeked', function() {
+          video.addEventListener("seeked", function () {
             try {
-                console.log(`🎯 Video seeked for video ${videoNumber}, extracting frame...`);
+              console.log(
+                `🎯 Video seeked for video ${videoNumber}, extracting frame...`
+              );
 
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d");
 
-                // Set canvas dimensions
-                canvas.width = video.videoWidth || 640;
-                canvas.height = video.videoHeight || 360;
+              // Set canvas dimensions
+              canvas.width = video.videoWidth || 640;
+              canvas.height = video.videoHeight || 360;
 
-                // Draw video frame to canvas
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+              // Draw video frame to canvas
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-                // Convert to data URL
-                const thumbnailUrl = canvas.toDataURL('image/jpeg', 0.8);
+              // Convert to data URL
+              const thumbnailUrl = canvas.toDataURL("image/jpeg", 0.8);
 
-                // Apply thumbnail
-                card.style.backgroundImage = `url(${thumbnailUrl})`;
-                card.classList.add('loaded');
+              // Apply thumbnail and remove gradient overlays
+              card.style.backgroundImage = `url(${thumbnailUrl})`;
 
-                clearTimeout(timeoutId);
-                finalizeThumbnailLoading(card, true);
+              // Hide the card overlay (gradient overlay with text)
+              const cardOverlay = card.querySelector(".card-overlay");
+              if (cardOverlay) {
+                cardOverlay.style.display = "none";
+              }
 
-                console.log(`✅ Thumbnail extracted successfully for video ${videoNumber}`);
+              card.classList.add("loaded");
+
+              clearTimeout(timeoutId);
+              finalizeThumbnailLoading(card, true);
+
+              console.log(
+                `✅ Thumbnail extracted successfully for video ${videoNumber}`
+              );
             } catch (error) {
-                console.error(`❌ Error extracting thumbnail for video ${videoNumber}:`, error);
-                clearTimeout(timeoutId);
-                finalizeThumbnailLoading(card, false);
+              console.error(
+                `❌ Error extracting thumbnail for video ${videoNumber}:`,
+                error
+              );
+              clearTimeout(timeoutId);
+              finalizeThumbnailLoading(card, false);
             }
-        });
+          });
 
-        video.addEventListener('error', function(e) {
+          video.addEventListener("error", function (e) {
             console.error(`❌ Video error for video ${videoNumber}:`, e);
             clearTimeout(timeoutId);
             finalizeThumbnailLoading(card, false);
-        });
+          });
 
-        video.addEventListener('loadstart', function() {
+          video.addEventListener("loadstart", function () {
             console.log(`🔄 Video loading started for video ${videoNumber}`);
-        });
+          });
 
-        video.addEventListener('canplay', function() {
+          video.addEventListener("canplay", function () {
             console.log(`▶️ Video can play for video ${videoNumber}`);
-        });
+          });
 
-        // Start loading
-        video.src = videoUrl;
-    }
-
-    // Function to finalize thumbnail loading state
-    function finalizeThumbnailLoading(card, success) {
-        const loadingOverlay = card.querySelector('.loading-overlay');
-        const videoNumber = card.getAttribute('data-video');
-
-        if (loadingOverlay) {
-            loadingOverlay.style.opacity = '0';
-            setTimeout(() => {
-                loadingOverlay.style.display = 'none';
-            }, 300);
+          // Start loading
+          video.src = videoUrl;
         }
 
-        if (!success) {
+        // Function to finalize thumbnail loading state
+        function finalizeThumbnailLoading(card, success) {
+          const loadingOverlay = card.querySelector(".loading-overlay");
+          const videoNumber = card.getAttribute("data-video");
+
+          if (loadingOverlay) {
+            loadingOverlay.style.opacity = "0";
+            setTimeout(() => {
+              loadingOverlay.style.display = "none";
+            }, 300);
+          }
+
+          if (!success) {
             // Keep the gradient background that's already set in CSS
             console.log(`🎨 Using fallback gradient for video ${videoNumber}`);
+          }
+
+          card.classList.add("loaded");
+          console.log(
+            `🏁 Thumbnail loading finalized for video ${videoNumber}, success: ${success}`
+          );
         }
 
-        card.classList.add('loaded');
-        console.log(`🏁 Thumbnail loading finalized for video ${videoNumber}, success: ${success}`);
-    }
-
-    // Extract thumbnails for all exercise cards with staggered loading
-    exerciseCards.forEach((card, index) => {
-        const videoUrl = card.getAttribute('data-url');
-        if (videoUrl) {
+        // Extract thumbnails for all exercise cards with staggered loading
+        exerciseCards.forEach((card, index) => {
+          const videoUrl = card.getAttribute("data-url");
+          if (videoUrl) {
             // Stagger the loading to prevent overwhelming the browser
             setTimeout(() => {
-                console.log(`🖼️ Extracting thumbnail for card ${index + 1}:`, videoUrl);
-                extractThumbnail(videoUrl, card);
+              console.log(
+                `🖼️ Extracting thumbnail for card ${index + 1}:`,
+                videoUrl
+              );
+              extractThumbnail(videoUrl, card);
             }, index * 500); // 500ms delay between each thumbnail extraction
-        } else {
+          } else {
             // If no video URL, just remove loading state
             setTimeout(() => {
-                finalizeThumbnailLoading(card, false);
+              finalizeThumbnailLoading(card, false);
             }, index * 100);
-        }
-    });
+          }
+        });
 
-    // Custom Player Functions
-    function updatePlayPauseButton() {
-        if (mainVideo.paused) {
-            playPauseIcon.className = 'fa fa-play';
-            playPauseIcon.style.marginLeft = '4px'; // Slight offset for play icon
-            customControls.style.opacity = '1';
-        } else {
-            playPauseIcon.className = 'fa fa-pause';
-            playPauseIcon.style.marginLeft = '0';
-            customControls.style.opacity = '0';
-        }
-    }
+        // Initialize text overlays after a delay to ensure thumbnails are loaded
+        setTimeout(() => {
+          VideoTextOverlayManager.initializeAllOverlays(exerciseCards);
+        }, exerciseCards.length * 500 + 1000); // Wait for all thumbnails + 1 second
 
-    function togglePlayPause() {
-        if (mainVideo.paused) {
+        // Global utility functions for overlay management (accessible from console)
+        window.FinleyOverlays = {
+          // Update overlay for a video
+          update: function (videoNumber, title, description, category = "") {
+            return VideoTextOverlayManager.updateOverlay(
+              videoNumber,
+              title,
+              description,
+              category
+            );
+          },
+
+          // Remove overlay for a video
+          remove: function (videoNumber) {
+            return VideoTextOverlayManager.removeOverlay(videoNumber);
+          },
+
+          // Get overlay data for a video
+          get: function (videoNumber) {
+            return VideoOverlayConfig.getOverlay(videoNumber);
+          },
+
+          // Get all overlay configurations
+          getAll: function () {
+            return VideoOverlayConfig.getAllOverlays();
+          },
+
+          // Reinitialize all overlays
+          refresh: function () {
+            return VideoTextOverlayManager.initializeAllOverlays(exerciseCards);
+          },
+
+          // Progress management
+          setProgress: function (exerciseNumber) {
+            if (exerciseNumber >= 1 && exerciseNumber <= totalExercises) {
+              currentExercise = exerciseNumber;
+              updateProgressPercentage();
+              updateExerciseCounter();
+              console.log(
+                `📊 Progress manually set to exercise ${exerciseNumber}/${totalExercises}`
+              );
+              return true;
+            } else {
+              console.error(
+                `❌ Invalid exercise number. Must be between 1 and ${totalExercises}`
+              );
+              return false;
+            }
+          },
+
+          getProgress: function () {
+            // Calculate total workout duration
+            const exerciseDuration =
+              workoutConfig.timerDuration * workoutConfig.totalExercises;
+            const restDuration =
+              workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
+            const totalWorkoutSeconds = exerciseDuration + restDuration;
+
+            // Calculate elapsed time
+            const completedExercises = currentExercise - 1;
+            const completedExerciseTime =
+              completedExercises * workoutConfig.timerDuration;
+            const currentExerciseElapsed =
+              workoutConfig.timerDuration - timerSeconds;
+            const completedRestTime =
+              completedExercises * workoutConfig.restDuration;
+            const totalElapsedSeconds =
+              completedExerciseTime +
+              currentExerciseElapsed +
+              completedRestTime;
+
+            const workoutProgress = Math.round(
+              (totalElapsedSeconds / totalWorkoutSeconds) * 100
+            );
+
+            return {
+              currentExercise: currentExercise,
+              totalExercises: totalExercises,
+              timerSeconds: timerSeconds,
+              timerDuration: workoutConfig.timerDuration,
+              totalWorkoutSeconds: totalWorkoutSeconds,
+              totalElapsedSeconds: totalElapsedSeconds,
+              workoutProgress: workoutProgress,
+              percentage: workoutProgress,
+            };
+          },
+
+          // Workout setup management
+          getWorkoutConfig: function () {
+            return { ...workoutConfig };
+          },
+
+          setWorkoutConfig: function (
+            exercises,
+            timerDuration,
+            restDuration = 10
+          ) {
+            if (exercises) exerciseAmountSelect.value = exercises;
+            if (timerDuration) timerDurationSelect.value = timerDuration;
+            if (restDuration) restDurationSelect.value = restDuration;
+
+            applyWorkoutSettings();
+            return this.getWorkoutConfig();
+          },
+
+          resetWorkout: function () {
+            resetWorkoutSettings();
+            return this.getWorkoutConfig();
+          },
+
+          // Show help
+          help: function () {
+            console.log(`
+🎯 Finley Video Overlay Management Commands:
+
+FinleyOverlays.update(videoNumber, title, description, category)
+  - Update overlay for a specific video
+  - Example: FinleyOverlays.update("1", "New Title", "New Description", "Category")
+
+FinleyOverlays.remove(videoNumber)
+  - Remove overlay for a specific video
+  - Example: FinleyOverlays.remove("1")
+
+FinleyOverlays.get(videoNumber)
+  - Get overlay data for a specific video
+  - Example: FinleyOverlays.get("1")
+
+FinleyOverlays.getAll()
+  - Get all overlay configurations
+  - Example: FinleyOverlays.getAll()
+
+FinleyOverlays.refresh()
+  - Reinitialize all overlays
+  - Example: FinleyOverlays.refresh()
+
+FinleyOverlays.setProgress(exerciseNumber)
+  - Set current exercise progress (1-6)
+  - Example: FinleyOverlays.setProgress(4)
+
+FinleyOverlays.getProgress()
+  - Get current progress information
+  - Example: FinleyOverlays.getProgress()
+
+FinleyOverlays.getWorkoutConfig()
+  - Get current workout configuration
+  - Example: FinleyOverlays.getWorkoutConfig()
+
+FinleyOverlays.setWorkoutConfig(exercises, timerDuration, restDuration)
+  - Set workout configuration
+  - Example: FinleyOverlays.setWorkoutConfig(8, 30, 15)
+
+FinleyOverlays.resetWorkout()
+  - Reset workout to default settings
+  - Example: FinleyOverlays.resetWorkout()
+
+FinleyOverlays.help()
+  - Show this help message
+            `);
+          },
+        };
+
+        console.log(
+          "🎯 Video overlay system initialized! Type 'FinleyOverlays.help()' for commands."
+        );
+
+        // Custom Player Functions
+        function updatePlayPauseButton() {
+          if (mainVideo.paused) {
+            playPauseIcon.className = "fa fa-play";
+            playPauseIcon.style.marginLeft = "4px"; // Slight offset for play icon
+            customControls.style.opacity = "1";
+          } else {
+            playPauseIcon.className = "fa fa-pause";
+            playPauseIcon.style.marginLeft = "0";
+            customControls.style.opacity = "0";
+          }
+        }
+
+        function togglePlayPause() {
+          if (mainVideo.paused) {
             mainVideo.play();
-            console.log('▶️ Video playing');
-        } else {
+            console.log("▶️ Video playing");
+          } else {
             mainVideo.pause();
-            console.log('⏸️ Video paused');
+            console.log("⏸️ Video paused");
+          }
+          updatePlayPauseButton();
         }
-        updatePlayPauseButton();
-    }
 
-    // Play/Pause button click handler
-    if (playPauseBtn) {
-        playPauseBtn.addEventListener('click', function(e) {
+        // Play/Pause button click handler
+        if (playPauseBtn) {
+          playPauseBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             togglePlayPause();
-        });
+          });
 
-        // Hover effects
-        playPauseBtn.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.1)';
-            this.style.background = 'rgba(255,255,255,1)';
-        });
+          // Hover effects
+          playPauseBtn.addEventListener("mouseenter", function () {
+            this.style.transform = "scale(1.1)";
+            this.style.background = "rgba(255,255,255,1)";
+          });
 
-        playPauseBtn.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-            this.style.background = 'rgba(255,255,255,0.9)';
-        });
-    }
+          playPauseBtn.addEventListener("mouseleave", function () {
+            this.style.transform = "scale(1)";
+            this.style.background = "rgba(255,255,255,0.9)";
+          });
+        }
 
-    // Video container click handler
-    if (customControls) {
-        customControls.addEventListener('click', function(e) {
+        // Video container click handler
+        if (customControls) {
+          customControls.addEventListener("click", function (e) {
             if (e.target === this) {
-                togglePlayPause();
+              togglePlayPause();
             }
-        });
-    }
+          });
+        }
 
-    // Show/hide controls on video hover
-    const videoPlayer = document.querySelector('.custom-video-player');
-    if (videoPlayer) {
-        videoPlayer.addEventListener('mouseenter', function() {
+        // Show/hide controls on video hover
+        const videoPlayer = document.querySelector(".custom-video-player");
+        if (videoPlayer) {
+          videoPlayer.addEventListener("mouseenter", function () {
             if (mainVideo.paused) {
-                customControls.style.opacity = '1';
+              customControls.style.opacity = "1";
             }
-        });
+          });
 
-        videoPlayer.addEventListener('mouseleave', function() {
+          videoPlayer.addEventListener("mouseleave", function () {
             if (!mainVideo.paused) {
-                customControls.style.opacity = '0';
+              customControls.style.opacity = "0";
             }
-        });
-    }
+          });
+        }
 
-    // Add click listeners to exercise cards (now performance metric cards)
-    exerciseCards.forEach((card, index) => {
-        card.addEventListener('click', function() {
+        // Add click listeners to exercise cards (now performance metric cards)
+        exerciseCards.forEach((card, index) => {
+          card.addEventListener("click", function () {
             console.log(`Performance metric card ${index + 1} clicked`);
 
-            const videoNumber = this.getAttribute('data-video');
-            const videoUrl = this.getAttribute('data-url');
+            const videoNumber = this.getAttribute("data-video");
+            const videoUrl = this.getAttribute("data-url");
             const exerciseTitle = `Übung ${videoNumber}`;
 
-            console.log('Switching to:', { videoNumber, videoUrl, exerciseTitle });
+            console.log("Switching to:", {
+              videoNumber,
+              videoUrl,
+              exerciseTitle,
+            });
 
             // Pause current video and reset controls
             if (mainVideo) {
-                mainVideo.pause();
-                updatePlayPauseButton();
+              mainVideo.pause();
+              updatePlayPauseButton();
 
-                const source = mainVideo.querySelector('source');
-                if (source) {
-                    source.src = videoUrl;
-                    mainVideo.load();
-                    console.log('Video source updated to:', videoUrl);
-                }
+              const source = mainVideo.querySelector("source");
+              if (source) {
+                source.src = videoUrl;
+                mainVideo.load();
+                console.log("Video source updated to:", videoUrl);
+              }
             }
 
             // Update title
             if (videoTitle) {
-                videoTitle.textContent = exerciseTitle;
+              videoTitle.textContent = exerciseTitle;
             }
 
             // Update active state
-            exerciseCards.forEach(c => c.classList.remove('bg-highlight'));
-            this.classList.add('bg-highlight');
+            exerciseCards.forEach((c) => c.classList.remove("bg-highlight"));
+            this.classList.add("bg-highlight");
+          });
         });
-    });
 
-    // Video event listeners
-    if (mainVideo) {
-        mainVideo.addEventListener('loadstart', () => {
-            console.log('🔄 Video loading started');
+        // Video event listeners
+        if (mainVideo) {
+          mainVideo.addEventListener("loadstart", () => {
+            console.log("🔄 Video loading started");
             updatePlayPauseButton();
-        });
+          });
 
-        mainVideo.addEventListener('canplay', () => {
-            console.log('✅ Video can play');
+          mainVideo.addEventListener("canplay", () => {
+            console.log("✅ Video can play");
             updatePlayPauseButton();
-        });
+          });
 
-        mainVideo.addEventListener('play', () => {
-            console.log('▶️ Video started playing');
+          mainVideo.addEventListener("play", () => {
+            console.log("▶️ Video started playing");
             updatePlayPauseButton();
-        });
+          });
 
-        mainVideo.addEventListener('pause', () => {
-            console.log('⏸️ Video paused');
+          mainVideo.addEventListener("pause", () => {
+            console.log("⏸️ Video paused");
             updatePlayPauseButton();
-        });
+          });
 
-        mainVideo.addEventListener('ended', () => {
-            console.log('🏁 Video ended');
+          mainVideo.addEventListener("ended", () => {
+            console.log("🏁 Video ended");
             updatePlayPauseButton();
-        });
+          });
 
-        mainVideo.addEventListener('error', (e) => {
-            console.error('❌ Video error:', e);
+          mainVideo.addEventListener("error", (e) => {
+            console.error("❌ Video error:", e);
             updatePlayPauseButton();
-        });
+          });
 
-        // Initialize button state
-        updatePlayPauseButton();
-    }
-
-    // Settings Fullscreen Toggle Functionality
-    function initSettingsFullscreenToggle() {
-        const fullscreenToggle = document.getElementById('fullscreen-toggle');
-        const fullscreenSwitch = document.getElementById('switch-fullscreen-mode');
-        const fullscreenIcon = fullscreenToggle.querySelector('i');
-
-        // Check if fullscreen is supported
-        const isFullscreenSupported = document.documentElement.requestFullscreen ||
-                                    document.documentElement.webkitRequestFullscreen ||
-                                    document.documentElement.msRequestFullscreen;
-
-        if (!isFullscreenSupported) {
-            // Hide fullscreen option if not supported
-            fullscreenToggle.style.display = 'none';
-            console.log('❌ Fullscreen not supported on this device');
-            return;
+          // Initialize button state
+          updatePlayPauseButton();
         }
 
-        // Load saved fullscreen preference
-        const savedFullscreenState = localStorage.getItem('fullscreen-mode') === 'true';
-        fullscreenSwitch.checked = savedFullscreenState;
-        updateFullscreenIcon(savedFullscreenState);
+        // Settings Fullscreen Toggle Functionality
+        function initSettingsFullscreenToggle() {
+          const fullscreenToggle = document.getElementById("fullscreen-toggle");
+          const fullscreenSwitch = document.getElementById(
+            "switch-fullscreen-mode"
+          );
+          const fullscreenIcon = fullscreenToggle.querySelector("i");
 
-        // Apply saved state on page load
-        if (savedFullscreenState) {
+          // Check if fullscreen is supported
+          const isFullscreenSupported =
+            document.documentElement.requestFullscreen ||
+            document.documentElement.webkitRequestFullscreen ||
+            document.documentElement.msRequestFullscreen;
+
+          if (!isFullscreenSupported) {
+            // Hide fullscreen option if not supported
+            fullscreenToggle.style.display = "none";
+            console.log("❌ Fullscreen not supported on this device");
+            return;
+          }
+
+          // Load saved fullscreen preference
+          const savedFullscreenState =
+            localStorage.getItem("fullscreen-mode") === "true";
+          fullscreenSwitch.checked = savedFullscreenState;
+          updateFullscreenIcon(savedFullscreenState);
+
+          // Apply saved state on page load
+          if (savedFullscreenState) {
             // Small delay to ensure page is fully loaded
             setTimeout(() => {
-                requestFullscreenMode();
+              requestFullscreenMode();
             }, 1000);
-        }
+          }
 
-        // Handle toggle click
-        fullscreenToggle.addEventListener('click', function(e) {
+          // Handle toggle click
+          fullscreenToggle.addEventListener("click", function (e) {
             e.preventDefault();
             toggleFullscreenMode();
-        });
+          });
 
-        // Handle switch change
-        fullscreenSwitch.addEventListener('change', function() {
+          // Handle switch change
+          fullscreenSwitch.addEventListener("change", function () {
             toggleFullscreenMode();
-        });
+          });
 
-        function toggleFullscreenMode() {
-            const isCurrentlyFullscreen = document.fullscreenElement ||
-                                        document.webkitFullscreenElement ||
-                                        document.msFullscreenElement;
+          function toggleFullscreenMode() {
+            const isCurrentlyFullscreen =
+              document.fullscreenElement ||
+              document.webkitFullscreenElement ||
+              document.msFullscreenElement;
 
             if (isCurrentlyFullscreen) {
-                exitFullscreenMode();
+              exitFullscreenMode();
             } else {
-                requestFullscreenMode();
+              requestFullscreenMode();
             }
-        }
+          }
 
-        function requestFullscreenMode() {
+          function requestFullscreenMode() {
             const element = document.documentElement;
 
             if (element.requestFullscreen) {
-                element.requestFullscreen().then(() => {
-                    onFullscreenEnter();
-                }).catch(err => {
-                    console.warn('Fullscreen request failed:', err);
-                    onFullscreenError();
+              element
+                .requestFullscreen()
+                .then(() => {
+                  onFullscreenEnter();
+                })
+                .catch((err) => {
+                  console.warn("Fullscreen request failed:", err);
+                  onFullscreenError();
                 });
             } else if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-                onFullscreenEnter();
+              element.webkitRequestFullscreen();
+              onFullscreenEnter();
             } else if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-                onFullscreenEnter();
+              element.msRequestFullscreen();
+              onFullscreenEnter();
             }
-        }
+          }
 
-        function exitFullscreenMode() {
+          function exitFullscreenMode() {
             if (document.exitFullscreen) {
-                document.exitFullscreen().then(() => {
-                    onFullscreenExit();
-                }).catch(err => {
-                    console.warn('Exit fullscreen failed:', err);
+              document
+                .exitFullscreen()
+                .then(() => {
+                  onFullscreenExit();
+                })
+                .catch((err) => {
+                  console.warn("Exit fullscreen failed:", err);
                 });
             } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-                onFullscreenExit();
+              document.webkitExitFullscreen();
+              onFullscreenExit();
             } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-                onFullscreenExit();
+              document.msExitFullscreen();
+              onFullscreenExit();
             }
-        }
+          }
 
-        function onFullscreenEnter() {
+          function onFullscreenEnter() {
             fullscreenSwitch.checked = true;
             updateFullscreenIcon(true);
-            localStorage.setItem('fullscreen-mode', 'true');
-            document.body.classList.add('fullscreen-active');
-            console.log('✅ Entered fullscreen mode');
-        }
+            localStorage.setItem("fullscreen-mode", "true");
+            document.body.classList.add("fullscreen-active");
+            console.log("✅ Entered fullscreen mode");
+          }
 
-        function onFullscreenExit() {
+          function onFullscreenExit() {
             fullscreenSwitch.checked = false;
             updateFullscreenIcon(false);
-            localStorage.setItem('fullscreen-mode', 'false');
-            document.body.classList.remove('fullscreen-active');
-            console.log('❌ Exited fullscreen mode');
-        }
+            localStorage.setItem("fullscreen-mode", "false");
+            document.body.classList.remove("fullscreen-active");
+            console.log("❌ Exited fullscreen mode");
+          }
 
-        function onFullscreenError() {
+          function onFullscreenError() {
             fullscreenSwitch.checked = false;
             updateFullscreenIcon(false);
-            localStorage.setItem('fullscreen-mode', 'false');
-            console.error('❌ Fullscreen request failed');
-        }
+            localStorage.setItem("fullscreen-mode", "false");
+            console.error("❌ Fullscreen request failed");
+          }
 
-        function updateFullscreenIcon(isFullscreen) {
+          function updateFullscreenIcon(isFullscreen) {
             if (isFullscreen) {
-                fullscreenIcon.className = 'fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3';
+              fullscreenIcon.className =
+                "fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3";
             } else {
-                fullscreenIcon.className = 'fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3';
+              fullscreenIcon.className =
+                "fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3";
             }
-        }
+          }
 
-        // Listen for fullscreen changes (user pressing F11 or Esc)
-        document.addEventListener('fullscreenchange', handleFullscreenChange);
-        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-        document.addEventListener('msfullscreenchange', handleFullscreenChange);
+          // Listen for fullscreen changes (user pressing F11 or Esc)
+          document.addEventListener("fullscreenchange", handleFullscreenChange);
+          document.addEventListener(
+            "webkitfullscreenchange",
+            handleFullscreenChange
+          );
+          document.addEventListener(
+            "msfullscreenchange",
+            handleFullscreenChange
+          );
 
-        function handleFullscreenChange() {
-            const isCurrentlyFullscreen = document.fullscreenElement ||
-                                        document.webkitFullscreenElement ||
-                                        document.msFullscreenElement;
+          function handleFullscreenChange() {
+            const isCurrentlyFullscreen =
+              document.fullscreenElement ||
+              document.webkitFullscreenElement ||
+              document.msFullscreenElement;
 
             if (isCurrentlyFullscreen) {
-                onFullscreenEnter();
+              onFullscreenEnter();
             } else {
-                onFullscreenExit();
+              onFullscreenExit();
             }
-        }
+          }
 
-        // Handle keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
+          // Handle keyboard shortcuts
+          document.addEventListener("keydown", function (e) {
             // F11 key handling
-            if (e.key === 'F11') {
-                e.preventDefault();
-                toggleFullscreenMode();
+            if (e.key === "F11") {
+              e.preventDefault();
+              toggleFullscreenMode();
             }
 
             // Ctrl/Cmd + Shift + F for fullscreen toggle
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'F') {
-                e.preventDefault();
-                toggleFullscreenMode();
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "F") {
+              e.preventDefault();
+              toggleFullscreenMode();
             }
-        });
+          });
 
-        console.log('🔲 Settings fullscreen toggle initialized');
-    }
+          console.log("🔲 Settings fullscreen toggle initialized");
+        }
 
-    // Initialize fullscreen toggle
-    initSettingsFullscreenToggle();
-});
-</script>
-
-</body>
+        // Initialize fullscreen toggle
+        initSettingsFullscreenToggle();
+      });
+    </script>
+  </body>
 </html>
