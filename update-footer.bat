@@ -55,7 +55,7 @@ echo.
 
 :: Function to update footer in a specific file
 call :update_file_footer "page-statistiken.html" "Statistiken"
-call :update_file_footer "page-profile-finley.html" "Finley"
+call :update_file_footer "page-profile-finley.html" "Training"
 
 :: Clean up
 del "!temp_footer!" 2>nul
@@ -111,7 +111,7 @@ for /f "usebackq delims=" %%a in ("!target_file!") do (
             if "!active_page!" == "Statistiken" (
                 set "footer_line=!footer_line:page-statistiken.html"">page-statistiken.html"" class=""active-nav"">"
             )
-            if "!active_page!" == "Finley" (
+            if "!active_page!" == "Training" (
                 set "footer_line=!footer_line:page-profile-finley.html"">page-profile-finley.html"" class=""active-nav"">"
             )
 
