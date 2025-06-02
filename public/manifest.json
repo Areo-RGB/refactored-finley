@@ -1,16 +1,17 @@
 {
-  "version": "4.0",
+  "version": "4.1",
   "lang": "en",
   "name": "QuoVadis",
   "scope": "/",
   "display": "standalone",
   "start_url": "/index.html",
   "short_name": "QuoVadis",
-  "description": "QuoVadis - Football Training App",
+  "description": "QuoVadis - Football Training App with Smart Caching",
   "orientation": "portrait",
   "background_color": "#1b1d21",
   "theme_color": "#1b1d21",
   "generated": "true",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "app/icons/icon-72x72.png",

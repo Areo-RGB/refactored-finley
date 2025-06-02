@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
   //Global Variables
-  let isPWA = false; // Enables or disables the service worker and PWA - DISABLED FOR DEVELOPMENT
+  let isPWA = true; // Enables or disables the service worker and PWA - ENABLED WITH PRIORITY CACHING
   let isAJAX = true; // AJAX transitions. Requires local server or server
   var pwaName = "QuoVadis"; //Local Storage Names for PWA
   var pwaRemind = 1; //Days to re-remind to add to home
@@ -2010,6 +2010,76 @@ document.addEventListener("DOMContentLoaded", () => {
           caches.delete(cacheName);
         });
       });
+    }
+
+    // Cache Management Utilities
+    window.cacheManager = {
+      async getStorageInfo() {
+        if ("storage" in navigator && "estimate" in navigator.storage) {
+          const estimate = await navigator.storage.estimate();
+          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+          const maxStorage = isIOS ? 50 * 1024 * 1024 : 100 * 1024 * 1024;
+
+          return {
+            used: estimate.usage || 0,
+            available: estimate.quota || maxStorage,
+            percentage: estimate.usage
+              ? estimate.usage / (estimate.quota || maxStorage)
+              : 0,
+            usedMB: Math.round((estimate.usage || 0) / 1024 / 1024),
+            availableMB: Math.round(
+              (estimate.quota || maxStorage) / 1024 / 1024
+            ),
+            isIOS: isIOS,
+          };
+        }
+        return null;
+      },
+
+      async clearCache() {
+        try {
+          const cacheNames = await caches.keys();
+          await Promise.all(
+            cacheNames.map((cacheName) => caches.delete(cacheName))
+          );
+          console.log("Cache cleared successfully");
+          return true;
+        } catch (error) {
+          console.error("Failed to clear cache:", error);
+          return false;
+        }
+      },
+
+      async logStorageUsage() {
+        const info = await this.getStorageInfo();
+        if (info) {
+          console.log("Storage Usage:", {
+            used: info.usedMB + "MB",
+            available: info.availableMB + "MB",
+            percentage: Math.round(info.percentage * 100) + "%",
+            platform: info.isIOS ? "iOS" : "Other",
+          });
+
+          // Also log cache breakdown
+          try {
+            const cacheNames = await caches.keys();
+            console.log("Cache Status:", {
+              caches: cacheNames.length,
+              thumbnailCachingEnabled: true,
+              videosCached: false,
+            });
+          } catch (error) {
+            console.log("Could not get cache details:", error);
+          }
+        }
+      },
+    };
+
+    // Log storage usage on page load (if PWA is enabled)
+    if (isPWA) {
+      setTimeout(() => {
+        window.cacheManager.logStorageUsage();
+      }, 2000);
     }
 
     //Lazy Loading
