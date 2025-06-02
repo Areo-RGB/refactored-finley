@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png" />
 </head>
 
-<body class="theme-dark page-finley-profile" data-highlight="highlight-blue" data-gradient="body-default">
+<body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
   <div id="preloader">
     <div class="spinner-border color-highlight" role="status"></div>
   </div>
@@ -594,11 +594,10 @@
   <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
   <script type="text/javascript" src="scripts/custom.js"></script>
   <script type="text/javascript">
-    // Define the page initialization function for Swup compatibility
-    window.initializeFinleyProfilePage = function () {
+    document.addEventListener("DOMContentLoaded", function () {
       "use strict";
 
-      console.log("🎯 Finley Profile Page Initialized (Swup or Initial)");
+      console.log("🎯 Finley Profile Page Loaded Successfully");
 
       // Video Text Overlay Configuration Component
       const VideoOverlayConfig = {
@@ -1740,65 +1739,7 @@ FinleyOverlays.help()
 
       // Initialize fullscreen toggle
       initSettingsFullscreenToggle();
-
-      // Return cleanup function for Swup compatibility
-      return function cleanupFinleyProfilePage() {
-        console.log("🧹 Cleaning up Finley Profile Page");
-
-        // Clear timer interval
-        if (timerInterval) {
-          clearInterval(timerInterval);
-          timerInterval = null;
-        }
-
-        // Remove event listeners
-        if (timerToggleBtn) {
-          timerToggleBtn.removeEventListener("click", toggleTimer);
-        }
-
-        if (applySettingsBtn) {
-          applySettingsBtn.removeEventListener("click", applyWorkoutSettings);
-        }
-
-        if (resetSettingsBtn) {
-          resetSettingsBtn.removeEventListener("click", resetWorkoutSettings);
-        }
-
-        if (playPauseBtn) {
-          playPauseBtn.removeEventListener("click", toggleVideoPlayback);
-        }
-
-        // Remove exercise card click listeners
-        exerciseCards.forEach((card) => {
-          const newCard = card.cloneNode(true);
-          card.parentNode.replaceChild(newCard, card);
-        });
-
-        // Remove video event listeners
-        if (mainVideo) {
-          const newVideo = mainVideo.cloneNode(true);
-          mainVideo.parentNode.replaceChild(newVideo, mainVideo);
-        }
-
-        // Remove keyboard event listeners
-        document.removeEventListener("keydown", handleKeyboardShortcuts);
-        document.removeEventListener("fullscreenchange", handleFullscreenChange);
-        document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
-        document.removeEventListener("msfullscreenchange", handleFullscreenChange);
-
-        // Clear global references
-        if (window.FinleyOverlays) {
-          delete window.FinleyOverlays;
-        }
-
-        console.log("✅ Finley Profile Page cleanup completed");
-      };
-    };
-
-    // For initial load or if Swup is not active
-    if (typeof Swup === 'undefined' || !document.documentElement.classList.contains('swup-enabled')) {
-      document.addEventListener("DOMContentLoaded", window.initializeFinleyProfilePage);
-    }
+    });
   </script>
 </body>
 

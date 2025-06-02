@@ -2697,9 +2697,10 @@ button {
   filter: brightness(1);
 }
 
-/* Loading state for videos */
+/* Loading state for videos - keep poster visible but hide video content */
 .video-card-container.loading .card-video-bg {
-  opacity: 0;
+  /* Don't hide the entire video element as it would hide the poster too */
+  /* The poster attribute will show the thumbnail while loading */
 }
 
 .video-card-container.loading::before {

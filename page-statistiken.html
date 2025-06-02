@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://videos-data.fra1.cdn.digitaloceanspaces.com" crossorigin />
 </head>
 
-<body class="theme-dark page-statistiken" data-highlight="highlight-blue" data-gradient="body-default">
+<body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
   <!--
 TABLE OF CONTENTS:
 1. Preloader (@id:preloader)
@@ -975,9 +975,8 @@ TABLE OF CONTENTS:
       <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
       <script type="text/javascript" src="scripts/custom.js"></script>
       <script type="text/javascript">
-        // Define the page initialization function for Swup compatibility
-        window.initializeStatistikenPage = function () {
-          console.log("📊 Statistiken Page Initialized (Swup or Initial)");
+        document.addEventListener("DOMContentLoaded", function () {
+          console.log("🚀 Initializing page functionality...");
 
           // Metric card functionality for fullscreen video
           const metricCards = document.querySelectorAll(".metric-card");
@@ -996,7 +995,7 @@ TABLE OF CONTENTS:
 
           // Handle metric card clicks
           metricCards.forEach(function (card) {
-            card.addEventListener("click", function (e) {
+            const cardClickHandler = function (e) {
               e.preventDefault();
 
               const videoUrl = card.getAttribute("data-video");
@@ -1018,611 +1017,611 @@ TABLE OF CONTENTS:
                 });
               }
             });
-          });
+        });
 
-          // Close fullscreen video
-          function closeFullscreenVideo() {
-            if (fullscreenModal) {
-              fullscreenModal.style.display = "none";
-              document.body.style.overflow = ""; // Restore scrolling
+        // Close fullscreen video
+        function closeFullscreenVideo() {
+          if (fullscreenModal) {
+            fullscreenModal.style.display = "none";
+            document.body.style.overflow = ""; // Restore scrolling
 
-              if (fullscreenVideo) {
-                fullscreenVideo.pause();
-                fullscreenVideo.currentTime = 0;
-              }
+            if (fullscreenVideo) {
+              fullscreenVideo.pause();
+              fullscreenVideo.currentTime = 0;
+            }
 
-              // Exit browser fullscreen if active
-              if (document.fullscreenElement) {
-                document.exitFullscreen();
-              }
+            // Exit browser fullscreen if active
+            if (document.fullscreenElement) {
+              document.exitFullscreen();
             }
           }
+        }
 
-          // Close button event
-          if (closeFullscreenBtn) {
-            closeFullscreenBtn.addEventListener("click", closeFullscreenVideo);
-          }
+        // Close button event
+        if (closeFullscreenBtn) {
+          closeFullscreenBtn.addEventListener("click", closeFullscreenVideo);
+        }
 
-          // Close on modal background click
-          if (fullscreenModal) {
-            fullscreenModal.addEventListener("click", function (e) {
-              if (e.target === fullscreenModal) {
-                closeFullscreenVideo();
-              }
-            });
-          }
-
-          // Escape key to close
-          document.addEventListener("keydown", function (e) {
-            if (
-              e.key === "Escape" &&
-              fullscreenModal &&
-              fullscreenModal.style.display === "block"
-            ) {
+        // Close on modal background click
+        if (fullscreenModal) {
+          fullscreenModal.addEventListener("click", function (e) {
+            if (e.target === fullscreenModal) {
               closeFullscreenVideo();
             }
           });
+        }
 
-          // Toggle browser fullscreen
-          if (toggleFullscreenBtn) {
-            toggleFullscreenBtn.addEventListener("click", function () {
-              if (!document.fullscreenElement) {
-                fullscreenModal
-                  .requestFullscreen()
-                  .then(function () {
-                    toggleFullscreenBtn.innerHTML =
-                      '<i class="fa fa-compress"></i> Exit Fullscreen';
-                  })
-                  .catch(function (error) {
-                    console.log("Fullscreen request failed:", error);
-                  });
-              } else {
-                document.exitFullscreen().then(function () {
-                  toggleFullscreenBtn.innerHTML =
-                    '<i class="fa fa-expand"></i> Fullscreen';
-                });
-              }
-            });
+        // Escape key to close
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            fullscreenModal &&
+            fullscreenModal.style.display === "block"
+          ) {
+            closeFullscreenVideo();
           }
+        });
 
-          // Handle fullscreen change events
-          document.addEventListener("fullscreenchange", function () {
-            if (toggleFullscreenBtn) {
-              if (document.fullscreenElement) {
-                toggleFullscreenBtn.innerHTML =
-                  '<i class="fa fa-compress"></i> Exit Fullscreen';
-              } else {
+        // Toggle browser fullscreen
+        if (toggleFullscreenBtn) {
+          toggleFullscreenBtn.addEventListener("click", function () {
+            if (!document.fullscreenElement) {
+              fullscreenModal
+                .requestFullscreen()
+                .then(function () {
+                  toggleFullscreenBtn.innerHTML =
+                    '<i class="fa fa-compress"></i> Exit Fullscreen';
+                })
+                .catch(function (error) {
+                  console.log("Fullscreen request failed:", error);
+                });
+            } else {
+              document.exitFullscreen().then(function () {
                 toggleFullscreenBtn.innerHTML =
                   '<i class="fa fa-expand"></i> Fullscreen';
+              });
+            }
+          });
+        }
+
+        // Handle fullscreen change events
+        document.addEventListener("fullscreenchange", function () {
+          if (toggleFullscreenBtn) {
+            if (document.fullscreenElement) {
+              toggleFullscreenBtn.innerHTML =
+                '<i class="fa fa-compress"></i> Exit Fullscreen';
+            } else {
+              toggleFullscreenBtn.innerHTML =
+                '<i class="fa fa-expand"></i> Fullscreen';
+            }
+          }
+        });
+
+        // Video card functionality
+        const videoCards = document.querySelectorAll(".video-card");
+
+        // Home Workout functionality
+        let workoutTimer = null;
+        let workoutStartTime = 0;
+        let workoutElapsedTime = 0;
+        let workoutPaused = false;
+        let currentExerciseDuration = 15 * 60; // 15 minutes default
+
+        const exercises = {
+          "push-ups": {
+            name: "Push-Up Challenge",
+            duration: 15 * 60,
+            video: "images/players/bent.m.mp4",
+          },
+          squats: {
+            name: "Squats",
+            duration: 5 * 60,
+            video: "images/players/vgl-b-f.MP4",
+          },
+          planks: {
+            name: "Planks",
+            duration: 3 * 60,
+            video: "images/players/bent.m.mp4",
+          },
+          burpees: {
+            name: "Burpees",
+            duration: 4 * 60,
+            video: "images/players/vgl-b-f.MP4",
+          },
+        };
+
+        let currentExercise = "push-ups";
+
+        // Workout timer functions
+        function formatTime(seconds) {
+          const mins = Math.floor(seconds / 60);
+          const secs = seconds % 60;
+          return `${mins
+            .toString()
+            .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+        }
+
+        function updateWorkoutTimer() {
+          const timerElement = document.getElementById("workout-timer");
+          if (timerElement) {
+            const elapsed = formatTime(workoutElapsedTime);
+            const total = formatTime(currentExerciseDuration);
+            timerElement.textContent = `${elapsed} / ${total}`;
+          }
+        }
+
+        function startWorkoutTimer() {
+          if (!workoutPaused) {
+            workoutStartTime = Date.now() - workoutElapsedTime * 1000;
+          } else {
+            workoutStartTime = Date.now() - workoutElapsedTime * 1000;
+            workoutPaused = false;
+          }
+
+          workoutTimer = setInterval(() => {
+            workoutElapsedTime = Math.floor(
+              (Date.now() - workoutStartTime) / 1000
+            );
+            updateWorkoutTimer();
+
+            if (workoutElapsedTime >= currentExerciseDuration) {
+              pauseWorkoutTimer();
+            }
+          }, 1000);
+        }
+
+        function pauseWorkoutTimer() {
+          if (workoutTimer) {
+            clearInterval(workoutTimer);
+            workoutTimer = null;
+            workoutPaused = true;
+          }
+        }
+
+        function resetWorkoutTimer() {
+          if (workoutTimer) {
+            clearInterval(workoutTimer);
+            workoutTimer = null;
+          }
+          workoutElapsedTime = 0;
+          workoutPaused = false;
+          updateWorkoutTimer();
+        }
+
+        // Main video player functionality
+        function initMainVideoPlayer() {
+          const mainVideo = document.getElementById("main-workout-video");
+          const playPauseBtn = document.getElementById("play-pause-btn");
+          const videoProgress = document.getElementById("video-progress");
+          const videoTime = document.getElementById("video-time");
+          const overlay = document.getElementById("main-video-overlay");
+
+          if (!mainVideo) return;
+
+          // Update video time and progress
+          mainVideo.addEventListener("timeupdate", function () {
+            if (mainVideo.duration) {
+              const progress =
+                (mainVideo.currentTime / mainVideo.duration) * 100;
+              if (videoProgress) videoProgress.style.width = progress + "%";
+
+              if (videoTime) {
+                const current = formatTime(Math.floor(mainVideo.currentTime));
+                const duration = formatTime(Math.floor(mainVideo.duration));
+                videoTime.textContent = `${current} / ${duration}`;
               }
             }
           });
 
-          // Video card functionality
-          const videoCards = document.querySelectorAll(".video-card");
-
-          // Home Workout functionality
-          let workoutTimer = null;
-          let workoutStartTime = 0;
-          let workoutElapsedTime = 0;
-          let workoutPaused = false;
-          let currentExerciseDuration = 15 * 60; // 15 minutes default
-
-          const exercises = {
-            "push-ups": {
-              name: "Push-Up Challenge",
-              duration: 15 * 60,
-              video: "images/players/bent.m.mp4",
-            },
-            squats: {
-              name: "Squats",
-              duration: 5 * 60,
-              video: "images/players/vgl-b-f.MP4",
-            },
-            planks: {
-              name: "Planks",
-              duration: 3 * 60,
-              video: "images/players/bent.m.mp4",
-            },
-            burpees: {
-              name: "Burpees",
-              duration: 4 * 60,
-              video: "images/players/vgl-b-f.MP4",
-            },
-          };
-
-          let currentExercise = "push-ups";
-
-          // Workout timer functions
-          function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return `${mins
-              .toString()
-              .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
-          }
-
-          function updateWorkoutTimer() {
-            const timerElement = document.getElementById("workout-timer");
-            if (timerElement) {
-              const elapsed = formatTime(workoutElapsedTime);
-              const total = formatTime(currentExerciseDuration);
-              timerElement.textContent = `${elapsed} / ${total}`;
-            }
-          }
-
-          function startWorkoutTimer() {
-            if (!workoutPaused) {
-              workoutStartTime = Date.now() - workoutElapsedTime * 1000;
+          // Play/pause functionality
+          function togglePlayPause() {
+            if (mainVideo.paused) {
+              mainVideo.play();
+              if (playPauseBtn)
+                playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+              if (overlay) overlay.style.opacity = "0";
             } else {
-              workoutStartTime = Date.now() - workoutElapsedTime * 1000;
-              workoutPaused = false;
-            }
-
-            workoutTimer = setInterval(() => {
-              workoutElapsedTime = Math.floor(
-                (Date.now() - workoutStartTime) / 1000
-              );
-              updateWorkoutTimer();
-
-              if (workoutElapsedTime >= currentExerciseDuration) {
-                pauseWorkoutTimer();
-              }
-            }, 1000);
-          }
-
-          function pauseWorkoutTimer() {
-            if (workoutTimer) {
-              clearInterval(workoutTimer);
-              workoutTimer = null;
-              workoutPaused = true;
-            }
-          }
-
-          function resetWorkoutTimer() {
-            if (workoutTimer) {
-              clearInterval(workoutTimer);
-              workoutTimer = null;
-            }
-            workoutElapsedTime = 0;
-            workoutPaused = false;
-            updateWorkoutTimer();
-          }
-
-          // Main video player functionality
-          function initMainVideoPlayer() {
-            const mainVideo = document.getElementById("main-workout-video");
-            const playPauseBtn = document.getElementById("play-pause-btn");
-            const videoProgress = document.getElementById("video-progress");
-            const videoTime = document.getElementById("video-time");
-            const overlay = document.getElementById("main-video-overlay");
-
-            if (!mainVideo) return;
-
-            // Update video time and progress
-            mainVideo.addEventListener("timeupdate", function () {
-              if (mainVideo.duration) {
-                const progress =
-                  (mainVideo.currentTime / mainVideo.duration) * 100;
-                if (videoProgress) videoProgress.style.width = progress + "%";
-
-                if (videoTime) {
-                  const current = formatTime(Math.floor(mainVideo.currentTime));
-                  const duration = formatTime(Math.floor(mainVideo.duration));
-                  videoTime.textContent = `${current} / ${duration}`;
-                }
-              }
-            });
-
-            // Play/pause functionality
-            function togglePlayPause() {
-              if (mainVideo.paused) {
-                mainVideo.play();
-                if (playPauseBtn)
-                  playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
-                if (overlay) overlay.style.opacity = "0";
-              } else {
-                mainVideo.pause();
-                if (playPauseBtn)
-                  playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
-                if (overlay) overlay.style.opacity = "1";
-              }
-            }
-
-            // Event listeners
-            if (overlay) overlay.addEventListener("click", togglePlayPause);
-            if (playPauseBtn)
-              playPauseBtn.addEventListener("click", togglePlayPause);
-            mainVideo.addEventListener("click", togglePlayPause);
-          }
-
-          // Switch exercise function
-          function switchExercise(exerciseKey) {
-            const exercise = exercises[exerciseKey];
-            if (!exercise) return;
-
-            currentExercise = exerciseKey;
-            currentExerciseDuration = exercise.duration;
-
-            // Update UI
-            const titleElement = document.getElementById(
-              "current-exercise-title"
-            );
-            if (titleElement) titleElement.textContent = exercise.name;
-
-            // Update main video
-            const mainVideo = document.getElementById("main-workout-video");
-            if (mainVideo) {
               mainVideo.pause();
-              mainVideo.querySelector("source").src = exercise.video;
-              mainVideo.load();
+              if (playPauseBtn)
+                playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+              if (overlay) overlay.style.opacity = "1";
             }
-
-            // Reset timer
-            resetWorkoutTimer();
-
-            // Reset video controls
-            const playPauseBtn = document.getElementById("play-pause-btn");
-            const overlay = document.getElementById("main-video-overlay");
-            if (playPauseBtn)
-              playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
-            if (overlay) overlay.style.opacity = "1";
           }
 
-          // Function to extract thumbnail from video with improved error handling
-          function extractThumbnail(video, canvas, time = 1) {
-            return new Promise((resolve, reject) => {
-              const tempVideo = document.createElement("video");
-              tempVideo.crossOrigin = "anonymous";
-              tempVideo.muted = true;
-              tempVideo.preload = "metadata";
-              tempVideo.playsInline = true;
+          // Event listeners
+          if (overlay) overlay.addEventListener("click", togglePlayPause);
+          if (playPauseBtn)
+            playPauseBtn.addEventListener("click", togglePlayPause);
+          mainVideo.addEventListener("click", togglePlayPause);
+        }
 
-              // Set timeout for thumbnail extraction
-              const timeoutId = setTimeout(() => {
-                console.warn("⏰ Thumbnail extraction timeout");
-                reject(new Error("Thumbnail extraction timeout"));
-              }, 8000); // 8 second timeout
+        // Switch exercise function
+        function switchExercise(exerciseKey) {
+          const exercise = exercises[exerciseKey];
+          if (!exercise) return;
 
-              tempVideo.addEventListener("loadedmetadata", function () {
-                console.log("📊 Video metadata loaded for thumbnail extraction");
-                tempVideo.currentTime = Math.min(time, tempVideo.duration * 0.1); // 10% into video or 1 second
-              });
+          currentExercise = exerciseKey;
+          currentExerciseDuration = exercise.duration;
 
-              tempVideo.addEventListener("seeked", function () {
-                try {
-                  console.log("🎯 Video seeked, extracting thumbnail frame...");
+          // Update UI
+          const titleElement = document.getElementById(
+            "current-exercise-title"
+          );
+          if (titleElement) titleElement.textContent = exercise.name;
 
-                  const ctx = canvas.getContext("2d");
-                  canvas.width = tempVideo.videoWidth || 640;
-                  canvas.height = tempVideo.videoHeight || 360;
-                  ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
+          // Update main video
+          const mainVideo = document.getElementById("main-workout-video");
+          if (mainVideo) {
+            mainVideo.pause();
+            mainVideo.querySelector("source").src = exercise.video;
+            mainVideo.load();
+          }
 
-                  // Convert canvas to blob and create object URL
-                  canvas.toBlob(
-                    function (blob) {
-                      if (blob) {
-                        const thumbnailUrl = URL.createObjectURL(blob);
-                        clearTimeout(timeoutId);
-                        resolve(thumbnailUrl);
-                        console.log("✅ Thumbnail extracted successfully");
-                      } else {
-                        clearTimeout(timeoutId);
-                        reject(new Error("Failed to create blob from canvas"));
-                      }
-                    },
-                    "image/jpeg",
-                    0.8
-                  );
-                } catch (error) {
-                  console.error("❌ Error extracting thumbnail:", error);
-                  clearTimeout(timeoutId);
-                  reject(error);
-                }
-              });
+          // Reset timer
+          resetWorkoutTimer();
 
-              tempVideo.addEventListener("error", function (e) {
-                console.error("❌ Video error during thumbnail extraction:", e);
-                clearTimeout(timeoutId);
-                reject(
-                  new Error("Failed to load video for thumbnail extraction")
-                );
-              });
+          // Reset video controls
+          const playPauseBtn = document.getElementById("play-pause-btn");
+          const overlay = document.getElementById("main-video-overlay");
+          if (playPauseBtn)
+            playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+          if (overlay) overlay.style.opacity = "1";
+        }
 
-              tempVideo.addEventListener("loadstart", function () {
-                console.log("🔄 Video loading started for thumbnail extraction");
-              });
+        // Function to extract thumbnail from video with improved error handling
+        function extractThumbnail(video, canvas, time = 1) {
+          return new Promise((resolve, reject) => {
+            const tempVideo = document.createElement("video");
+            tempVideo.crossOrigin = "anonymous";
+            tempVideo.muted = true;
+            tempVideo.preload = "metadata";
+            tempVideo.playsInline = true;
 
-              tempVideo.src = video.querySelector("source").src;
+            // Set timeout for thumbnail extraction
+            const timeoutId = setTimeout(() => {
+              console.warn("⏰ Thumbnail extraction timeout");
+              reject(new Error("Thumbnail extraction timeout"));
+            }, 8000); // 8 second timeout
+
+            tempVideo.addEventListener("loadedmetadata", function () {
+              console.log("📊 Video metadata loaded for thumbnail extraction");
+              tempVideo.currentTime = Math.min(time, tempVideo.duration * 0.1); // 10% into video or 1 second
             });
-          }
 
-          videoCards.forEach(function (card, index) {
-            const video = card.querySelector("video");
-            const canvas = card.querySelector(".video-thumbnail");
-            const overlay = card.querySelector(".video-overlay");
-            const playButton = card.querySelector(".play-button");
+            tempVideo.addEventListener("seeked", function () {
+              try {
+                console.log("🎯 Video seeked, extracting thumbnail frame...");
 
-            if (video && canvas && overlay && playButton) {
-              // Stagger thumbnail extraction to prevent browser overload
-              setTimeout(() => {
-                console.log(
-                  `🖼️ Extracting thumbnail for video card ${index + 1}`
-                );
+                const ctx = canvas.getContext("2d");
+                canvas.width = tempVideo.videoWidth || 640;
+                canvas.height = tempVideo.videoHeight || 360;
+                ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
 
-                // Extract and set thumbnail
-                extractThumbnail(video, canvas)
-                  .then(function (thumbnailUrl) {
-                    // Create thumbnail image element
-                    const thumbnailImg = document.createElement("img");
-                    thumbnailImg.src = thumbnailUrl;
-                    thumbnailImg.className = "video-thumbnail";
-                    thumbnailImg.style.cssText =
-                      "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;";
-
-                    // Insert thumbnail before overlay
-                    card
-                      .querySelector(".video-container")
-                      .insertBefore(thumbnailImg, overlay);
-
-                    // Store reference for later removal
-                    card.thumbnailImg = thumbnailImg;
-
-                    console.log(
-                      `✅ Thumbnail loaded for video card ${index + 1}`
-                    );
-                  })
-                  .catch(function (error) {
-                    console.warn(
-                      `❌ Failed to extract thumbnail for video card ${index + 1
-                      }:`,
-                      error
-                    );
-                    // Fallback: show video element directly
-                    video.style.display = "block";
-                  });
-              }, index * 300); // 300ms delay between each thumbnail extraction
-
-              // Handle card click to play/pause video
-              card.addEventListener("click", function (e) {
-                e.preventDefault();
-
-                if (video.paused) {
-                  // Pause all other videos first
-                  videoCards.forEach(function (otherCard) {
-                    const otherVideo = otherCard.querySelector("video");
-                    if (otherVideo && !otherVideo.paused) {
-                      otherVideo.pause();
-                      // Show thumbnail again
-                      if (otherCard.thumbnailImg) {
-                        otherCard.thumbnailImg.style.display = "block";
-                      }
-                      otherVideo.classList.remove("playing");
-                      otherCard.querySelector(".video-overlay").style.opacity =
-                        "";
+                // Convert canvas to blob and create object URL
+                canvas.toBlob(
+                  function (blob) {
+                    if (blob) {
+                      const thumbnailUrl = URL.createObjectURL(blob);
+                      clearTimeout(timeoutId);
+                      resolve(thumbnailUrl);
+                      console.log("✅ Thumbnail extracted successfully");
+                    } else {
+                      clearTimeout(timeoutId);
+                      reject(new Error("Failed to create blob from canvas"));
                     }
-                  });
+                  },
+                  "image/jpeg",
+                  0.8
+                );
+              } catch (error) {
+                console.error("❌ Error extracting thumbnail:", error);
+                clearTimeout(timeoutId);
+                reject(error);
+              }
+            });
 
-                  // Hide thumbnail and play video
-                  if (card.thumbnailImg) {
-                    card.thumbnailImg.style.display = "none";
+            tempVideo.addEventListener("error", function (e) {
+              console.error("❌ Video error during thumbnail extraction:", e);
+              clearTimeout(timeoutId);
+              reject(
+                new Error("Failed to load video for thumbnail extraction")
+              );
+            });
+
+            tempVideo.addEventListener("loadstart", function () {
+              console.log("🔄 Video loading started for thumbnail extraction");
+            });
+
+            tempVideo.src = video.querySelector("source").src;
+          });
+        }
+
+        videoCards.forEach(function (card, index) {
+          const video = card.querySelector("video");
+          const canvas = card.querySelector(".video-thumbnail");
+          const overlay = card.querySelector(".video-overlay");
+          const playButton = card.querySelector(".play-button");
+
+          if (video && canvas && overlay && playButton) {
+            // Stagger thumbnail extraction to prevent browser overload
+            setTimeout(() => {
+              console.log(
+                `🖼️ Extracting thumbnail for video card ${index + 1}`
+              );
+
+              // Extract and set thumbnail
+              extractThumbnail(video, canvas)
+                .then(function (thumbnailUrl) {
+                  // Create thumbnail image element
+                  const thumbnailImg = document.createElement("img");
+                  thumbnailImg.src = thumbnailUrl;
+                  thumbnailImg.className = "video-thumbnail";
+                  thumbnailImg.style.cssText =
+                    "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;";
+
+                  // Insert thumbnail before overlay
+                  card
+                    .querySelector(".video-container")
+                    .insertBefore(thumbnailImg, overlay);
+
+                  // Store reference for later removal
+                  card.thumbnailImg = thumbnailImg;
+
+                  console.log(
+                    `✅ Thumbnail loaded for video card ${index + 1}`
+                  );
+                })
+                .catch(function (error) {
+                  console.warn(
+                    `❌ Failed to extract thumbnail for video card ${index + 1
+                    }:`,
+                    error
+                  );
+                  // Fallback: show video element directly
+                  video.style.display = "block";
+                });
+            }, index * 300); // 300ms delay between each thumbnail extraction
+
+            // Handle card click to play/pause video
+            card.addEventListener("click", function (e) {
+              e.preventDefault();
+
+              if (video.paused) {
+                // Pause all other videos first
+                videoCards.forEach(function (otherCard) {
+                  const otherVideo = otherCard.querySelector("video");
+                  if (otherVideo && !otherVideo.paused) {
+                    otherVideo.pause();
+                    // Show thumbnail again
+                    if (otherCard.thumbnailImg) {
+                      otherCard.thumbnailImg.style.display = "block";
+                    }
+                    otherVideo.classList.remove("playing");
+                    otherCard.querySelector(".video-overlay").style.opacity =
+                      "";
                   }
-                  video.classList.add("playing");
-                  video.play();
-                  overlay.style.opacity = "0";
-                } else {
-                  video.pause();
-                  // Show thumbnail again
-                  if (card.thumbnailImg) {
-                    card.thumbnailImg.style.display = "block";
-                  }
-                  video.classList.remove("playing");
-                  overlay.style.opacity = "";
-                }
-              });
+                });
 
-              // Handle video ended event
-              video.addEventListener("ended", function () {
-                overlay.style.opacity = "";
-                video.currentTime = 0; // Reset to beginning
-                video.classList.remove("playing");
-                // Show thumbnail again
-                if (card.thumbnailImg) {
-                  card.thumbnailImg.style.display = "block";
-                }
-              });
-
-              // Handle video pause event
-              video.addEventListener("pause", function () {
-                overlay.style.opacity = "";
-                video.classList.remove("playing");
-                // Show thumbnail again
-                if (card.thumbnailImg) {
-                  card.thumbnailImg.style.display = "block";
-                }
-              });
-
-              // Handle video play event
-              video.addEventListener("play", function () {
-                overlay.style.opacity = "0";
-                video.classList.add("playing");
-                // Hide thumbnail
+                // Hide thumbnail and play video
                 if (card.thumbnailImg) {
                   card.thumbnailImg.style.display = "none";
                 }
-              });
-
-              // Handle direct video clicks for play/pause
-              video.addEventListener("click", function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                // Toggle play/pause when clicking directly on video
-                if (video.paused) {
-                  // Pause all other videos first
-                  videoCards.forEach(function (otherCard) {
-                    const otherVideo = otherCard.querySelector("video");
-                    if (otherVideo && !otherVideo.paused) {
-                      otherVideo.pause();
-                      // Show thumbnail again
-                      if (otherCard.thumbnailImg) {
-                        otherCard.thumbnailImg.style.display = "block";
-                      }
-                      otherVideo.classList.remove("playing");
-                      otherCard.querySelector(".video-overlay").style.opacity =
-                        "";
-                    }
-                  });
-
-                  // Hide thumbnail and play video
-                  if (card.thumbnailImg) {
-                    card.thumbnailImg.style.display = "none";
-                  }
-                  video.classList.add("playing");
-                  video.play();
-                  overlay.style.opacity = "0";
-                } else {
-                  video.pause();
-                  // Show thumbnail again
-                  if (card.thumbnailImg) {
-                    card.thumbnailImg.style.display = "block";
-                  }
-                  video.classList.remove("playing");
-                  overlay.style.opacity = "";
+                video.classList.add("playing");
+                video.play();
+                overlay.style.opacity = "0";
+              } else {
+                video.pause();
+                // Show thumbnail again
+                if (card.thumbnailImg) {
+                  card.thumbnailImg.style.display = "block";
                 }
-              });
-            }
-          });
-
-          // Tab control functionality
-          const tabControls = document.querySelectorAll(
-            '.tab-controls a[data-bs-toggle="collapse"]'
-          );
-
-          tabControls.forEach(function (tabControl) {
-            tabControl.addEventListener("click", function (e) {
-              e.preventDefault();
-
-              // Get the target tab content
-              const targetId = this.getAttribute("data-bs-target");
-              const targetTab = document.querySelector(targetId);
-
-              if (targetTab) {
-                // Pause all videos when switching away from DFB tab
-                if (!targetId.includes("dfb")) {
-                  videoCards.forEach(function (card) {
-                    const video = card.querySelector("video");
-                    if (video && !video.paused) {
-                      video.pause();
-                      // Show thumbnail again
-                      if (card.thumbnailImg) {
-                        card.thumbnailImg.style.display = "block";
-                      }
-                      video.classList.remove("playing");
-                      const overlay = card.querySelector(".video-overlay");
-                      if (overlay) {
-                        overlay.style.opacity = "";
-                      }
-                    }
-                  });
-                }
-
-                // Handle Bootstrap collapse manually
-                const parentId = targetTab.getAttribute("data-bs-parent");
-                const parent = document.querySelector(parentId);
-
-                if (parent) {
-                  // Hide all other tabs in the same group
-                  const allTabs = parent.querySelectorAll(".collapse");
-                  allTabs.forEach(function (tab) {
-                    if (tab !== targetTab) {
-                      tab.classList.remove("show");
-                    }
-                  });
-
-                  // Show the target tab
-                  targetTab.classList.add("show");
-
-                  // Update active state on tab controls
-                  const allTabControls =
-                    parent.parentElement.querySelectorAll(".tab-controls a");
-                  allTabControls.forEach(function (control) {
-                    control.removeAttribute("data-active");
-                  });
-                  this.setAttribute("data-active", "");
-                }
+                video.classList.remove("playing");
+                overlay.style.opacity = "";
               }
             });
-          });
 
-          // Initialize home workout functionality
-          initMainVideoPlayer();
-          updateWorkoutTimer();
-
-          // Timer control event listeners
-          const timerStartBtn = document.getElementById("timer-start");
-          const timerPauseBtn = document.getElementById("timer-pause");
-          const timerResetBtn = document.getElementById("timer-reset");
-
-          if (timerStartBtn) {
-            timerStartBtn.addEventListener("click", startWorkoutTimer);
-          }
-
-          if (timerPauseBtn) {
-            timerPauseBtn.addEventListener("click", pauseWorkoutTimer);
-          }
-
-          if (timerResetBtn) {
-            timerResetBtn.addEventListener("click", resetWorkoutTimer);
-          }
-
-          // Exercise preview click handlers
-          const exercisePreviews = document.querySelectorAll(".exercise-preview");
-          exercisePreviews.forEach(function (preview) {
-            preview.addEventListener("click", function (e) {
-              e.preventDefault();
-              const exerciseKey = this.getAttribute("data-exercise");
-              if (exerciseKey) {
-                switchExercise(exerciseKey);
+            // Handle video ended event
+            video.addEventListener("ended", function () {
+              overlay.style.opacity = "";
+              video.currentTime = 0; // Reset to beginning
+              video.classList.remove("playing");
+              // Show thumbnail again
+              if (card.thumbnailImg) {
+                card.thumbnailImg.style.display = "block";
               }
             });
-          });
 
-          // Add video card functionality to preview videos with staggered loading
-          const previewVideos = document.querySelectorAll(".preview-video");
-          previewVideos.forEach(function (container, index) {
-            const video = container.querySelector("video");
-            const canvas = container.querySelector(".video-thumbnail");
-            const overlay = container.querySelector(".video-overlay");
+            // Handle video pause event
+            video.addEventListener("pause", function () {
+              overlay.style.opacity = "";
+              video.classList.remove("playing");
+              // Show thumbnail again
+              if (card.thumbnailImg) {
+                card.thumbnailImg.style.display = "block";
+              }
+            });
 
-            if (video && canvas && overlay) {
-              // Stagger preview thumbnail extraction
-              setTimeout(() => {
-                console.log(`🖼️ Extracting preview thumbnail ${index + 1}`);
+            // Handle video play event
+            video.addEventListener("play", function () {
+              overlay.style.opacity = "0";
+              video.classList.add("playing");
+              // Hide thumbnail
+              if (card.thumbnailImg) {
+                card.thumbnailImg.style.display = "none";
+              }
+            });
 
-                // Extract and set thumbnail for preview videos
-                extractThumbnail(video, canvas)
-                  .then(function (thumbnailUrl) {
-                    const thumbnailImg = document.createElement("img");
-                    thumbnailImg.src = thumbnailUrl;
-                    thumbnailImg.className = "video-thumbnail";
-                    thumbnailImg.style.cssText =
-                      "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;";
+            // Handle direct video clicks for play/pause
+            video.addEventListener("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
 
-                    container.insertBefore(thumbnailImg, overlay);
-                    console.log(`✅ Preview thumbnail loaded ${index + 1}`);
-                  })
-                  .catch(function (error) {
-                    console.warn(
-                      `❌ Failed to extract preview thumbnail ${index + 1}:`,
-                      error
-                    );
-                    // Fallback: show video element directly
-                    video.style.display = "block";
-                  });
-              }, videoCards.length * 300 + index * 200); // Start after main video cards, with 200ms intervals
+              // Toggle play/pause when clicking directly on video
+              if (video.paused) {
+                // Pause all other videos first
+                videoCards.forEach(function (otherCard) {
+                  const otherVideo = otherCard.querySelector("video");
+                  if (otherVideo && !otherVideo.paused) {
+                    otherVideo.pause();
+                    // Show thumbnail again
+                    if (otherCard.thumbnailImg) {
+                      otherCard.thumbnailImg.style.display = "block";
+                    }
+                    otherVideo.classList.remove("playing");
+                    otherCard.querySelector(".video-overlay").style.opacity =
+                      "";
+                  }
+                });
+
+                // Hide thumbnail and play video
+                if (card.thumbnailImg) {
+                  card.thumbnailImg.style.display = "none";
+                }
+                video.classList.add("playing");
+                video.play();
+                overlay.style.opacity = "0";
+              } else {
+                video.pause();
+                // Show thumbnail again
+                if (card.thumbnailImg) {
+                  card.thumbnailImg.style.display = "block";
+                }
+                video.classList.remove("playing");
+                overlay.style.opacity = "";
+              }
+            });
+          }
+        });
+
+        // Tab control functionality
+        const tabControls = document.querySelectorAll(
+          '.tab-controls a[data-bs-toggle="collapse"]'
+        );
+
+        tabControls.forEach(function (tabControl) {
+          tabControl.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Get the target tab content
+            const targetId = this.getAttribute("data-bs-target");
+            const targetTab = document.querySelector(targetId);
+
+            if (targetTab) {
+              // Pause all videos when switching away from DFB tab
+              if (!targetId.includes("dfb")) {
+                videoCards.forEach(function (card) {
+                  const video = card.querySelector("video");
+                  if (video && !video.paused) {
+                    video.pause();
+                    // Show thumbnail again
+                    if (card.thumbnailImg) {
+                      card.thumbnailImg.style.display = "block";
+                    }
+                    video.classList.remove("playing");
+                    const overlay = card.querySelector(".video-overlay");
+                    if (overlay) {
+                      overlay.style.opacity = "";
+                    }
+                  }
+                });
+              }
+
+              // Handle Bootstrap collapse manually
+              const parentId = targetTab.getAttribute("data-bs-parent");
+              const parent = document.querySelector(parentId);
+
+              if (parent) {
+                // Hide all other tabs in the same group
+                const allTabs = parent.querySelectorAll(".collapse");
+                allTabs.forEach(function (tab) {
+                  if (tab !== targetTab) {
+                    tab.classList.remove("show");
+                  }
+                });
+
+                // Show the target tab
+                targetTab.classList.add("show");
+
+                // Update active state on tab controls
+                const allTabControls =
+                  parent.parentElement.querySelectorAll(".tab-controls a");
+                allTabControls.forEach(function (control) {
+                  control.removeAttribute("data-active");
+                });
+                this.setAttribute("data-active", "");
+              }
             }
           });
+        });
+
+        // Initialize home workout functionality
+        initMainVideoPlayer();
+        updateWorkoutTimer();
+
+        // Timer control event listeners
+        const timerStartBtn = document.getElementById("timer-start");
+        const timerPauseBtn = document.getElementById("timer-pause");
+        const timerResetBtn = document.getElementById("timer-reset");
+
+        if (timerStartBtn) {
+          timerStartBtn.addEventListener("click", startWorkoutTimer);
+        }
+
+        if (timerPauseBtn) {
+          timerPauseBtn.addEventListener("click", pauseWorkoutTimer);
+        }
+
+        if (timerResetBtn) {
+          timerResetBtn.addEventListener("click", resetWorkoutTimer);
+        }
+
+        // Exercise preview click handlers
+        const exercisePreviews = document.querySelectorAll(".exercise-preview");
+        exercisePreviews.forEach(function (preview) {
+          preview.addEventListener("click", function (e) {
+            e.preventDefault();
+            const exerciseKey = this.getAttribute("data-exercise");
+            if (exerciseKey) {
+              switchExercise(exerciseKey);
+            }
+          });
+        });
+
+        // Add video card functionality to preview videos with staggered loading
+        const previewVideos = document.querySelectorAll(".preview-video");
+        previewVideos.forEach(function (container, index) {
+          const video = container.querySelector("video");
+          const canvas = container.querySelector(".video-thumbnail");
+          const overlay = container.querySelector(".video-overlay");
+
+          if (video && canvas && overlay) {
+            // Stagger preview thumbnail extraction
+            setTimeout(() => {
+              console.log(`🖼️ Extracting preview thumbnail ${index + 1}`);
+
+              // Extract and set thumbnail for preview videos
+              extractThumbnail(video, canvas)
+                .then(function (thumbnailUrl) {
+                  const thumbnailImg = document.createElement("img");
+                  thumbnailImg.src = thumbnailUrl;
+                  thumbnailImg.className = "video-thumbnail";
+                  thumbnailImg.style.cssText =
+                    "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;";
+
+                  container.insertBefore(thumbnailImg, overlay);
+                  console.log(`✅ Preview thumbnail loaded ${index + 1}`);
+                })
+                .catch(function (error) {
+                  console.warn(
+                    `❌ Failed to extract preview thumbnail ${index + 1}:`,
+                    error
+                  );
+                  // Fallback: show video element directly
+                  video.style.display = "block";
+                });
+            }, videoCards.length * 300 + index * 200); // Start after main video cards, with 200ms intervals
+          }
+        });
         });
       </script>
       <!-- #endregion Scripts -->
@@ -2668,50 +2667,7 @@ TABLE OF CONTENTS:
 
             console.log("🔲 Settings fullscreen toggle initialized");
           }
-
-          // Return cleanup function for Swup compatibility
-          return function cleanupStatistikenPage() {
-            console.log("🧹 Cleaning up Statistiken Page");
-
-            // Clear workout timer
-            if (workoutTimer) {
-              clearInterval(workoutTimer);
-              workoutTimer = null;
-            }
-
-            // Remove event listeners from metric cards
-            metricCards.forEach((card) => {
-              const newCard = card.cloneNode(true);
-              card.parentNode.replaceChild(newCard, card);
-            });
-
-            // Remove event listeners from video cards
-            videoCards.forEach((card) => {
-              const newCard = card.cloneNode(true);
-              card.parentNode.replaceChild(newCard, card);
-            });
-
-            // Remove modal event listeners
-            if (fullscreenModal) {
-              const newModal = fullscreenModal.cloneNode(true);
-              fullscreenModal.parentNode.replaceChild(newModal, fullscreenModal);
-            }
-
-            // Remove keyboard event listeners
-            document.removeEventListener("keydown", handleKeyboardShortcuts);
-            document.removeEventListener("fullscreenchange", handleFullscreenChange);
-
-            // Clear any remaining timeouts/intervals
-            // (thumbnail extraction timeouts will clear themselves)
-
-            console.log("✅ Statistiken Page cleanup completed");
-          };
-        };
-
-        // For initial load or if Swup is not active
-        if (typeof Swup === 'undefined' || !document.documentElement.classList.contains('swup-enabled')) {
-          document.addEventListener("DOMContentLoaded", window.initializeStatistikenPage);
-        }
+        });
       </script>
 </body>
 
