@@ -1,7 +1,7 @@
 // To clear cache on devices, always increase APP_VER number after making changes.
 // The app will serve fresh content right away or after 2-3 refreshes (open / close)
 var APP_NAME = "QuoVadis";
-var APP_VER = "4.8.5"; // Incremented for consistent dark theme
+var APP_VER = "4.8.6"; // Incremented for removed theme options
 var CACHE_NAME = APP_NAME + "-" + APP_VER;
 
 // iOS Storage Limits and Configuration
