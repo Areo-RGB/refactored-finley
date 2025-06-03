@@ -54,7 +54,7 @@ echo Footer bar extracted successfully.
 echo.
 
 :: Function to update footer in a specific file
-call :update_file_footer "page-statistiken.html" "Statistiken"
+call :update_file_footer "page-Vergleich.html" "Vergleich"
 call :update_file_footer "page-profile-finley.html" "Training"
 
 :: Clean up
@@ -108,8 +108,8 @@ for /f "usebackq delims=" %%a in ("!target_file!") do (
             set "footer_line=!footer_line:class=""active-nav"" =!"
 
             :: Add active-nav class to the correct page
-            if "!active_page!" == "Statistiken" (
-                set "footer_line=!footer_line:page-statistiken.html"">page-statistiken.html"" class=""active-nav"">"
+            if "!active_page!" == "Vergleich" (
+                set "footer_line=!footer_line:page-Vergleich.html"">page-Vergleich.html"" class=""active-nav"">"
             )
             if "!active_page!" == "Training" (
                 set "footer_line=!footer_line:page-profile-finley.html"">page-profile-finley.html"" class=""active-nav"">"

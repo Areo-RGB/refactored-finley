@@ -1,53 +1,57 @@
-# Cache Priority System for iOS Storage Limits
+# Maximum Cache Utilization System
 
 ## Overview
 
-This PWA now implements a smart cache priority system designed to handle iOS storage limitations effectively. Videos are set to lowest priority (never cached) as requested.
+This PWA now implements an aggressive cache system designed to use as much of the available storage quota as possible (up to 285MB). The system is optimized for maximum performance and offline capability.
 
 ## Priority Levels
 
 ### 🔴 CRITICAL (Priority 1) - Always Cached
 
-- Core HTML files (index.html)
-- Essential CSS (style.css, bootstrap.css)
-- Core JavaScript (custom.js, bootstrap.min.js)
-- Essential icons (empty.png, icon-192x192.png)
+- **All HTML files** (index.html, page-Vergleich.html, page-profile-finley.html, page-videos.html, page-consulting-history.html)
+- **Essential CSS** (style.css, bootstrap.css)
+- **Core JavaScript** (custom.js, bootstrap.min.js)
+- **Essential icons** (icon-192x192.png, icon-512x512.png, icon-384x384.png)
 
 ### 🟡 HIGH (Priority 2) - Cached When Space Available
 
-- Essential fonts (FontAwesome core files)
-- Core plugins (glightbox)
+- **All fonts** (FontAwesome complete set including brands)
+- **All plugins** (glightbox, before-after, etc.)
+- **All icons** (complete icon set for PWA)
 
 ### 🟠 MEDIUM (Priority 3) - Cached Selectively
 
-- Additional fonts (brands, etc.)
-- Optional plugins (charts, filterizr, etc.)
-- **Static thumbnail images (server-side generated)**
+- **Additional plugins** (charts, filterizr, countdown, etc.)
+- **Local video files** (exercise1.mp4 through exercise5.mp4)
+- **Static thumbnail images** (server-side generated)
+- **External resources** (Google Fonts, DigitalOcean thumbnails)
 
 ### 🔵 LOW (Priority 4) - Cached When Storage Available
 
-- **Videos (.mp4, .webm, .ogg, etc.)** - Cached when storage usage < 70%
-- Large images from /images/players/ and /images/fitness/
-- Content from DigitalOcean Spaces
+- **Large videos (.mp4, .webm, .ogg, etc.)** - Cached when storage usage < 85% (increased threshold)
+- **Large images** from /images/players/ and /images/fitness/
+- **DigitalOcean Spaces content** (videos and large media)
 - **First to be removed** during cache cleanup
 
-## Storage Limits
+## Storage Limits - MAXIMUM UTILIZATION
 
-- **iOS**: Uses actual system quota (fallback: 50MB if quota unavailable)
-- **Other platforms**: Uses actual system quota (fallback: 100MB if quota unavailable)
-- **Cleanup threshold**: 95% of available storage (increased for better utilization)
-- **HIGH priority threshold**: 98% (HIGH priority items cached until nearly full)
+- **iOS**: Uses actual system quota (fallback: 200MB if quota unavailable)
+- **Other platforms**: Uses actual system quota (fallback: 250MB if quota unavailable)
+- **Cleanup threshold**: 90% of available storage (aggressive utilization)
+- **Video cache threshold**: 85% (videos cached until 85% storage usage)
+- **HIGH priority threshold**: 95% (HIGH priority items cached until 95% full)
 
 ## How It Works
 
-1. **Installation**: Only caches CRITICAL, HIGH, and MEDIUM priority files
-2. **Runtime Caching**: Dynamically decides what to cache based on:
+1. **Installation**: Caches CRITICAL, HIGH, and MEDIUM priority files (including local videos)
+2. **Runtime Caching**: Aggressively caches content based on:
    - File priority level
-   - Current storage usage
-   - Platform (iOS vs others)
-3. **Automatic Cleanup**: Removes LOW priority files (videos) first, then MEDIUM priority files when storage is 95% full
-4. **Smart Video Caching**: Videos are cached when storage usage < 70%, removed first during cleanup
-5. **Server-Side Thumbnails**: Static thumbnail images are cached as MEDIUM priority using video poster attributes
+   - Current storage usage (up to 90% utilization)
+   - Platform detection
+3. **Automatic Cleanup**: Removes LOW priority files first, then MEDIUM when storage reaches 90%
+4. **Aggressive Video Caching**: Videos cached until 85% storage usage (increased from 70%)
+5. **Proactive Caching**: Automatically caches external resources and thumbnails
+6. **Real-time Monitoring**: Console logging every 30 seconds for cache usage tracking
 
 ## Cache Management
 
@@ -56,34 +60,37 @@ This PWA now implements a smart cache priority system designed to handle iOS sto
 Access cache information in browser console:
 
 ```javascript
-// Check storage usage
+// Check detailed storage usage
 await window.cacheManager.getStorageInfo();
 
-// Clear all cache
+// Clear all cache and reload
 await window.cacheManager.clearCache();
 
-// Log current usage
+// Log current usage (auto-runs every 30s)
 await window.cacheManager.logStorageUsage();
+
+// List all cached files
+await window.cacheManager.listCachedFiles();
 ```
 
 ### Service Worker Debugging
 
-Enable detailed logging by setting `APP_DIAG = true` in service-worker.js
+Enable detailed logging by setting `APP_DIAG = true` in service-worker.js (already enabled)
 
-## Benefits for iOS
+## Benefits for Maximum Storage Usage
 
-1. **Respects iOS Safari storage limits**
-2. **Prevents cache eviction** by staying under limits
-3. **Prioritizes essential app functionality**
-4. **Excludes large video files** that would quickly fill cache
-5. **Automatic cleanup** prevents storage overflow
+1. **Uses up to 90% of available storage** (285MB quota)
+2. **Aggressive video caching** until 85% storage usage
+3. **Proactive external resource caching**
+4. **Real-time storage monitoring** with console logging
+5. **Intelligent cleanup** maintains performance while maximizing cache
+6. **Complete offline capability** for most app content
 
 ## File Changes Made
 
-- `public/service-worker.js`: Complete rewrite with priority system
-- `scripts/custom.js`: Enabled PWA and added cache utilities
-- `manifest.json`: Updated version and description
-- `public/manifest.json`: Updated to match
+- `public/service-worker.js`: Updated to v5.0.0 with maximum cache utilization
+- `scripts/custom.js`: Added comprehensive cache management utilities
+- `CACHE_PRIORITY_SYSTEM.md`: Updated documentation for maximum usage strategy
 
 ## Testing
 
@@ -104,7 +111,7 @@ The system will automatically log storage usage 2 seconds after page load when P
 
 ### **Example URLs**
 
-```
+```text
 Video:     https://videos-data.fra1.cdn.digitaloceanspaces.com/3.mp4
 Thumbnail: https://videos-data.fra1.cdn.digitaloceanspaces.com/thumbnails/3.jpg
 ```

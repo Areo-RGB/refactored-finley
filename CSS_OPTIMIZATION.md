@@ -137,7 +137,7 @@ $socialColors: ("mail", "phone");
 1. **scss/sticky/\_colors.scss**: Reduced color packs
 2. **scss/style.scss**: Import only blue highlight
 3. **index.html**: Set to blue highlight theme
-4. **page-statistiken.html**: Fixed highlight theme
+4. **page-Vergleich.html**: Fixed highlight theme
 5. **Removed**: 14 unused highlight SCSS files
 6. **public/service-worker.js**: Updated cache version
 

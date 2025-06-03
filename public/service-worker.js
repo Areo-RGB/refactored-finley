@@ -1,13 +1,14 @@
 // To clear cache on devices, always increase APP_VER number after making changes.
 // The app will serve fresh content right away or after 2-3 refreshes (open / close)
 var APP_NAME = "QuoVadis";
-var APP_VER = "4.9.0"; // Incremented for video caching enabled
+var APP_VER = "5.0.0"; // Incremented for maximum cache usage optimization
 var CACHE_NAME = APP_NAME + "-" + APP_VER;
 
-// iOS Storage Limits and Configuration
-var IOS_MAX_STORAGE = 50 * 1024 * 1024; // 50MB fallback for iOS (use actual quota when available)
-var GENERAL_MAX_STORAGE = 100 * 1024 * 1024; // 100MB fallback for other platforms
-var CACHE_CLEANUP_THRESHOLD = 0.95; // Clean up when 95% full (increased from 80% to use more available storage)
+// Storage Limits and Configuration - Optimized for Maximum Usage
+var IOS_MAX_STORAGE = 200 * 1024 * 1024; // 200MB fallback for iOS (use actual quota when available)
+var GENERAL_MAX_STORAGE = 250 * 1024 * 1024; // 250MB fallback for other platforms (aggressive caching)
+var CACHE_CLEANUP_THRESHOLD = 0.9; // Clean up when 90% full (use more available storage)
+var VIDEO_CACHE_THRESHOLD = 0.85; // Cache videos until 85% storage usage (increased from 70%)
 
 // Cache Priority Levels
 var PRIORITY = {
@@ -20,8 +21,12 @@ var PRIORITY = {
 // Priority-based file categorization
 var CACHE_FILES = {
   [PRIORITY.CRITICAL]: [
-    // Core HTML files
+    // All HTML files
     "index.html",
+    "page-Vergleich.html",
+    "page-profile-finley.html",
+    "page-videos.html",
+    "page-consulting-history.html",
     // Essential styles
     "styles/style.css",
     "styles/bootstrap.css",
@@ -30,24 +35,32 @@ var CACHE_FILES = {
     "scripts/bootstrap.min.js",
     // Essential icons
     "app/icons/icon-192x192.png",
+    "app/icons/icon-512x512.png",
+    "app/icons/icon-384x384.png",
   ],
 
   [PRIORITY.HIGH]: [
-    // Essential fonts
+    // All fonts
     "fonts/css/fontawesome-all.min.css",
     "fonts/webfonts/fa-solid-900.woff2",
     "fonts/webfonts/fa-regular-400.woff2",
-    // Core plugins
+    "fonts/webfonts/fa-brands-400.woff2",
+    // All plugins
     "plugins/glightbox/glightbox.js",
     "plugins/glightbox/glightbox.css",
+    "plugins/glightbox/glightbox-call.js",
+    "plugins/before-after/before-after.css",
+    "plugins/before-after/before-after.js",
+    // All icons
+    "app/icons/icon-72x72.png",
+    "app/icons/icon-96x96.png",
+    "app/icons/icon-128x128.png",
+    "app/icons/icon-144x144.png",
+    "app/icons/icon-152x152.png",
   ],
 
   [PRIORITY.MEDIUM]: [
-    // Additional fonts
-    "fonts/webfonts/fa-brands-400.woff2",
-    // Optional plugins
-    "plugins/before-after/before-after.css",
-    "plugins/before-after/before-after.js",
+    // All remaining plugins
     "plugins/charts/charts.js",
     "plugins/charts/charts-call-graphs.js",
     "plugins/countdown/countdown.js",
@@ -55,18 +68,24 @@ var CACHE_FILES = {
     "plugins/filterizr/filterizr.css",
     "plugins/filterizr/filterizr-call.js",
     "plugins/galleryViews/gallery-views.js",
-    "plugins/glightbox/glightbox-call.js",
-    // Small images and thumbnails (dynamically cached)
+    // All local videos (small files)
+    "videos/exercise1.mp4",
+    "videos/exercise2.mp4",
+    "videos/exercise3.mp4",
+    "videos/exercise4.mp4",
+    "videos/exercise5.mp4",
+    // Images and thumbnails (dynamically cached)
     "thumbnail",
     "thumb",
     "preview",
+    "images/",
   ],
 
   // PRIORITY.LOW files (videos, large images) - cached when storage available, cleaned up first
 };
 
 // Service Worker Diagnostic. Set true to get console logs.
-var APP_DIAG = false;
+var APP_DIAG = true; // Enabled for cache monitoring
 
 // Utility Functions
 function isIOS() {
@@ -122,18 +141,24 @@ async function shouldCache(request, priority) {
   // Check storage for videos and large images (LOW priority)
   if (isVideoRequest(url) || isLargeImageRequest(url)) {
     const storage = await getStorageUsage();
-    // Only cache videos/large images when storage usage is below 70%
-    if (storage.percentage > 0.7) {
+    // Cache videos/large images when storage usage is below 85% (increased threshold)
+    if (storage.percentage > VIDEO_CACHE_THRESHOLD) {
       if (APP_DIAG)
         console.log(
           "SW: Storage too full for video/large image:",
           url,
-          storage.percentage
+          "Usage:",
+          Math.round(storage.percentage * 100) + "%"
         );
       return false;
     }
     if (APP_DIAG)
-      console.log("SW: Caching video/large image (LOW priority):", url);
+      console.log(
+        "SW: Caching video/large image (LOW priority):",
+        url,
+        "Usage:",
+        Math.round(storage.percentage * 100) + "%"
+      );
     return true;
   }
 
@@ -163,7 +188,7 @@ async function shouldCache(request, priority) {
 
   // Always cache HIGH priority items unless extremely close to limit
   if (priority === PRIORITY.HIGH) {
-    return storage.percentage < 0.98; // Only skip HIGH priority at 98% full
+    return storage.percentage < 0.95; // Only skip HIGH priority at 95% full (more aggressive)
   }
 
   // For MEDIUM priority, respect the cleanup threshold
@@ -218,6 +243,42 @@ async function cleanupCache() {
   for (const request of toDelete) {
     await cache.delete(request);
     if (APP_DIAG) console.log("SW: Deleted from cache:", request.url);
+  }
+}
+
+// Proactive caching function for maximum storage utilization
+async function proactivelyCacheContent() {
+  if (APP_DIAG) console.log("SW: Starting proactive caching...");
+
+  const storage = await getStorageUsage();
+  if (storage.percentage > 0.8) {
+    if (APP_DIAG)
+      console.log(
+        "SW: Storage too full for proactive caching:",
+        Math.round(storage.percentage * 100) + "%"
+      );
+    return;
+  }
+
+  const cache = await caches.open(CACHE_NAME);
+
+  // Proactively cache common external resources
+  const externalResources = [
+    "https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap",
+    "https://videos-data.fra1.cdn.digitaloceanspaces.com/thumbnails/finley-page-profile.jpg",
+    "https://videos-data.fra1.cdn.digitaloceanspaces.com/thumbnails/3.jpg",
+  ];
+
+  for (const url of externalResources) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        await cache.put(url, response);
+        if (APP_DIAG) console.log("SW: Proactively cached:", url);
+      }
+    } catch (error) {
+      if (APP_DIAG) console.log("SW: Failed to proactively cache:", url, error);
+    }
   }
 }
 
@@ -358,6 +419,9 @@ self.addEventListener("activate", function (event) {
       // Perform initial cache cleanup if needed
       await cleanupCache();
 
+      // Start proactive caching for maximum storage utilization
+      setTimeout(() => proactivelyCacheContent(), 2000);
+
       // Log storage usage for debugging
       if (APP_DIAG) {
         const storage = await getStorageUsage();
@@ -366,11 +430,14 @@ self.addEventListener("activate", function (event) {
           available: Math.round(storage.available / 1024 / 1024) + "MB",
           percentage: Math.round(storage.percentage * 100) + "%",
           isIOS: isIOS(),
+          maxStorage: Math.round(getMaxStorage() / 1024 / 1024) + "MB",
         });
       }
     })
   );
   if (APP_DIAG) {
-    console.log("Service Worker: Activated with priority caching system");
+    console.log(
+      "Service Worker: Activated with MAXIMUM cache utilization system"
+    );
   }
 });

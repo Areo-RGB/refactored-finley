@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
   //Global Variables
-  let isPWA = true; // Enables or disables the service worker and PWA - ENABLED WITH PRIORITY CACHING
+  let isPWA = true; // Enables or disables the service worker and PWA - ENABLED WITH MAXIMUM CACHING
   let isAJAX = true; // AJAX transitions. Requires local server or server
   var pwaName = "QuoVadis"; //Local Storage Names for PWA
   var pwaRemind = 1; //Days to re-remind to add to home
@@ -2206,4 +2206,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //End of Init Template
   init_template();
+
+  // Cache Management Utilities for Maximum Storage Usage
+  window.cacheManager = {
+    async getStorageInfo() {
+      if ("storage" in navigator && "estimate" in navigator.storage) {
+        const estimate = await navigator.storage.estimate();
+        const info = {
+          used: estimate.usage || 0,
+          available: estimate.quota || 0,
+          usedMB: Math.round((estimate.usage || 0) / 1024 / 1024),
+          availableMB: Math.round((estimate.quota || 0) / 1024 / 1024),
+          percentage: estimate.usage
+            ? estimate.usage / (estimate.quota || 1)
+            : 0,
+          percentageText:
+            Math.round(
+              (estimate.usage ? estimate.usage / (estimate.quota || 1) : 0) *
+                100
+            ) + "%",
+        };
+        console.log("📊 Storage Info:", info);
+        return info;
+      }
+      return null;
+    },
+
+    async clearCache() {
+      const cacheNames = await caches.keys();
+      await Promise.all(cacheNames.map((name) => caches.delete(name)));
+      console.log("🗑️ All caches cleared");
+      location.reload();
+    },
+
+    async logStorageUsage() {
+      const info = await this.getStorageInfo();
+      if (info) {
+        console.log(
+          `💾 Cache Usage: ${info.usedMB}MB / ${info.availableMB}MB (${info.percentageText})`
+        );
+      }
+    },
+
+    async listCachedFiles() {
+      const cacheNames = await caches.keys();
+      for (const cacheName of cacheNames) {
+        const cache = await caches.open(cacheName);
+        const requests = await cache.keys();
+        console.log(`📁 Cache: ${cacheName} (${requests.length} files)`);
+        requests.forEach((req) => console.log(`  - ${req.url}`));
+      }
+    },
+  };
+
+  // Auto-log storage usage every 30 seconds for monitoring
+  setInterval(async () => {
+    if (window.cacheManager) {
+      await window.cacheManager.logStorageUsage();
+    }
+  }, 30000);
+
+  console.log(
+    "🚀 Cache Manager loaded. Use window.cacheManager.getStorageInfo() to check usage"
+  );
 });
