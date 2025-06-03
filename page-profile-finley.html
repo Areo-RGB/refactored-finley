@@ -38,191 +38,141 @@
     <!-- Page Content -->
     <div class="page-content">
       <div class="page-content header-clear-small">
-        <!-- Workout Pre-Setup -->
-        <div class="card card-style gradient-green" style="position: relative">
+        <!-- Combined Workout Setup & Training Dashboard -->
+        <div class="card card-style gradient-blue" style="position: relative">
           <div class="content pt-4 pb-4">
-            <h3 class="mb-3 color-white text-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important">
-              Workout Setup
-            </h3>
-            <p class="color-white opacity-80 mb-3 text-center"
-              style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important">
-              Configure your training session
-            </p>
-
-            <div class="row mb-3">
-              <div class="col-6">
+            <!-- Configuration Row -->
+            <div class="row mb-4">
+              <div class="col-4">
                 <label class="form-label font-700 mb-2" style="
                       color: white !important;
                       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
-                      background: none !important;
-                      background-color: transparent !important;
-                      padding: 0 !important;
-                      border-radius: 0 !important;
-                    ">Number of Exercises</label>
+                      font-size: 0.8rem;
+                    ">Anzahl Übungen</label>
                 <select id="exercise-amount-select" class="form-select border-0 shadow-m rounded-m" style="
                       color: #212529;
                       background: #ffffff;
                       font-weight: 600;
+                      font-size: 0.9rem;
                     ">
-                  <option value="1" style="color: #212529; background: #ffffff">
-                    1 Exercise
-                  </option>
-                  <option value="2" style="color: #212529; background: #ffffff">
-                    2 Exercises
-                  </option>
-                  <option value="3" style="color: #212529; background: #ffffff">
-                    3 Exercises
-                  </option>
-                  <option value="4" style="color: #212529; background: #ffffff">
-                    4 Exercises
-                  </option>
-                  <option value="5" style="color: #212529; background: #ffffff">
-                    5 Exercises
-                  </option>
-                  <option value="6" selected style="color: #212529; background: #ffffff">
-                    6 Exercises
-                  </option>
-                  <option value="7" style="color: #212529; background: #ffffff">
-                    7 Exercises
-                  </option>
-                  <option value="8" style="color: #212529; background: #ffffff">
-                    8 Exercises
-                  </option>
+                  <option value="1">1 Übung</option>
+                  <option value="2">2 Übungen</option>
+                  <option value="3">3 Übungen</option>
+                  <option value="4">4 Übungen</option>
+                  <option value="5">5 Übungen</option>
+                  <option value="6" selected>6 Übungen</option>
+                  <option value="7">7 Übungen</option>
+                  <option value="8">8 Übungen</option>
                 </select>
               </div>
-              <div class="col-6">
+              <div class="col-4">
                 <label class="form-label font-700 mb-2" style="
                       color: white !important;
                       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
-                      background: none !important;
-                      background-color: transparent !important;
-                      padding: 0 !important;
-                      border-radius: 0 !important;
-                    ">Timer Duration</label>
+                      font-size: 0.8rem;
+                    ">Dauer</label>
                 <select id="timer-duration-select" class="form-select border-0 shadow-m rounded-m" style="
                       color: #212529;
                       background: #ffffff;
                       font-weight: 600;
+                      font-size: 0.9rem;
                     ">
-                  <option value="10" style="color: #212529; background: #ffffff">
-                    10 seconds
-                  </option>
-                  <option value="15" selected style="color: #212529; background: #ffffff">
-                    15 seconds
-                  </option>
-                  <option value="20" style="color: #212529; background: #ffffff">
-                    20 seconds
-                  </option>
-                  <option value="30" style="color: #212529; background: #ffffff">
-                    30 seconds
-                  </option>
-                  <option value="45" style="color: #212529; background: #ffffff">
-                    45 seconds
-                  </option>
-                  <option value="60" style="color: #212529; background: #ffffff">
-                    60 seconds
-                  </option>
-                  <option value="90" style="color: #212529; background: #ffffff">
-                    90 seconds
-                  </option>
-                  <option value="120" style="color: #212529; background: #ffffff">
-                    2 minutes
-                  </option>
+                  <option value="10">10 Sekunden</option>
+                  <option value="15" selected>15 Sekunden</option>
+                  <option value="20">20 Sekunden</option>
+                  <option value="30">30 Sekunden</option>
+                  <option value="45">45 Sekunden</option>
+                  <option value="60">60 Sekunden</option>
+                  <option value="90">90 Sekunden</option>
+                  <option value="120">2 Minuten</option>
                 </select>
               </div>
-            </div>
-
-            <div class="row mb-3">
-              <div class="col-12">
+              <div class="col-4">
                 <label class="form-label font-700 mb-2" style="
                       color: white !important;
                       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
-                      background: none !important;
-                      background-color: transparent !important;
-                      padding: 0 !important;
-                      border-radius: 0 !important;
-                    ">Rest Between Exercises</label>
+                      font-size: 0.8rem;
+                    ">Pause</label>
                 <select id="rest-duration-select" class="form-select border-0 shadow-m rounded-m" style="
                       color: #212529;
                       background: #ffffff;
                       font-weight: 600;
+                      font-size: 0.9rem;
                     ">
-                  <option value="5" style="color: #212529; background: #ffffff">
-                    5 seconds
-                  </option>
-                  <option value="10" selected style="color: #212529; background: #ffffff">
-                    10 seconds
-                  </option>
-                  <option value="15" style="color: #212529; background: #ffffff">
-                    15 seconds
-                  </option>
-                  <option value="30" style="color: #212529; background: #ffffff">
-                    30 seconds
-                  </option>
-                  <option value="60" style="color: #212529; background: #ffffff">
-                    1 minute
-                  </option>
+                  <option value="5">5 Sekunden</option>
+                  <option value="10" selected>10 Sekunden</option>
+                  <option value="15">15 Sekunden</option>
+                  <option value="30">30 Sekunden</option>
+                  <option value="60">1 Minute</option>
                 </select>
               </div>
             </div>
 
-            <div class="row">
+            <!-- Action Buttons -->
+            <div class="row mb-4">
               <div class="col-6">
                 <button id="apply-workout-settings"
-                  class="btn btn-m btn-full rounded-m text-uppercase font-900 shadow-s" style="
+                  class="btn btn-s btn-full rounded-m text-uppercase font-700 shadow-s" style="
                       background: rgba(255, 255, 255, 0.98);
-                      color: #155724;
+                      color: #4a89dc;
                       border: 2px solid rgba(255, 255, 255, 0.8);
-                      font-weight: 700;
+                      font-size: 0.8rem;
                     ">
                   Apply Settings
                 </button>
               </div>
               <div class="col-6">
                 <button id="reset-workout-settings"
-                  class="btn btn-m btn-full rounded-m text-uppercase font-600 shadow-s" style="
+                  class="btn btn-s btn-full rounded-m text-uppercase font-600 shadow-s" style="
                       background: rgba(255, 255, 255, 0.85);
                       color: #495057;
                       border: 2px solid rgba(255, 255, 255, 0.6);
-                      font-weight: 600;
+                      font-size: 0.8rem;
                     ">
                   Reset Default
                 </button>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Mini Dashboard Card -->
-        <div class="card card-style gradient-blue" style="position: relative">
-          <!-- Timer Control Button (Toggle) -->
-          <button id="timer-toggle-btn" class="color-white" style="
-                position: absolute;
-                top: 85px;
-                left: 16.66%;
-                transform: translateX(-50%);
-                z-index: 10;
-                background: none;
-                border: none;
-                font-size: 3rem;
-                font-weight: 900;
-                cursor: pointer;
-                opacity: 0.9;
-              ">
-            <i id="timer-toggle-icon" class="fa fa-play"></i>
-          </button>
+            <!-- Divider -->
+            <div class="divider mt-3 mb-4" style="background-color: rgba(255, 255, 255, 0.3) !important;"></div>
 
-          <div class="content pt-4 pb-4">
-            <h3 class="mb-3 color-white text-center">Training Dashboard</h3>
-
-            <!-- Timer Display -->
-            <div class="text-center mb-4">
-              <div id="timer-display" class="color-white" style="font-size: 4rem; font-weight: 900; line-height: 1">
-                15s
+            <!-- Training Dashboard Section -->
+            <div class="row mb-4" style="position: relative;">
+              <!-- Timer Control Button (Toggle) - positioned to align with left column -->
+              <div class="col-4 d-flex justify-content-center" style="position: relative;">
+                <button id="timer-toggle-btn" class="color-white" style="
+                      position: absolute;
+                      top: 50%;
+                      transform: translateY(-50%);
+                      background: rgba(255, 255, 255, 0.2);
+                      border: 2px solid rgba(255, 255, 255, 0.3);
+                      border-radius: 50%;
+                      width: 50px;
+                      height: 50px;
+                      font-size: 1.2rem;
+                      font-weight: 900;
+                      cursor: pointer;
+                      opacity: 0.9;
+                      transition: all 0.3s ease;
+                      z-index: 10;
+                    ">
+                  <i id="timer-toggle-icon" class="fa fa-play"></i>
+                </button>
               </div>
-              <p class="color-white opacity-80 mb-0" style="font-size: 0.9rem">
-                Session Timer
-              </p>
+
+              <!-- Timer Display - centered -->
+              <div class="col-4 text-center">
+                <div id="timer-display" class="color-white" style="font-size: 3.5rem; font-weight: 900; line-height: 1">
+                  15s
+                </div>
+                <p class="color-white opacity-80 mb-0" style="font-size: 0.9rem">
+                  Session Timer
+                </p>
+              </div>
+
+              <!-- Empty column for balance -->
+              <div class="col-4"></div>
             </div>
 
             <!-- Dashboard Stats Row -->
@@ -237,7 +187,7 @@
               </div>
               <div class="col-4">
                 <div id="total-duration-display" class="color-white" style="font-size: 1.5rem; font-weight: 700">
-                  2:45
+                  2:20
                 </div>
                 <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem">
                   Duration
@@ -326,116 +276,198 @@
         <div class="card card-style">
           <div class="content">
             <h3>Performance Metrics</h3>
-            <div class="row mb-0">
-              <div class="col-6">
-                <div class="card card-style m-0 exercise-card bg-highlight loading-card" data-card-height="140" style="
+
+            <!-- Exercise 1 -->
+            <a href="#" class="d-flex mb-3 exercise-card" data-video="1"
+              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
+              <div class="w-100 me-3">
+                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
-                      background-size: cover;
-                      background-position: center;
-                      background: #f8f9fa;
-                    " data-video="1"
-                  data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
-                  <div class="loading-overlay">
-                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                  </div>
-                  <div class="card-overlay">
-                    <h5 class="text-white font-weight-bold">Übung 1</h5>
-                    <p class="text-white-50 mb-0">Sprint Training</p>
-                  </div>
+                      position: relative;
+                      overflow: hidden;
+                    ">
+                  <video class="card-video-bg" muted loop preload="metadata" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: 1;
+                      ">
+                    <source
+                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4"
+                      type="video/mp4">
+                  </video>
                 </div>
               </div>
-              <div class="col-6">
-                <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="
+              <div class="ms-auto w-100">
+                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 1</h5>
+                <span class="d-block font-11 font-400 opacity-60">Sprint Training</span>
+                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+              </div>
+            </a>
+            <div class="divider mt-3 mb-3"></div>
+
+            <!-- Exercise 2 -->
+            <a href="#" class="d-flex mb-3 exercise-card" data-video="2"
+              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
+              <div class="w-100 me-3">
+                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
-                      background-size: cover;
-                      background-position: center;
-                      background: #f8f9fa;
-                    " data-video="2"
-                  data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
-                  <div class="loading-overlay">
-                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                  </div>
-                  <div class="card-overlay">
-                    <h5 class="text-white font-weight-bold">Übung 2</h5>
-                    <p class="text-white-50 mb-0">Agility Training</p>
-                  </div>
+                      position: relative;
+                      overflow: hidden;
+                    ">
+                  <video class="card-video-bg" muted loop preload="metadata" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: 1;
+                      ">
+                    <source
+                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4"
+                      type="video/mp4">
+                  </video>
                 </div>
               </div>
-              <div class="col-12">
-                <div class="divider mt-2 mb-4"></div>
+              <div class="ms-auto w-100">
+                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 2</h5>
+                <span class="d-block font-11 font-400 opacity-60">Agility Training</span>
+                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
               </div>
-              <div class="col-6">
-                <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="
+            </a>
+            <div class="divider mt-3 mb-3"></div>
+
+            <!-- Exercise 4 -->
+            <a href="#" class="d-flex mb-3 exercise-card" data-video="4"
+              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
+              <div class="w-100 me-3">
+                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
-                      background-size: cover;
-                      background-position: center;
-                      background: #f8f9fa;
-                    " data-video="4"
-                  data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
-                  <div class="loading-overlay">
-                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                  </div>
-                  <div class="card-overlay">
-                    <h5 class="text-white font-weight-bold">Übung 4</h5>
-                    <p class="text-white-50 mb-0">Ball Control</p>
-                  </div>
+                      position: relative;
+                      overflow: hidden;
+                    ">
+                  <video class="card-video-bg" muted loop preload="metadata" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: 1;
+                      ">
+                    <source
+                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4"
+                      type="video/mp4">
+                  </video>
                 </div>
               </div>
-              <div class="col-6">
-                <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="
+              <div class="ms-auto w-100">
+                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 4</h5>
+                <span class="d-block font-11 font-400 opacity-60">Ball Control</span>
+                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+              </div>
+            </a>
+            <div class="divider mt-3 mb-3"></div>
+
+            <!-- Exercise 5 -->
+            <a href="#" class="d-flex mb-3 exercise-card" data-video="5"
+              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
+              <div class="w-100 me-3">
+                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
-                      background-size: cover;
-                      background-position: center;
-                      background: #f8f9fa;
-                    " data-video="5"
-                  data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
-                  <div class="loading-overlay">
-                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                  </div>
-                  <div class="card-overlay">
-                    <h5 class="text-white font-weight-bold">Übung 5</h5>
-                    <p class="text-white-50 mb-0">Dribbling</p>
-                  </div>
+                      position: relative;
+                      overflow: hidden;
+                    ">
+                  <video class="card-video-bg" muted loop preload="metadata" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: 1;
+                      ">
+                    <source
+                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4"
+                      type="video/mp4">
+                  </video>
                 </div>
               </div>
-              <div class="col-12">
-                <div class="divider mt-2 mb-4"></div>
+              <div class="ms-auto w-100">
+                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 5</h5>
+                <span class="d-block font-11 font-400 opacity-60">Dribbling</span>
+                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
               </div>
-              <div class="col-6">
-                <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="
+            </a>
+            <div class="divider mt-3 mb-3"></div>
+
+            <!-- Exercise 6 -->
+            <a href="#" class="d-flex mb-3 exercise-card" data-video="6"
+              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
+              <div class="w-100 me-3">
+                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
-                      background-size: cover;
-                      background-position: center;
-                      background: #f8f9fa;
-                    " data-video="6"
-                  data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
-                  <div class="loading-overlay">
-                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                  </div>
-                  <div class="card-overlay">
-                    <h5 class="text-white font-weight-bold">Übung 6</h5>
-                    <p class="text-white-50 mb-0">Finishing</p>
-                  </div>
+                      position: relative;
+                      overflow: hidden;
+                    ">
+                  <video class="card-video-bg" muted loop preload="metadata" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: 1;
+                      ">
+                    <source
+                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4"
+                      type="video/mp4">
+                  </video>
                 </div>
               </div>
-              <div class="col-6">
-                <div class="card card-style m-0 exercise-card loading-card" data-card-height="140" style="
+              <div class="ms-auto w-100">
+                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 6</h5>
+                <span class="d-block font-11 font-400 opacity-60">Finishing</span>
+                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+              </div>
+            </a>
+            <div class="divider mt-3 mb-3"></div>
+
+            <!-- Exercise 7 -->
+            <a href="#" class="d-flex mb-3 exercise-card" data-video="7"
+              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
+              <div class="w-100 me-3">
+                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
-                      background-size: cover;
-                      background-position: center;
-                      background: #f8f9fa;
-                    " data-video="7"
-                  data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
-                  <div class="loading-overlay">
-                    <div class="spinner-border spinner-border-sm text-white" role="status"></div>
-                  </div>
-                  <div class="card-overlay">
-                    <h5 class="text-white font-weight-bold">Übung 7</h5>
-                    <p class="text-white-50 mb-0">Coordination</p>
-                  </div>
+                      position: relative;
+                      overflow: hidden;
+                    ">
+                  <video class="card-video-bg" muted loop preload="metadata" style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        z-index: 1;
+                      ">
+                    <source
+                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4"
+                      type="video/mp4">
+                  </video>
                 </div>
               </div>
-            </div>
+              <div class="ms-auto w-100">
+                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 7</h5>
+                <span class="d-block font-11 font-400 opacity-60">Coordination</span>
+                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+              </div>
+            </a>
+
           </div>
         </div>
       </div>
@@ -498,33 +530,60 @@
       }
     }
 
-    .loading-card {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
+    /* Fix dropdown styling for gradient cards */
+    .gradient-blue .form-select,
+    .gradient-green .form-select {
+      background-color: #ffffff !important;
+      color: #212529 !important;
+      border: none !important;
     }
 
-    .loading-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      transition: opacity 0.3s ease;
+    .gradient-blue .form-select option,
+    .gradient-green .form-select option {
+      background-color: #ffffff !important;
+      color: #212529 !important;
+      padding: 8px 12px !important;
     }
 
-    .loading-card.loaded .loading-overlay {
-      opacity: 0;
-      pointer-events: none;
+    /* Ensure dropdown options have proper styling */
+    .gradient-blue .form-select option:hover,
+    .gradient-green .form-select option:hover {
+      background-color: #f8f9fa !important;
+      color: #212529 !important;
     }
 
-    .card-overlay {
-      display: none !important;
+    .gradient-blue .form-select option:checked,
+    .gradient-green .form-select option:checked {
+      background-color: #4a89dc !important;
+      color: #ffffff !important;
+    }
+
+    /* Fix form labels in gradient cards for both light and dark mode */
+    .gradient-blue .form-label,
+    .gradient-green .form-label {
+      color: white !important;
+      background: none !important;
+      background-color: transparent !important;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      border: none !important;
+    }
+
+    /* Dark mode specific fixes */
+    .theme-dark .gradient-blue .form-label,
+    .theme-dark .gradient-green .form-label {
+      color: white !important;
+      background: none !important;
+      background-color: transparent !important;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+    }
+
+    /* Ensure labels don't inherit dark mode styles */
+    .gradient-blue .form-label *,
+    .gradient-green .form-label * {
+      background: none !important;
+      background-color: transparent !important;
     }
 
     .exercise-card {
@@ -534,60 +593,6 @@
     .exercise-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    .exercise-card.bg-highlight {
-      border: 3px solid #007bff;
-      box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
-    }
-
-    /* NO GRADIENTS - REMOVED */
-
-    /* When thumbnail is loaded, override the gradient */
-    .exercise-card.loaded {
-      background-size: cover !important;
-      background-position: center !important;
-    }
-
-    /* Hide card overlay when thumbnail is loaded */
-    .exercise-card.loaded .card-overlay {
-      display: none !important;
-    }
-
-    /* Video Text Overlay Styles */
-    .video-text-overlay {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      z-index: 10;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-      pointer-events: none;
-    }
-
-    .exercise-card:hover .video-text-overlay {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .video-text-overlay .overlay-title {
-      font-weight: 600;
-      margin-bottom: 2px;
-      font-size: 15px;
-    }
-
-    .video-text-overlay .overlay-description {
-      font-size: 12px;
-      opacity: 0.9;
-      margin: 0;
     }
   </style>
 
@@ -599,192 +604,9 @@
 
       console.log("🎯 Finley Profile Page Loaded Successfully");
 
-      // Video Text Overlay Configuration Component
-      const VideoOverlayConfig = {
-        overlays: {
-          1: {
-            title: "Sprint Training",
-            description: "High-intensity speed development",
-            category: "Speed",
-          },
-          2: {
-            title: "Agility Training",
-            description: "Quick direction changes and coordination",
-            category: "Agility",
-          },
-          4: {
-            title: "Ball Control",
-            description: "Technical skills and ball mastery",
-            category: "Technical",
-          },
-          5: {
-            title: "Dribbling",
-            description: "1v1 skills and close control",
-            category: "Technical",
-          },
-          6: {
-            title: "Finishing",
-            description: "Goal scoring techniques",
-            category: "Shooting",
-          },
-          7: {
-            title: "Coordination",
-            description: "Body movement and balance",
-            category: "Physical",
-          },
-        },
 
-        // Get overlay data for a specific video
-        getOverlay: function (videoNumber) {
-          return this.overlays[videoNumber] || null;
-        },
 
-        // Add or update overlay for a video
-        setOverlay: function (
-          videoNumber,
-          title,
-          description,
-          category = ""
-        ) {
-          this.overlays[videoNumber] = {
-            title: title,
-            description: description,
-            category: category,
-          };
-          console.log(
-            `📝 Updated overlay for video ${videoNumber}:`,
-            this.overlays[videoNumber]
-          );
-        },
 
-        // Remove overlay for a video
-        removeOverlay: function (videoNumber) {
-          if (this.overlays[videoNumber]) {
-            delete this.overlays[videoNumber];
-            console.log(`🗑️ Removed overlay for video ${videoNumber}`);
-            return true;
-          }
-          return false;
-        },
-
-        // Get all configured overlays
-        getAllOverlays: function () {
-          return this.overlays;
-        },
-      };
-
-      // Video Text Overlay Manager Component
-      const VideoTextOverlayManager = {
-        // Create overlay element for a card
-        createOverlay: function (card, overlayData) {
-          if (!overlayData) return null;
-
-          const overlay = document.createElement("div");
-          overlay.className = "video-text-overlay";
-
-          const title = document.createElement("div");
-          title.className = "overlay-title";
-          title.textContent = overlayData.title;
-
-          const description = document.createElement("div");
-          description.className = "overlay-description";
-          description.textContent = overlayData.description;
-
-          overlay.appendChild(title);
-          overlay.appendChild(description);
-
-          return overlay;
-        },
-
-        // Add overlay to a specific card
-        addOverlayToCard: function (card) {
-          const videoNumber = card.getAttribute("data-video");
-          const overlayData = VideoOverlayConfig.getOverlay(videoNumber);
-
-          if (!overlayData) {
-            console.log(`⚠️ No overlay data found for video ${videoNumber}`);
-            return false;
-          }
-
-          // Remove existing overlay if present
-          this.removeOverlayFromCard(card);
-
-          const overlay = this.createOverlay(card, overlayData);
-          if (overlay) {
-            card.appendChild(overlay);
-            console.log(
-              `✅ Added text overlay to video ${videoNumber}:`,
-              overlayData.title
-            );
-            return true;
-          }
-          return false;
-        },
-
-        // Remove overlay from a card
-        removeOverlayFromCard: function (card) {
-          const existingOverlay = card.querySelector(".video-text-overlay");
-          if (existingOverlay) {
-            existingOverlay.remove();
-            return true;
-          }
-          return false;
-        },
-
-        // Initialize overlays for all cards
-        initializeAllOverlays: function (cards) {
-          let successCount = 0;
-          cards.forEach((card, index) => {
-            if (this.addOverlayToCard(card)) {
-              successCount++;
-            }
-          });
-          console.log(
-            `🎯 Initialized ${successCount} text overlays out of ${cards.length} cards`
-          );
-          return successCount;
-        },
-
-        // Update overlay for a specific video
-        updateOverlay: function (
-          videoNumber,
-          title,
-          description,
-          category = ""
-        ) {
-          VideoOverlayConfig.setOverlay(
-            videoNumber,
-            title,
-            description,
-            category
-          );
-
-          // Find and update the card
-          const card = document.querySelector(
-            `[data-video="${videoNumber}"]`
-          );
-          if (card) {
-            this.addOverlayToCard(card);
-            return true;
-          }
-          return false;
-        },
-
-        // Remove overlay for a specific video
-        removeOverlay: function (videoNumber) {
-          VideoOverlayConfig.removeOverlay(videoNumber);
-
-          // Find and remove from card
-          const card = document.querySelector(
-            `[data-video="${videoNumber}"]`
-          );
-          if (card) {
-            this.removeOverlayFromCard(card);
-            return true;
-          }
-          return false;
-        },
-      };
 
       // Get elements
       const mainVideo = document.getElementById("main-video");
@@ -1112,180 +934,12 @@
         });
       }
 
-      // Function to extract video thumbnail with improved error handling
-      function extractThumbnail(videoUrl, card) {
-        const loadingOverlay = card.querySelector(".loading-overlay");
-        const videoNumber = card.getAttribute("data-video");
 
-        console.log(
-          `🖼️ Starting thumbnail extraction for video ${videoNumber}:`,
-          videoUrl
-        );
 
-        const video = document.createElement("video");
-        video.crossOrigin = "anonymous";
-        video.muted = true;
-        video.preload = "metadata";
-        video.playsInline = true;
 
-        // Set timeout for thumbnail extraction
-        const timeoutId = setTimeout(() => {
-          console.warn(
-            `⏰ Thumbnail extraction timeout for video ${videoNumber}`
-          );
-          finalizeThumbnailLoading(card, false);
-        }, 10000); // 10 second timeout
 
-        video.addEventListener("loadedmetadata", function () {
-          console.log(`📊 Video metadata loaded for video ${videoNumber}`);
-          // Seek to 1 second into the video for a better thumbnail
-          video.currentTime = Math.min(1, video.duration * 0.1);
-        });
-
-        video.addEventListener("seeked", function () {
-          try {
-            console.log(
-              `🎯 Video seeked for video ${videoNumber}, extracting frame...`
-            );
-
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-
-            // Set canvas dimensions
-            canvas.width = video.videoWidth || 640;
-            canvas.height = video.videoHeight || 360;
-
-            // Draw video frame to canvas
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-            // Convert to data URL
-            const thumbnailUrl = canvas.toDataURL("image/jpeg", 0.8);
-
-            // Apply thumbnail and remove gradient overlays
-            card.style.backgroundImage = `url(${thumbnailUrl})`;
-
-            // Hide the card overlay (gradient overlay with text)
-            const cardOverlay = card.querySelector(".card-overlay");
-            if (cardOverlay) {
-              cardOverlay.style.display = "none";
-            }
-
-            card.classList.add("loaded");
-
-            clearTimeout(timeoutId);
-            finalizeThumbnailLoading(card, true);
-
-            console.log(
-              `✅ Thumbnail extracted successfully for video ${videoNumber}`
-            );
-          } catch (error) {
-            console.error(
-              `❌ Error extracting thumbnail for video ${videoNumber}:`,
-              error
-            );
-            clearTimeout(timeoutId);
-            finalizeThumbnailLoading(card, false);
-          }
-        });
-
-        video.addEventListener("error", function (e) {
-          console.error(`❌ Video error for video ${videoNumber}:`, e);
-          clearTimeout(timeoutId);
-          finalizeThumbnailLoading(card, false);
-        });
-
-        video.addEventListener("loadstart", function () {
-          console.log(`🔄 Video loading started for video ${videoNumber}`);
-        });
-
-        video.addEventListener("canplay", function () {
-          console.log(`▶️ Video can play for video ${videoNumber}`);
-        });
-
-        // Start loading
-        video.src = videoUrl;
-      }
-
-      // Function to finalize thumbnail loading state
-      function finalizeThumbnailLoading(card, success) {
-        const loadingOverlay = card.querySelector(".loading-overlay");
-        const videoNumber = card.getAttribute("data-video");
-
-        if (loadingOverlay) {
-          loadingOverlay.style.opacity = "0";
-          setTimeout(() => {
-            loadingOverlay.style.display = "none";
-          }, 300);
-        }
-
-        if (!success) {
-          // Keep the gradient background that's already set in CSS
-          console.log(`🎨 Using fallback gradient for video ${videoNumber}`);
-        }
-
-        card.classList.add("loaded");
-        console.log(
-          `🏁 Thumbnail loading finalized for video ${videoNumber}, success: ${success}`
-        );
-      }
-
-      // Extract thumbnails for all exercise cards with staggered loading
-      exerciseCards.forEach((card, index) => {
-        const videoUrl = card.getAttribute("data-url");
-        if (videoUrl) {
-          // Stagger the loading to prevent overwhelming the browser
-          setTimeout(() => {
-            console.log(
-              `🖼️ Extracting thumbnail for card ${index + 1}:`,
-              videoUrl
-            );
-            extractThumbnail(videoUrl, card);
-          }, index * 500); // 500ms delay between each thumbnail extraction
-        } else {
-          // If no video URL, just remove loading state
-          setTimeout(() => {
-            finalizeThumbnailLoading(card, false);
-          }, index * 100);
-        }
-      });
-
-      // Initialize text overlays after a delay to ensure thumbnails are loaded
-      setTimeout(() => {
-        VideoTextOverlayManager.initializeAllOverlays(exerciseCards);
-      }, exerciseCards.length * 500 + 1000); // Wait for all thumbnails + 1 second
-
-      // Global utility functions for overlay management (accessible from console)
-      window.FinleyOverlays = {
-        // Update overlay for a video
-        update: function (videoNumber, title, description, category = "") {
-          return VideoTextOverlayManager.updateOverlay(
-            videoNumber,
-            title,
-            description,
-            category
-          );
-        },
-
-        // Remove overlay for a video
-        remove: function (videoNumber) {
-          return VideoTextOverlayManager.removeOverlay(videoNumber);
-        },
-
-        // Get overlay data for a video
-        get: function (videoNumber) {
-          return VideoOverlayConfig.getOverlay(videoNumber);
-        },
-
-        // Get all overlay configurations
-        getAll: function () {
-          return VideoOverlayConfig.getAllOverlays();
-        },
-
-        // Reinitialize all overlays
-        refresh: function () {
-          return VideoTextOverlayManager.initializeAllOverlays(exerciseCards);
-        },
-
+      // Global utility functions for workout management (accessible from console)
+      window.FinleyWorkout = {
         // Progress management
         setProgress: function (exerciseNumber) {
           if (exerciseNumber >= 1 && exerciseNumber <= totalExercises) {
@@ -1367,56 +1021,36 @@
         // Show help
         help: function () {
           console.log(`
-🎯 Finley Video Overlay Management Commands:
+🎯 Finley Workout Management Commands:
 
-FinleyOverlays.update(videoNumber, title, description, category)
-  - Update overlay for a specific video
-  - Example: FinleyOverlays.update("1", "New Title", "New Description", "Category")
-
-FinleyOverlays.remove(videoNumber)
-  - Remove overlay for a specific video
-  - Example: FinleyOverlays.remove("1")
-
-FinleyOverlays.get(videoNumber)
-  - Get overlay data for a specific video
-  - Example: FinleyOverlays.get("1")
-
-FinleyOverlays.getAll()
-  - Get all overlay configurations
-  - Example: FinleyOverlays.getAll()
-
-FinleyOverlays.refresh()
-  - Reinitialize all overlays
-  - Example: FinleyOverlays.refresh()
-
-FinleyOverlays.setProgress(exerciseNumber)
+FinleyWorkout.setProgress(exerciseNumber)
   - Set current exercise progress (1-6)
-  - Example: FinleyOverlays.setProgress(4)
+  - Example: FinleyWorkout.setProgress(4)
 
-FinleyOverlays.getProgress()
+FinleyWorkout.getProgress()
   - Get current progress information
-  - Example: FinleyOverlays.getProgress()
+  - Example: FinleyWorkout.getProgress()
 
-FinleyOverlays.getWorkoutConfig()
+FinleyWorkout.getWorkoutConfig()
   - Get current workout configuration
-  - Example: FinleyOverlays.getWorkoutConfig()
+  - Example: FinleyWorkout.getWorkoutConfig()
 
-FinleyOverlays.setWorkoutConfig(exercises, timerDuration, restDuration)
+FinleyWorkout.setWorkoutConfig(exercises, timerDuration, restDuration)
   - Set workout configuration
-  - Example: FinleyOverlays.setWorkoutConfig(8, 30, 15)
+  - Example: FinleyWorkout.setWorkoutConfig(8, 30, 15)
 
-FinleyOverlays.resetWorkout()
+FinleyWorkout.resetWorkout()
   - Reset workout to default settings
-  - Example: FinleyOverlays.resetWorkout()
+  - Example: FinleyWorkout.resetWorkout()
 
-FinleyOverlays.help()
+FinleyWorkout.help()
   - Show this help message
             `);
         },
       };
 
       console.log(
-        "🎯 Video overlay system initialized! Type 'FinleyOverlays.help()' for commands."
+        "🎯 Workout management system initialized! Type 'FinleyWorkout.help()' for commands."
       );
 
       // Custom Player Functions
@@ -1520,9 +1154,7 @@ FinleyOverlays.help()
             videoTitle.textContent = exerciseTitle;
           }
 
-          // Update active state
-          exerciseCards.forEach((c) => c.classList.remove("bg-highlight"));
-          this.classList.add("bg-highlight");
+          // Update active state (visual feedback can be added here if needed)
         });
       });
 
