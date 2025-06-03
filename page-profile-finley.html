@@ -183,25 +183,7 @@
                 </p>
               </div>
 
-              <!-- Timer Control Button - Top Right -->
-              <button id="timer-toggle-btn" style="
-                    position: absolute;
-                    top: 15px;
-                    right: 15px;
-                    z-index: 15;
-                    background: rgba(255, 255, 255, 0.2);
-                    border: 2px solid rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    width: 50px;
-                    height: 50px;
-                    font-size: 1.2rem;
-                    font-weight: 900;
-                    cursor: pointer;
-                    color: white;
-                    transition: all 0.3s ease;
-                  ">
-                <i id="timer-toggle-icon" class="fa fa-play"></i>
-              </button>
+
 
               <!-- Custom Play/Pause Button - Center -->
               <div class="custom-controls" style="
@@ -234,7 +216,7 @@
               </div>
 
               <!-- Stats Overlay - Bottom -->
-              <div style="
+              <div id="stats-overlay" style="
                     position: absolute;
                     bottom: 0;
                     left: 0;
@@ -242,6 +224,8 @@
                     z-index: 15;
                     background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
                     padding: 20px 15px 15px 15px;
+                    opacity: 1;
+                    transition: opacity 0.3s ease;
                   ">
                 <div class="row text-center">
                   <div class="col-4">
@@ -302,6 +286,72 @@
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <!-- Video Control Buttons -->
+            <div class="row mt-3 mb-3">
+              <div class="col-4 text-center">
+                <!-- Timer Control Button -->
+                <button id="timer-toggle-btn" class="btn btn-sm" style="
+                      background: rgba(255, 255, 255, 0.9);
+                      border: 2px solid rgba(0, 0, 0, 0.1);
+                      border-radius: 50%;
+                      width: 50px;
+                      height: 50px;
+                      font-size: 1.2rem;
+                      font-weight: 900;
+                      cursor: pointer;
+                      color: #333;
+                      transition: all 0.3s ease;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    ">
+                  <i id="timer-toggle-icon" class="fa fa-play"></i>
+                </button>
+                <p class="mt-2 mb-0 font-11 opacity-70">Timer</p>
+              </div>
+
+              <div class="col-4 text-center">
+                <!-- Playback Speed Button -->
+                <button id="speed-toggle-btn" class="btn btn-sm" style="
+                      background: rgba(255, 255, 255, 0.9);
+                      border: 2px solid rgba(0, 0, 0, 0.1);
+                      border-radius: 8px;
+                      width: 50px;
+                      height: 50px;
+                      font-size: 0.7rem;
+                      font-weight: 900;
+                      cursor: pointer;
+                      color: #333;
+                      transition: all 0.3s ease;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    ">
+                  <span id="speed-display">1x</span>
+                </button>
+                <p class="mt-2 mb-0 font-11 opacity-70">Speed</p>
+              </div>
+
+              <div class="col-4 text-center">
+                <!-- Fullscreen Button -->
+                <button id="video-fullscreen-btn" class="btn btn-sm" style="
+                      background: rgba(255, 255, 255, 0.9);
+                      border: 2px solid rgba(0, 0, 0, 0.1);
+                      border-radius: 50%;
+                      width: 50px;
+                      height: 50px;
+                      font-size: 1.2rem;
+                      font-weight: 900;
+                      cursor: pointer;
+                      color: #333;
+                      transition: all 0.3s ease;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    ">
+                  <i id="fullscreen-icon" class="fa fa-expand"></i>
+                </button>
+                <p class="mt-2 mb-0 font-11 opacity-70">Fullscreen</p>
               </div>
             </div>
           </div>
@@ -512,7 +562,159 @@
 
             <!-- Serie-2 Tab Content -->
             <div data-bs-parent="#performance-metrics-tabs" class="collapse" id="serie-2">
-              <p class="text-center opacity-60 mt-4 mb-4">Serie-2 content will be added here.</p>
+              <!-- Drill 1 - Croqueta -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="8"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_1_croqueta.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+                        cursor: pointer;
+                        position: relative;
+                        overflow: hidden;
+                      ">
+                    <video class="card-video-bg" muted loop preload="metadata" style="
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                          z-index: 1;
+                        ">
+                      <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_1_croqueta.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Drill 1</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Croqueta</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
+
+              <!-- Drill 2 - Sole Rolls -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="9"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_2_sole_rolls.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+                        cursor: pointer;
+                        position: relative;
+                        overflow: hidden;
+                      ">
+                    <video class="card-video-bg" muted loop preload="metadata" style="
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                          z-index: 1;
+                        ">
+                      <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_2_sole_rolls.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Drill 2</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Sole Rolls</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
+
+              <!-- Drill 3 - Outside Foot -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="10"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_3_outside_foot.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+                        cursor: pointer;
+                        position: relative;
+                        overflow: hidden;
+                      ">
+                    <video class="card-video-bg" muted loop preload="metadata" style="
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                          z-index: 1;
+                        ">
+                      <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_3_outside_foot.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Drill 3</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Outside Foot</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
+
+              <!-- Drill 4 - Combo 1 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="11"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_4_combo_1.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+                        cursor: pointer;
+                        position: relative;
+                        overflow: hidden;
+                      ">
+                    <video class="card-video-bg" muted loop preload="metadata" style="
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                          z-index: 1;
+                        ">
+                      <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_4_combo_1.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Drill 4</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Combo 1</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
+
+              <!-- Drill 5 - Combo 2 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="12"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_5_combo_2.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+                        cursor: pointer;
+                        position: relative;
+                        overflow: hidden;
+                      ">
+                    <video class="card-video-bg" muted loop preload="metadata" style="
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                          z-index: 1;
+                        ">
+                      <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/ball-1/drill_5_combo_2.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Drill 5</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Combo 2</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
             </div>
 
           </div>
@@ -646,6 +848,67 @@
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       }
+
+      /* Fullscreen video styles */
+      .custom-video-player:fullscreen {
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .custom-video-player:-webkit-full-screen {
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .custom-video-player:-moz-full-screen {
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .custom-video-player:fullscreen #main-video,
+      .custom-video-player:-webkit-full-screen #main-video,
+      .custom-video-player:-moz-full-screen #main-video {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100vw;
+        max-height: 100vh;
+        object-fit: contain;
+      }
+
+      /* Hide other elements in fullscreen except video and essential controls */
+      .custom-video-player:fullscreen>*:not(#main-video):not(#video-fullscreen-btn):not(#speed-toggle-btn):not(#play-pause-btn):not(.custom-controls),
+      .custom-video-player:-webkit-full-screen>*:not(#main-video):not(#video-fullscreen-btn):not(#speed-toggle-btn):not(#play-pause-btn):not(.custom-controls),
+      .custom-video-player:-moz-full-screen>*:not(#main-video):not(#video-fullscreen-btn):not(#speed-toggle-btn):not(#play-pause-btn):not(.custom-controls) {
+        display: none !important;
+      }
+
+      /* Ensure fullscreen button is visible in fullscreen */
+      .custom-video-player:fullscreen #video-fullscreen-btn,
+      .custom-video-player:-webkit-full-screen #video-fullscreen-btn,
+      .custom-video-player:-moz-full-screen #video-fullscreen-btn {
+        display: block !important;
+        z-index: 9999;
+      }
+
+      /* Ensure speed button is visible in fullscreen */
+      .custom-video-player:fullscreen #speed-toggle-btn,
+      .custom-video-player:-webkit-full-screen #speed-toggle-btn,
+      .custom-video-player:-moz-full-screen #speed-toggle-btn {
+        display: flex !important;
+        z-index: 9999;
+      }
     </style>
 
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
@@ -667,6 +930,17 @@
         const playPauseBtn = document.getElementById("play-pause-btn");
         const playPauseIcon = document.getElementById("play-pause-icon");
         const customControls = document.querySelector(".custom-controls");
+
+        // Speed control elements
+        const speedToggleBtn = document.getElementById("speed-toggle-btn");
+        const speedDisplay = document.getElementById("speed-display");
+
+        // Fullscreen elements
+        const videoFullscreenBtn = document.getElementById("video-fullscreen-btn");
+        const fullscreenIcon = document.getElementById("fullscreen-icon");
+
+        // Stats overlay element
+        const statsOverlay = document.getElementById("stats-overlay");
 
         // Timer elements
         const timerDisplay = document.getElementById("timer-display");
@@ -704,6 +978,11 @@
           exerciseCards: exerciseCards.length,
           playPauseBtn: !!playPauseBtn,
           customControls: !!customControls,
+          speedToggleBtn: !!speedToggleBtn,
+          speedDisplay: !!speedDisplay,
+          videoFullscreenBtn: !!videoFullscreenBtn,
+          fullscreenIcon: !!fullscreenIcon,
+          statsOverlay: !!statsOverlay,
           timerDisplay: !!timerDisplay,
           timerToggleBtn: !!timerToggleBtn,
           timerToggleIcon: !!timerToggleIcon,
@@ -731,6 +1010,137 @@
         let totalExercises = workoutConfig.totalExercises;
         let isRestPhase = false; // Track if we're in rest phase or exercise phase
         let restSeconds = workoutConfig.restDuration;
+
+        // Speed control functionality
+        let currentSpeedIndex = 1; // Start with 1x speed
+        const speedOptions = [0.25, 0.5, 1, 1.5, 2]; // Available playback speeds
+
+        function updateSpeedDisplay() {
+          const speed = speedOptions[currentSpeedIndex];
+          speedDisplay.textContent = `${speed}x`;
+          if (mainVideo) {
+            mainVideo.playbackRate = speed;
+            console.log(`🎬 Video speed set to ${speed}x`);
+          }
+        }
+
+        function toggleSpeed() {
+          currentSpeedIndex = (currentSpeedIndex + 1) % speedOptions.length;
+          updateSpeedDisplay();
+        }
+
+        // Video fullscreen functionality
+        let isVideoFullscreen = false;
+
+        function updateFullscreenIcon() {
+          if (isVideoFullscreen) {
+            fullscreenIcon.className = "fa fa-compress";
+          } else {
+            fullscreenIcon.className = "fa fa-expand";
+          }
+        }
+
+        function requestVideoFullscreen() {
+          const videoContainer = document.querySelector(".custom-video-player");
+
+          if (videoContainer) {
+            // Request landscape orientation for mobile devices
+            if (screen.orientation && screen.orientation.lock) {
+              screen.orientation.lock('landscape').catch(err => {
+                console.log("🔄 Landscape orientation lock not supported:", err);
+              });
+            }
+
+            // Request fullscreen
+            if (videoContainer.requestFullscreen) {
+              videoContainer.requestFullscreen().then(() => {
+                isVideoFullscreen = true;
+                updateFullscreenIcon();
+                console.log("🎬 Video entered fullscreen mode");
+              }).catch(err => {
+                console.warn("Fullscreen request failed:", err);
+              });
+            } else if (videoContainer.webkitRequestFullscreen) {
+              videoContainer.webkitRequestFullscreen();
+              isVideoFullscreen = true;
+              updateFullscreenIcon();
+              console.log("🎬 Video entered fullscreen mode (webkit)");
+            } else if (videoContainer.msRequestFullscreen) {
+              videoContainer.msRequestFullscreen();
+              isVideoFullscreen = true;
+              updateFullscreenIcon();
+              console.log("🎬 Video entered fullscreen mode (ms)");
+            }
+          }
+        }
+
+        function exitVideoFullscreen() {
+          // Unlock orientation when exiting fullscreen
+          if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+          }
+
+          if (document.exitFullscreen) {
+            document.exitFullscreen().then(() => {
+              isVideoFullscreen = false;
+              updateFullscreenIcon();
+              console.log("🎬 Video exited fullscreen mode");
+            }).catch(err => {
+              console.warn("Exit fullscreen failed:", err);
+            });
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+            isVideoFullscreen = false;
+            updateFullscreenIcon();
+            console.log("🎬 Video exited fullscreen mode (webkit)");
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+            isVideoFullscreen = false;
+            updateFullscreenIcon();
+            console.log("🎬 Video exited fullscreen mode (ms)");
+          }
+        }
+
+        function toggleVideoFullscreen() {
+          if (isVideoFullscreen) {
+            exitVideoFullscreen();
+          } else {
+            requestVideoFullscreen();
+          }
+        }
+
+        // Listen for fullscreen changes
+        document.addEventListener('fullscreenchange', function () {
+          const fullscreenElement = document.fullscreenElement;
+          const videoContainer = document.querySelector(".custom-video-player");
+
+          if (fullscreenElement === videoContainer) {
+            isVideoFullscreen = true;
+          } else if (!fullscreenElement) {
+            isVideoFullscreen = false;
+            // Unlock orientation when exiting fullscreen
+            if (screen.orientation && screen.orientation.unlock) {
+              screen.orientation.unlock();
+            }
+          }
+          updateFullscreenIcon();
+        });
+
+        // Handle webkit fullscreen changes
+        document.addEventListener('webkitfullscreenchange', function () {
+          const fullscreenElement = document.webkitFullscreenElement;
+          const videoContainer = document.querySelector(".custom-video-player");
+
+          if (fullscreenElement === videoContainer) {
+            isVideoFullscreen = true;
+          } else if (!fullscreenElement) {
+            isVideoFullscreen = false;
+            if (screen.orientation && screen.orientation.unlock) {
+              screen.orientation.unlock();
+            }
+          }
+          updateFullscreenIcon();
+        });
 
         function updateTimerDisplay() {
           timerDisplay.textContent = `${timerSeconds}s`;
@@ -1041,7 +1451,23 @@
           });
         }
 
-        // Initialize progress percentage and total duration on page load
+        // Speed toggle button event listener
+        if (speedToggleBtn) {
+          speedToggleBtn.addEventListener("click", function () {
+            toggleSpeed();
+          });
+        }
+
+        // Video fullscreen button event listener
+        if (videoFullscreenBtn) {
+          videoFullscreenBtn.addEventListener("click", function () {
+            toggleVideoFullscreen();
+          });
+        }
+
+        // Initialize speed display and other elements on page load
+        updateSpeedDisplay();
+        updateFullscreenIcon();
         updateProgressPercentage();
         updateTotalDuration();
 
@@ -1183,10 +1609,20 @@ FinleyWorkout.help()
             playPauseIcon.className = "fa fa-play";
             playPauseIcon.style.marginLeft = "4px"; // Slight offset for play icon
             customControls.style.opacity = "1";
+            // Show stats overlay when paused
+            if (statsOverlay) {
+              statsOverlay.style.opacity = "1";
+              console.log("📊 Stats overlay shown (video paused)");
+            }
           } else {
             playPauseIcon.className = "fa fa-pause";
             playPauseIcon.style.marginLeft = "0";
             customControls.style.opacity = "0";
+            // Hide stats overlay when playing
+            if (statsOverlay) {
+              statsOverlay.style.opacity = "0";
+              console.log("📊 Stats overlay hidden (video playing)");
+            }
           }
         }
 
