@@ -293,65 +293,26 @@
             <div class="row mt-3 mb-3">
               <div class="col-4 text-center">
                 <!-- Timer Control Button -->
-                <button id="timer-toggle-btn" class="btn btn-sm" style="
-                      background: rgba(255, 255, 255, 0.9);
-                      border: 2px solid rgba(0, 0, 0, 0.1);
-                      border-radius: 50%;
-                      width: 50px;
-                      height: 50px;
-                      font-size: 1.2rem;
-                      font-weight: 900;
-                      cursor: pointer;
-                      color: #333;
-                      transition: all 0.3s ease;
-                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                    ">
+                <button id="timer-toggle-btn" class="modern-control-btn">
                   <i id="timer-toggle-icon" class="fa fa-play"></i>
                 </button>
-                <p class="mt-2 mb-0 font-11 opacity-70">Timer</p>
+                <p class="control-label">Timer</p>
               </div>
 
               <div class="col-4 text-center">
                 <!-- Playback Speed Button -->
-                <button id="speed-toggle-btn" class="btn btn-sm" style="
-                      background: rgba(255, 255, 255, 0.9);
-                      border: 2px solid rgba(0, 0, 0, 0.1);
-                      border-radius: 8px;
-                      width: 50px;
-                      height: 50px;
-                      font-size: 0.7rem;
-                      font-weight: 900;
-                      cursor: pointer;
-                      color: #333;
-                      transition: all 0.3s ease;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                    ">
+                <button id="speed-toggle-btn" class="modern-control-btn speed-btn">
                   <span id="speed-display">1x</span>
                 </button>
-                <p class="mt-2 mb-0 font-11 opacity-70">Speed</p>
+                <p class="control-label">Speed</p>
               </div>
 
               <div class="col-4 text-center">
                 <!-- Fullscreen Button -->
-                <button id="video-fullscreen-btn" class="btn btn-sm" style="
-                      background: rgba(255, 255, 255, 0.9);
-                      border: 2px solid rgba(0, 0, 0, 0.1);
-                      border-radius: 50%;
-                      width: 50px;
-                      height: 50px;
-                      font-size: 1.2rem;
-                      font-weight: 900;
-                      cursor: pointer;
-                      color: #333;
-                      transition: all 0.3s ease;
-                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                    ">
+                <button id="video-fullscreen-btn" class="modern-control-btn">
                   <i id="fullscreen-icon" class="fa fa-expand"></i>
                 </button>
-                <p class="mt-2 mb-0 font-11 opacity-70">Fullscreen</p>
+                <p class="control-label">Fullscreen</p>
               </div>
             </div>
           </div>
@@ -1699,29 +1660,110 @@
         display: none !important;
       }
 
-      /* Video control buttons styling */
-      #timer-toggle-btn:hover,
-      #speed-toggle-btn:hover,
-      #video-fullscreen-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-        background: rgba(255, 255, 255, 1) !important;
+      /* Modern Control Buttons */
+      .modern-control-btn {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: #2c3e50;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
 
-      /* Dark mode support for control buttons */
-      .theme-dark #timer-toggle-btn,
-      .theme-dark #speed-toggle-btn,
-      .theme-dark #video-fullscreen-btn {
-        background: rgba(33, 37, 42, 0.9) !important;
-        color: #ffffff !important;
-        border: 2px solid rgba(255, 255, 255, 0.1) !important;
+      .modern-control-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.25s ease;
       }
 
-      .theme-dark #timer-toggle-btn:hover,
-      .theme-dark #speed-toggle-btn:hover,
-      .theme-dark #video-fullscreen-btn:hover {
-        background: rgba(33, 37, 42, 1) !important;
-        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+      .modern-control-btn:hover {
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.15);
+        border-color: rgba(0, 0, 0, 0.12);
+      }
+
+      .modern-control-btn:hover::before {
+        opacity: 1;
+      }
+
+      .modern-control-btn:active {
+        transform: translateY(0) scale(0.98);
+        transition: all 0.1s ease;
+      }
+
+      /* Speed button specific styling */
+      .speed-btn {
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      /* Control labels */
+      .control-label {
+        margin-top: 8px;
+        margin-bottom: 0;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.6);
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+
+      /* Dark mode support */
+      .theme-dark .modern-control-btn {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: #ecf0f1;
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
+      }
+
+      .theme-dark .modern-control-btn::before {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+      }
+
+      .theme-dark .modern-control-btn:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .theme-dark .control-label {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .modern-control-btn {
+          width: 44px;
+          height: 44px;
+          font-size: 1rem;
+        }
+
+        .speed-btn {
+          font-size: 0.7rem;
+        }
+
+        .control-label {
+          font-size: 0.65rem;
+        }
       }
     </style>
 
