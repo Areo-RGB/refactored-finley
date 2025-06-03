@@ -39,14 +39,12 @@
     <div class="page-content">
       <div class="page-content header-clear-small">
         <!-- Combined Workout Setup & Training Dashboard -->
-        <div class="card card-style gradient-blue" style="position: relative">
+        <div class="card card-style" style="position: relative">
           <div class="content pt-4 pb-4">
             <!-- Configuration Row -->
             <div class="row mb-4">
               <div class="col-4">
-                <label class="form-label font-700 mb-2" style="
-                      color: white !important;
-                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+                <label class="form-label font-700 mb-2 text-center d-block" style="
                       font-size: 0.8rem;
                     ">Anzahl Übungen</label>
                 <select id="exercise-amount-select" class="form-select border-0 shadow-m rounded-m" style="
@@ -55,20 +53,18 @@
                       font-weight: 600;
                       font-size: 0.9rem;
                     ">
-                  <option value="1">1 Übung</option>
-                  <option value="2">2 Übungen</option>
-                  <option value="3">3 Übungen</option>
-                  <option value="4">4 Übungen</option>
-                  <option value="5">5 Übungen</option>
-                  <option value="6" selected>6 Übungen</option>
-                  <option value="7">7 Übungen</option>
-                  <option value="8">8 Übungen</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6" selected>6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
                 </select>
               </div>
               <div class="col-4">
-                <label class="form-label font-700 mb-2" style="
-                      color: white !important;
-                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+                <label class="form-label font-700 mb-2 text-center d-block" style="
                       font-size: 0.8rem;
                     ">Dauer</label>
                 <select id="timer-duration-select" class="form-select border-0 shadow-m rounded-m" style="
@@ -77,20 +73,18 @@
                       font-weight: 600;
                       font-size: 0.9rem;
                     ">
-                  <option value="10">10 Sekunden</option>
-                  <option value="15" selected>15 Sekunden</option>
-                  <option value="20">20 Sekunden</option>
-                  <option value="30">30 Sekunden</option>
-                  <option value="45">45 Sekunden</option>
-                  <option value="60">60 Sekunden</option>
-                  <option value="90">90 Sekunden</option>
-                  <option value="120">2 Minuten</option>
+                  <option value="10">10s</option>
+                  <option value="15" selected>15s</option>
+                  <option value="20">20s</option>
+                  <option value="30">30s</option>
+                  <option value="45">45s</option>
+                  <option value="60">60s</option>
+                  <option value="90">90s</option>
+                  <option value="120">2 min</option>
                 </select>
               </div>
               <div class="col-4">
-                <label class="form-label font-700 mb-2" style="
-                      color: white !important;
-                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
+                <label class="form-label font-700 mb-2 text-center d-block" style="
                       font-size: 0.8rem;
                     ">Pause</label>
                 <select id="rest-duration-select" class="form-select border-0 shadow-m rounded-m" style="
@@ -99,11 +93,11 @@
                       font-weight: 600;
                       font-size: 0.9rem;
                     ">
-                  <option value="5">5 Sekunden</option>
-                  <option value="10" selected>10 Sekunden</option>
-                  <option value="15">15 Sekunden</option>
-                  <option value="30">30 Sekunden</option>
-                  <option value="60">1 Minute</option>
+                  <option value="5">5s</option>
+                  <option value="10" selected>10s</option>
+                  <option value="15">15s</option>
+                  <option value="30">30s</option>
+                  <option value="60">1 min</option>
                 </select>
               </div>
             </div>
@@ -112,10 +106,7 @@
             <div class="row mb-4">
               <div class="col-6">
                 <button id="apply-workout-settings"
-                  class="btn btn-s btn-full rounded-m text-uppercase font-700 shadow-s" style="
-                      background: rgba(255, 255, 255, 0.98);
-                      color: #4a89dc;
-                      border: 2px solid rgba(255, 255, 255, 0.8);
+                  class="btn btn-s btn-full rounded-m text-uppercase font-700 shadow-s bg-green-dark" style="
                       font-size: 0.8rem;
                     ">
                   Apply Settings
@@ -123,10 +114,7 @@
               </div>
               <div class="col-6">
                 <button id="reset-workout-settings"
-                  class="btn btn-s btn-full rounded-m text-uppercase font-600 shadow-s" style="
-                      background: rgba(255, 255, 255, 0.85);
-                      color: #495057;
-                      border: 2px solid rgba(255, 255, 255, 0.6);
+                  class="btn btn-s btn-full rounded-m text-uppercase font-600 shadow-s bg-gray-dark" style="
                       font-size: 0.8rem;
                     ">
                   Reset Default
@@ -134,87 +122,14 @@
               </div>
             </div>
 
-            <!-- Divider -->
-            <div class="divider mt-3 mb-4" style="background-color: rgba(255, 255, 255, 0.3) !important;"></div>
-
-            <!-- Training Dashboard Section -->
-            <div class="row mb-4" style="position: relative;">
-              <!-- Timer Control Button (Toggle) - positioned to align with left column -->
-              <div class="col-4 d-flex justify-content-center" style="position: relative;">
-                <button id="timer-toggle-btn" class="color-white" style="
-                      position: absolute;
-                      top: 50%;
-                      transform: translateY(-50%);
-                      background: rgba(255, 255, 255, 0.2);
-                      border: 2px solid rgba(255, 255, 255, 0.3);
-                      border-radius: 50%;
-                      width: 50px;
-                      height: 50px;
-                      font-size: 1.2rem;
-                      font-weight: 900;
-                      cursor: pointer;
-                      opacity: 0.9;
-                      transition: all 0.3s ease;
-                      z-index: 10;
-                    ">
-                  <i id="timer-toggle-icon" class="fa fa-play"></i>
-                </button>
-              </div>
-
-              <!-- Timer Display - centered -->
-              <div class="col-4 text-center">
-                <div id="timer-display" class="color-white" style="font-size: 3.5rem; font-weight: 900; line-height: 1">
-                  15s
-                </div>
-                <p class="color-white opacity-80 mb-0" style="font-size: 0.9rem">
-                  Session Timer
-                </p>
-              </div>
-
-              <!-- Empty column for balance -->
-              <div class="col-4"></div>
-            </div>
-
-            <!-- Dashboard Stats Row -->
-            <div class="row text-center">
-              <div class="col-4">
-                <div class="color-white" style="font-size: 1.5rem; font-weight: 700">
-                  1/6
-                </div>
-                <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem">
-                  Exercises
-                </p>
-              </div>
-              <div class="col-4">
-                <div id="total-duration-display" class="color-white" style="font-size: 1.5rem; font-weight: 700">
-                  2:20
-                </div>
-                <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem">
-                  Duration
-                </p>
-              </div>
-              <div class="col-4">
-                <div id="progress-percentage" class="color-white" style="font-size: 1.5rem; font-weight: 700">
-                  0%
-                </div>
-                <p class="color-white opacity-70 mb-0" style="font-size: 0.8rem">
-                  Progress
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Main Video Card with Custom Player -->
-        <div class="card card-style">
-          <div class="content">
-            <div class="custom-video-player" style="
+            <!-- Video Player Section with Overlays -->
+            <div class="custom-video-player mb-4" style="
                   position: relative;
                   background: #000;
                   border-radius: 10px;
                   overflow: hidden;
                 ">
-              <video id="main-video" style="
+              <video id="main-video" loop style="
                     width: 100%;
                     height: 300px;
                     display: block;
@@ -239,7 +154,56 @@
                 Übung 1
               </div>
 
-              <!-- Custom Play/Pause Button -->
+              <!-- Timer Overlay - Top Center -->
+              <div style="
+                    position: absolute;
+                    top: 15px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 15;
+                    text-align: center;
+                  ">
+                <div id="timer-display" style="
+                      color: white;
+                      font-size: 2.5rem;
+                      font-weight: 900;
+                      line-height: 1;
+                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                    ">
+                  15s
+                </div>
+                <p style="
+                      color: white;
+                      opacity: 0.9;
+                      margin: 0;
+                      font-size: 0.8rem;
+                      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                    ">
+                  Session Timer
+                </p>
+              </div>
+
+              <!-- Timer Control Button - Top Right -->
+              <button id="timer-toggle-btn" style="
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    z-index: 15;
+                    background: rgba(255, 255, 255, 0.2);
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    font-size: 1.2rem;
+                    font-weight: 900;
+                    cursor: pointer;
+                    color: white;
+                    transition: all 0.3s ease;
+                  ">
+                <i id="timer-toggle-icon" class="fa fa-play"></i>
+              </button>
+
+              <!-- Custom Play/Pause Button - Center -->
               <div class="custom-controls" style="
                     position: absolute;
                     top: 0;
@@ -267,6 +231,77 @@
                     ">
                   <i id="play-pause-icon" class="fa fa-play" style="font-size: 28px; color: #333; margin-left: 4px"></i>
                 </button>
+              </div>
+
+              <!-- Stats Overlay - Bottom -->
+              <div style="
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 15;
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+                    padding: 20px 15px 15px 15px;
+                  ">
+                <div class="row text-center">
+                  <div class="col-4">
+                    <div data-exercise-counter style="
+                          color: white;
+                          font-size: 1.3rem;
+                          font-weight: 700;
+                          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                        ">
+                      1/6
+                    </div>
+                    <p style="
+                          color: white;
+                          opacity: 0.9;
+                          margin: 0;
+                          font-size: 0.75rem;
+                          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                        ">
+                      Exercises
+                    </p>
+                  </div>
+                  <div class="col-4">
+                    <div id="total-duration-display" style="
+                          color: white;
+                          font-size: 1.3rem;
+                          font-weight: 700;
+                          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                        ">
+                      2:20
+                    </div>
+                    <p style="
+                          color: white;
+                          opacity: 0.9;
+                          margin: 0;
+                          font-size: 0.75rem;
+                          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                        ">
+                      Duration
+                    </p>
+                  </div>
+                  <div class="col-4">
+                    <div id="progress-percentage" style="
+                          color: white;
+                          font-size: 1.3rem;
+                          font-weight: 700;
+                          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                        ">
+                      0%
+                    </div>
+                    <p style="
+                          color: white;
+                          opacity: 0.9;
+                          margin: 0;
+                          font-size: 0.75rem;
+                          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                        ">
+                      Progress
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -530,58 +565,64 @@
       }
     }
 
-    /* Fix dropdown styling for gradient cards */
-    .gradient-blue .form-select,
-    .gradient-green .form-select {
+    /* Fix dropdown styling for all cards */
+    .card .form-select {
       background-color: #ffffff !important;
       color: #212529 !important;
-      border: none !important;
+      border: 1px solid #dee2e6 !important;
+      text-align: center !important;
     }
 
-    .gradient-blue .form-select option,
-    .gradient-green .form-select option {
+    .card .form-select option {
       background-color: #ffffff !important;
       color: #212529 !important;
       padding: 8px 12px !important;
+      text-align: center !important;
     }
 
     /* Ensure dropdown options have proper styling */
-    .gradient-blue .form-select option:hover,
-    .gradient-green .form-select option:hover {
+    .card .form-select option:hover {
       background-color: #f8f9fa !important;
       color: #212529 !important;
     }
 
-    .gradient-blue .form-select option:checked,
-    .gradient-green .form-select option:checked {
-      background-color: #4a89dc !important;
+    .card .form-select option:checked {
+      background-color: #007bff !important;
       color: #ffffff !important;
     }
 
-    /* Fix form labels in gradient cards for both light and dark mode */
-    .gradient-blue .form-label,
-    .gradient-green .form-label {
-      color: white !important;
+    /* Fix form labels for both light and dark mode */
+    .card .form-label {
+      color: #495057 !important;
       background: none !important;
       background-color: transparent !important;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
       padding: 0 !important;
       border-radius: 0 !important;
       border: none !important;
     }
 
     /* Dark mode specific fixes */
-    .theme-dark .gradient-blue .form-label,
-    .theme-dark .gradient-green .form-label {
-      color: white !important;
+    .theme-dark .card .form-label {
+      color: #ffffff !important;
       background: none !important;
       background-color: transparent !important;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) !important;
     }
 
-    /* Ensure labels don't inherit dark mode styles */
-    .gradient-blue .form-label *,
-    .gradient-green .form-label * {
+    .theme-dark .card .form-select {
+      background-color: #343a40 !important;
+      color: #ffffff !important;
+      border: 1px solid #495057 !important;
+      text-align: center !important;
+    }
+
+    .theme-dark .card .form-select option {
+      background-color: #343a40 !important;
+      color: #ffffff !important;
+      text-align: center !important;
+    }
+
+    /* Ensure labels don't inherit unwanted styles */
+    .card .form-label * {
       background: none !important;
       background-color: transparent !important;
     }
@@ -677,9 +718,25 @@
       let isTimerRunning = false;
       let currentExercise = 1; // Starting at exercise 1 (beginning of workout)
       let totalExercises = workoutConfig.totalExercises;
+      let isRestPhase = false; // Track if we're in rest phase or exercise phase
+      let restSeconds = workoutConfig.restDuration;
 
       function updateTimerDisplay() {
         timerDisplay.textContent = `${timerSeconds}s`;
+
+        // Update timer label based on phase
+        const timerLabel = document.querySelector('#timer-display').nextElementSibling;
+        if (timerLabel) {
+          if (isRestPhase) {
+            timerLabel.textContent = "Rest Timer";
+            // Change timer color for rest phase
+            timerDisplay.style.color = "#ffa500"; // Orange for rest
+          } else {
+            timerLabel.textContent = "Session Timer";
+            // Reset timer color for exercise phase
+            timerDisplay.style.color = "white";
+          }
+        }
       }
 
       function updateProgressPercentage() {
@@ -753,6 +810,10 @@
 
         // Update working variables
         totalExercises = newTotalExercises;
+        restSeconds = newRestDuration;
+
+        // Reset to exercise phase with new duration
+        isRestPhase = false;
         timerSeconds = newTimerDuration;
 
         // Reset current exercise if it exceeds new total
@@ -797,8 +858,10 @@
 
         // Update working variables
         totalExercises = workoutConfig.totalExercises;
+        restSeconds = workoutConfig.restDuration;
         timerSeconds = workoutConfig.timerDuration;
         currentExercise = 1; // Reset to beginning of workout
+        isRestPhase = false; // Reset to exercise phase
 
         // Update displays
         updateTimerDisplay();
@@ -823,11 +886,17 @@
       }
 
       function updateExerciseCounter() {
-        const exerciseCounterElement = document.querySelector(
-          ".row.text-center .col-4:first-child .color-white"
-        );
+        // Try multiple selectors to find the exercise counter element
+        const exerciseCounterElement =
+          document.querySelector(".row.text-center .col-4:first-child div") ||
+          document.querySelector(".row.text-center .col-4:first-child .color-white") ||
+          document.querySelector("[data-exercise-counter]");
+
         if (exerciseCounterElement) {
           exerciseCounterElement.textContent = `${currentExercise}/${totalExercises}`;
+          console.log(`📊 Exercise counter updated: ${currentExercise}/${totalExercises}`);
+        } else {
+          console.warn("⚠️ Exercise counter element not found");
         }
         // Update progress percentage whenever exercise counter changes
         updateProgressPercentage();
@@ -845,7 +914,7 @@
         if (!isTimerRunning && timerSeconds > 0) {
           isTimerRunning = true;
           updateToggleButton();
-          console.log("⏱️ Timer started");
+          console.log(`⏱️ ${isRestPhase ? 'Rest' : 'Exercise'} timer started`);
 
           timerInterval = setInterval(() => {
             timerSeconds--;
@@ -856,28 +925,71 @@
               clearInterval(timerInterval);
               isTimerRunning = false;
               updateToggleButton();
-              console.log("⏰ Timer finished!");
 
-              // Increment exercise counter if not at max
-              if (currentExercise < totalExercises) {
-                currentExercise++;
-                updateExerciseCounter();
-                console.log(
-                  `📈 Exercise incremented to ${currentExercise}/${totalExercises}`
-                );
+              if (!isRestPhase) {
+                // Exercise phase completed - increment counter immediately
+                console.log("💪 Exercise phase completed!");
+
+                // Increment exercise counter immediately when exercise completes
+                if (currentExercise < totalExercises) {
+                  currentExercise++;
+                  updateExerciseCounter();
+                  console.log(`📈 Exercise completed! Now ${currentExercise}/${totalExercises}`);
+                }
+
+                if (currentExercise <= totalExercises) {
+                  // Not the last exercise - start rest phase automatically
+                  isRestPhase = true;
+                  timerSeconds = workoutConfig.restDuration;
+                  updateTimerDisplay();
+                  console.log(`😴 Rest phase started automatically - ${workoutConfig.restDuration}s`);
+
+                  // Automatically start the rest timer
+                  isTimerRunning = true;
+                  updateToggleButton();
+
+                  timerInterval = setInterval(() => {
+                    timerSeconds--;
+                    updateTimerDisplay();
+                    updateProgressPercentage();
+
+                    if (timerSeconds <= 0) {
+                      clearInterval(timerInterval);
+                      isTimerRunning = false;
+                      updateToggleButton();
+
+                      // Rest phase completed - switch to exercise phase
+                      console.log("😌 Rest phase completed!");
+                      isRestPhase = false;
+                      timerSeconds = workoutConfig.timerDuration;
+
+                      updateTimerDisplay();
+                      updateProgressPercentage();
+                      console.log(`🏃‍♂️ Exercise phase ready - ${workoutConfig.timerDuration}s`);
+                    }
+                  }, 1000);
+
+                } else {
+                  // Last exercise completed - workout finished
+                  console.log("🎉 Workout completed!");
+                  timerDisplay.style.color = "#4CAF50"; // Green for completion
+                  const timerLabel = document.querySelector('#timer-display').nextElementSibling;
+                  if (timerLabel) {
+                    timerLabel.textContent = "Workout Complete!";
+                  }
+
+                  // Reset after showing completion
+                  setTimeout(() => {
+                    currentExercise = 1;
+                    isRestPhase = false;
+                    timerSeconds = workoutConfig.timerDuration;
+                    updateTimerDisplay();
+                    updateExerciseCounter();
+                    updateProgressPercentage();
+                    console.log("🔄 Workout reset for next session");
+                  }, 3000);
+                }
               }
-
-              // Add completion effect and reset timer
-              timerDisplay.style.color = "#ff6b6b";
-              setTimeout(() => {
-                timerDisplay.style.color = "";
-                timerSeconds = workoutConfig.timerDuration;
-                updateTimerDisplay();
-                updateProgressPercentage();
-                console.log(
-                  `🔄 Timer reset to ${workoutConfig.timerDuration}s`
-                );
-              }, 2000);
             }
           }, 1000);
         }
@@ -895,11 +1007,12 @@
       function resetTimer() {
         clearInterval(timerInterval);
         isTimerRunning = false;
+        isRestPhase = false; // Always reset to exercise phase
         timerSeconds = workoutConfig.timerDuration;
         updateTimerDisplay();
         updateProgressPercentage();
         updateToggleButton();
-        console.log(`🔄 Timer reset to ${workoutConfig.timerDuration}s`);
+        console.log(`🔄 Timer reset to exercise phase - ${workoutConfig.timerDuration}s`);
       }
 
       function toggleTimer() {
