@@ -260,7 +260,7 @@
                           font-size: 0.75rem;
                           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
                         ">
-                      Exercises
+                      Übungen
                     </p>
                   </div>
                   <div class="col-4">
@@ -279,7 +279,7 @@
                           font-size: 0.75rem;
                           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
                         ">
-                      Duration
+                      Dauer
                     </p>
                   </div>
                   <div class="col-4">
@@ -298,7 +298,7 @@
                           font-size: 0.75rem;
                           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
                         ">
-                      Progress
+                      Fortschritt
                     </p>
                   </div>
                 </div>
@@ -309,19 +309,25 @@
 
         <!-- Finley Performance Metrics -->
         <div class="card card-style">
-          <div class="content">
-            <h3>Performance Metrics</h3>
+          <div class="content" id="performance-metrics-tabs">
+            <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">
+              <a href="#" data-active data-bs-toggle="collapse" data-bs-target="#serie-1">Serie-1</a>
+              <a href="#" data-bs-toggle="collapse" data-bs-target="#serie-2">Serie-2</a>
+            </div>
+            <div class="clearfix mb-3"></div>
 
-            <!-- Exercise 1 -->
-            <a href="#" class="d-flex mb-3 exercise-card" data-video="1"
-              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
-              <div class="w-100 me-3">
-                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+            <!-- Serie-1 Tab Content -->
+            <div data-bs-parent="#performance-metrics-tabs" class="collapse show" id="serie-1">
+              <!-- Exercise 1 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="1"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
                       position: relative;
                       overflow: hidden;
                     ">
-                  <video class="card-video-bg" muted loop preload="metadata" style="
+                    <video class="card-video-bg" muted loop preload="metadata" style="
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -330,30 +336,30 @@
                         object-fit: cover;
                         z-index: 1;
                       ">
-                    <source
-                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4"
-                      type="video/mp4">
-                  </video>
+                      <source
+                        src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000002092%20V1-0001.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-              </div>
-              <div class="ms-auto w-100">
-                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 1</h5>
-                <span class="d-block font-11 font-400 opacity-60">Sprint Training</span>
-                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
-              </div>
-            </a>
-            <div class="divider mt-3 mb-3"></div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Übung 1</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Sprint Training</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
 
-            <!-- Exercise 2 -->
-            <a href="#" class="d-flex mb-3 exercise-card" data-video="2"
-              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
-              <div class="w-100 me-3">
-                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+              <!-- Exercise 2 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="2"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
                       position: relative;
                       overflow: hidden;
                     ">
-                  <video class="card-video-bg" muted loop preload="metadata" style="
+                    <video class="card-video-bg" muted loop preload="metadata" style="
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -362,30 +368,30 @@
                         object-fit: cover;
                         z-index: 1;
                       ">
-                    <source
-                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4"
-                      type="video/mp4">
-                  </video>
+                      <source
+                        src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000003176%20V1-0002.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-              </div>
-              <div class="ms-auto w-100">
-                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 2</h5>
-                <span class="d-block font-11 font-400 opacity-60">Agility Training</span>
-                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
-              </div>
-            </a>
-            <div class="divider mt-3 mb-3"></div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Übung 2</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Agility Training</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
 
-            <!-- Exercise 4 -->
-            <a href="#" class="d-flex mb-3 exercise-card" data-video="4"
-              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
-              <div class="w-100 me-3">
-                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+              <!-- Exercise 4 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="4"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
                       position: relative;
                       overflow: hidden;
                     ">
-                  <video class="card-video-bg" muted loop preload="metadata" style="
+                    <video class="card-video-bg" muted loop preload="metadata" style="
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -394,30 +400,30 @@
                         object-fit: cover;
                         z-index: 1;
                       ">
-                    <source
-                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4"
-                      type="video/mp4">
-                  </video>
+                      <source
+                        src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000005572%20V1-0004.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-              </div>
-              <div class="ms-auto w-100">
-                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 4</h5>
-                <span class="d-block font-11 font-400 opacity-60">Ball Control</span>
-                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
-              </div>
-            </a>
-            <div class="divider mt-3 mb-3"></div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Übung 4</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Ball Control</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
 
-            <!-- Exercise 5 -->
-            <a href="#" class="d-flex mb-3 exercise-card" data-video="5"
-              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
-              <div class="w-100 me-3">
-                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+              <!-- Exercise 5 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="5"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
                       position: relative;
                       overflow: hidden;
                     ">
-                  <video class="card-video-bg" muted loop preload="metadata" style="
+                    <video class="card-video-bg" muted loop preload="metadata" style="
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -426,30 +432,30 @@
                         object-fit: cover;
                         z-index: 1;
                       ">
-                    <source
-                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4"
-                      type="video/mp4">
-                  </video>
+                      <source
+                        src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000007004%20V1-0005.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-              </div>
-              <div class="ms-auto w-100">
-                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 5</h5>
-                <span class="d-block font-11 font-400 opacity-60">Dribbling</span>
-                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
-              </div>
-            </a>
-            <div class="divider mt-3 mb-3"></div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Übung 5</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Dribbling</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
 
-            <!-- Exercise 6 -->
-            <a href="#" class="d-flex mb-3 exercise-card" data-video="6"
-              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
-              <div class="w-100 me-3">
-                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+              <!-- Exercise 6 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="6"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
                       position: relative;
                       overflow: hidden;
                     ">
-                  <video class="card-video-bg" muted loop preload="metadata" style="
+                    <video class="card-video-bg" muted loop preload="metadata" style="
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -458,30 +464,30 @@
                         object-fit: cover;
                         z-index: 1;
                       ">
-                    <source
-                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4"
-                      type="video/mp4">
-                  </video>
+                      <source
+                        src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000008268%20V1-0006.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-              </div>
-              <div class="ms-auto w-100">
-                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 6</h5>
-                <span class="d-block font-11 font-400 opacity-60">Finishing</span>
-                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
-              </div>
-            </a>
-            <div class="divider mt-3 mb-3"></div>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Übung 6</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Finishing</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+              <div class="divider mt-3 mb-3"></div>
 
-            <!-- Exercise 7 -->
-            <a href="#" class="d-flex mb-3 exercise-card" data-video="7"
-              data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
-              <div class="w-100 me-3">
-                <div class="card card-style m-0 video-card-container" data-card-height="110" style="
+              <!-- Exercise 7 -->
+              <a href="#" class="d-flex mb-3 exercise-card" data-video="7"
+                data-url="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4">
+                <div class="w-100 me-3">
+                  <div class="card card-style m-0 video-card-container" data-card-height="110" style="
                       cursor: pointer;
                       position: relative;
                       overflow: hidden;
                     ">
-                  <video class="card-video-bg" muted loop preload="metadata" style="
+                    <video class="card-video-bg" muted loop preload="metadata" style="
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -490,588 +496,261 @@
                         object-fit: cover;
                         z-index: 1;
                       ">
-                    <source
-                      src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4"
-                      type="video/mp4">
-                  </video>
+                      <source
+                        src="https://videos-data.fra1.cdn.digitaloceanspaces.com/Untitled%201%2000009594%20V1-0007.mp4"
+                        type="video/mp4">
+                    </video>
+                  </div>
                 </div>
-              </div>
-              <div class="ms-auto w-100">
-                <h5 class="font-600 font-16 line-height-sm pt-1">Übung 7</h5>
-                <span class="d-block font-11 font-400 opacity-60">Coordination</span>
-                <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
-              </div>
-            </a>
+                <div class="ms-auto w-100">
+                  <h5 class="font-600 font-16 line-height-sm pt-1">Übung 7</h5>
+                  <span class="d-block font-11 font-400 opacity-60">Coordination</span>
+                  <h3 class="pt-2 mt-n1"><i class="fa fa-clock color-blue-dark pe-2"></i> 15 s</h3>
+                </div>
+              </a>
+            </div>
 
+            <!-- Serie-2 Tab Content -->
+            <div data-bs-parent="#performance-metrics-tabs" class="collapse" id="serie-2">
+              <p class="text-center opacity-60 mt-4 mb-4">Serie-2 content will be added here.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Menu -->
+      <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
+        <div class="menu-title">
+          <h1>Settings</h1>
+          <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="content">
+          <div class="list-group list-custom-small">
+            <a href="#" data-toggle-theme class="pb-2 ms-n1">
+              <i class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"></i>
+              <span>Dark Mode</span>
+              <div class="custom-control scale-switch ios-switch">
+                <input data-toggle-theme type="checkbox" class="ios-input" id="switch-dark-mode" />
+                <label class="custom-control-label" for="switch-dark-mode"></label>
+              </div>
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
+              <i class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"></i>
+              <span>Fullscreen Mode</span>
+              <div class="custom-control scale-switch ios-switch">
+                <input type="checkbox" class="ios-input" id="switch-fullscreen-mode" />
+                <label class="custom-control-label" for="switch-fullscreen-mode"></label>
+              </div>
+              <i class="fa fa-angle-right"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Settings Menu -->
-    <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
-      <div class="menu-title">
-        <h1>Settings</h1>
-        <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
-      </div>
-      <div class="content">
-        <div class="list-group list-custom-small">
-          <a href="#" data-toggle-theme class="pb-2 ms-n1">
-            <i class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"></i>
-            <span>Dark Mode</span>
-            <div class="custom-control scale-switch ios-switch">
-              <input data-toggle-theme type="checkbox" class="ios-input" id="switch-dark-mode" />
-              <label class="custom-control-label" for="switch-dark-mode"></label>
-            </div>
-            <i class="fa fa-angle-right"></i>
-          </a>
-          <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
-            <i class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"></i>
-            <span>Fullscreen Mode</span>
-            <div class="custom-control scale-switch ios-switch">
-              <input type="checkbox" class="ios-input" id="switch-fullscreen-mode" />
-              <label class="custom-control-label" for="switch-fullscreen-mode"></label>
-            </div>
-            <i class="fa fa-angle-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Exercise Card Styles -->
-  <style>
-    /* Gradient Green for Workout Setup Card */
-    .gradient-green {
-      background: linear-gradient(135deg,
-          #28a745 0%,
-          #20c997 50%,
-          #17a2b8 100%);
-      background-size: 200% 200%;
-      animation: gradientShift 8s ease infinite;
-    }
-
-    @keyframes gradientShift {
-      0% {
-        background-position: 0% 50%;
+    <!-- Exercise Card Styles -->
+    <style>
+      /* Gradient Green for Workout Setup Card */
+      .gradient-green {
+        background: linear-gradient(135deg,
+            #28a745 0%,
+            #20c997 50%,
+            #17a2b8 100%);
+        background-size: 200% 200%;
+        animation: gradientShift 8s ease infinite;
       }
 
-      50% {
-        background-position: 100% 50%;
-      }
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
 
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+        50% {
+          background-position: 100% 50%;
+        }
 
-    /* Fix dropdown styling for all cards */
-    .card .form-select {
-      background-color: #ffffff !important;
-      color: #212529 !important;
-      border: 1px solid #dee2e6 !important;
-      text-align: center !important;
-    }
-
-    .card .form-select option {
-      background-color: #ffffff !important;
-      color: #212529 !important;
-      padding: 8px 12px !important;
-      text-align: center !important;
-    }
-
-    /* Ensure dropdown options have proper styling */
-    .card .form-select option:hover {
-      background-color: #f8f9fa !important;
-      color: #212529 !important;
-    }
-
-    .card .form-select option:checked {
-      background-color: #007bff !important;
-      color: #ffffff !important;
-    }
-
-    /* Fix form labels for both light and dark mode */
-    .card .form-label {
-      color: #495057 !important;
-      background: none !important;
-      background-color: transparent !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
-      border: none !important;
-    }
-
-    /* Dark mode specific fixes */
-    .theme-dark .card .form-label {
-      color: #ffffff !important;
-      background: none !important;
-      background-color: transparent !important;
-    }
-
-    .theme-dark .card .form-select {
-      background-color: #343a40 !important;
-      color: #ffffff !important;
-      border: 1px solid #495057 !important;
-      text-align: center !important;
-    }
-
-    .theme-dark .card .form-select option {
-      background-color: #343a40 !important;
-      color: #ffffff !important;
-      text-align: center !important;
-    }
-
-    /* Ensure labels don't inherit unwanted styles */
-    .card .form-label * {
-      background: none !important;
-      background-color: transparent !important;
-    }
-
-    .exercise-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .exercise-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-  </style>
-
-  <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-  <script type="text/javascript" src="scripts/custom.js"></script>
-  <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-      "use strict";
-
-      console.log("🎯 Finley Profile Page Loaded Successfully");
-
-
-
-
-
-      // Get elements
-      const mainVideo = document.getElementById("main-video");
-      const videoTitle = document.getElementById("video-title");
-      const exerciseCards = document.querySelectorAll(".exercise-card");
-      const playPauseBtn = document.getElementById("play-pause-btn");
-      const playPauseIcon = document.getElementById("play-pause-icon");
-      const customControls = document.querySelector(".custom-controls");
-
-      // Timer elements
-      const timerDisplay = document.getElementById("timer-display");
-      const timerToggleBtn = document.getElementById("timer-toggle-btn");
-      const timerToggleIcon = document.getElementById("timer-toggle-icon");
-
-      // Progress elements
-      const progressPercentageElement = document.getElementById(
-        "progress-percentage"
-      );
-      const totalDurationDisplay = document.getElementById(
-        "total-duration-display"
-      );
-
-      // Workout setup elements
-      const exerciseAmountSelect = document.getElementById(
-        "exercise-amount-select"
-      );
-      const timerDurationSelect = document.getElementById(
-        "timer-duration-select"
-      );
-      const restDurationSelect = document.getElementById(
-        "rest-duration-select"
-      );
-      const applySettingsBtn = document.getElementById(
-        "apply-workout-settings"
-      );
-      const resetSettingsBtn = document.getElementById(
-        "reset-workout-settings"
-      );
-
-      console.log("Found elements:", {
-        mainVideo: !!mainVideo,
-        videoTitle: !!videoTitle,
-        exerciseCards: exerciseCards.length,
-        playPauseBtn: !!playPauseBtn,
-        customControls: !!customControls,
-        timerDisplay: !!timerDisplay,
-        timerToggleBtn: !!timerToggleBtn,
-        timerToggleIcon: !!timerToggleIcon,
-        progressPercentageElement: !!progressPercentageElement,
-        totalDurationDisplay: !!totalDurationDisplay,
-        exerciseAmountSelect: !!exerciseAmountSelect,
-        timerDurationSelect: !!timerDurationSelect,
-        restDurationSelect: !!restDurationSelect,
-        applySettingsBtn: !!applySettingsBtn,
-        resetSettingsBtn: !!resetSettingsBtn,
-      });
-
-      // Workout setup configuration
-      let workoutConfig = {
-        totalExercises: 6,
-        timerDuration: 15,
-        restDuration: 10,
-      };
-
-      // Timer functionality
-      let timerSeconds = workoutConfig.timerDuration;
-      let timerInterval = null;
-      let isTimerRunning = false;
-      let currentExercise = 1; // Starting at exercise 1 (beginning of workout)
-      let totalExercises = workoutConfig.totalExercises;
-      let isRestPhase = false; // Track if we're in rest phase or exercise phase
-      let restSeconds = workoutConfig.restDuration;
-
-      function updateTimerDisplay() {
-        timerDisplay.textContent = `${timerSeconds}s`;
-
-        // Update timer label based on phase
-        const timerLabel = document.querySelector('#timer-display').nextElementSibling;
-        if (timerLabel) {
-          if (isRestPhase) {
-            timerLabel.textContent = "Rest Timer";
-            // Change timer color for rest phase
-            timerDisplay.style.color = "#ffa500"; // Orange for rest
-          } else {
-            timerLabel.textContent = "Session Timer";
-            // Reset timer color for exercise phase
-            timerDisplay.style.color = "white";
-          }
+        100% {
+          background-position: 0% 50%;
         }
       }
 
-      function updateProgressPercentage() {
-        // Calculate total workout duration
-        const exerciseDuration =
-          workoutConfig.timerDuration * workoutConfig.totalExercises;
-        const restDuration =
-          workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
-        const totalWorkoutSeconds = exerciseDuration + restDuration;
+      /* Fix dropdown styling for all cards */
+      .card .form-select {
+        background-color: #ffffff !important;
+        color: #212529 !important;
+        border: 1px solid #dee2e6 !important;
+        text-align: center !important;
+      }
 
-        // Calculate elapsed time: completed exercises + current exercise progress + rest periods
-        const completedExercises = currentExercise - 1;
-        const completedExerciseTime =
-          completedExercises * workoutConfig.timerDuration;
-        const currentExerciseElapsed =
-          workoutConfig.timerDuration - timerSeconds;
-        const completedRestTime =
-          completedExercises * workoutConfig.restDuration;
+      .card .form-select option {
+        background-color: #ffffff !important;
+        color: #212529 !important;
+        padding: 8px 12px !important;
+        text-align: center !important;
+      }
 
-        const totalElapsedSeconds =
-          completedExerciseTime + currentExerciseElapsed + completedRestTime;
+      /* Ensure dropdown options have proper styling */
+      .card .form-select option:hover {
+        background-color: #f8f9fa !important;
+        color: #212529 !important;
+      }
 
-        // Calculate progress percentage (0% = start, 100% = complete workout)
-        const workoutProgress = Math.round(
-          (totalElapsedSeconds / totalWorkoutSeconds) * 100
+      .card .form-select option:checked {
+        background-color: #007bff !important;
+        color: #ffffff !important;
+      }
+
+      /* Fix form labels for both light and dark mode */
+      .card .form-label {
+        color: #495057 !important;
+        background: none !important;
+        background-color: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+      }
+
+      /* Dark mode specific fixes */
+      .theme-dark .card .form-label {
+        color: #ffffff !important;
+        background: none !important;
+        background-color: transparent !important;
+      }
+
+      .theme-dark .card .form-select {
+        background-color: #343a40 !important;
+        color: #ffffff !important;
+        border: 1px solid #495057 !important;
+        text-align: center !important;
+      }
+
+      .theme-dark .card .form-select option {
+        background-color: #343a40 !important;
+        color: #ffffff !important;
+        text-align: center !important;
+      }
+
+      /* Ensure labels don't inherit unwanted styles */
+      .card .form-label * {
+        background: none !important;
+        background-color: transparent !important;
+      }
+
+      .exercise-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .exercise-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        "use strict";
+
+        console.log("🎯 Finley Profile Page Loaded Successfully");
+
+
+
+
+
+        // Get elements
+        const mainVideo = document.getElementById("main-video");
+        const videoTitle = document.getElementById("video-title");
+        const exerciseCards = document.querySelectorAll(".exercise-card");
+        const playPauseBtn = document.getElementById("play-pause-btn");
+        const playPauseIcon = document.getElementById("play-pause-icon");
+        const customControls = document.querySelector(".custom-controls");
+
+        // Timer elements
+        const timerDisplay = document.getElementById("timer-display");
+        const timerToggleBtn = document.getElementById("timer-toggle-btn");
+        const timerToggleIcon = document.getElementById("timer-toggle-icon");
+
+        // Progress elements
+        const progressPercentageElement = document.getElementById(
+          "progress-percentage"
+        );
+        const totalDurationDisplay = document.getElementById(
+          "total-duration-display"
         );
 
-        if (progressPercentageElement) {
-          progressPercentageElement.textContent = `${workoutProgress}%`;
-          console.log(
-            `📊 Workout progress updated: ${workoutProgress}% (${totalElapsedSeconds}s/${totalWorkoutSeconds}s completed)`
-          );
-        }
-      }
+        // Workout setup elements
+        const exerciseAmountSelect = document.getElementById(
+          "exercise-amount-select"
+        );
+        const timerDurationSelect = document.getElementById(
+          "timer-duration-select"
+        );
+        const restDurationSelect = document.getElementById(
+          "rest-duration-select"
+        );
+        const applySettingsBtn = document.getElementById(
+          "apply-workout-settings"
+        );
+        const resetSettingsBtn = document.getElementById(
+          "reset-workout-settings"
+        );
 
-      function updateTotalDuration() {
-        // Calculate total duration: (timer duration × total exercises) + (rest duration × (total exercises - 1))
-        const exerciseDuration =
-          workoutConfig.timerDuration * workoutConfig.totalExercises;
-        const restDuration =
-          workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
-        const totalSeconds = exerciseDuration + restDuration;
+        console.log("Found elements:", {
+          mainVideo: !!mainVideo,
+          videoTitle: !!videoTitle,
+          exerciseCards: exerciseCards.length,
+          playPauseBtn: !!playPauseBtn,
+          customControls: !!customControls,
+          timerDisplay: !!timerDisplay,
+          timerToggleBtn: !!timerToggleBtn,
+          timerToggleIcon: !!timerToggleIcon,
+          progressPercentageElement: !!progressPercentageElement,
+          totalDurationDisplay: !!totalDurationDisplay,
+          exerciseAmountSelect: !!exerciseAmountSelect,
+          timerDurationSelect: !!timerDurationSelect,
+          restDurationSelect: !!restDurationSelect,
+          applySettingsBtn: !!applySettingsBtn,
+          resetSettingsBtn: !!resetSettingsBtn,
+        });
 
-        // Convert to minutes and seconds
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-
-        // Format as MM:SS
-        const formattedTime = `${minutes}:${seconds
-          .toString()
-          .padStart(2, "0")}`;
-
-        if (totalDurationDisplay) {
-          totalDurationDisplay.textContent = formattedTime;
-          console.log(
-            `⏱️ Total duration updated: ${formattedTime} (${exerciseDuration}s exercises + ${restDuration}s rest = ${totalSeconds}s total)`
-          );
-        }
-      }
-
-      // Workout Setup Management Functions
-      function applyWorkoutSettings() {
-        const newTotalExercises = parseInt(exerciseAmountSelect.value);
-        const newTimerDuration = parseInt(timerDurationSelect.value);
-        const newRestDuration = parseInt(restDurationSelect.value);
-
-        // Update configuration
-        workoutConfig.totalExercises = newTotalExercises;
-        workoutConfig.timerDuration = newTimerDuration;
-        workoutConfig.restDuration = newRestDuration;
-
-        // Update working variables
-        totalExercises = newTotalExercises;
-        restSeconds = newRestDuration;
-
-        // Reset to exercise phase with new duration
-        isRestPhase = false;
-        timerSeconds = newTimerDuration;
-
-        // Reset current exercise if it exceeds new total
-        if (currentExercise > totalExercises) {
-          currentExercise = 1;
-        }
-
-        // Update displays
-        updateTimerDisplay();
-        updateProgressPercentage();
-        updateExerciseCounter();
-        updateTotalDuration();
-
-        console.log("⚙️ Workout settings applied:", workoutConfig);
-
-        // Show success feedback
-        applySettingsBtn.textContent = "Applied!";
-        applySettingsBtn.style.background = "#155724";
-        applySettingsBtn.style.color = "white";
-        applySettingsBtn.style.border = "2px solid #155724";
-
-        setTimeout(() => {
-          applySettingsBtn.textContent = "Apply Settings";
-          applySettingsBtn.style.background = "rgba(255,255,255,0.98)";
-          applySettingsBtn.style.color = "#155724";
-          applySettingsBtn.style.border = "2px solid rgba(255,255,255,0.8)";
-        }, 2000);
-      }
-
-      function resetWorkoutSettings() {
-        // Reset to defaults
-        workoutConfig = {
+        // Workout setup configuration
+        let workoutConfig = {
           totalExercises: 6,
           timerDuration: 15,
           restDuration: 10,
         };
 
-        // Update select elements
-        exerciseAmountSelect.value = workoutConfig.totalExercises;
-        timerDurationSelect.value = workoutConfig.timerDuration;
-        restDurationSelect.value = workoutConfig.restDuration;
+        // Timer functionality
+        let timerSeconds = workoutConfig.timerDuration;
+        let timerInterval = null;
+        let isTimerRunning = false;
+        let currentExercise = 1; // Starting at exercise 1 (beginning of workout)
+        let totalExercises = workoutConfig.totalExercises;
+        let isRestPhase = false; // Track if we're in rest phase or exercise phase
+        let restSeconds = workoutConfig.restDuration;
 
-        // Update working variables
-        totalExercises = workoutConfig.totalExercises;
-        restSeconds = workoutConfig.restDuration;
-        timerSeconds = workoutConfig.timerDuration;
-        currentExercise = 1; // Reset to beginning of workout
-        isRestPhase = false; // Reset to exercise phase
+        function updateTimerDisplay() {
+          timerDisplay.textContent = `${timerSeconds}s`;
 
-        // Update displays
-        updateTimerDisplay();
-        updateProgressPercentage();
-        updateExerciseCounter();
-        updateTotalDuration();
-
-        console.log("🔄 Workout settings reset to defaults:", workoutConfig);
-
-        // Show reset feedback
-        resetSettingsBtn.textContent = "Reset!";
-        resetSettingsBtn.style.backgroundColor = "#721c24";
-        resetSettingsBtn.style.color = "white";
-        resetSettingsBtn.style.opacity = "1";
-
-        setTimeout(() => {
-          resetSettingsBtn.textContent = "Reset Default";
-          resetSettingsBtn.style.backgroundColor = "white";
-          resetSettingsBtn.style.color = "#6c757d";
-          resetSettingsBtn.style.opacity = "0.9";
-        }, 2000);
-      }
-
-      function updateExerciseCounter() {
-        // Try multiple selectors to find the exercise counter element
-        const exerciseCounterElement =
-          document.querySelector(".row.text-center .col-4:first-child div") ||
-          document.querySelector(".row.text-center .col-4:first-child .color-white") ||
-          document.querySelector("[data-exercise-counter]");
-
-        if (exerciseCounterElement) {
-          exerciseCounterElement.textContent = `${currentExercise}/${totalExercises}`;
-          console.log(`📊 Exercise counter updated: ${currentExercise}/${totalExercises}`);
-        } else {
-          console.warn("⚠️ Exercise counter element not found");
-        }
-        // Update progress percentage whenever exercise counter changes
-        updateProgressPercentage();
-      }
-
-      function updateToggleButton() {
-        if (isTimerRunning) {
-          timerToggleIcon.className = "fa fa-pause";
-        } else {
-          timerToggleIcon.className = "fa fa-play";
-        }
-      }
-
-      function startTimer() {
-        if (!isTimerRunning && timerSeconds > 0) {
-          isTimerRunning = true;
-          updateToggleButton();
-          console.log(`⏱️ ${isRestPhase ? 'Rest' : 'Exercise'} timer started`);
-
-          timerInterval = setInterval(() => {
-            timerSeconds--;
-            updateTimerDisplay();
-            updateProgressPercentage();
-
-            if (timerSeconds <= 0) {
-              clearInterval(timerInterval);
-              isTimerRunning = false;
-              updateToggleButton();
-
-              if (!isRestPhase) {
-                // Exercise phase completed - increment counter immediately
-                console.log("💪 Exercise phase completed!");
-
-                // Increment exercise counter immediately when exercise completes
-                if (currentExercise < totalExercises) {
-                  currentExercise++;
-                  updateExerciseCounter();
-                  console.log(`📈 Exercise completed! Now ${currentExercise}/${totalExercises}`);
-                }
-
-                if (currentExercise <= totalExercises) {
-                  // Not the last exercise - start rest phase automatically
-                  isRestPhase = true;
-                  timerSeconds = workoutConfig.restDuration;
-                  updateTimerDisplay();
-                  console.log(`😴 Rest phase started automatically - ${workoutConfig.restDuration}s`);
-
-                  // Automatically start the rest timer
-                  isTimerRunning = true;
-                  updateToggleButton();
-
-                  timerInterval = setInterval(() => {
-                    timerSeconds--;
-                    updateTimerDisplay();
-                    updateProgressPercentage();
-
-                    if (timerSeconds <= 0) {
-                      clearInterval(timerInterval);
-                      isTimerRunning = false;
-                      updateToggleButton();
-
-                      // Rest phase completed - switch to exercise phase
-                      console.log("😌 Rest phase completed!");
-                      isRestPhase = false;
-                      timerSeconds = workoutConfig.timerDuration;
-
-                      updateTimerDisplay();
-                      updateProgressPercentage();
-                      console.log(`🏃‍♂️ Exercise phase ready - ${workoutConfig.timerDuration}s`);
-                    }
-                  }, 1000);
-
-                } else {
-                  // Last exercise completed - workout finished
-                  console.log("🎉 Workout completed!");
-                  timerDisplay.style.color = "#4CAF50"; // Green for completion
-                  const timerLabel = document.querySelector('#timer-display').nextElementSibling;
-                  if (timerLabel) {
-                    timerLabel.textContent = "Workout Complete!";
-                  }
-
-                  // Reset after showing completion
-                  setTimeout(() => {
-                    currentExercise = 1;
-                    isRestPhase = false;
-                    timerSeconds = workoutConfig.timerDuration;
-                    updateTimerDisplay();
-                    updateExerciseCounter();
-                    updateProgressPercentage();
-                    console.log("🔄 Workout reset for next session");
-                  }, 3000);
-                }
-              }
+          // Update timer label based on phase
+          const timerLabel = document.querySelector('#timer-display').nextElementSibling;
+          if (timerLabel) {
+            if (isRestPhase) {
+              timerLabel.textContent = "Rest Timer";
+              // Change timer color for rest phase
+              timerDisplay.style.color = "#ffa500"; // Orange for rest
+            } else {
+              timerLabel.textContent = "Session Timer";
+              // Reset timer color for exercise phase
+              timerDisplay.style.color = "white";
             }
-          }, 1000);
-        }
-      }
-
-      function pauseTimer() {
-        if (isTimerRunning) {
-          clearInterval(timerInterval);
-          isTimerRunning = false;
-          updateToggleButton();
-          console.log("⏸️ Timer paused");
-        }
-      }
-
-      function resetTimer() {
-        clearInterval(timerInterval);
-        isTimerRunning = false;
-        isRestPhase = false; // Always reset to exercise phase
-        timerSeconds = workoutConfig.timerDuration;
-        updateTimerDisplay();
-        updateProgressPercentage();
-        updateToggleButton();
-        console.log(`🔄 Timer reset to exercise phase - ${workoutConfig.timerDuration}s`);
-      }
-
-      function toggleTimer() {
-        if (isTimerRunning) {
-          pauseTimer();
-        } else {
-          startTimer();
-        }
-      }
-
-      // Timer toggle button event listener
-      if (timerToggleBtn) {
-        timerToggleBtn.addEventListener("click", function () {
-          toggleTimer();
-        });
-      }
-
-      // Initialize progress percentage and total duration on page load
-      updateProgressPercentage();
-      updateTotalDuration();
-
-      // Workout setup event listeners
-      if (applySettingsBtn) {
-        applySettingsBtn.addEventListener("click", function () {
-          applyWorkoutSettings();
-        });
-      }
-
-      if (resetSettingsBtn) {
-        resetSettingsBtn.addEventListener("click", function () {
-          resetWorkoutSettings();
-        });
-      }
-
-
-
-
-
-      // Global utility functions for workout management (accessible from console)
-      window.FinleyWorkout = {
-        // Progress management
-        setProgress: function (exerciseNumber) {
-          if (exerciseNumber >= 1 && exerciseNumber <= totalExercises) {
-            currentExercise = exerciseNumber;
-            updateProgressPercentage();
-            updateExerciseCounter();
-            console.log(
-              `📊 Progress manually set to exercise ${exerciseNumber}/${totalExercises}`
-            );
-            return true;
-          } else {
-            console.error(
-              `❌ Invalid exercise number. Must be between 1 and ${totalExercises}`
-            );
-            return false;
           }
-        },
+        }
 
-        getProgress: function () {
+        function updateProgressPercentage() {
           // Calculate total workout duration
           const exerciseDuration =
             workoutConfig.timerDuration * workoutConfig.totalExercises;
@@ -1079,7 +758,7 @@
             workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
           const totalWorkoutSeconds = exerciseDuration + restDuration;
 
-          // Calculate elapsed time
+          // Calculate elapsed time: completed exercises + current exercise progress + rest periods
           const completedExercises = currentExercise - 1;
           const completedExerciseTime =
             completedExercises * workoutConfig.timerDuration;
@@ -1087,53 +766,385 @@
             workoutConfig.timerDuration - timerSeconds;
           const completedRestTime =
             completedExercises * workoutConfig.restDuration;
-          const totalElapsedSeconds =
-            completedExerciseTime +
-            currentExerciseElapsed +
-            completedRestTime;
 
+          const totalElapsedSeconds =
+            completedExerciseTime + currentExerciseElapsed + completedRestTime;
+
+          // Calculate progress percentage (0% = start, 100% = complete workout)
           const workoutProgress = Math.round(
             (totalElapsedSeconds / totalWorkoutSeconds) * 100
           );
 
-          return {
-            currentExercise: currentExercise,
-            totalExercises: totalExercises,
-            timerSeconds: timerSeconds,
-            timerDuration: workoutConfig.timerDuration,
-            totalWorkoutSeconds: totalWorkoutSeconds,
-            totalElapsedSeconds: totalElapsedSeconds,
-            workoutProgress: workoutProgress,
-            percentage: workoutProgress,
+          if (progressPercentageElement) {
+            progressPercentageElement.textContent = `${workoutProgress}%`;
+            console.log(
+              `📊 Workout progress updated: ${workoutProgress}% (${totalElapsedSeconds}s/${totalWorkoutSeconds}s completed)`
+            );
+          }
+        }
+
+        function updateTotalDuration() {
+          // Calculate total duration: (timer duration × total exercises) + (rest duration × (total exercises - 1))
+          const exerciseDuration =
+            workoutConfig.timerDuration * workoutConfig.totalExercises;
+          const restDuration =
+            workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
+          const totalSeconds = exerciseDuration + restDuration;
+
+          // Convert to minutes and seconds
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = totalSeconds % 60;
+
+          // Format as MM:SS
+          const formattedTime = `${minutes}:${seconds
+            .toString()
+            .padStart(2, "0")}`;
+
+          if (totalDurationDisplay) {
+            totalDurationDisplay.textContent = formattedTime;
+            console.log(
+              `⏱️ Total duration updated: ${formattedTime} (${exerciseDuration}s exercises + ${restDuration}s rest = ${totalSeconds}s total)`
+            );
+          }
+        }
+
+        // Workout Setup Management Functions
+        function applyWorkoutSettings() {
+          const newTotalExercises = parseInt(exerciseAmountSelect.value);
+          const newTimerDuration = parseInt(timerDurationSelect.value);
+          const newRestDuration = parseInt(restDurationSelect.value);
+
+          // Update configuration
+          workoutConfig.totalExercises = newTotalExercises;
+          workoutConfig.timerDuration = newTimerDuration;
+          workoutConfig.restDuration = newRestDuration;
+
+          // Update working variables
+          totalExercises = newTotalExercises;
+          restSeconds = newRestDuration;
+
+          // Reset to exercise phase with new duration
+          isRestPhase = false;
+          timerSeconds = newTimerDuration;
+
+          // Reset current exercise if it exceeds new total
+          if (currentExercise > totalExercises) {
+            currentExercise = 1;
+          }
+
+          // Update displays
+          updateTimerDisplay();
+          updateProgressPercentage();
+          updateExerciseCounter();
+          updateTotalDuration();
+
+          console.log("⚙️ Workout settings applied:", workoutConfig);
+
+          // Show success feedback
+          applySettingsBtn.textContent = "Applied!";
+          applySettingsBtn.style.background = "#155724";
+          applySettingsBtn.style.color = "white";
+          applySettingsBtn.style.border = "2px solid #155724";
+
+          setTimeout(() => {
+            applySettingsBtn.textContent = "Apply Settings";
+            applySettingsBtn.style.background = "rgba(255,255,255,0.98)";
+            applySettingsBtn.style.color = "#155724";
+            applySettingsBtn.style.border = "2px solid rgba(255,255,255,0.8)";
+          }, 2000);
+        }
+
+        function resetWorkoutSettings() {
+          // Reset to defaults
+          workoutConfig = {
+            totalExercises: 6,
+            timerDuration: 15,
+            restDuration: 10,
           };
-        },
 
-        // Workout setup management
-        getWorkoutConfig: function () {
-          return { ...workoutConfig };
-        },
+          // Update select elements
+          exerciseAmountSelect.value = workoutConfig.totalExercises;
+          timerDurationSelect.value = workoutConfig.timerDuration;
+          restDurationSelect.value = workoutConfig.restDuration;
 
-        setWorkoutConfig: function (
-          exercises,
-          timerDuration,
-          restDuration = 10
-        ) {
-          if (exercises) exerciseAmountSelect.value = exercises;
-          if (timerDuration) timerDurationSelect.value = timerDuration;
-          if (restDuration) restDurationSelect.value = restDuration;
+          // Update working variables
+          totalExercises = workoutConfig.totalExercises;
+          restSeconds = workoutConfig.restDuration;
+          timerSeconds = workoutConfig.timerDuration;
+          currentExercise = 1; // Reset to beginning of workout
+          isRestPhase = false; // Reset to exercise phase
 
-          applyWorkoutSettings();
-          return this.getWorkoutConfig();
-        },
+          // Update displays
+          updateTimerDisplay();
+          updateProgressPercentage();
+          updateExerciseCounter();
+          updateTotalDuration();
 
-        resetWorkout: function () {
-          resetWorkoutSettings();
-          return this.getWorkoutConfig();
-        },
+          console.log("🔄 Workout settings reset to defaults:", workoutConfig);
 
-        // Show help
-        help: function () {
-          console.log(`
+          // Show reset feedback
+          resetSettingsBtn.textContent = "Reset!";
+          resetSettingsBtn.style.backgroundColor = "#721c24";
+          resetSettingsBtn.style.color = "white";
+          resetSettingsBtn.style.opacity = "1";
+
+          setTimeout(() => {
+            resetSettingsBtn.textContent = "Reset Default";
+            resetSettingsBtn.style.backgroundColor = "white";
+            resetSettingsBtn.style.color = "#6c757d";
+            resetSettingsBtn.style.opacity = "0.9";
+          }, 2000);
+        }
+
+        function updateExerciseCounter() {
+          // Try multiple selectors to find the exercise counter element
+          const exerciseCounterElement =
+            document.querySelector(".row.text-center .col-4:first-child div") ||
+            document.querySelector(".row.text-center .col-4:first-child .color-white") ||
+            document.querySelector("[data-exercise-counter]");
+
+          if (exerciseCounterElement) {
+            exerciseCounterElement.textContent = `${currentExercise}/${totalExercises}`;
+            console.log(`📊 Exercise counter updated: ${currentExercise}/${totalExercises}`);
+          } else {
+            console.warn("⚠️ Exercise counter element not found");
+          }
+          // Update progress percentage whenever exercise counter changes
+          updateProgressPercentage();
+        }
+
+        function updateToggleButton() {
+          if (isTimerRunning) {
+            timerToggleIcon.className = "fa fa-pause";
+          } else {
+            timerToggleIcon.className = "fa fa-play";
+          }
+        }
+
+        function startTimer() {
+          if (!isTimerRunning && timerSeconds > 0) {
+            isTimerRunning = true;
+            updateToggleButton();
+            console.log(`⏱️ ${isRestPhase ? 'Rest' : 'Exercise'} timer started`);
+
+            timerInterval = setInterval(() => {
+              timerSeconds--;
+              updateTimerDisplay();
+              updateProgressPercentage();
+
+              if (timerSeconds <= 0) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                updateToggleButton();
+
+                if (!isRestPhase) {
+                  // Exercise phase completed - increment counter immediately
+                  console.log("💪 Exercise phase completed!");
+
+                  // Increment exercise counter immediately when exercise completes
+                  if (currentExercise < totalExercises) {
+                    currentExercise++;
+                    updateExerciseCounter();
+                    console.log(`📈 Exercise completed! Now ${currentExercise}/${totalExercises}`);
+                  }
+
+                  if (currentExercise <= totalExercises) {
+                    // Not the last exercise - start rest phase automatically
+                    isRestPhase = true;
+                    timerSeconds = workoutConfig.restDuration;
+                    updateTimerDisplay();
+                    console.log(`😴 Rest phase started automatically - ${workoutConfig.restDuration}s`);
+
+                    // Automatically start the rest timer
+                    isTimerRunning = true;
+                    updateToggleButton();
+
+                    timerInterval = setInterval(() => {
+                      timerSeconds--;
+                      updateTimerDisplay();
+                      updateProgressPercentage();
+
+                      if (timerSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        updateToggleButton();
+
+                        // Rest phase completed - switch to exercise phase
+                        console.log("😌 Rest phase completed!");
+                        isRestPhase = false;
+                        timerSeconds = workoutConfig.timerDuration;
+
+                        updateTimerDisplay();
+                        updateProgressPercentage();
+                        console.log(`🏃‍♂️ Exercise phase ready - ${workoutConfig.timerDuration}s`);
+                      }
+                    }, 1000);
+
+                  } else {
+                    // Last exercise completed - workout finished
+                    console.log("🎉 Workout completed!");
+                    timerDisplay.style.color = "#4CAF50"; // Green for completion
+                    const timerLabel = document.querySelector('#timer-display').nextElementSibling;
+                    if (timerLabel) {
+                      timerLabel.textContent = "Workout Complete!";
+                    }
+
+                    // Reset after showing completion
+                    setTimeout(() => {
+                      currentExercise = 1;
+                      isRestPhase = false;
+                      timerSeconds = workoutConfig.timerDuration;
+                      updateTimerDisplay();
+                      updateExerciseCounter();
+                      updateProgressPercentage();
+                      console.log("🔄 Workout reset for next session");
+                    }, 3000);
+                  }
+                }
+              }
+            }, 1000);
+          }
+        }
+
+        function pauseTimer() {
+          if (isTimerRunning) {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            updateToggleButton();
+            console.log("⏸️ Timer paused");
+          }
+        }
+
+        function resetTimer() {
+          clearInterval(timerInterval);
+          isTimerRunning = false;
+          isRestPhase = false; // Always reset to exercise phase
+          timerSeconds = workoutConfig.timerDuration;
+          updateTimerDisplay();
+          updateProgressPercentage();
+          updateToggleButton();
+          console.log(`🔄 Timer reset to exercise phase - ${workoutConfig.timerDuration}s`);
+        }
+
+        function toggleTimer() {
+          if (isTimerRunning) {
+            pauseTimer();
+          } else {
+            startTimer();
+          }
+        }
+
+        // Timer toggle button event listener
+        if (timerToggleBtn) {
+          timerToggleBtn.addEventListener("click", function () {
+            toggleTimer();
+          });
+        }
+
+        // Initialize progress percentage and total duration on page load
+        updateProgressPercentage();
+        updateTotalDuration();
+
+        // Workout setup event listeners
+        if (applySettingsBtn) {
+          applySettingsBtn.addEventListener("click", function () {
+            applyWorkoutSettings();
+          });
+        }
+
+        if (resetSettingsBtn) {
+          resetSettingsBtn.addEventListener("click", function () {
+            resetWorkoutSettings();
+          });
+        }
+
+
+
+
+
+        // Global utility functions for workout management (accessible from console)
+        window.FinleyWorkout = {
+          // Progress management
+          setProgress: function (exerciseNumber) {
+            if (exerciseNumber >= 1 && exerciseNumber <= totalExercises) {
+              currentExercise = exerciseNumber;
+              updateProgressPercentage();
+              updateExerciseCounter();
+              console.log(
+                `📊 Progress manually set to exercise ${exerciseNumber}/${totalExercises}`
+              );
+              return true;
+            } else {
+              console.error(
+                `❌ Invalid exercise number. Must be between 1 and ${totalExercises}`
+              );
+              return false;
+            }
+          },
+
+          getProgress: function () {
+            // Calculate total workout duration
+            const exerciseDuration =
+              workoutConfig.timerDuration * workoutConfig.totalExercises;
+            const restDuration =
+              workoutConfig.restDuration * (workoutConfig.totalExercises - 1);
+            const totalWorkoutSeconds = exerciseDuration + restDuration;
+
+            // Calculate elapsed time
+            const completedExercises = currentExercise - 1;
+            const completedExerciseTime =
+              completedExercises * workoutConfig.timerDuration;
+            const currentExerciseElapsed =
+              workoutConfig.timerDuration - timerSeconds;
+            const completedRestTime =
+              completedExercises * workoutConfig.restDuration;
+            const totalElapsedSeconds =
+              completedExerciseTime +
+              currentExerciseElapsed +
+              completedRestTime;
+
+            const workoutProgress = Math.round(
+              (totalElapsedSeconds / totalWorkoutSeconds) * 100
+            );
+
+            return {
+              currentExercise: currentExercise,
+              totalExercises: totalExercises,
+              timerSeconds: timerSeconds,
+              timerDuration: workoutConfig.timerDuration,
+              totalWorkoutSeconds: totalWorkoutSeconds,
+              totalElapsedSeconds: totalElapsedSeconds,
+              workoutProgress: workoutProgress,
+              percentage: workoutProgress,
+            };
+          },
+
+          // Workout setup management
+          getWorkoutConfig: function () {
+            return { ...workoutConfig };
+          },
+
+          setWorkoutConfig: function (
+            exercises,
+            timerDuration,
+            restDuration = 10
+          ) {
+            if (exercises) exerciseAmountSelect.value = exercises;
+            if (timerDuration) timerDurationSelect.value = timerDuration;
+            if (restDuration) restDurationSelect.value = restDuration;
+
+            applyWorkoutSettings();
+            return this.getWorkoutConfig();
+          },
+
+          resetWorkout: function () {
+            resetWorkoutSettings();
+            return this.getWorkoutConfig();
+          },
+
+          // Show help
+          help: function () {
+            console.log(`
 🎯 Finley Workout Management Commands:
 
 FinleyWorkout.setProgress(exerciseNumber)
@@ -1159,333 +1170,346 @@ FinleyWorkout.resetWorkout()
 FinleyWorkout.help()
   - Show this help message
             `);
-        },
-      };
+          },
+        };
 
-      console.log(
-        "🎯 Workout management system initialized! Type 'FinleyWorkout.help()' for commands."
-      );
+        console.log(
+          "🎯 Workout management system initialized! Type 'FinleyWorkout.help()' for commands."
+        );
 
-      // Custom Player Functions
-      function updatePlayPauseButton() {
-        if (mainVideo.paused) {
-          playPauseIcon.className = "fa fa-play";
-          playPauseIcon.style.marginLeft = "4px"; // Slight offset for play icon
-          customControls.style.opacity = "1";
-        } else {
-          playPauseIcon.className = "fa fa-pause";
-          playPauseIcon.style.marginLeft = "0";
-          customControls.style.opacity = "0";
-        }
-      }
-
-      function togglePlayPause() {
-        if (mainVideo.paused) {
-          mainVideo.play();
-          console.log("▶️ Video playing");
-        } else {
-          mainVideo.pause();
-          console.log("⏸️ Video paused");
-        }
-        updatePlayPauseButton();
-      }
-
-      // Play/Pause button click handler
-      if (playPauseBtn) {
-        playPauseBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          togglePlayPause();
-        });
-
-        // Hover effects
-        playPauseBtn.addEventListener("mouseenter", function () {
-          this.style.transform = "scale(1.1)";
-          this.style.background = "rgba(255,255,255,1)";
-        });
-
-        playPauseBtn.addEventListener("mouseleave", function () {
-          this.style.transform = "scale(1)";
-          this.style.background = "rgba(255,255,255,0.9)";
-        });
-      }
-
-      // Video container click handler
-      if (customControls) {
-        customControls.addEventListener("click", function (e) {
-          if (e.target === this) {
-            togglePlayPause();
-          }
-        });
-      }
-
-      // Show/hide controls on video hover
-      const videoPlayer = document.querySelector(".custom-video-player");
-      if (videoPlayer) {
-        videoPlayer.addEventListener("mouseenter", function () {
+        // Custom Player Functions
+        function updatePlayPauseButton() {
           if (mainVideo.paused) {
+            playPauseIcon.className = "fa fa-play";
+            playPauseIcon.style.marginLeft = "4px"; // Slight offset for play icon
             customControls.style.opacity = "1";
-          }
-        });
-
-        videoPlayer.addEventListener("mouseleave", function () {
-          if (!mainVideo.paused) {
+          } else {
+            playPauseIcon.className = "fa fa-pause";
+            playPauseIcon.style.marginLeft = "0";
             customControls.style.opacity = "0";
           }
-        });
-      }
+        }
 
-      // Add click listeners to exercise cards (now performance metric cards)
-      exerciseCards.forEach((card, index) => {
-        card.addEventListener("click", function () {
-          console.log(`Performance metric card ${index + 1} clicked`);
+        function togglePlayPause() {
+          if (mainVideo.paused) {
+            mainVideo.play();
+            console.log("▶️ Video playing");
+          } else {
+            mainVideo.pause();
+            console.log("⏸️ Video paused");
+          }
+          updatePlayPauseButton();
+        }
 
-          const videoNumber = this.getAttribute("data-video");
-          const videoUrl = this.getAttribute("data-url");
-          const exerciseTitle = `Übung ${videoNumber}`;
-
-          console.log("Switching to:", {
-            videoNumber,
-            videoUrl,
-            exerciseTitle,
+        // Play/Pause button click handler
+        if (playPauseBtn) {
+          playPauseBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            togglePlayPause();
           });
 
-          // Pause current video and reset controls
-          if (mainVideo) {
-            mainVideo.pause();
-            updatePlayPauseButton();
+          // Hover effects
+          playPauseBtn.addEventListener("mouseenter", function () {
+            this.style.transform = "scale(1.1)";
+            this.style.background = "rgba(255,255,255,1)";
+          });
 
-            const source = mainVideo.querySelector("source");
-            if (source) {
-              source.src = videoUrl;
-              mainVideo.load();
-              console.log("Video source updated to:", videoUrl);
+          playPauseBtn.addEventListener("mouseleave", function () {
+            this.style.transform = "scale(1)";
+            this.style.background = "rgba(255,255,255,0.9)";
+          });
+        }
+
+        // Video container click handler
+        if (customControls) {
+          customControls.addEventListener("click", function (e) {
+            if (e.target === this) {
+              togglePlayPause();
+            }
+          });
+        }
+
+        // Show/hide controls on video hover
+        const videoPlayer = document.querySelector(".custom-video-player");
+        if (videoPlayer) {
+          videoPlayer.addEventListener("mouseenter", function () {
+            if (mainVideo.paused) {
+              customControls.style.opacity = "1";
+            }
+          });
+
+          videoPlayer.addEventListener("mouseleave", function () {
+            if (!mainVideo.paused) {
+              customControls.style.opacity = "0";
+            }
+          });
+        }
+
+        // Add click listeners to exercise cards (now performance metric cards)
+        exerciseCards.forEach((card, index) => {
+          card.addEventListener("click", function () {
+            console.log(`Performance metric card ${index + 1} clicked`);
+
+            const videoNumber = this.getAttribute("data-video");
+            const videoUrl = this.getAttribute("data-url");
+            const exerciseTitle = `Übung ${videoNumber}`;
+
+            console.log("Switching to:", {
+              videoNumber,
+              videoUrl,
+              exerciseTitle,
+            });
+
+            // Pause current video and reset controls
+            if (mainVideo) {
+              mainVideo.pause();
+              updatePlayPauseButton();
+
+              const source = mainVideo.querySelector("source");
+              if (source) {
+                source.src = videoUrl;
+                mainVideo.load();
+                console.log("Video source updated to:", videoUrl);
+
+                // Auto-play the new video when it's ready
+                mainVideo.addEventListener('canplay', function autoPlay() {
+                  mainVideo.play().then(() => {
+                    console.log("▶️ Video auto-playing after card click");
+                    updatePlayPauseButton();
+                  }).catch((error) => {
+                    console.warn("Auto-play failed:", error);
+                    updatePlayPauseButton();
+                  });
+                  // Remove the event listener after first use
+                  mainVideo.removeEventListener('canplay', autoPlay);
+                });
+              }
+            }
+
+            // Update title
+            if (videoTitle) {
+              videoTitle.textContent = exerciseTitle;
+            }
+
+            // Update active state (visual feedback can be added here if needed)
+          });
+        });
+
+        // Video event listeners
+        if (mainVideo) {
+          mainVideo.addEventListener("loadstart", () => {
+            console.log("🔄 Video loading started");
+            updatePlayPauseButton();
+          });
+
+          mainVideo.addEventListener("canplay", () => {
+            console.log("✅ Video can play");
+            updatePlayPauseButton();
+          });
+
+          mainVideo.addEventListener("play", () => {
+            console.log("▶️ Video started playing");
+            updatePlayPauseButton();
+          });
+
+          mainVideo.addEventListener("pause", () => {
+            console.log("⏸️ Video paused");
+            updatePlayPauseButton();
+          });
+
+          mainVideo.addEventListener("ended", () => {
+            console.log("🏁 Video ended");
+            updatePlayPauseButton();
+          });
+
+          mainVideo.addEventListener("error", (e) => {
+            console.error("❌ Video error:", e);
+            updatePlayPauseButton();
+          });
+
+          // Initialize button state
+          updatePlayPauseButton();
+        }
+
+        // Settings Fullscreen Toggle Functionality
+        function initSettingsFullscreenToggle() {
+          const fullscreenToggle = document.getElementById("fullscreen-toggle");
+          const fullscreenSwitch = document.getElementById(
+            "switch-fullscreen-mode"
+          );
+          const fullscreenIcon = fullscreenToggle.querySelector("i");
+
+          // Check if fullscreen is supported
+          const isFullscreenSupported =
+            document.documentElement.requestFullscreen ||
+            document.documentElement.webkitRequestFullscreen ||
+            document.documentElement.msRequestFullscreen;
+
+          if (!isFullscreenSupported) {
+            // Hide fullscreen option if not supported
+            fullscreenToggle.style.display = "none";
+            console.log("❌ Fullscreen not supported on this device");
+            return;
+          }
+
+          // Load saved fullscreen preference
+          const savedFullscreenState =
+            localStorage.getItem("fullscreen-mode") === "true";
+          fullscreenSwitch.checked = savedFullscreenState;
+          updateFullscreenIcon(savedFullscreenState);
+
+          // Apply saved state on page load
+          if (savedFullscreenState) {
+            // Small delay to ensure page is fully loaded
+            setTimeout(() => {
+              requestFullscreenMode();
+            }, 1000);
+          }
+
+          // Handle toggle click
+          fullscreenToggle.addEventListener("click", function (e) {
+            e.preventDefault();
+            toggleFullscreenMode();
+          });
+
+          // Handle switch change
+          fullscreenSwitch.addEventListener("change", function () {
+            toggleFullscreenMode();
+          });
+
+          function toggleFullscreenMode() {
+            const isCurrentlyFullscreen =
+              document.fullscreenElement ||
+              document.webkitFullscreenElement ||
+              document.msFullscreenElement;
+
+            if (isCurrentlyFullscreen) {
+              exitFullscreenMode();
+            } else {
+              requestFullscreenMode();
             }
           }
 
-          // Update title
-          if (videoTitle) {
-            videoTitle.textContent = exerciseTitle;
+          function requestFullscreenMode() {
+            const element = document.documentElement;
+
+            if (element.requestFullscreen) {
+              element
+                .requestFullscreen()
+                .then(() => {
+                  onFullscreenEnter();
+                })
+                .catch((err) => {
+                  console.warn("Fullscreen request failed:", err);
+                  onFullscreenError();
+                });
+            } else if (element.webkitRequestFullscreen) {
+              element.webkitRequestFullscreen();
+              onFullscreenEnter();
+            } else if (element.msRequestFullscreen) {
+              element.msRequestFullscreen();
+              onFullscreenEnter();
+            }
           }
 
-          // Update active state (visual feedback can be added here if needed)
-        });
+          function exitFullscreenMode() {
+            if (document.exitFullscreen) {
+              document
+                .exitFullscreen()
+                .then(() => {
+                  onFullscreenExit();
+                })
+                .catch((err) => {
+                  console.warn("Exit fullscreen failed:", err);
+                });
+            } else if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen();
+              onFullscreenExit();
+            } else if (document.msExitFullscreen) {
+              document.msExitFullscreen();
+              onFullscreenExit();
+            }
+          }
+
+          function onFullscreenEnter() {
+            fullscreenSwitch.checked = true;
+            updateFullscreenIcon(true);
+            localStorage.setItem("fullscreen-mode", "true");
+            document.body.classList.add("fullscreen-active");
+            console.log("✅ Entered fullscreen mode");
+          }
+
+          function onFullscreenExit() {
+            fullscreenSwitch.checked = false;
+            updateFullscreenIcon(false);
+            localStorage.setItem("fullscreen-mode", "false");
+            document.body.classList.remove("fullscreen-active");
+            console.log("❌ Exited fullscreen mode");
+          }
+
+          function onFullscreenError() {
+            fullscreenSwitch.checked = false;
+            updateFullscreenIcon(false);
+            localStorage.setItem("fullscreen-mode", "false");
+            console.error("❌ Fullscreen request failed");
+          }
+
+          function updateFullscreenIcon(isFullscreen) {
+            if (isFullscreen) {
+              fullscreenIcon.className =
+                "fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3";
+            } else {
+              fullscreenIcon.className =
+                "fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3";
+            }
+          }
+
+          // Listen for fullscreen changes (user pressing F11 or Esc)
+          document.addEventListener("fullscreenchange", handleFullscreenChange);
+          document.addEventListener(
+            "webkitfullscreenchange",
+            handleFullscreenChange
+          );
+          document.addEventListener(
+            "msfullscreenchange",
+            handleFullscreenChange
+          );
+
+          function handleFullscreenChange() {
+            const isCurrentlyFullscreen =
+              document.fullscreenElement ||
+              document.webkitFullscreenElement ||
+              document.msFullscreenElement;
+
+            if (isCurrentlyFullscreen) {
+              onFullscreenEnter();
+            } else {
+              onFullscreenExit();
+            }
+          }
+
+          // Handle keyboard shortcuts
+          document.addEventListener("keydown", function (e) {
+            // F11 key handling
+            if (e.key === "F11") {
+              e.preventDefault();
+              toggleFullscreenMode();
+            }
+
+            // Ctrl/Cmd + Shift + F for fullscreen toggle
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "F") {
+              e.preventDefault();
+              toggleFullscreenMode();
+            }
+          });
+
+          console.log("🔲 Settings fullscreen toggle initialized");
+        }
+
+        // Initialize fullscreen toggle
+        initSettingsFullscreenToggle();
       });
-
-      // Video event listeners
-      if (mainVideo) {
-        mainVideo.addEventListener("loadstart", () => {
-          console.log("🔄 Video loading started");
-          updatePlayPauseButton();
-        });
-
-        mainVideo.addEventListener("canplay", () => {
-          console.log("✅ Video can play");
-          updatePlayPauseButton();
-        });
-
-        mainVideo.addEventListener("play", () => {
-          console.log("▶️ Video started playing");
-          updatePlayPauseButton();
-        });
-
-        mainVideo.addEventListener("pause", () => {
-          console.log("⏸️ Video paused");
-          updatePlayPauseButton();
-        });
-
-        mainVideo.addEventListener("ended", () => {
-          console.log("🏁 Video ended");
-          updatePlayPauseButton();
-        });
-
-        mainVideo.addEventListener("error", (e) => {
-          console.error("❌ Video error:", e);
-          updatePlayPauseButton();
-        });
-
-        // Initialize button state
-        updatePlayPauseButton();
-      }
-
-      // Settings Fullscreen Toggle Functionality
-      function initSettingsFullscreenToggle() {
-        const fullscreenToggle = document.getElementById("fullscreen-toggle");
-        const fullscreenSwitch = document.getElementById(
-          "switch-fullscreen-mode"
-        );
-        const fullscreenIcon = fullscreenToggle.querySelector("i");
-
-        // Check if fullscreen is supported
-        const isFullscreenSupported =
-          document.documentElement.requestFullscreen ||
-          document.documentElement.webkitRequestFullscreen ||
-          document.documentElement.msRequestFullscreen;
-
-        if (!isFullscreenSupported) {
-          // Hide fullscreen option if not supported
-          fullscreenToggle.style.display = "none";
-          console.log("❌ Fullscreen not supported on this device");
-          return;
-        }
-
-        // Load saved fullscreen preference
-        const savedFullscreenState =
-          localStorage.getItem("fullscreen-mode") === "true";
-        fullscreenSwitch.checked = savedFullscreenState;
-        updateFullscreenIcon(savedFullscreenState);
-
-        // Apply saved state on page load
-        if (savedFullscreenState) {
-          // Small delay to ensure page is fully loaded
-          setTimeout(() => {
-            requestFullscreenMode();
-          }, 1000);
-        }
-
-        // Handle toggle click
-        fullscreenToggle.addEventListener("click", function (e) {
-          e.preventDefault();
-          toggleFullscreenMode();
-        });
-
-        // Handle switch change
-        fullscreenSwitch.addEventListener("change", function () {
-          toggleFullscreenMode();
-        });
-
-        function toggleFullscreenMode() {
-          const isCurrentlyFullscreen =
-            document.fullscreenElement ||
-            document.webkitFullscreenElement ||
-            document.msFullscreenElement;
-
-          if (isCurrentlyFullscreen) {
-            exitFullscreenMode();
-          } else {
-            requestFullscreenMode();
-          }
-        }
-
-        function requestFullscreenMode() {
-          const element = document.documentElement;
-
-          if (element.requestFullscreen) {
-            element
-              .requestFullscreen()
-              .then(() => {
-                onFullscreenEnter();
-              })
-              .catch((err) => {
-                console.warn("Fullscreen request failed:", err);
-                onFullscreenError();
-              });
-          } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
-            onFullscreenEnter();
-          } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-            onFullscreenEnter();
-          }
-        }
-
-        function exitFullscreenMode() {
-          if (document.exitFullscreen) {
-            document
-              .exitFullscreen()
-              .then(() => {
-                onFullscreenExit();
-              })
-              .catch((err) => {
-                console.warn("Exit fullscreen failed:", err);
-              });
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-            onFullscreenExit();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-            onFullscreenExit();
-          }
-        }
-
-        function onFullscreenEnter() {
-          fullscreenSwitch.checked = true;
-          updateFullscreenIcon(true);
-          localStorage.setItem("fullscreen-mode", "true");
-          document.body.classList.add("fullscreen-active");
-          console.log("✅ Entered fullscreen mode");
-        }
-
-        function onFullscreenExit() {
-          fullscreenSwitch.checked = false;
-          updateFullscreenIcon(false);
-          localStorage.setItem("fullscreen-mode", "false");
-          document.body.classList.remove("fullscreen-active");
-          console.log("❌ Exited fullscreen mode");
-        }
-
-        function onFullscreenError() {
-          fullscreenSwitch.checked = false;
-          updateFullscreenIcon(false);
-          localStorage.setItem("fullscreen-mode", "false");
-          console.error("❌ Fullscreen request failed");
-        }
-
-        function updateFullscreenIcon(isFullscreen) {
-          if (isFullscreen) {
-            fullscreenIcon.className =
-              "fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3";
-          } else {
-            fullscreenIcon.className =
-              "fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3";
-          }
-        }
-
-        // Listen for fullscreen changes (user pressing F11 or Esc)
-        document.addEventListener("fullscreenchange", handleFullscreenChange);
-        document.addEventListener(
-          "webkitfullscreenchange",
-          handleFullscreenChange
-        );
-        document.addEventListener(
-          "msfullscreenchange",
-          handleFullscreenChange
-        );
-
-        function handleFullscreenChange() {
-          const isCurrentlyFullscreen =
-            document.fullscreenElement ||
-            document.webkitFullscreenElement ||
-            document.msFullscreenElement;
-
-          if (isCurrentlyFullscreen) {
-            onFullscreenEnter();
-          } else {
-            onFullscreenExit();
-          }
-        }
-
-        // Handle keyboard shortcuts
-        document.addEventListener("keydown", function (e) {
-          // F11 key handling
-          if (e.key === "F11") {
-            e.preventDefault();
-            toggleFullscreenMode();
-          }
-
-          // Ctrl/Cmd + Shift + F for fullscreen toggle
-          if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "F") {
-            e.preventDefault();
-            toggleFullscreenMode();
-          }
-        });
-
-        console.log("🔲 Settings fullscreen toggle initialized");
-      }
-
-      // Initialize fullscreen toggle
-      initSettingsFullscreenToggle();
-    });
-  </script>
+    </script>
 </body>
 
 </html>
