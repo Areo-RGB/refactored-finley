@@ -93,3 +93,9 @@
     transform: translateX(0px);
   }
 }
+
+/* Speed control button styling */
+.active-speed {
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
