@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pwaRemind: 1, // Days to re-remind to add to home
     pwaNoCache: false, // Requires server and HTTPS/SSL. Will clear cache with each visit
     pwaScope: "/",
-    pwaLocation: "/service-worker.js"
+    pwaLocation: "/public/service-worker.js"
   };
 
   // Make config globally available

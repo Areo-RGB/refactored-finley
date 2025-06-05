@@ -1,0 +1,155 @@
+/* Blue Highlight Theme for Finley PWA */
+/* This file provides blue color highlighting for the application */
+
+:root {
+  --highlight-color: #007bff;
+  --highlight-color-dark: #0056b3;
+  --highlight-color-light: #66b3ff;
+}
+
+.color-highlight {
+  color: var(--highlight-color) !important;
+}
+
+.bg-highlight {
+  background-color: var(--highlight-color) !important;
+}
+
+.border-highlight {
+  border-color: var(--highlight-color) !important;
+}
+
+/* Button highlights */
+.btn-highlight {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  color: white;
+}
+
+.btn-highlight:hover {
+  background-color: var(--highlight-color-dark);
+  border-color: var(--highlight-color-dark);
+}
+
+/* Link highlights */
+a.color-highlight:hover {
+  color: var(--highlight-color-dark) !important;
+}
+
+/* Form highlights */
+.form-control:focus {
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Navigation highlights */
+.active-nav {
+  color: var(--highlight-color) !important;
+}
+
+/* Spinner highlights */
+.spinner-border.color-highlight {
+  border-color: var(--highlight-color);
+  border-right-color: transparent;
+}
+
+/* Icon highlights */
+.fa.color-highlight {
+  color: var(--highlight-color) !important;
+}
+
+/* Text highlights */
+.text-highlight {
+  color: var(--highlight-color) !important;
+}
+
+/* Background highlights with opacity */
+.bg-highlight-10 {
+  background-color: rgba(0, 123, 255, 0.1) !important;
+}
+
+.bg-highlight-20 {
+  background-color: rgba(0, 123, 255, 0.2) !important;
+}
+
+.bg-highlight-30 {
+  background-color: rgba(0, 123, 255, 0.3) !important;
+}
+
+/* Dark theme adjustments */
+.theme-dark .color-highlight {
+  color: var(--highlight-color-light) !important;
+}
+
+.theme-dark .bg-highlight {
+  background-color: var(--highlight-color-light) !important;
+}
+
+.theme-dark .btn-highlight {
+  background-color: var(--highlight-color-light);
+  border-color: var(--highlight-color-light);
+  color: #000;
+}
+
+.theme-dark .btn-highlight:hover {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+}
+
+/* Progress bars */
+.progress-bar-highlight {
+  background-color: var(--highlight-color);
+}
+
+/* Badges */
+.badge-highlight {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+/* Cards */
+.card-highlight {
+  border-color: var(--highlight-color);
+}
+
+.card-highlight .card-header {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+/* Alerts */
+.alert-highlight {
+  background-color: rgba(0, 123, 255, 0.1);
+  border-color: var(--highlight-color);
+  color: var(--highlight-color-dark);
+}
+
+/* Tables */
+.table-highlight thead th {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+.table-highlight tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: var(--highlight-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--highlight-color-dark);
+}
+
+/* Selection highlight */
+::selection {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--highlight-color);
+  color: white;
+}

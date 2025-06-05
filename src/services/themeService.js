@@ -27,7 +27,13 @@ function initPageHighlights(pwaName) {
       loadHighlight.rel = "stylesheet";
       loadHighlight.className = "page-highlight";
       loadHighlight.type = "text/css";
-      loadHighlight.href = "styles/highlights/highlight_" + highlight + ".css";
+      loadHighlight.href = "/src/features/HomePage/styles/highlights/highlight_" + highlight + ".css";
+
+      // Handle loading errors gracefully
+      loadHighlight.onerror = function() {
+        console.warn("Could not load highlight CSS:", highlight);
+      };
+
       document.getElementsByTagName("head")[0].appendChild(loadHighlight);
       document.body.setAttribute("data-highlight", "highlight-" + highlight);
       localStorage.setItem(pwaName + "-Highlight", highlight);
@@ -42,7 +48,12 @@ function initPageHighlights(pwaName) {
     loadHighlight.rel = "stylesheet";
     loadHighlight.className = "page-highlight";
     loadHighlight.type = "text/css";
-    loadHighlight.href = "styles/highlights/highlight_" + rememberHighlight + ".css";
+    loadHighlight.href = "/src/features/HomePage/styles/highlights/highlight_" + rememberHighlight + ".css";
+
+    loadHighlight.onerror = function() {
+      console.warn("Could not load remembered highlight CSS:", rememberHighlight);
+    };
+
     if (!document.querySelectorAll(".page-highlight").length) {
       document.getElementsByTagName("head")[0].appendChild(loadHighlight);
       document.body.setAttribute("data-highlight", "highlight-" + rememberHighlight);
@@ -56,7 +67,12 @@ function initPageHighlights(pwaName) {
       loadHighlight.rel = "stylesheet";
       loadHighlight.className = "page-highlight";
       loadHighlight.type = "text/css";
-      loadHighlight.href = "styles/highlights/highlight_" + defaultHighlight[1] + ".css";
+      loadHighlight.href = "/src/features/HomePage/styles/highlights/highlight_" + defaultHighlight[1] + ".css";
+
+      loadHighlight.onerror = function() {
+        console.warn("Could not load default highlight CSS:", defaultHighlight[1]);
+      };
+
       if (!document.querySelectorAll(".page-highlight").length) {
         document.getElementsByTagName("head")[0].appendChild(loadHighlight);
         document.body.setAttribute("data-highlight", "highlight-" + defaultHighlight[1]);
