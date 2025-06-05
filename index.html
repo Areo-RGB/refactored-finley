@@ -1,473 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <title>QuoVadis</title>
-  <!-- Main SCSS entry point (Vite will process this) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finley PWA - Modern Architecture</title>
+  <meta name="description" content="Finley PWA - Refactored with modern feature-based architecture" />
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#007bff" />
+  <link rel="apple-touch-icon" href="/app/icons/icon-192x192.png" />
+  
+  <!-- Main SCSS entry point -->
   <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.scss" />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="manifest" href="manifest.json" data-pwa-version="set_in_manifest_and_pwa_js" />
-  <link rel="apple-touch-icon" sizes="192x192" href="app/icons/icon-192x192.png" />
-  <meta name="theme-color" content="#1b1d21" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#1b1d21" media="(prefers-color-scheme: dark)" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
-<body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
+<body class="theme-dark">
+  
+  <!-- Preloader -->
   <div id="preloader">
-    <div class="spinner-border color-highlight" role="status"></div>
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 
+  <!-- Main Application Container -->
   <div id="page">
-    <div id="footer-bar" class="footer-bar-1">
-      <a href="page-Vergleich.html"><i class="fa fa-chart-bar"></i><span>Vergleich</span></a>
-      <a href="page-profile-finley.html"><i class="fa fa-futbol"></i><span>Training</span></a>
-      <a href="index.html" class="active-nav"><i class="fa fa-home"></i><span>Home</span></a>
-      <a href="page-videos.html"><i class="fa fa-video"></i><span>Videos</span></a>
-      <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+    
+    <!-- Header -->
+    <div class="header header-fixed header-logo-center">
+      <a href="#" data-back-button class="header-icon header-icon-1">
+        <i class="fa fa-arrow-left"></i>
+      </a>
+      <a href="#" class="header-title">Finley PWA</a>
+      <a href="#" data-toggle-theme class="header-icon header-icon-4">
+        <i class="fa fa-moon"></i>
+      </a>
     </div>
 
-    <div class="page-content pb-0">
-      <div class="card mb-0" data-card-height="cover" style="position: relative; overflow: hidden" id="video-swiper">
-        <!-- Video Slide 1 -->
-        <div class="video-slide active" data-slide="0">
-          <video autoplay muted loop playsinline
-            poster="https://videos-data.fra1.cdn.digitaloceanspaces.com/thumbnails/finley-page-profile.jpg" style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                z-index: 1;
-              ">
-            <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/finley-page-profile" type="video/mp4" />
-          </video>
-        </div>
-
-        <!-- Video Slide 2 -->
-        <div class="video-slide" data-slide="1">
-          <video muted loop playsinline poster="https://videos-data.fra1.cdn.digitaloceanspaces.com/thumbnails/3.jpg"
-            style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                z-index: 1;
-              ">
-            <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/3.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <!-- Swipe indicators -->
-        <div class="swipe-indicators" style="
-              position: absolute;
-              bottom: 20px;
-              left: 50%;
-              transform: translateX(-50%);
-              z-index: 4;
-              display: flex;
-              gap: 8px;
-            ">
-          <div class="indicator active" data-slide="0" style="
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.8);
-                cursor: pointer;
-              "></div>
-          <div class="indicator" data-slide="1" style="
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.3);
-                cursor: pointer;
-              "></div>
-        </div>
-
-        <div class="card-top pt-3" style="position: relative; z-index: 2">
-          <div class="header-clear"></div>
-        </div>
-        <div class="card-bottom px-3" style="
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: 3;
-              text-align: center;
-              width: 100%;
-            ">
-          <h1 class="color-white font-24 opacity-50">Charlier</h1>
-          <h1 class="color-white finley-animated-heading"
-            style="font-size: 4rem; font-weight: bold; margin: 15px 0 10px">
-            <span>F</span><span>i</span><span>n</span><span>l</span><span>e</span><span>y</span>
-          </h1>
-          <p class="color-white opacity-70 pt-2 pb-2">
-            <i class="fa fa-futbol me-2"></i>F.C. Hertha 03 Zehlendorf e.V.
+    <!-- Page Content -->
+    <div class="page-content header-clear-medium">
+      
+      <!-- Welcome Section -->
+      <div class="card card-style">
+        <div class="content text-center">
+          <h1>🚀 Finley PWA</h1>
+          <h3>Modern Feature-Based Architecture</h3>
+          <p class="mb-4">
+            Welcome to the refactored Finley PWA! This application has been completely restructured 
+            with modern development practices, featuring modular components and scalable architecture.
           </p>
-          <!-- Statistics Container -->
-          <div class="statistics-container" style="
-                margin-top: 10px;
-                width: 90%;
-                max-width: 420px;
-                margin-left: auto;
-                margin-right: auto;
-                font-size: 0.9rem;
-              ">
-            <!-- Statistics items will be populated by JavaScript -->
+          
+          <!-- Navigation Cards -->
+          <div class="row mb-0">
+            <div class="col-6 mb-3">
+              <a href="/src/features/HomePage/index.html" class="btn btn-m bg-blue-dark btn-block">
+                <i class="fa fa-home me-2"></i>Home Page
+              </a>
+            </div>
+            <div class="col-6 mb-3">
+              <a href="/src/features/VideoGalleryPage/page-videos.html" class="btn btn-m bg-green-dark btn-block">
+                <i class="fa fa-video me-2"></i>Video Gallery
+              </a>
+            </div>
+            <div class="col-6 mb-3">
+              <a href="/src/features/ProfilePage/page-profile-finley.html" class="btn btn-m bg-red-dark btn-block">
+                <i class="fa fa-user me-2"></i>Profile
+              </a>
+            </div>
+            <div class="col-6 mb-3">
+              <a href="/src/features/ComparisonPage/page-Vergleich.html" class="btn btn-m bg-yellow-dark btn-block">
+                <i class="fa fa-balance-scale me-2"></i>Comparison
+              </a>
+            </div>
           </div>
         </div>
-        <div class="card-overlay bg-gradient" style="z-index: 2"></div>
-        <div class="card-overlay bg-gradient fa-rotate-180 opacity-50" style="z-index: 2"></div>
       </div>
-    </div>
-    <!-- End of Page Content-->
-    <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
 
-    <div id="menu-schedule" class="menu menu-box-modal menu-box-detached rounded-m">
-      <div class="menu-title">
-        <h1>Book a Photoshoot</h1>
-        <a href="#" class="close-menu mt-n2"><i class="fa fa-times font-16"></i></a>
-      </div>
-      <div class="divider divider-margins mt-3"></div>
-      <div class="content">
-        <div class="input-style has-borders input-style-always-active has-icon validate-field mb-4">
-          <i class="fa fa-user"></i>
-          <input type="name" class="form-control validate-name" id="form1" placeholder="Name" />
-          <label for="form1" class="color-blue-dark">Name</label>
-          <i class="fa fa-times disabled invalid color-red-dark"></i>
-          <i class="fa fa-check disabled valid color-green-dark"></i>
-          <em>(required)</em>
+      <!-- Architecture Overview -->
+      <div class="card card-style">
+        <div class="content">
+          <h4><i class="fa fa-code me-2"></i>Architecture Overview</h4>
+          <div class="list-group list-custom-small">
+            <a href="#" class="list-group-item">
+              <i class="fa fa-folder color-blue-dark me-3"></i>
+              <div>
+                <strong>Feature-Based Structure</strong>
+                <span class="d-block">Modular components for each page</span>
+              </div>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-puzzle-piece color-green-dark me-3"></i>
+              <div>
+                <strong>Reusable Components</strong>
+                <span class="d-block">Header, FooterBar, and utility modules</span>
+              </div>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-cogs color-red-dark me-3"></i>
+              <div>
+                <strong>Service Modules</strong>
+                <span class="d-block">PWA, Theme, Cache, and Database services</span>
+              </div>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-paint-brush color-yellow-dark me-3"></i>
+              <div>
+                <strong>SCSS Architecture</strong>
+                <span class="d-block">Variables, mixins, and component styles</span>
+              </div>
+            </a>
+          </div>
         </div>
-
-        <div class="input-style has-borders input-style-always-active has-icon validate-field mb-4">
-          <i class="fa fa-phone"></i>
-          <input type="tel" class="form-control validate-text" id="form4" placeholder="Phone" />
-          <label for="form4" class="color-blue-dark">Phone</label>
-          <i class="fa fa-times disabled invalid color-red-dark"></i>
-          <i class="fa fa-check disabled valid color-green-dark"></i>
-          <em>(required)</em>
-        </div>
-
-        <div class="input-style has-borders input-style-always-active has-icon mb-4">
-          <i class="fa fa-calendar"></i>
-          <input type="date" value="2030-12-31" max="2030-01-01" min="2021-01-01" class="form-control validate-text"
-            id="form6" placeholder="Phone" />
-          <label for="form6" class="color-blue-dark">Select Date</label>
-          <i class="fa fa-check disabled valid me-4 pe-3 font-12 color-green-dark"></i>
-          <i class="fa fa-check disabled invalid me-4 pe-3 font-12 color-red-dark"></i>
-        </div>
-        <a href="#" class="close-menu btn btn-m text-uppercase font-700 btn-full bg-blue-dark rounded-sm mt-4 mb-4">Call
-          me for Booking</a>
       </div>
-    </div>
 
-    <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
-      <div class="menu-title mt-0 pt-0">
-        <h1>Settings</h1>
-        <p class="color-highlight">Flexible and Easy to Use</p>
-        <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
-      </div>
-      <div class="divider divider-margins mb-n2"></div>
-      <div class="content">
-        <div class="list-group list-custom-small">
-          <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode" class="pb-2 ms-n1">
-            <i class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"></i>
-            <span>Dark Mode</span>
-            <div class="custom-control scale-switch ios-switch">
-              <input data-toggle-theme type="checkbox" class="ios-input" id="switch-dark-mode" />
-              <label class="custom-control-label" for="switch-dark-mode"></label>
+      <!-- Technical Features -->
+      <div class="card card-style">
+        <div class="content">
+          <h4><i class="fa fa-rocket me-2"></i>Technical Features</h4>
+          <div class="row">
+            <div class="col-6">
+              <div class="text-center mb-3">
+                <i class="fa fa-mobile-alt fa-2x color-blue-dark mb-2"></i>
+                <h6>Responsive Design</h6>
+                <p class="font-11">Mobile-first approach</p>
+              </div>
             </div>
-            <i class="fa fa-angle-right"></i>
-          </a>
-        </div>
-        <!-- Theme options removed for consistent blue dark theme -->
-      </div>
-    </div>
-    <!-- Highlight menu removed for consistent blue theme -->
-    <!-- Background menu removed for consistent default gradient -->
-    <!-- Menu Share -->
-    <div id="menu-share" class="menu menu-box-bottom menu-box-detached">
-      <div class="menu-title mt-n1">
-        <h1>Share the Love</h1>
-        <p class="color-highlight">
-          Just Tap the Social Icon. We'll add the Link
-        </p>
-        <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
-      </div>
-      <div class="content mb-0">
-        <div class="divider mb-0"></div>
-        <div class="list-group list-custom-small list-icon-0">
-          <a href="auto_generated" class="shareToFacebook external-link">
-            <i class="font-18 fab fa-facebook-square color-facebook"></i>
-            <span class="font-13">Facebook</span>
-            <i class="fa fa-angle-right"></i>
-          </a>
-          <a href="auto_generated" class="shareToTwitter external-link">
-            <i class="font-18 fab fa-twitter-square color-twitter"></i>
-            <span class="font-13">Twitter</span>
-            <i class="fa fa-angle-right"></i>
-          </a>
-          <a href="auto_generated" class="shareToLinkedIn external-link">
-            <i class="font-18 fab fa-linkedin color-linkedin"></i>
-            <span class="font-13">LinkedIn</span>
-            <i class="fa fa-angle-right"></i>
-          </a>
-          <a href="auto_generated" class="shareToWhatsApp external-link">
-            <i class="font-18 fab fa-whatsapp-square color-whatsapp"></i>
-            <span class="font-13">WhatsApp</span>
-            <i class="fa fa-angle-right"></i>
-          </a>
-          <a href="auto_generated" class="shareToMail external-link border-0">
-            <i class="font-18 fa fa-envelope-square color-mail"></i>
-            <span class="font-13">Email</span>
-            <i class="fa fa-angle-right"></i>
-          </a>
+            <div class="col-6">
+              <div class="text-center mb-3">
+                <i class="fa fa-bolt fa-2x color-green-dark mb-2"></i>
+                <h6>ES6 Modules</h6>
+                <p class="font-11">Modern JavaScript</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="text-center mb-3">
+                <i class="fa fa-palette fa-2x color-red-dark mb-2"></i>
+                <h6>Theme Support</h6>
+                <p class="font-11">Dark/Light modes</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="text-center mb-3">
+                <i class="fa fa-tachometer-alt fa-2x color-yellow-dark mb-2"></i>
+                <h6>Performance</h6>
+                <p class="font-11">Optimized loading</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
+
+    <!-- Footer Bar -->
+    <div id="footer-bar" class="footer-bar-1">
+      <a href="/src/features/HomePage/index.html">
+        <i class="fa fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="/src/features/VideoGalleryPage/page-videos.html">
+        <i class="fa fa-video"></i>
+        <span>Videos</span>
+      </a>
+      <a href="/src/features/ProfilePage/page-profile-finley.html">
+        <i class="fa fa-user"></i>
+        <span>Profile</span>
+      </a>
+      <a href="/src/features/ComparisonPage/page-Vergleich.html">
+        <i class="fa fa-balance-scale"></i>
+        <span>Compare</span>
+      </a>
+    </div>
+
   </div>
 
-  <!-- Bootstrap JS (keeping for compatibility) -->
-  <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+  <!-- Menu Hider -->
+  <div class="menu-hider"></div>
 
+  <!-- Scripts -->
+  <!-- Bootstrap JS (keeping for compatibility) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
   <!-- Supabase SDK (if needed) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+  
   <!-- Main application entry point (ES modules) -->
   <script type="module" src="/src/main.js"></script>
 
-  <!-- HomePage feature module -->
-  <script type="module">
-    import { initHomePage } from '/src/features/HomePage/homePage.js';
-
-    document.addEventListener("DOMContentLoaded", function () {
-      // Initialize HomePage features
-      initHomePage();
-    });
-  </script>
-
-  <style>
-    /* Existing video swiper styles */
-    .video-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .video-slide.active {
-      opacity: 1;
-    }
-
-    .indicator.active {
-      background: rgba(255, 255, 255, 0.8) !important;
-    }
-
-    /* Finley Letter Animation */
-    .finley-animated-heading span {
-      display: inline-block;
-      opacity: 0;
-    }
-
-    .finley-animated-heading span.fade-in-letter-anim {
-      animation: fadeInLetter 0.5s forwards;
-    }
-
-    @keyframes fadeInLetter {
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Statistics Animation */
-    .statistic-item {
-      display: flex;
-      align-items: center;
-      padding: 5px 0;
-      color: white;
-      opacity: 0;
-      /* Overall item starts transparent, animated by JS for parts */
-      transition: opacity 0.3s ease-in-out;
-      min-height: 2.4em;
-    }
-
-    .statistic-item .stat-exercise-name,
-    .statistic-item .stat-result,
-    .statistic-item .stat-rating-container {
-      opacity: 0;
-      /* Parts start hidden, animated by JS classes */
-      white-space: nowrap;
-    }
-
-    .statistic-item .stat-exercise-name {
-      flex-basis: 35%;
-      flex-shrink: 0;
-      text-align: left;
-    }
-
-    .statistic-item .stat-result {
-      font-weight: 600;
-      flex-basis: 20%;
-      flex-shrink: 0;
-      text-align: right;
-    }
-
-    .animate-slide-in-left {
-      animation: slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-
-    .animate-slide-in-right {
-      animation: slideInFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-
-    @keyframes slideInFromLeft {
-      0% {
-        transform: translateX(-40px);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideInFromRight {
-      0% {
-        transform: translateX(40px);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    /* Rating Label specific styles */
-    .stat-rating-container {
-      text-align: center;
-      flex-grow: 1;
-      flex-basis: 45%;
-    }
-
-    .stat-rating-text {
-      font-weight: bold;
-      padding: 4px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      display: inline-block;
-      line-height: 1.3;
-      font-size: 0.85em;
-      text-transform: uppercase;
-    }
-
-    .label-ausgezeichnet {
-      background-color: #28a745;
-      color: white;
-    }
-
-    .label-sehr-gut {
-      background-color: #17a2b8;
-      color: white;
-    }
-
-    .label-durchschnittlich {
-      background-color: #ffc107;
-      color: #212529;
-    }
-
-    .label-unterdurchschnittlich {
-      background-color: #dc3545;
-      color: white;
-    }
-
-    .animate-rating-drop-in {
-      animation: ratingDropInAnimation 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-    }
-
-    @keyframes ratingDropInAnimation {
-      0% {
-        opacity: 0;
-        transform: translateY(-25px) scale(0.8);
-      }
-
-      60% {
-        opacity: 1;
-        transform: translateY(5px) scale(1.05);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Style for the dynamically added prominent divider */
-    .statistics-container .divider.divider-prominent {
-      height: 1px;
-      /* Or 2px if you want thicker */
-      background-color: rgba(255, 255, 255, 0.35) !important;
-      /* More visible than default dark theme divider */
-      margin-top: 20px !important;
-      /* More vertical space */
-      margin-bottom: 20px !important;
-      /* Opacity for animation will be handled by JS */
-    }
-
-    /* Styling for the "Gesamtleistung" summary item */
-    .statistic-item-summary {
-      margin-top: 10px;
-      /* Extra space above the summary item */
-      /* You could add a subtle top border or background if desired */
-      /* border-top: 1px solid rgba(255,255,255,0.15); */
-      /* padding-top: 10px; */
-    }
-
-    .statistic-item-summary .stat-exercise-name {
-      font-size: 1.15em !important;
-      /* Noticeably larger */
-      font-weight: 700 !important;
-      /* Bolder */
-      flex-basis: 40% !important;
-      /* Adjust basis if needed for longer text */
-    }
-
-    .statistic-item-summary .stat-result {
-      font-size: 1.15em !important;
-      /* Noticeably larger */
-      font-weight: 700 !important;
-      /* Bolder */
-      flex-basis: 25% !important;
-      /* Adjust basis */
-    }
-
-    .statistic-item-summary .stat-rating-container {
-      flex-basis: 35% !important;
-      /* Adjust basis */
-    }
-
-    .statistic-item-summary .stat-rating-container .stat-rating-text {
-      font-size: 0.9em !important;
-      /* Slightly larger label */
-      font-weight: bold !important;
-      padding: 6px 12px !important;
-      /* More padding for emphasis */
-    }
-  </style>
 </body>
-
 </html>
